@@ -4,7 +4,8 @@
 
 ## Getting started <a id="docs"></a>
 
-* [Untitled](docs/untitled.md)
+* [System requirements](docs/untitled.md)
+* [Development setup](docs/development-setup.md)
 
 ## Deploy
 
