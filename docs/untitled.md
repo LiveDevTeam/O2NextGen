@@ -26,11 +26,11 @@
 
 #### Software requirements for Linux
 
-* No Content
+* \(Optional\) Visual Studio Code.
 
 #### Setting up your development system for Linux
 
-* No Content
+* Continue to the your Linux
 
 ## Mac
 
