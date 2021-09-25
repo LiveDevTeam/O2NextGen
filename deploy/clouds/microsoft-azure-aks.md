@@ -1,2 +1,2 @@
-# Microsoft Azure \(AKS\)
+# AKS \(Microsoft Azure\)
 
