@@ -1,4 +1,10 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Home page](README.md)
+
+## Deploy
+
+* [Windows](deploy/windows.md)
+* [Microsoft Azure\(AKS\)](deploy/microsoft-azure-aks.md)
+* [Mac](deploy/mac.md)
 
