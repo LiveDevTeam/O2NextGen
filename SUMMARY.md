@@ -24,3 +24,7 @@
 * [Azure DevOps pipelines](devops/azure-devops-pipelines.md)
 * [Build Code with GitHub Actions](devops/untitled.md)
 
+## Versions
+
+* [Changelog](versions/changelog.md)
+
