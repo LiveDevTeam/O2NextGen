@@ -2,7 +2,7 @@
 
 * [Home page](README.md)
 
-## Docs
+## Getting started <a id="docs"></a>
 
 * [Untitled](docs/untitled.md)
 
@@ -16,4 +16,8 @@
   * [Linux](deploy/local-machine/linux.md)
   * [Windows](deploy/local-machine/windows.md)
   * [Mac](deploy/local-machine/mac.md)
+
+## DevOps
+
+* [Untitled](devops/untitled.md)
 
