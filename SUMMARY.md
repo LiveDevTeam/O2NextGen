@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Home page](README.md)
+* [O2 NEXTGEN](README.md)
 
 ## Getting started <a id="docs"></a>
 
