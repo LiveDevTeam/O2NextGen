@@ -1,6 +1,6 @@
 # System requirements
 
-### Windows
+## Windows
 
 #### Recommended Hardware requirements for Windows
 
@@ -18,7 +18,21 @@
 * Begin by installing Docker Desktop for Windows following the instructions in [https://docs.docker.com/docker-for-windows/install/](https://docs.docker.com/docker-for-windows/install/).
 * Continue to the your Windows
 
-### Mac
+## Linux
+
+#### Recommended Hardware requirements for Linux
+
+* 16Gb of memory RAM - to run multiple docker containers, 8Gb RAM machine might be too tight.
+
+#### Software requirements for Linux
+
+* No Content
+
+#### Setting up your development system for Linux
+
+* No Content
+
+## Mac
 
 #### Recommended Hardware requirements for Mac
 
@@ -32,18 +46,10 @@
 * \(Optional\) Visual Studio for Mac.
 * \(Optional\) Visual Studio Code.
 
-
-
 #### Setting up your development system for Mac
 
 * Begin by installing Docker Desktop for Mac following the instructions in [https://docs.docker.com/docker-for-mac/install/](https://docs.docker.com/docker-for-mac/install/).
 * Continue to the your Mac
 
-
-
-## Linux
-
-#### Recommended Hardware requirements for Linux
-
-* 16Gb of memory RAM - to run multiple docker containers, 8Gb RAM machine might be too tight.
+## 
 
