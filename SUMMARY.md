@@ -20,5 +20,7 @@
 
 ## DevOps
 
-* [Untitled](devops/untitled.md)
+* [Deploy Code with GitHub Actions](devops/deploy-code-with-github-actions.md)
+* [Azure DevOps pipelines](devops/azure-devops-pipelines.md)
+* [Build Code with GitHub Actions](devops/untitled.md)
 
