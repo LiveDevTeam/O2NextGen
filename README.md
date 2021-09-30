@@ -1,4 +1,4 @@
-# O2 NEXTGEN
+# O2 NEXTGEN (Codename Citadel)
 
 #### Deployment
 
