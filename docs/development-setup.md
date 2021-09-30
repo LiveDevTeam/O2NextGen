@@ -7,6 +7,6 @@
 ### Basic extensions:
 * Bracket Pair Colorizer 2
 * Git Automator
-* Git Praph
+* Git Graph
 * Git History
 * Git History Diff
