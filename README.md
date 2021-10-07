@@ -1,6 +1,8 @@
 # O2 NEXTGEN (Codename Citadel)
+<img src="design/o2nextgen/logos/Screen Shot 2021-10-08 at 12.31.26 AM.png">
 
 #### Deployment
+
 
 # Project started with
 Used .net version .NET Core 2.1( 2.1.818);
