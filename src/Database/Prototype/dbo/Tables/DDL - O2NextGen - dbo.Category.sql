@@ -1,3 +1,10 @@
+/* 
+* Project: O2NextGen 
+* Table: dbo_Categoty 
+* Autor: Denis Prokhorchik
+* Date: 20-11-2021
+*/
+
 use O2NextGen_Prototype
 go
 
