@@ -9,4 +9,4 @@ community_bridge: # Replace with a single Community Bridge project-name e.g., cl
 liberapay: live-dev
 issuehunt: # Replace with a single IssueHunt username
 otechie: # Replace with a single Otechie username
-custom: ['paypal.me/livedev']
+custom: ['https://paypal.me/livedev']
