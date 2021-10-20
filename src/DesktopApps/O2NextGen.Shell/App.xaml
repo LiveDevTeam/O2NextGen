@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:O2NextGen.Shell"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="Themes/Light.xaml"/>
     </Application.Resources>
 </Application>
