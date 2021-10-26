@@ -73,8 +73,7 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
         [Route("")]
         public IActionResult CreateReally(CertificateViewModel model)
         {
-            var certificate = _certificatesService.Add(model.ToModel());
-            
+            _certificatesService.Add(model.ToModel());
             return RedirectToAction("Index");
         }
 
