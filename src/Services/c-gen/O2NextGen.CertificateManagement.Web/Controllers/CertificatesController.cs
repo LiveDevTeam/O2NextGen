@@ -1,6 +1,8 @@
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using O2NextGen.CertificateManagement.Business.Services;
-using  O2NextGen.CertificateManagement.Web.Mappings;
+using O2NextGen.CertificateManagement.Web.Mappings;
 using O2NextGen.CertificateManagement.Web.Models;
 
 namespace O2NextGen.CertificateManagement.Web.Controllers
@@ -11,8 +13,6 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
         #region Fields
 
         private readonly ICertificatesService _certificatesService;
-
-            
 
         #endregion
 
@@ -31,9 +31,9 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
 
         [HttpGet]
         [Route("")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var models = _certificatesService.GetAll();
+            var models = await _certificatesService.GetAllAsync(CancellationToken.None);
             if (models == null)
                 return NotFound();
             return View(models.ToViewModel());
@@ -41,9 +41,9 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Detail(long id)
+        public async Task<IActionResult> Detail(long id, CancellationToken ct)
         {
-            var certificate = _certificatesService.GetById(id);
+            var certificate = await _certificatesService.GetByIdAsync(id, ct);
             if (certificate == null)
                 return NotFound();
             return View(certificate.ToViewModel());
@@ -52,9 +52,9 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
         [HttpPost]
         [Route("id")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(long id, CertificateViewModel model)
+        public async Task<IActionResult> Edit(long id, CertificateViewModel model, CancellationToken ct)
         {
-            var certificate = _certificatesService.Update(model.ToModel());
+            var certificate = await _certificatesService.UpdateAsync(model.ToModel(), ct);
             if (certificate == null)
                 return NotFound();
             certificate.Name = model.Name;
@@ -71,9 +71,9 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
 
         [HttpPost]
         [Route("")]
-        public IActionResult CreateReally(CertificateViewModel model)
+        public async Task<IActionResult> CreateReally(CertificateViewModel model, CancellationToken ct)
         {
-            _certificatesService.Add(model.ToModel());
+            await _certificatesService.AddAsync(model.ToModel(), ct);
             return RedirectToAction("Index");
         }
 
