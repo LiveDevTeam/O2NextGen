@@ -1,6 +1,6 @@
 namespace O2NextGen.CertificateManagement.Web.Demo
 {
-    public class CertificateIdGenerator : ICertificateIdGenerator
+    public class CertificatesService : ICertificateIdGenerator
     {
         private long _currentId = 1;
 

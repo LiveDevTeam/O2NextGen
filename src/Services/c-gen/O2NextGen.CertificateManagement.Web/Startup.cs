@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using O2NextGen.CertificateManagement.Web.Demo;
+using O2NextGen.CertificateManagement.Business.Services;
+using O2NextGen.CertificateManagement.Impl.Services;
 
 namespace O2NextGen.CertificateManagement.Web
 {
@@ -11,9 +12,8 @@ namespace O2NextGen.CertificateManagement.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
-            services.AddSingleton<ICertificateIdGenerator, CertificateIdGenerator>();
-            
+
+            services.AddSingleton<ICertificatesService, InMemoryCertificatesService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
