@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using O2NextGen.CertificateManagement.Business.Models;
 using O2NextGen.CertificateManagement.Business.Services;
 
@@ -29,32 +31,36 @@ namespace O2NextGen.CertificateManagement.Impl.Services
         #endregion
 
         #region Methods
-        public IReadOnlyCollection<Certificate> GetAll()
+        public async Task<IReadOnlyCollection<Certificate>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return Certificates.AsReadOnly();
+            await Task.Delay(3000, cancellationToken);
+            return await Task.FromResult<IReadOnlyCollection<Certificate>>(Certificates.AsReadOnly());
         }
 
-        public Certificate GetById(long id)
+        public async Task<Certificate> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
-            return Certificates.SingleOrDefault(g => g.Id == id);
+            await Task.Delay(3000, cancellationToken);
+            return await Task.FromResult(Certificates.SingleOrDefault(g => g.Id == id));
         }
 
-        public Certificate Update(Certificate certificate)
+        public async Task<Certificate> UpdateAsync(Certificate certificate, CancellationToken cancellationToken)
         {
+            await Task.Delay(5000, cancellationToken);
             var toUpdate = Certificates.SingleOrDefault(g => g.Id == certificate.Id);
             if (toUpdate == null)
                 return null;
 
             toUpdate.Name = certificate.Name;
 
-            return toUpdate;
+            return await Task.FromResult(toUpdate);
         }
 
-        public Certificate Add(Certificate certificate)
+        public async Task<Certificate> AddAsync(Certificate certificate, CancellationToken cancellationToken)
         {
+            await Task.Delay(3000, cancellationToken);
             certificate.Id = ++_currentId;
             Certificates.Add(certificate);
-            return certificate;
+            return await Task.FromResult(certificate);
         }
         #endregion
     }

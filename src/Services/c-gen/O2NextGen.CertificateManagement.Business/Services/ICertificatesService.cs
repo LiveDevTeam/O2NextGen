@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using O2NextGen.CertificateManagement.Business.Models;
 
 namespace O2NextGen.CertificateManagement.Business.Services
 {
     public interface ICertificatesService
     {
-        IReadOnlyCollection<Certificate> GetAll();
+        Task<IReadOnlyCollection<Certificate>> GetAllAsync(CancellationToken cancellationToken);
 
-        Certificate GetById(long id);
+        Task<Certificate> GetByIdAsync(long id, CancellationToken cancellationToken);
 
-        Certificate Update(Certificate certificate);
+        Task<Certificate> UpdateAsync(Certificate certificate, CancellationToken cancellationToken);
 
-        Certificate Add(Certificate certificate);
+        Task<Certificate> AddAsync(Certificate certificate, CancellationToken cancellationToken);
     }
 }
