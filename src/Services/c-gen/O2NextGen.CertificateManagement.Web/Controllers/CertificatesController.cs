@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Antiforgery.Internal;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
+using O2NextGen.CertificateManagement.Web.Demo;
 using O2NextGen.CertificateManagement.Web.Models;
 
 namespace O2NextGen.CertificateManagement.Web.Controllers
@@ -10,26 +9,42 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
     [Route("certificates")]
     public class CertificatesController : Controller
     {
-        private static long _currentCertificateId = 1;
+        #region Fields
 
-        private static List<CertificateViewModel> _certificates = new List<CertificateViewModel>()
+        private readonly ICertificateIdGenerator _generator;
+   
+        private static readonly List<CertificateViewModel> Certificates = new List<CertificateViewModel>()
         {
-            new CertificateViewModel() {Id = 1, Name = "First"},
-            new CertificateViewModel() {Id = 2, Name = "Second "}
+            new CertificateViewModel() {Id = 1, Name = "First"}
         };
+        
+        #endregion
+        
+        
+        #region Ctors
+        
+        public CertificatesController( ICertificateIdGenerator generator)
+        {
+            _generator = generator;
+        }
+        
+        #endregion
+
+        
+        #region Methods
 
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
-            return View(_certificates);
+            return View(Certificates);
         }
 
         [HttpGet]
         [Route("{id}")]
         public IActionResult Detail(long id)
         {
-            var certificate = _certificates.SingleOrDefault(_ => _.Id == id);
+            var certificate = Certificates.SingleOrDefault(_ => _.Id == id);
             if (certificate == null)
                 return NotFound();
             return View(certificate);
@@ -40,7 +55,7 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(long id, CertificateViewModel model)
         {
-            var certificate = _certificates.SingleOrDefault(_ => _.Id == id);
+            var certificate = Certificates.SingleOrDefault(_ => _.Id == id);
             if (certificate == null)
                 return NotFound();
             certificate.Name = model.Name;
@@ -59,9 +74,11 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
         [Route("")]
         public IActionResult CreateReally(CertificateViewModel model)
         {
-            model.Id = _currentCertificateId++;
-            _certificates.Add(model);
+            model.Id = _generator.Next();
+            Certificates.Add(model);
             return RedirectToAction("Index");
         }
+
+        #endregion
     }
 }

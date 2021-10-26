@@ -14,6 +14,7 @@ namespace O2NextGen.CertificateManagement.Web
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("################# Starting Application #################");
             CreateWebHostBuilder(args).Build().Run();
         }
 
