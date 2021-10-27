@@ -17,6 +17,50 @@ Url for download https://dotnet.microsoft.com/download/dotnet/2.1
 {% page-ref page="deploy/clouds/" %}
 
 
+## Commit Formats
+#### Types
+* API relevant changes
+    * `feat` Commits, that adds a new feature
+    * `fix` Commits, that fixes a bug
+* `refactor` Commits, that rewrite/restructure your code, however does not change any behaviour
+    * `perf` Commits are special `refactor` commits, that improves performance
+* `style` Commits, that do not affect the meaning (white-space, formatting, missing semi-colons, etc)
+* `test` Commits, that add missing tests or correcting existing tests
+* `docs` Commits, that affect documentation only
+* `build` Commits, that affect build components like build tool, ci pipeline, dependencies, project version, ...
+* `ops` Commits, that affect operational components like infrastructure, deployment, backup, recovery, ...
+* `chore` Miscellaneous commits e.g. modifying `.gitignore`
 
+#### Subject
+* use imperative, present tense (eg: use "add" instead of "added" or "adds")
+* don't use dot(.) at end
+* don't capitalize first letter
 
-
+### Examples
+* ```
+  feat(c-get service): add the amazing button
+  ```
+* ```
+  feat: remove ticket list endpoint
+  
+  refers to JIRA-12337
+  BREAKING CHANGES: ticket enpoints no longer supports list all entites.
+  ```
+* ```
+  fix: add missing parameter to service call
+  
+  The error occurred because of <reasons>.
+  ```
+* ```
+  build(release): bump version to 1.0.0
+  ```
+* ```
+  build: update dependencies
+  ```
+* ```
+  refactor: implement calculation method as recursion
+  ```
+* ```
+  style: remove empty line
+  ```
+  
