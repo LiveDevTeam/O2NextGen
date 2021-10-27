@@ -78,7 +78,49 @@ Url for download https://dotnet.microsoft.com/download/dotnet/2.1
   utf - User Functions
   ```
 
-  
+#### Database
+* Example PK :  
+```  
+Table name - 'Test_Table'
+```
+``` 
+PK name - 'PK_TestTable'
+```
+
+* Example FK :  
+```
+Table name - 'Test_Table'
+``` 
+```
+Reference table name - 'Ref_Test_Table'
+``` 
+```
+FK name - 'FK_TestTable_RefTestTable'
+``` 
+
+* Example DF :  
+```
+Table name - 'Test_Table'
+``` 
+```
+Columns name for DF - 'column_name'
+``` 
+```
+DF name - 'DF_columnName'
+``` 
+
+* Example AK :  
+```
+Table name - 'Test_Table'
+``` 
+```
+Columns name for AK - 'column_name', 'column_name_id'
+``` 
+```
+AK name - 'AK_columnName_columnNameId'
+``` 
+
+ 
 #### Type script 
 
 #### Names of script
