@@ -64,3 +64,28 @@ Url for download https://dotnet.microsoft.com/download/dotnet/2.1
   style: remove empty line
   ```
   
+### MSSQL scripts conversion
+
+#### Abbreviated names 
+
+* ```
+  uc - User Constraint
+  ```
+* ```
+  usp - User Stored Procedure
+  ```
+* ```
+  utf - User Functions
+  ```
+
+  
+#### Type script 
+
+#### Names of script
+
+* ```
+  DDL
+  ```
+* ```
+  DML
+  ```
