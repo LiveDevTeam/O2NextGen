@@ -130,4 +130,21 @@ AK name - 'AK_columnName_columnNameId'
   ```
 * ```
   DML
+   ```
+
+#### Sample
+* ```
+    DDL - O2NextGen - dbo.Athlete_Group(dbo.[Table Name])
+  ```
+* ```
+    DDL - O2NextGen - usp - json - Get_Config([dbo.usp_json_[Procedure Name]])
+  ```
+* ```
+    DDL - O2NextGen - usp - Insert_Competition_Program([dbo.usp_[Procedure Name])
+  ```
+* ```
+    DDL - O2NextGen - utf - Insert_Competition_Program([dbo.utf_[Function Name])
+  ```
+* ```
+    DDL - O2NextGens_Tests - usp - Run_All_Tests(dbo.usp_[Procedure Name])
   ```
