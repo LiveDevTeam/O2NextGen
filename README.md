@@ -13,10 +13,12 @@
 
 
 ### Derivative products
-#PF_R Community ( Personal Functional Recovery Community)
+* #PF_R Community ( Personal Functional Recovery Community)
 
 <img width="450" src="design/pfr-app/logo/pfr-logo_ration16x9.png">
 
+* SmallTalk
+ 
 
 ## Project started with
 Used .net version .NET Core 2.1( 2.1.818);
