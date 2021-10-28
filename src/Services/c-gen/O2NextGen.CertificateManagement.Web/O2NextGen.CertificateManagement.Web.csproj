@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj" />
+    <ProjectReference Include="..\O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj" />
     <ProjectReference Include="..\O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
