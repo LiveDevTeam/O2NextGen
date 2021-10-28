@@ -1,0 +1,10 @@
+@model IEnumerable<CertificateViewModel> 
+
+@foreach (var certificate in Model)
+{
+    <li>
+        @certificate.Id  @certificate.Name | <a asp-controller="Certificates" asp-action="Detail" asp-route-id="@certificate.Id">Edit</a>
+    </li>
+}
+
+<a asp-controller="Certificates" asp-action="Create">Create</a>
