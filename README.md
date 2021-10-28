@@ -6,17 +6,16 @@
 [![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml)
 * S-Link: - 
 * L-Pay: - 
-* 
-<img src="design/o2nextgen/logos/Screen Shot 2021-10-08 at 12.31.26 AM.png">
+
+<img width="450" src="design/o2nextgen/logos/Screen Shot 2021-10-08 at 12.31.26 AM.png">
 
 
 
 
 ### Derivative products
 #PF_R Community ( Personal Functional Recovery Community)
-<img src="design/pfr-app/logo/pfr-logo_ration16x9.png">
 
-#### Deployment
+<img width="450" src="design/pfr-app/logo/pfr-logo_ration16x9.png">
 
 
 ## Project started with
