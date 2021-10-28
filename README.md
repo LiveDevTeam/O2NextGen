@@ -1,4 +1,5 @@
 # O2 NEXTGEN (Codename Citadel)
+[![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml)
 <img src="design/o2nextgen/logos/Screen Shot 2021-10-08 at 12.31.26 AM.png">
 
 ### Derivative products
