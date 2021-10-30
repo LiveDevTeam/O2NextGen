@@ -1,14 +1,26 @@
 # O2 NEXTGEN (Codename Citadel)
-<img src="design/o2nextgen/logos/Screen Shot 2021-10-08 at 12.31.26 AM.png">
 
-### Derivative products
-#PF_R Community ( Personal Functional Recovery Community)
-<img src="design/pfr-app/logo/pfr-logo_ration16x9.png">
+### Services: 
+* O2 Auth: - 
+* C-Gen:
+[![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml)
+* S-Link: - 
+* L-Pay: - 
 
-#### Deployment
+<img width="450" src="design/o2nextgen/logos/Screen Shot 2021-10-08 at 12.31.26 AM.png">
 
 
-# Project started with
+
+
+## Derivative products
+* #PF_R Community ( Personal Functional Recovery Community)
+
+<img width="450" src="design/pfr-app/logo/pfr-logo_ration16x9.png">
+
+* SmallTalk
+ 
+
+## Project started with
 Used .net version .NET Core 2.1( 2.1.818);
 Url for download https://dotnet.microsoft.com/download/dotnet/2.1
 
@@ -64,7 +76,7 @@ Url for download https://dotnet.microsoft.com/download/dotnet/2.1
   style: remove empty line
   ```
   
-### MSSQL scripts conversion
+## MSSQL scripts conversion
 
 #### Abbreviated names 
 
