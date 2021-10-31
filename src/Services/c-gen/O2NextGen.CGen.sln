@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.810.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Web", "O2NextGen.CertificateManagement.Web\O2NextGen.CertificateManagement.Web.csproj", "{EA540B06-8A73-49C7-A799-49423B316458}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Api", "O2NextGen.CertificateManagement.Api\O2NextGen.CertificateManagement.Api.csproj", "{EA540B06-8A73-49C7-A799-49423B316458}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Business", "O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj", "{C6E0B2A5-6349-4C1D-8E14-82249AF8F58A}"
 EndProject

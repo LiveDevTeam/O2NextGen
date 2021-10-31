@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>O2NextGen.CertificateManagement.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
