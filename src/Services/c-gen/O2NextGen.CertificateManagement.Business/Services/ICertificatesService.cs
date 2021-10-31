@@ -7,12 +7,14 @@ namespace O2NextGen.CertificateManagement.Business.Services
 {
     public interface ICertificatesService
     {
-        Task<IReadOnlyCollection<Certificate>> GetAllAsync(CancellationToken cancellationToken);
+        Task<IReadOnlyCollection<Certificate>> GetAllAsync(CancellationToken ct);
 
-        Task<Certificate> GetByIdAsync(long id, CancellationToken cancellationToken);
+        Task<Certificate> GetByIdAsync(long id, CancellationToken ct);
 
-        Task<Certificate> UpdateAsync(Certificate certificate, CancellationToken cancellationToken);
+        Task<Certificate> UpdateAsync(Certificate certificate, CancellationToken ct);
 
-        Task<Certificate> AddAsync(Certificate certificate, CancellationToken cancellationToken);
+        Task<Certificate> AddAsync(Certificate certificate, CancellationToken ct);
+        
+        Task RemoveAsync(long id, CancellationToken ct);
     }
 }
