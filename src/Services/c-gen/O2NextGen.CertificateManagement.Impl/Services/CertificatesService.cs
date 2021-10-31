@@ -54,5 +54,12 @@ namespace O2NextGen.CertificateManagement.Impl.Services
             await _context.SaveChangesAsync(ct);
             return addedCertificateEntity.Entity.ToService();
         }
+
+        public async Task RemoveAsync(long id, CancellationToken ct)
+        {
+            var entityToRemove = await _context.Certificates.SingleOrDefaultAsync(_ => _.Id == id, ct);
+            _context.Certificates.Remove(entityToRemove);
+            await _context.SaveChangesAsync(ct);
+        }
     }
 }

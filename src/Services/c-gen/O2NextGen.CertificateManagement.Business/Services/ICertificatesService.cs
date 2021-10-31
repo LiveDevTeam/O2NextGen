@@ -14,5 +14,6 @@ namespace O2NextGen.CertificateManagement.Business.Services
         Task<Certificate> UpdateAsync(Certificate certificate, CancellationToken ct);
 
         Task<Certificate> AddAsync(Certificate certificate, CancellationToken ct);
+        Task RemoveAsync(long id, CancellationToken ct);
     }
 }
