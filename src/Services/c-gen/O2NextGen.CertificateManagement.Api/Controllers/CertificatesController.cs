@@ -8,7 +8,7 @@ using O2NextGen.CertificateManagement.Web.Models;
 namespace O2NextGen.CertificateManagement.Web.Controllers
 {
     [Route("certificates")]
-    public class CertificatesController : Controller
+    public class CertificatesController : ControllerBase
     {
         #region Fields
 
@@ -31,52 +31,47 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> GetAllAsync()
         {
             var models = await _certificatesService.GetAllAsync(CancellationToken.None);
-            if (models == null)
-                return NotFound();
-            return View(models.ToViewModel());
+            return Ok(models.ToViewModel());
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> Detail(long id, CancellationToken ct)
+        public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
         {
             var certificate = await _certificatesService.GetByIdAsync(id, ct);
             if (certificate == null)
                 return NotFound();
-            return View(certificate.ToViewModel());
+            return Ok(certificate.ToViewModel());
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("id")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, CertificateViewModel model, CancellationToken ct)
+        public async Task<IActionResult> UpdateAsync(long id, CertificateViewModel model, CancellationToken ct)
         {
             var certificate = await _certificatesService.UpdateAsync(model.ToModel(), ct);
-            if (certificate == null)
-                return NotFound();
-            certificate.Name = model.Name;
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        [Route("create")]
-        public IActionResult Create()
-        {
-            return View();
+            return Ok(certificate.ToViewModel());
         }
 
         [HttpPost]
+        [HttpPut]
         [Route("")]
-        public async Task<IActionResult> CreateReally(CertificateViewModel model, CancellationToken ct)
+        public async Task<IActionResult> AddAsync(CertificateViewModel model, CancellationToken ct)
         {
-            await _certificatesService.AddAsync(model.ToModel(), ct);
-            return RedirectToAction("Index");
+            var certificate = await _certificatesService.AddAsync(model.ToModel(), ct);
+            return CreatedAtAction(nameof(GetByIdAsync), new {id = certificate.Id}, certificate);
         }
 
         #endregion
+
+        [HttpDelete]
+        [Route("id")]
+        public async Task<IActionResult> RemoveAsync(long id,CancellationToken ct)
+        {
+            await _certificatesService.RemoveAsync(id, ct);
+            return NoContent();
+        }
     }
 }
