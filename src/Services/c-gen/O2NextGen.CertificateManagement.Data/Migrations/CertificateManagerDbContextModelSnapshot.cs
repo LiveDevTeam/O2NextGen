@@ -7,7 +7,7 @@ using O2NextGen.CertificateManagement.Data;
 
 namespace O2NextGen.CertificateManagement.Data.Migrations
 {
-    [DbContext(typeof(CertificateManagerDbContext))]
+    [DbContext(typeof(CertificateManagementDbContext))]
     partial class CertificateManagerDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

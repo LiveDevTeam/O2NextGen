@@ -8,7 +8,7 @@ using O2NextGen.CertificateManagement.Data;
 
 namespace O2NextGen.CertificateManagement.Data.Migrations
 {
-    [DbContext(typeof(CertificateManagerDbContext))]
+    [DbContext(typeof(CertificateManagementDbContext))]
     [Migration("20211031114457_InitialCreate")]
     partial class InitialCreate
     {

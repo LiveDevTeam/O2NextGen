@@ -12,7 +12,7 @@ namespace Microsoft.AspNetCore.Hosting
         {
             using (var scope = host.Services.CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<CertificateManagerDbContext>();
+                var context = scope.ServiceProvider.GetRequiredService<CertificateManagementDbContext>();
                 await context.Database.MigrateAsync();
             }
         }

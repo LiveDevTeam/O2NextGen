@@ -16,7 +16,7 @@ namespace O2NextGen.CertificateManagement.Web
         {
             services.AddMvc();
             services.AddBusiness();
-            services.AddDbContext<CertificateManagerDbContext>(x =>
+            services.AddDbContext<CertificateManagementDbContext>(x =>
                 x.UseSqlServer("Server=localhost;Initial Catalog=O2NextGen.CertificateDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;"));
         }
 

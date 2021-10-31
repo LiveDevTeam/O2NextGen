@@ -4,7 +4,7 @@ using O2NextGen.CertificateManagement.Data.Entities;
 
 namespace O2NextGen.CertificateManagement.Data
 {
-    public class CertificateManagerDbContext : DbContext
+    public class CertificateManagementDbContext : DbContext
     {
 
         #region Fields
@@ -15,7 +15,7 @@ namespace O2NextGen.CertificateManagement.Data
 
         #region Ctors
 
-        public CertificateManagerDbContext(DbContextOptions<CertificateManagerDbContext> options)
+        public CertificateManagementDbContext(DbContextOptions<CertificateManagementDbContext> options)
             : base(options)
         {
         }
