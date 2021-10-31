@@ -8,7 +8,9 @@ namespace O2NextGen.CertificateManagement.Web.IoC
     {
         public static IServiceCollection AddBusiness(this IServiceCollection services)
         {
-            services.AddSingleton<ICertificatesService, InMemoryCertificatesService>();
+            // services.AddSingleton<ICertificatesService, InMemoryCertificatesService>();
+            // Include DataLayer
+            services.AddScoped<ICertificatesService, CertificatesService>();
             //more business services...
             
             return services;

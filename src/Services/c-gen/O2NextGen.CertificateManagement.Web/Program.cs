@@ -12,10 +12,21 @@ namespace O2NextGen.CertificateManagement.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            Console.WriteLine("################# Starting Application #################");
-            CreateWebHostBuilder(args).Build().Run();
+            try
+            {
+                var host = CreateWebHostBuilder(args).Build();
+                Console.WriteLine("################# Starting Application #################");
+                await host.EnsureDbUpdate();
+                await host.RunAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

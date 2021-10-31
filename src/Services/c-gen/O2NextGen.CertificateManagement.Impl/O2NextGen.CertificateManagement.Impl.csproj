@@ -12,5 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj" />
+    <ProjectReference Include="..\O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj" />
   </ItemGroup>
 </Project>
