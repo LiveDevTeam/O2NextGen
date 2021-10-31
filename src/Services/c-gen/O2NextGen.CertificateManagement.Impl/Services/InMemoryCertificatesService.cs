@@ -62,6 +62,12 @@ namespace O2NextGen.CertificateManagement.Impl.Services
             Certificates.Add(certificate);
             return await Task.FromResult(certificate);
         }
+
+        public Task RemoveAsync(long id, CancellationToken ct)
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
     }
 }
