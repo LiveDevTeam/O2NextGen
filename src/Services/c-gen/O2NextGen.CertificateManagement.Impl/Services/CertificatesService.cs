@@ -43,55 +43,11 @@ namespace O2NextGen.CertificateManagement.Impl.Services
 
         public async Task<Certificate> UpdateAsync(Certificate certificate, CancellationToken cancellationToken)
         {
-            return await SimplestUpdateAsync(certificate, cancellationToken);
-            // var existingCertificate = await _context.Certificates.AsNoTracking().SingleAsync(x => x.Id == certificate.Id, cancellationToken);
-            // existingCertificate.Name = certificate.Name;
-            // await Task.Delay(TimeSpan.FromSeconds(10));
-            // await _context.SaveChangesAsync(cancellationToken);
-            // return existingCertificate.ToService();
-        }
-
-        private async Task<Certificate> SimplestUpdateAsync(Certificate certificate, CancellationToken cancellationToken)
-        {
             var updatedCertificateEntity = _context.Certificates.Update(certificate.ToEntity());
             await _context.SaveChangesAsync(cancellationToken);
             return updatedCertificateEntity.Entity.ToService();
         }
-
-        #region Simples for Update Entity
-
-        // private async Task<Certificate> UpdateSampleAsync(Certificate certificate,
-        //     CancellationToken cancellationToken)
-        // {
-        //     var localCertificate = 
-        //         _context.Certificates.Local.SingleOrDefault(_ => _.Id == certificate.Id);
-        //     if (localCertificate != null)
-        //     {
-        //         _context.Entry(localCertificate).State = EntityState.Detached;
-        //     }
-        //     var updatedCertificateEntity = _context.Certificates.Update(certificate.ToEntity());
-        //     await _context.SaveChangesAsync(cancellationToken);
-        //     return updatedCertificateEntity.Entity.ToService();
-        // }
-        // private async Task<Certificate> SimplestWithFetchUpdateAsync(Certificate certificate, CancellationToken cancellationToken)
-        // {
-        //     var existingCertificate = await _context.Certificates.SingleOrDefaultAsync(_ => _.Id == certificate.Id,cancellationToken);
-        //     existingCertificate.Name = certificate.Name;
-        //     
-        //     await _context.SaveChangesAsync(cancellationToken);
-        //     return existingCertificate.ToService();
-        // }
-        //
-        // private async Task<Certificate> SimplestWithFetch2UpdateAsync(Certificate certificate, CancellationToken cancellationToken)
-        // {
-        //     var existingCertificate = await _context.Certificates.SingleOrDefaultAsync(_ => _.Id == certificate.Id,cancellationToken);
-        //     _context.Entry(existingCertificate).CurrentValues.SetValues(certificate.ToEntity());
-        //     
-        //     await _context.SaveChangesAsync(cancellationToken);
-        //     return existingCertificate.ToService();
-        // }
-
-        #endregion
+        
         public async Task<Certificate> AddAsync(Certificate certificate, CancellationToken cancellationToken)
         {
             var addedCertificateEntity = await _context.Certificates.AddAsync(certificate.ToEntity(), cancellationToken);
