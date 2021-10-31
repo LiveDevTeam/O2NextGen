@@ -29,29 +29,29 @@ namespace O2NextGen.CertificateManagement.Impl.Services
 
         #endregion
 
-        public async Task<IReadOnlyCollection<Certificate>> GetAllAsync(CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<Certificate>> GetAllAsync(CancellationToken ct)
         {
             var certificates = await _context.Certificates.AsNoTracking().OrderBy(_=>_.Id).ToListAsync();
             return certificates.ToService();
         }
 
-        public async Task<Certificate> GetByIdAsync(long id, CancellationToken cancellationToken)
+        public async Task<Certificate> GetByIdAsync(long id, CancellationToken ct)
         {
-            var certificates = await _context.Certificates.AsNoTracking().SingleAsync(x => x.Id == id, cancellationToken);
+            var certificates = await _context.Certificates.AsNoTracking().SingleAsync(x => x.Id == id, ct);
             return certificates.ToService();
         }
 
-        public async Task<Certificate> UpdateAsync(Certificate certificate, CancellationToken cancellationToken)
+        public async Task<Certificate> UpdateAsync(Certificate certificate, CancellationToken ct)
         {
             var updatedCertificateEntity = _context.Certificates.Update(certificate.ToEntity());
-            await _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync(ct);
             return updatedCertificateEntity.Entity.ToService();
         }
         
-        public async Task<Certificate> AddAsync(Certificate certificate, CancellationToken cancellationToken)
+        public async Task<Certificate> AddAsync(Certificate certificate, CancellationToken ct)
         {
-            var addedCertificateEntity = await _context.Certificates.AddAsync(certificate.ToEntity(), cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
+            var addedCertificateEntity = await _context.Certificates.AddAsync(certificate.ToEntity(), ct);
+            await _context.SaveChangesAsync(ct);
             return addedCertificateEntity.Entity.ToService();
         }
     }
