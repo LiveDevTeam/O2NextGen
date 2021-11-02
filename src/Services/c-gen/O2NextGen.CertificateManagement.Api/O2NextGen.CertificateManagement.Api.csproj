@@ -11,9 +11,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.Extensions.Options">
-      <Version>2.2.0</Version>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -30,4 +27,5 @@
     <_ContentIncludedByDefault Remove="Views\Certificates\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
   </ItemGroup>
+
 </Project>

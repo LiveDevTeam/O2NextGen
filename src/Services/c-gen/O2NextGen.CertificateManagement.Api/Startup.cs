@@ -3,33 +3,21 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.CertificateManagement.Data;
 using O2NextGen.CertificateManagement.Web.IoC;
-using O2NextGen.CertificateManagement.Web.Setup;
 
 [assembly: ApiController]
 namespace O2NextGen.CertificateManagement.Web
 {
     public class Startup
     {
-        public IHostingEnvironment HostingEnvironment { get; private set; }
-        public IConfiguration AppConfiguration { get; private set; }
-
-        public Startup(IConfiguration appConfiguration, IHostingEnvironment env)
-        {
-            this.HostingEnvironment = env;
-            this.AppConfiguration = appConfiguration;
-        }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRequiredMvcComponents();
             services.AddBusiness();
-            services.AddConfigEf(AppConfiguration);
-            // services.Configure<UrlsConfig>(AppConfiguration.GetSection("Urls"));
-            var result = AppConfiguration.GetSection("Urls");
-            services.ConfigurePOCO<UrlsConfig>(result);
+            services.AddDbContext<CertificateManagementDbContext>(x =>
+                x.UseSqlServer("Server=localhost;Initial Catalog=O2NextGen.CertificateDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;"));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
