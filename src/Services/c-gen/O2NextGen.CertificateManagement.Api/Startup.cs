@@ -5,10 +5,8 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using O2NextGen.CertificateManagement.Data;
 using O2NextGen.CertificateManagement.Web.Helpers;
 using O2NextGen.CertificateManagement.Web.IoC;
 using O2NextGen.CertificateManagement.Web.Setup;
@@ -31,9 +29,7 @@ namespace O2NextGen.CertificateManagement.Web
             services.AddRequiredMvcComponents();
             services.AddBusiness();
             services.AddConfigEf(AppConfiguration);
-            // services.Configure<UrlsConfig>(AppConfiguration.GetSection("Urls"));
-            var result = AppConfiguration.GetSection("Urls");
-            services.ConfigurePOCO<UrlsConfig>(result);
+            services.ConfigurePOCO<UrlsConfig>(AppConfiguration.GetSection("Urls"));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

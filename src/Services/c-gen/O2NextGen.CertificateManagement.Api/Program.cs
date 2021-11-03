@@ -20,9 +20,9 @@ namespace O2NextGen.CertificateManagement.Web
             {
                 Log.Logger = new LoggerConfiguration()
                     .Enrich.FromLogContext()
-// #if DEBUG
+#if DEBUG
                     .WriteTo.File("Logs/system_logs.txt")
-// #endif
+#endif
                     .WriteTo.Console()
                     
                     .CreateLogger();
@@ -50,7 +50,5 @@ namespace O2NextGen.CertificateManagement.Web
             WebHost.CreateDefaultBuilder(args)
                 .UseSerilog()
                 .UseStartup<Startup>(); // <- Add this line
-        // .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-        //     .ReadFrom.Configuration(hostingContext.Configuration));
     }
 }
