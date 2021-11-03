@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Tests.O2NextGen.Windows.Stub;
 
 namespace Tests.O2NextGen.Windows
 {
@@ -8,7 +9,7 @@ namespace Tests.O2NextGen.Windows
         public void ObservableObject_PropertyChangedEventHandlerIsRaised_Test()
         {
             var obj = new StubObservableObject();
-            bool raised = false;
+            var raised = false;
             obj.PropertyChanged += (sender, e) =>
             {
                 Assert.IsTrue(e.PropertyName == "ChangedProperty");

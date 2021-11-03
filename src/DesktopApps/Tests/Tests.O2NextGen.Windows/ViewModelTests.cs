@@ -2,6 +2,7 @@
 using O2NextGen.Windows;
 using System;
 using System.ComponentModel;
+using Tests.O2NextGen.Windows.Stub;
 
 namespace Tests.O2NextGen.Windows
 {
@@ -21,14 +22,18 @@ namespace Tests.O2NextGen.Windows
         }
 
         [Test]
-        public void ViewModel_IsDataErrorInfo_ErrorProperty_IsNotInplemented()
+        public void ViewModel_IsDataErrorInfo_ErrorProperty_IsNotImplemented()
         {
             //Arrange
 
             //Act
             var viewModel = new StubViewModel();
             // Assert
-            Assert.Throws<NotSupportedException>(() => { var value = viewModel.Error; });
+            // ReSharper disable once UnusedVariable
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                var value = viewModel.Error;
+            });
         }
 
         [Test]
@@ -40,6 +45,20 @@ namespace Tests.O2NextGen.Windows
             var viewModel = new StubViewModel();
             // Assert
             Assert.IsNotNull(viewModel["RequiredProperty"]);
+        }
+
+        [Test]
+        public void ViewModel_IndexerPropertyValidatesPropertyNameWithValidValue()
+        {
+            //Arrange
+
+            //Act
+            var viewModel = new StubViewModel()
+            {
+                RequiredProperty = "Some Value"
+            };
+            // Assert
+            Assert.IsNull(viewModel["RequiredProperty"]);
         }
     }
 }

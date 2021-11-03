@@ -1,17 +1,17 @@
 ﻿using O2NextGen.Windows;
 
-namespace Tests.O2NextGen.Windows
+namespace Tests.O2NextGen.Windows.Stub
 {
     public class StubObservableObject : ObservableObject
     {
-        private string changedProperty;
+        private string _changedProperty;
 
         public string ChangedProperty
         {
-            get { return changedProperty; }
+            get => _changedProperty;
             set
             {
-                changedProperty = value;
+                _changedProperty = value;
                 OnPropertyChanged();
             }
         }
