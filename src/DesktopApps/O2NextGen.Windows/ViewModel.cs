@@ -7,10 +7,7 @@ namespace O2NextGen.Windows
 {
     public abstract class ViewModel: ObservableObject, IDataErrorInfo
     {
-        public string Error
-        {
-            get => throw new NotSupportedException();
-        }
+        public string Error => throw new NotSupportedException();
 
         public string this[string columnName] => OnValidate(columnName);
 

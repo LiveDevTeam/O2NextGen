@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\O2NextGen.Windows\O2NextGen.Windows.csproj" />
   </ItemGroup>
 
 </Project>

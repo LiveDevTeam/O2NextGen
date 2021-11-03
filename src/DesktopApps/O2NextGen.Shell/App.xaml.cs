@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using O2NextGen.Shell.ViewModels;
 
 namespace O2NextGen.Shell
 {
@@ -8,5 +9,16 @@ namespace O2NextGen.Shell
     // ReSharper disable once RedundantExtendsListEntry
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            MainWindow window = new MainWindow()
+            {
+                DataContext = new CertificateViewModel()
+            };
+            
+            window.ShowDialog();
+        }
     }
 }

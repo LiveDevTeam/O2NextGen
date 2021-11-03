@@ -60,5 +60,11 @@ namespace Tests.O2NextGen.Windows
             // Assert
             Assert.IsNull(viewModel["RequiredProperty"]);
         }
+
+        [Test]
+        public void ViewModel_IsObservableObject()
+        {
+            Assert.IsTrue(typeof(ViewModel).BaseType == typeof(ObservableObject));
+        }
     }
 }
