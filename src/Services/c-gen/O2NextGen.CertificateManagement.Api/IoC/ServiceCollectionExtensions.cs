@@ -12,6 +12,7 @@ namespace O2NextGen.CertificateManagement.Web.IoC
 {
     public static class ServiceCollectionExtensions
     {
+        // ReSharper disable once InconsistentNaming
         public static TConfig ConfigurePOCO<TConfig>(this IServiceCollection services, IConfiguration configuration)
             where TConfig : class, new()
         {
