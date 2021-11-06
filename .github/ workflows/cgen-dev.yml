@@ -23,6 +23,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       working-directory: src/Services/c-gen
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: src/Services/c-gen
+    - name: Integration Tests
+      run: dotnet test --no-build --verbosity normal /p:CoverletOutput=../../coverlet/FooBar.Tests.json
+      working-directory: src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api
