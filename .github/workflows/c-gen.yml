@@ -27,9 +27,13 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       working-directory: src/Services/c-gen
+    
+    - name: Unit Tests
+      run: dotnet test Tests.O2NextGen.CertificateManagement.Api.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/Tests.O2NextGen.CertificateManagement.Api.info /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/c-gen/Tests/Tests.O2NextGen.CertificateManagement.Api/
+    
     - name: Integration Tests
-      run: dotnet test IntegrationTests.O2NextGen.CertificateManagement.Api.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
-      working-directory: src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api/
+      run: dotnet test src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api/IntegrationTests.O2NextGen.CertificateManagement.Api.csproj --no-build --verbosity normal /p:MergeWith=src/Services/c-gen/Tests/Tests.O2NextGen.CertificateManagement.Api/TestResults/Tests.O2NextGen.CertificateManagement.Api.info /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
 
     - name: check files 1 
       run: ls
