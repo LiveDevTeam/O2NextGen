@@ -2,13 +2,13 @@
 
 #### Build & Coverage
 
-| Service | Status | Coverage Status |
-| ------------- | ------------- | ------------- |
-| O2 Auth: | ------------- | ------------- |
-| C-Gen: |[![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml) | [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=master)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=master) |
-| S-Link: |                | ------------- |
-| L-Pay: |                |------------- |
-| ------------- | ------------- |------------- |
+| Service | build status | coverage status | dev - build status | dev - coverage status |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| O2 Auth: |                |                |                |                |
+| C-Gen: |[![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml) | [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=master)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=master) | [![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml) | [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=dev)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=dev) | 
+| S-Link: |                |                |                |                |
+| L-Pay: |                |                |                |                |
+| ------------- | ------------- |------------- | ------------- | ------------- |
 
 #### Logo:
 
