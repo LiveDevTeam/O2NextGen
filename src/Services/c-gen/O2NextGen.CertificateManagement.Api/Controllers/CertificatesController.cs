@@ -1,9 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using O2NextGen.CertificateManagement.Business.Services;
 using O2NextGen.CertificateManagement.Web.Mappings;
 using O2NextGen.CertificateManagement.Web.Models;
+using O2NextGen.CertificateManagement.Web.Setup;
 
 namespace O2NextGen.CertificateManagement.Web.Controllers
 {
@@ -13,15 +15,17 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
         #region Fields
 
         private readonly ICertificatesService _certificatesService;
+        private readonly UrlsConfig _config;
 
         #endregion
 
 
         #region Ctors
 
-        public CertificatesController(ICertificatesService certificatesService)
+        public CertificatesController(ICertificatesService certificatesService, UrlsConfig config)
         {
             _certificatesService = certificatesService;
+            _config = config;
         }
 
         #endregion
@@ -33,6 +37,7 @@ namespace O2NextGen.CertificateManagement.Web.Controllers
         [Route("")]
         public async Task<IActionResult> GetAllAsync()
         {
+            var url = _config.Auth;
             var models = await _certificatesService.GetAllAsync(CancellationToken.None);
             return Ok(models.ToViewModel());
         }

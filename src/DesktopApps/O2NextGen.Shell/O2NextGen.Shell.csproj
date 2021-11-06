@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\O2NextGen.Windows\O2NextGen.Windows.csproj" />
+  </ItemGroup>
+
 </Project>
