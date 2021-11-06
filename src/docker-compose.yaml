@@ -1,0 +1,32 @@
+version: '3.4'
+
+  networks:
+   frontend:
+   backend:
+
+  services:
+  
+    sql.data:
+      image: microsoft/mssql-server-linux:latest
+      container_name: sqldatacontainer
+      environment:
+        - SA_PASSWORD=Pass@word
+        - ACCEPT_EULA=Y
+        # - MSSQL_PID=Developer
+      ports:
+        - "1433:1433"
+      networks:
+        - backend
+    
+    certificate.api:
+      image: ${DOCKER_REGISTRY:-o2nextgen}/o2-certificate.api:${PLATFORM:-linux}-${TAG:-latest}
+      build:
+        context: ./Services/cgen/O2NextGen.CertificateManagement.Api/
+        dockerfile: Dockerfile
+      depends_on:
+        - sql.data
+      ports:
+        - "10102:80"
+      networks:
+        - backend
+        - frontend

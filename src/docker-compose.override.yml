@@ -1,0 +1,8 @@
+version: '3.4'
+services:
+  certificate.api:
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ConnectionString=${O2_AZURE_IDENTITY_DB:-Server=sql.data;Database=O2Bionics.o2nextgen.CertificateDb;User Id=sa;Password=Pass@word;}
+    ports:
+        - "10102:80"
