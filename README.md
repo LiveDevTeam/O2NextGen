@@ -1,11 +1,16 @@
 # O2 NEXTGEN (Codename Citadel)
 
-### Services: 
-* O2 Auth: - 
-* C-Gen:
-[![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml)
-* S-Link: - 
-* L-Pay: - 
+#### Build & Coverage
+
+| Service | build status | coverage status | dev - build status | dev - coverage status |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| O2 Auth: |                |                |                |                |
+| C-Gen: |[![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml) | [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=master)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=master) | [![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml) | [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=dev)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=dev) | 
+| S-Link: |                |                |                |                |
+| L-Pay: |                |                |                |                |
+| ------------- | ------------- |------------- | ------------- | ------------- |
+
+#### Logo:
 
 <img width="450" src="design/o2nextgen/logos/Screen Shot 2021-10-08 at 12.31.26 AM.png">
 
