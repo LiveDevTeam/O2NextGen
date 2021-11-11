@@ -5,14 +5,11 @@ on:
     branches:
     - master
     - dev
-    paths:
-    - src/Services/c-gen
   pull_request:
     branches:
     - master
     - dev
-    paths:
-    - src/Services/c-gen
+
 jobs:
   build:
 
@@ -30,28 +27,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       working-directory: src/Services/c-gen
-    
-    - name: Unit Tests
-      run: dotnet test Tests.O2NextGen.CertificateManagement.Api.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/Tests.O2NextGen.CertificateManagement.Api.info /p:CoverletOutputFormat=lcov
-      working-directory: src/Services/c-gen/Tests/Tests.O2NextGen.CertificateManagement.Api/
-    
-    - name: Integration Tests
-      run: dotnet test src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api/IntegrationTests.O2NextGen.CertificateManagement.Api.csproj --no-build --verbosity normal /p:MergeWith=src/Services/c-gen/Tests/Tests.O2NextGen.CertificateManagement.Api/TestResults/Tests.O2NextGen.CertificateManagement.Api.info /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
-
-    - name: check files 1 
-      run: ls
-      working-directory: src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api/
-    
-    - name: check files 2 
-      run: ls
-      working-directory: src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api/TestResults/
-
-    - name: check files 2 
-      run: ls
-      working-directory: src/Services/c-gen/Tests/
-
-    - name: Publish coverage report to coveralls.io
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api/TestResults/coverage.info
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      working-directory: src/Services/c-gen
