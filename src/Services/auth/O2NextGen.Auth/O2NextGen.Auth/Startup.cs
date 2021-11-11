@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using O2NextGen.Auth.Data;
 
 namespace O2NextGen.Auth
@@ -12,6 +15,7 @@ namespace O2NextGen.Auth
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddDbContext<AuthDbContext>(options =>
                 options.UseSqlServer("Server=localhost;Initial Catalog=O2NextGen.AuthDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;"));
             
@@ -19,6 +23,8 @@ namespace O2NextGen.Auth
                 .AddIdentity<O2User,IdentityRole>()
                 .AddEntityFrameworkStores<AuthDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddSingleton<IEmailSender, DummyEmailSender>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -28,10 +34,25 @@ namespace O2NextGen.Auth
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseMvcWithDefaultRoute();
+
+        }
+    }
+
+    internal class DummyEmailSender : IEmailSender
+    {
+        private readonly ILogger<DummyEmailSender> _logger;
+
+        public DummyEmailSender(ILogger<DummyEmailSender> logger)
+        {
+            _logger = logger;
+        }
+        public Task SendEmailAsync(string email, string subject, string htmlMessage)
+        {
+            _logger.LogWarning("EmailSender implementation is being used!!!!");
+            return Task.CompletedTask;
         }
     }
 }
