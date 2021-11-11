@@ -1,19 +1,15 @@
-name: .NET
+name: o2-auth
 
 on:
   push:
     branches:
     - master
     - dev
-    paths:
-    - src/Services/auth
   pull_request:
     branches:
     - master
     - dev
-    paths:
-    - src/Services/auth
-  
+
 jobs:
   build:
 
@@ -31,16 +27,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       working-directory: src/Services/auth
-    
-    - name: Unit Tests
-      run: dotnet test Tests.O2NextGen.Auth.Web.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/Tests.O2NextGen.Auth.Web.info /p:CoverletOutputFormat=lcov
-      working-directory: src/Services/auth/Tests/Tests.O2NextGen.Auth.Web/
-    
-    - name: Integration Tests
-      run: dotnet test src/Services/auth/Tests/IntegrationTests.O2NextGen.Auth.Web/IntegrationTests.O2NextGen.Auth.Web.csproj --no-build --verbosity normal /p:MergeWith=src/Services/auth/Tests/Tests.O2NextGen.Auth.Web/TestResults/Tests.O2NextGen.Auth.Web.info /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
-
-    - name: Publish coverage report to coveralls.io
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: src/Services/auth/Tests/IntegrationTests.O2NextGen.Auth.Web/TestResults/coverage.info
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      working-directory: src/Services/auth
