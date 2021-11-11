@@ -19,7 +19,7 @@ services:
   certificate.api:
     image: ${DOCKER_REGISTRY:-o2nextgen}/cgen.api:${PLATFORM:-linux}-${TAG:-latest}
     build:
-      context: ./Services/c-gen/O2NextGen.CertificateManagement.Api/
+      context: Services/c-gen/O2NextGen.CertificateManagement.Api/
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
