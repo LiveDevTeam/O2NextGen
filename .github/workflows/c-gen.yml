@@ -1,4 +1,4 @@
-name: .NET
+name: c-gen
 
 on:
   push:
