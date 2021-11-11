@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using O2NextGen.Auth.Data;
 
 namespace O2NextGen.Auth.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20211107024126_InitDb")]
-    partial class InitDb
+    partial class AuthDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,7 +129,7 @@ namespace O2NextGen.Auth.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("O2NextGen.Auth.Data.O2User", b =>
+            modelBuilder.Entity("O2NextGen.Auth.Web.Data.O2User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -192,7 +190,7 @@ namespace O2NextGen.Auth.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("O2NextGen.Auth.Data.O2User")
+                    b.HasOne("O2NextGen.Auth.Web.Data.O2User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -200,7 +198,7 @@ namespace O2NextGen.Auth.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("O2NextGen.Auth.Data.O2User")
+                    b.HasOne("O2NextGen.Auth.Web.Data.O2User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -213,7 +211,7 @@ namespace O2NextGen.Auth.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("O2NextGen.Auth.Data.O2User")
+                    b.HasOne("O2NextGen.Auth.Web.Data.O2User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -221,7 +219,7 @@ namespace O2NextGen.Auth.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("O2NextGen.Auth.Data.O2User")
+                    b.HasOne("O2NextGen.Auth.Web.Data.O2User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

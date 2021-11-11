@@ -148,7 +148,7 @@ namespace O2NextGen.Auth.Sample.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("O2NextGen.Auth.Sample"),
+                _urlEncoder.Encode("O2NextGen.Auth.Web.Sample"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }
