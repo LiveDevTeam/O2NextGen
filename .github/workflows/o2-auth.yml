@@ -5,11 +5,15 @@ on:
     branches:
     - master
     - dev
+    paths:
+    - src/Services/auth
   pull_request:
     branches:
     - master
     - dev
-
+    paths:
+    - src/Services/auth
+  
 jobs:
   build:
 
