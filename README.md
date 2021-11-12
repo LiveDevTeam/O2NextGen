@@ -2,13 +2,29 @@
 
 #### Build & Coverage
 
+
 | Service | build status | coverage status | dev - build status | dev - coverage status |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| O2 Auth: |                |                |                |                |
+| O2 Auth: | [![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/o2-auth.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/o2-auth.yml) |                |[![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/o2-auth.yml/badge.svg?branch=dev)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/o2-auth.yml) |                |
 | C-Gen: |[![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml) | [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=master)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=master) | [![.NET](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml/badge.svg?branch=master)](https://github.com/LiveDevTeam/O2NextGen/actions/workflows/c-gen.yml) | [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=dev)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=dev) | 
 | S-Link: |                |                |                |                |
 | L-Pay: |                |                |                |                |
 | ------------- | ------------- |------------- | ------------- | ------------- |
+
+Additionally:
+
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=bugs)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=bugs)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=LiveDevTeam_O2NextGen&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=LiveDevTeam_O2NextGen)
+
 
 #### Logo:
 

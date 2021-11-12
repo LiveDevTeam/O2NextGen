@@ -1,0 +1,69 @@
+name: all
+
+on:
+  push:
+    branches:
+    - master
+    - dev
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.x
+    - name: C-Gen - Restore dependencies
+      run: dotnet restore
+      working-directory: src/Services/c-gen
+    - name: C-Gen - Build
+      run: dotnet build --no-restore
+      working-directory: src/Services/c-gen
+    
+    - name: C-Gen - Unit Tests
+      run: dotnet test Tests.O2NextGen.CertificateManagement.Api.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/c-gen/Tests/Tests.O2NextGen.CertificateManagement.Api/
+    
+    - name: check files 1 
+      run: ls
+      working-directory: src/Services
+    - name: check files 2 
+      run: ls
+      working-directory: src/Services/TestResults
+      
+    - name: C-Gen - Integration Tests
+      run: dotnet test IntegrationTests.O2NextGen.CertificateManagement.Api.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api/
+    
+    - name: Publish coverage report to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+       github-token: ${{ secrets.GITHUB_TOKEN }}
+       path-to-lcov: src/Services/TestResults/coverage.info
+        
+    - name: Auth - Restore dependencies
+      run: dotnet restore
+      working-directory: src/Services/auth
+    - name: Auth - Build
+      run: dotnet build --no-restore
+      working-directory: src/Services/auth
+    
+    - name: Auth - Unit Tests
+      run: dotnet test Tests.O2NextGen.Auth.Web.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/auth/Tests/Tests.O2NextGen.Auth.Web/
+    
+    - name: Auth - Integration Tests
+      run: dotnet test IntegrationTests.O2NextGen.Auth.Web.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/auth/Tests/IntegrationTests.O2NextGen.Auth.Web/
+      
+    - name: Publish coverage report to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: src/Services/TestResults/coverage.info
+      
+      
