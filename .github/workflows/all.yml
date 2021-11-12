@@ -38,7 +38,13 @@ jobs:
     - name: C-Gen - Integration Tests
       run: dotnet test IntegrationTests.O2NextGen.CertificateManagement.Api.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
       working-directory: src/Services/c-gen/Tests/IntegrationTests.O2NextGen.CertificateManagement.Api/
-      
+    
+    - name: Publish coverage report to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+       github-token: ${{ secrets.GITHUB_TOKEN }}
+       path-to-lcov: src/Services/TestResults/coverage.info
+        
     - name: Auth - Restore dependencies
       run: dotnet restore
       working-directory: src/Services/auth
