@@ -1,5 +1,7 @@
 # O2 NEXTGEN (Codename Citadel)
 
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen?ref=badge_shield)
+
 #### Build & Coverage
 
 | master coverage status | dev coverage status |
