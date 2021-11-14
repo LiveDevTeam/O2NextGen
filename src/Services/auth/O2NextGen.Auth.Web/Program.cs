@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace O2NextGen.Auth
+namespace O2NextGen.Auth.Web
 {
     public class Program
     {

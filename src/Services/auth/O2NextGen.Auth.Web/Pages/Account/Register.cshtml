@@ -1,29 +1,29 @@
 @page
 @model RegisterModel
-
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 
 <div class="row">
     <div class="col-md-4">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
+            <h4>@Localizer["CreateNewUser"]</h4>
             <hr />
             <div ></div>
             <div >
-                <label asp-for="Input.Email"></label>
+                <label asp-for="Input.Email">@Localizer["Email"]</label>
                 <input asp-for="Input.Email" />
                 <span asp-validation-for="Input.Email" ></span>
             </div>
             <div class="form-group">
-                <label asp-for="Input.Password"></label>
+                <label asp-for="Input.Password">@Localizer["Password"]</label>
                 <input asp-for="Input.Password"  />
                 <span asp-validation-for="Input.Password" ></span>
             </div>
             <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
+                <label asp-for="Input.ConfirmPassword">@Localizer["ConfirmPassword"]</label>
                 <input asp-for="Input.ConfirmPassword"  />
                 <span asp-validation-for="Input.ConfirmPassword" ></span>
             </div>
-            <button type="submit" >Register</button>
+            <button type="submit" >@Localizer["Register"]</button>
         </form>
     </div>
 </div>
