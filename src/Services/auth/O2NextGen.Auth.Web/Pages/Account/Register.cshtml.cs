@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using O2NextGen.Auth.Web.Data;
+using O2NextGen.Auth.Web.Resources;
 
 namespace O2NextGen.Auth.Web.Pages.Account
 {
@@ -18,17 +20,20 @@ namespace O2NextGen.Auth.Web.Pages.Account
         private readonly UserManager<O2User> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IStringLocalizer<SharedResource> _sharedLocalizer;
 
         public RegisterModel(
             UserManager<O2User> userManager,
             SignInManager<O2User> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IStringLocalizer<SharedResource> sharedLocalizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _sharedLocalizer = sharedLocalizer;
         }
 
         [BindProperty]

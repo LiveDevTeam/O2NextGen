@@ -2,8 +2,5 @@
 {
     public class SharedResource
     {
-        public SharedResource()
-        {
-        }
     }
 }

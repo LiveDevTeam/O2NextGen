@@ -25,8 +25,8 @@ namespace O2NextGen.Auth.Sample.Areas.Identity.Pages.Account
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender,
-            IStringLocalizer<SharedResource> sharedLocalizer)
+            IEmailSender emailSender
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
