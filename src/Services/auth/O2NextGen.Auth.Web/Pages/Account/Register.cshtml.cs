@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using O2NextGen.Auth.Data;
+using O2NextGen.Auth.Web.Data;
 
-namespace O2NextGen.Auth.Pages
+namespace O2NextGen.Auth.Web.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel

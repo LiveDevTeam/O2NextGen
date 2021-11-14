@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using O2NextGen.Auth.Data;
+using O2NextGen.Auth.Web.Data;
 
 namespace O2NextGen.Auth.Migrations
 {

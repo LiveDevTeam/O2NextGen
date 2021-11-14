@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace O2NextGen.Auth.Sample.Areas.Identity.Pages.Account
@@ -24,7 +25,8 @@ namespace O2NextGen.Auth.Sample.Areas.Identity.Pages.Account
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IStringLocalizer<SharedResource> sharedLocalizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;

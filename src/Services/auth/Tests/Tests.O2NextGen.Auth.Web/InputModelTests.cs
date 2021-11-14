@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using O2NextGen.Auth.Pages;
+using O2NextGen.Auth.Web.Pages.Account;
 
 namespace Tests.O2NextGen.Auth.Web
 {
