@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using O2NextGen.Auth.Web.Data;
+using O2NextGen.Auth.Web.Resources;
 
 namespace O2NextGen.Auth.Web.Pages.Account
 {
@@ -18,11 +20,14 @@ namespace O2NextGen.Auth.Web.Pages.Account
     {
         private readonly SignInManager<O2User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IStringLocalizer<SharedResource> _sharedLocalizer;
 
-        public LoginModel(SignInManager<O2User> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<O2User> signInManager, ILogger<LoginModel> logger,
+            IStringLocalizer<SharedResource> sharedLocalizer)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _sharedLocalizer = sharedLocalizer;
         }
 
         [BindProperty]
