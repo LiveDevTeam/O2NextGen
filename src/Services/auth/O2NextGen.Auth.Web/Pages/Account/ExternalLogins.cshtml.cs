@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
+
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -14,16 +12,16 @@ using O2NextGen.Auth.Web.Data;
 namespace O2NextGen.Auth.Web.Pages.Account
 {
     [AllowAnonymous]
-    public class ExternalLoginModel : PageModel
+    public class ExternalLogin : PageModel
     {
         private readonly SignInManager<O2User> _signInManager;
         private readonly UserManager<O2User> _userManager;
-        private readonly ILogger<ExternalLoginModel> _logger;
+        private readonly ILogger<ExternalLogin> _logger;
 
-        public ExternalLoginModel(
+        public ExternalLogin(
             SignInManager<O2User> signInManager,
             UserManager<O2User> userManager,
-            ILogger<ExternalLoginModel> logger)
+            ILogger<ExternalLogin> logger)
         {
             _signInManager = signInManager;
             _userManager = userManager;
