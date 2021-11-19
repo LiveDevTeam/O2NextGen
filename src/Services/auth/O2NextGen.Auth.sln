@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.810.11
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Auth.Web", "O2NextGen.Auth.Web\O2NextGen.Auth.Web.csproj", "{9558F553-05AB-44CE-A7D7-C44AB970A358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.Auth.Reference", "O2NextGen.Auth.Sample\O2NextGen.Auth.Reference.csproj", "{286B8419-F5B7-443D-BDE6-509AC83052ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.Auth.Reference", "O2NextGen.Auth.Reference\O2NextGen.Auth.Reference.csproj", "{286B8419-F5B7-443D-BDE6-509AC83052ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F27FA45B-F416-44AE-8A24-91AA3C4EBA39}"
 EndProject
