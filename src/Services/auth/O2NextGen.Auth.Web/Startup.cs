@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.Encodings.Web;
+using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -59,6 +61,7 @@ namespace O2NextGen.Auth.Web
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             _logger.LogWarning("EmailSender implementation is being used!!!!");
+            _logger.LogWarning($"htmlMessage = { HttpUtility.HtmlDecode(htmlMessage)}");
             return Task.CompletedTask;
         }
     }
