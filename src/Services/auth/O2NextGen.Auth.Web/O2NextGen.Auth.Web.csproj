@@ -58,4 +58,8 @@
     <None Remove="Resources\SharedResource.en" />
     <None Remove="Resources\Resources.ru" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="css\core" />
+  </ItemGroup>
 </Project>
