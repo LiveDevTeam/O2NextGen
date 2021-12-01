@@ -5,8 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - O2NextGen.Auth.Web</title>
     <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/build/app.css">
 </head>
 <body>
-@RenderBody()
+    <div class="2xl:container h-screen m-auto">
+        <div hidden class="fixed inset-0 w-7/12 lg:block">
+            <span class="absolute left-6 bottom-6 text-sm">©2021  <a href="https://www.o2bionics.com/" target="blank" title="O2 Bionics LLC">O2 Bionics LLC</a></span>
+            <video class="w-full h-full object-cover" loop autoplay src="~/videos/video.mp4" poster="~/images/bg.jpg"></video>
+        </div>
+        <div hidden role="hidden" class="fixed inset-0 w-6/12 ml-auto bg-white bg-opacity-70 backdrop-blur-xl lg:block"></div>
+        <div class="relative h-full ml-auto lg:w-6/12">
+            <div class="m-auto py-12 px-6 sm:p-20 xl:w-10/12">
+                
+
+                
+
+                @RenderBody()
+                @*<form action="" class="space-y-6 py-6">
+                    <div>
+                        <input type="email"
+                               placeholder="Your Email"
+                               class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none">
+                    </div>
+
+                    <div class="flex flex-col items-end">
+                        <input type="password"
+                               placeholder="What's the secret word ?"
+                               class="w-full py-3 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none">
+                        <button type="reset" class="w-max p-3 -mr-3">
+                            <span class="text-sm tracking-wide text-blue-600">Forgot password ?</span>
+                        </button>
+                    </div>
+
+                    <div>
+                        <button class="w-full px-6 py-3 rounded-xl bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800">
+                            <span class="font-semibold text-white text-lg">Login</span>
+                        </button>
+                        <a href="#" type="reset" class="w-max p-3 -ml-3">
+                            <span class="text-sm tracking-wide text-blue-600">Create new account</span>
+                        </a>
+                    </div>
+                </form>*@
+
+                <div class="border-t pt-12">
+                    <div class="space-y-2 text-center">
+                        <img src="~/images/pfr-logo.svg" class="w-40 m-auto" alt="">
+                        <span class="block text-sm tracking-wide text-gray-500">Get universal access to top specialists.</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>
