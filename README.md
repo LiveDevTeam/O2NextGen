@@ -6,7 +6,8 @@
 
 | master coverage status | dev coverage status |
 | ------------- | ------------- |
-| [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=master)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=master) | [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=dev)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=dev) |
+| [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=master)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=master) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen?ref=badge_shield)
+| [![Coverage Status](https://coveralls.io/repos/github/LiveDevTeam/O2NextGen/badge.svg?branch=dev)](https://coveralls.io/github/LiveDevTeam/O2NextGen?branch=dev) |
 | ------------- | ------------- |
 
 
@@ -189,3 +190,7 @@ AK name - 'AK_columnName_columnNameId'
 * ```
     DDL - O2NextGens_Tests - usp - Run_All_Tests(dbo.usp_[Procedure Name])
   ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen?ref=badge_large)
