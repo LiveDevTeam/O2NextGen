@@ -1,44 +1,69 @@
-import logo from "./pfr-logo.svg";
 import "./App.css";
+import {BrowserRouter, Route} from "react-router-dom";
+import Home from "./pages/Home";
+import Specialists from "./pages/Specialists";
+import About from "./pages/About";
 import Snowfall from "react-snowfall";
+import React from "react";
 import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import AboutAdvertising from "./pages/AboutAdvertising";
+import Trademarks from "./pages/Trademarks";
+import TermsOfUse from "./pages/TermsOfUse";
+import PrivacyStatement from "./pages/PrivacyStatement";
+import SiteMap from "./pages/SiteMap";
 
 function App() {
-  return (
-    <div className="App">
-      <Snowfall
-        color="#dee4fd"
-        snowflakeCount={500}
-        radius={[0.5, 3.0]}
-        speed={[0.5, 3.0]}
-        wind={[-0.5, 2.0]}
-      />
-      <header className="App-header">
-        <section className="hero xl:mx-20">
-          <div class="flex py-6 flex-col justify-center mt-20 items-center">
-            <img src={logo} className="logo" alt="logo" />
-          </div>{" "}
-          <div class="text-center p-6">
-            <h2 class="font-semibold text-gray-800 text-3xl mt-1 mb-1 font-semibold ">
-              #PF_R СООБЩЕСТВО
-            </h2>
-          </div>
-          <div class="text-gray-600 text-center mt-1 text-xl mb-4">
-            Мы запускаем сообщество...
-          </div>{" "}
-          <div class="text-purple-900 text-center mt-2 text-xl mb-4">
-            Запущен процесс обновления системы...
-          </div>{" "}
-          <div class=" flex justify-center items-center">
-            <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500">
-              {" "}
-            </div>{" "}
-          </div>{" "}
-        </section>{" "}
-        <Footer />
-      </header>{" "}
-    </div>
-  );
+    return (
+        <div className="App">
+            <Snowfall
+                color="#dee4fd"
+                snowflakeCount={500}
+                radius={[0.5, 3.0]}
+                speed={[0.5, 3.0]}
+                wind={[-0.5, 2.0]}
+            />
+            <header className="App-header">
+
+                <BrowserRouter>
+                    <Route path="/" exact>
+                        <Home/>
+                        <Footer/>
+                    </Route>
+                    <Route path="/specialists">
+                        <Specialists/>
+                        <Footer/>
+                    </Route>
+                    <Route path="/about">
+                        <About/>
+                        <Footer/>
+                    </Route>
+                    <Route path="/about-advertising">
+                        <AboutAdvertising/>
+                        <Footer/>
+                    </Route>
+                    <Route path="/trademarks">
+                        <Trademarks/>
+                        <Footer/>
+                    </Route>
+                    <Route path="/terms-of-use">
+                        <TermsOfUse/>
+                        <Footer/>
+                    </Route>
+                    <Route path="/privacystatement">
+                        <PrivacyStatement/>
+                        <Footer/>
+                    </Route>
+                    <Route path="/sitemap">
+                        <SiteMap/>
+                        <Footer/>
+                    </Route>
+                </BrowserRouter>
+                {" "}
+
+            </header>
+        </div>
+    );
 }
 
 export default App;
