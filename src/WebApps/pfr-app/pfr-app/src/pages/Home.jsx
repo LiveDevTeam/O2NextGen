@@ -5,7 +5,7 @@ import Footer from "../Components/Footer";
 
 const Home = () => {
     return (
-        <section className="flex justify-center xl:mx-20">
+        <section className="flex justify-center xl:mx-20 m-20">
 
             <div className="relative">
             {/*    <div className="absolute right-0 bottom-1/2 left-0 bg-gradient-to-t from-gray-100 pointer-events-none"*/}
@@ -402,6 +402,7 @@ const Home = () => {
             {/*        </ul>*/}
             {/*    </div>*/}
             </div>
+
             <section className="hero xl:mx-20">
                 <div className="flex py-6 flex-col justify-center mt-20 items-center">
                     <img src={logo} className="logo" alt="logo"/>
