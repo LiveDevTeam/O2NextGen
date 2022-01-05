@@ -1,0 +1,10 @@
+﻿@model IEnumerable<MailViewModel>
+
+@foreach (var certificate in Model)
+{
+<li>
+    @certificate.Id  @certificate.From  @certificate.To @certificate.Subject @certificate.Body | <a asp-controller="EmailSender" asp-action="Detail" asp-route-id="@certificate.Id">Edit</a>
+</li>
+}
+
+<a asp-controller="EmailSender" asp-action="Create">Create</a>
