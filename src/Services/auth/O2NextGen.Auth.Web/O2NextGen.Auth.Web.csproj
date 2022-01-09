@@ -3,12 +3,73 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <RootNamespace>O2NextGen.Auth</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1">
+    </PackageReference>
+    <PackageReference Include="Serilog.Settings.Configuration" Version="2.2.0">
+    </PackageReference>
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0">
+    </PackageReference>
+    <PackageReference Include="Serilog.Sinks.Console" Version="2.1.0">
+    </PackageReference>
+    <PackageReference Include="Serilog.Sinks.File" Version="2.2.0">
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Pages\Account\Register.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SharedResource.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResource.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Pages\Account\Register.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Pages\Account\Login.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\Pages\Account\Register.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Register.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Resources.Designer.cs">
+      <DependentUpon>Resources.ru</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\SharedResource.ru.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SharedResource.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Pages\Account\Register.de.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Register.de.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Pages\Account\Login.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Login.en.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\SharedResource.en" />
+    <None Remove="Resources\Resources.ru" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="css\core" />
+  </ItemGroup>
 </Project>

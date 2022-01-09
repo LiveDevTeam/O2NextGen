@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using O2NextGen.CertificateManagement.Api.Filters;
 using O2NextGen.CertificateManagement.Business.Services;
 using O2NextGen.CertificateManagement.Data;
 using O2NextGen.CertificateManagement.Impl.Services;
-using O2NextGen.CertificateManagement.Web.Filters;
 
-namespace O2NextGen.CertificateManagement.Web.IoC
+namespace O2NextGen.CertificateManagement.Api.IoC
 {
     public static class ServiceCollectionExtensions
     {

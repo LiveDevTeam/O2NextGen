@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using O2NextGen.CertificateManagement.Web;
+using O2NextGen.CertificateManagement.Api;
 
 namespace IntegrationTests.O2NextGen.CertificateManagement.Api
 {

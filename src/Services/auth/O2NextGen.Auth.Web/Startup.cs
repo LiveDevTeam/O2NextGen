@@ -1,21 +1,26 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.Encodings.Web;
+using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using O2NextGen.Auth.Data;
+using Microsoft.Extensions.Options;
+using O2NextGen.Auth.Web.Data;
+using O2NextGen.Auth.Web.Extensions;
 
-namespace O2NextGen.Auth
+namespace O2NextGen.Auth.Web
 {
     public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            
+            services.AddConfiguredLocalization();
+        
             services.AddDbContext<AuthDbContext>(options =>
                 options.UseSqlServer("Server=localhost;Initial Catalog=O2NextGen.AuthDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;"));
             
@@ -23,7 +28,8 @@ namespace O2NextGen.Auth
                 .AddIdentity<O2User,IdentityRole>()
                 .AddEntityFrameworkStores<AuthDbContext>()
                 .AddDefaultTokenProviders();
-
+            
+            
             services.AddSingleton<IEmailSender, DummyEmailSender>();
         }
 
@@ -33,8 +39,11 @@ namespace O2NextGen.Auth
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseStaticFiles();
+            var v = app.ApplicationServices
+                .GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
+            app.UseRequestLocalization(v);
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
 
@@ -52,6 +61,7 @@ namespace O2NextGen.Auth
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             _logger.LogWarning("EmailSender implementation is being used!!!!");
+            _logger.LogWarning($"htmlMessage = { HttpUtility.HtmlDecode(htmlMessage)}");
             return Task.CompletedTask;
         }
     }

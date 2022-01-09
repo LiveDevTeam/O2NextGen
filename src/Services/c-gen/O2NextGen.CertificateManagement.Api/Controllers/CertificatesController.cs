@@ -2,12 +2,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using O2NextGen.CertificateManagement.Api.Models;
+using O2NextGen.CertificateManagement.Api.Setup;
 using O2NextGen.CertificateManagement.Business.Services;
-using O2NextGen.CertificateManagement.Web.Mappings;
-using O2NextGen.CertificateManagement.Web.Models;
-using O2NextGen.CertificateManagement.Web.Setup;
+using O2NextGen.CertificateManagement.Api.Mappings;
 
-namespace O2NextGen.CertificateManagement.Web.Controllers
+namespace O2NextGen.CertificateManagement.Api.Controllers
 {
     [Route("certificates")]
     public class CertificatesController : ControllerBase
