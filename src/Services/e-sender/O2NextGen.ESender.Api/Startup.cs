@@ -33,7 +33,6 @@ namespace O2NextGen.ESender.Api
             {
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseMvc();
         }

@@ -1,3 +1,10 @@
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Serilog.Events;
+using Serilog.Formatting;
+using Serilog.Formatting.Json;
+
 namespace O2NextGen.ESender.Api.Logging
 {
     public class ElasticJsonFormatter : ITextFormatter
