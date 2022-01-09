@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 
-namespace O2NextGen.CertificateManagement.Web.Helpers
+namespace O2NextGen.CertificateManagement.Api.Helpers
 {
     public static class ExceptionExtensions
     {

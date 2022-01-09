@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>O2NextGen.CertificateManagement.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,5 +37,21 @@
     <_ContentIncludedByDefault Remove="Views\Certificates\Detail.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Certificates\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Logs\**" />
   </ItemGroup>
 </Project>

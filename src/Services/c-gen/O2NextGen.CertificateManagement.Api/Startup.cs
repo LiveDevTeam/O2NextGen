@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using O2NextGen.CertificateManagement.Web.Helpers;
-using O2NextGen.CertificateManagement.Web.IoC;
-using O2NextGen.CertificateManagement.Web.Setup;
+using O2NextGen.CertificateManagement.Api.Setup;
+using O2NextGen.CertificateManagement.Api.Helpers;
+using O2NextGen.CertificateManagement.Api.IoC;
 
 [assembly: ApiController]
-namespace O2NextGen.CertificateManagement.Web
+namespace O2NextGen.CertificateManagement.Api
 {
     public class Startup
     {
