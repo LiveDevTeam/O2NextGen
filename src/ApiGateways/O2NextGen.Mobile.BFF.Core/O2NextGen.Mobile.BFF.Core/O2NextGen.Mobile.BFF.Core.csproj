@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="Features\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -13,4 +14,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Features\" />
+  </ItemGroup>
 </Project>
