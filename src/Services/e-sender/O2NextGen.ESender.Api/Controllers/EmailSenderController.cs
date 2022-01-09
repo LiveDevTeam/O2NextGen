@@ -7,7 +7,7 @@ namespace O2NextGen.ESender.Api.Controllers
 {
     [Route("emailsender")]
     public class EmailSenderController : Controller
-    {
+    {   
         private static long _currentCertificateId = 1;
 
         private static List<MailViewModel> _mailLetters = new List<MailViewModel>()

@@ -17,14 +17,14 @@ namespace O2NextGen.ESender.Api
         {
             try
             {
-                Log.Logger = new LoggerConfiguration()
-                    .Enrich.FromLogContext()
-#if DEBUG
-                    .WriteTo.File("Logs/system_logs.txt")
-#endif
-                    .WriteTo.Console()
-                    
-                    .CreateLogger();
+//                 Log.Logger = new LoggerConfiguration()
+//                     .Enrich.FromLogContext()
+// #if DEBUG
+//                     .WriteTo.File("Logs/system_logs.txt")
+// #endif
+//                     .WriteTo.Console()
+//                     
+//                     .CreateLogger();
                 
                 var host = CreateWebHostBuilder(args).Build();
                 Log.Information($"############### {AppName} ##############");
@@ -46,7 +46,10 @@ namespace O2NextGen.ESender.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseSerilog()
+                .UseSerilog((context, configuration) =>
+				{
+					configuration.ReadFrom.Configuration(context.Configuration);
+				})
                 .UseStartup<Startup>();
     }
 }

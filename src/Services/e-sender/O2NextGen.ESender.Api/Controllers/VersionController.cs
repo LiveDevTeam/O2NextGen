@@ -3,6 +3,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace O2NextGen.ESender.Api.Controllers
 {
@@ -12,15 +13,17 @@ namespace O2NextGen.ESender.Api.Controllers
         #region Fields
 
         private readonly IHostingEnvironment _environment;
+        private readonly ILogger<VersionController> _logger;
 
         #endregion
 
 
         #region Ctors
 
-        public VersionController(IHostingEnvironment environment)
+        public VersionController(IHostingEnvironment environment, ILogger<VersionController> logger)
         {
             _environment = environment;
+            _logger = logger;
         }
 
         #endregion
@@ -29,6 +32,7 @@ namespace O2NextGen.ESender.Api.Controllers
         public object Index()
         {
             var exVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            _logger.LogInformation($"get version - {exVersion}");
             return new
             {
                 Environment = _environment.EnvironmentName,
