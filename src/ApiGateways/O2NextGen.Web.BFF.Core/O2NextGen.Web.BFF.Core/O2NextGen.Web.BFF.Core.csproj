@@ -6,6 +6,9 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="Features\" />
+    <Folder Include="Features\C-Gen\" />
+    <Folder Include="Features\E-Sender\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -13,4 +16,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Features\" />
+    <None Remove="Features\C-Gen\" />
+    <None Remove="Features\E-Sender\" />
+  </ItemGroup>
 </Project>
