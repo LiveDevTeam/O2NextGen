@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 
-namespace O2NextGen.CertificateManagement.Web.Filters
+namespace O2NextGen.CertificateManagement.Api.Filters
 {
     public class ApiExceptionFilter: IExceptionFilter
 

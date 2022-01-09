@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace O2NextGen.Auth.Data
+namespace O2NextGen.Auth.Web.Data
 {
     public class AuthDbContext : IdentityDbContext<O2User>
     {

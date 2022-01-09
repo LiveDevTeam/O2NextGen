@@ -4,7 +4,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Serilog;
 
-namespace O2NextGen.CertificateManagement.Web
+namespace O2NextGen.CertificateManagement.Api
 {
     public class Program
     {
@@ -18,15 +18,6 @@ namespace O2NextGen.CertificateManagement.Web
             
             try
             {
-                Log.Logger = new LoggerConfiguration()
-                    .Enrich.FromLogContext()
-#if DEBUG
-                    .WriteTo.File("Logs/system_logs.txt")
-#endif
-                    .WriteTo.Console()
-                    
-                    .CreateLogger();
-                
                 var host = CreateWebHostBuilder(args).Build();
                 Log.Information($"############### {AppName} ##############");
                 Log.Information("################# Starting Application #################");
@@ -48,7 +39,10 @@ namespace O2NextGen.CertificateManagement.Web
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseSerilog()
+                .UseSerilog((context, configuration) =>
+                {
+                    configuration.ReadFrom.Configuration(context.Configuration);
+                })
                 .UseStartup<Startup>(); // <- Add this line
     }
 }

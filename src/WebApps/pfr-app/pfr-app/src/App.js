@@ -1,10 +1,18 @@
 import logo from "./pfr-logo.svg";
 import "./App.css";
+import Snowfall from "react-snowfall";
 import Footer from "./Components/Footer";
 
 function App() {
   return (
     <div className="App">
+      <Snowfall
+        color="#dee4fd"
+        snowflakeCount={500}
+        radius={[0.5, 3.0]}
+        speed={[0.5, 3.0]}
+        wind={[-0.5, 2.0]}
+      />
       <header className="App-header">
         <section className="hero xl:mx-20">
           <div class="flex py-6 flex-col justify-center mt-20 items-center">
