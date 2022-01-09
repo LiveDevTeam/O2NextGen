@@ -1,4 +1,4 @@
-namespace O2NextGen.CertificateManagement.Web.Setup
+namespace O2NextGen.CertificateManagement.Api.Setup
 {
     public class UrlsConfig
     {

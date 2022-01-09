@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using O2NextGen.CertificateManagement.Api.Models;
 using O2NextGen.CertificateManagement.Business.Models;
-using O2NextGen.CertificateManagement.Web.Models;
 
-namespace O2NextGen.CertificateManagement.Web.Mappings
+namespace O2NextGen.CertificateManagement.Api.Mappings
 {
     public static class CertificateMappings
     {
