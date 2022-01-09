@@ -46,7 +46,10 @@ namespace O2NextGen.ESender.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseSerilog()
+                .UseSerilog((context, configuration) =>
+				{
+					configuration.ReadFrom.Configuration(context.Configuration);
+				});
                 .UseStartup<Startup>();
     }
 }
