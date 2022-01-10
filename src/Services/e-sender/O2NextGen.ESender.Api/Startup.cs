@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Api.IoC;
 using O2NextGen.ESender.Api.Setup;
 
@@ -21,6 +22,7 @@ namespace O2NextGen.ESender.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.ConfigurePOCO<SenderConfig>(AppConfiguration.GetSection("Sender"));
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
