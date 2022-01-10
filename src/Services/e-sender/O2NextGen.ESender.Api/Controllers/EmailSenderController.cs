@@ -1,13 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Api.Models;
 
 namespace O2NextGen.ESender.Api.Controllers
 {
     [Route("emailsender")]
     public class EmailSenderController : Controller
-    {   
+    {
+        private readonly IEmailSender _emailSender;
+
+        public EmailSenderController(IEmailSender emailSender)
+        {
+            _emailSender = emailSender;
+        }
         private static long _currentCertificateId = 1;
 
         private static List<MailViewModel> _mailLetters = new List<MailViewModel>()
@@ -59,6 +66,7 @@ namespace O2NextGen.ESender.Api.Controllers
         {
             model.Id = _currentCertificateId++;
             _mailLetters.Add(model);
+            _emailSender.Send(model.To, model.Subject, model.Body);
             return RedirectToAction("Index");
         }
     }
