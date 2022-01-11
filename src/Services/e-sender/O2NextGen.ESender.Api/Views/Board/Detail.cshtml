@@ -1,7 +1,7 @@
 ﻿
 @model MailRequestViewModel
 
-<form asp-controller="EmailSender" asp-action="Edit" asp-route-id="@Model.Id">
+<form asp-controller="Board" asp-action="Edit" asp-route-id="@Model.Id">
     <label asp-for="From">From</label>
     <input asp-for="From" />
     <label asp-for="To">To</label>
