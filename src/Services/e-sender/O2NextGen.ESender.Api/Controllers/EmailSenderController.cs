@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using O2NextGen.ESender.Api.Helpers;
+using O2NextGen.ESender.Api.Mappings;
 using O2NextGen.ESender.Api.Models;
+using O2NextGen.ESender.Business.Services;
 
 namespace O2NextGen.ESender.Api.Controllers
 {
@@ -10,39 +14,38 @@ namespace O2NextGen.ESender.Api.Controllers
     public class EmailSenderController : Controller
     {
         private readonly IEmailSender _emailSender;
+        private readonly IEmailSenderService _emailSenderService;
 
-        public EmailSenderController(IEmailSender emailSender)
+        public EmailSenderController(IEmailSender emailSender, IEmailSenderService emailSenderService)
         {
             _emailSender = emailSender;
+            _emailSenderService = emailSenderService;
         }
-        private static long _currentCertificateId = 1;
-
-        private static List<MailViewModel> _mailLetters = new List<MailViewModel>()
-         {
-             new MailViewModel() {Id = 1, From ="from@eexample.com",To = "example@eexample.com", Subject="theme", Body="<h1>last</h1>"},
-             new MailViewModel() {Id = 2, From ="from@eexample.com",To = "example@eexample.com", Subject="theme", Body="<h1>last</h1>"},
-         };
 
         [HttpGet]
         [Route("")]
-        public IActionResult Index() => View(_mailLetters);
+        public async Task<IActionResult> Index()
+        {
+            var models = await _emailSenderService.GetAllAsync(CancellationToken.None);
+            return View(models.ToViewModel());
+        }
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Detail(long id)
+        public async Task<IActionResult> Detail(long id)
         {
-            var certificate = _mailLetters.SingleOrDefault(_ => _.Id == id);
-            if (certificate == null)
+            var emailRequest =await _emailSenderService.GetByIdAsync(id, CancellationToken.None);
+            if (emailRequest == null)
                 return NotFound();
-            return View(certificate);
+            return View(emailRequest.ToViewModel());
         }
 
         [HttpPost]
         [Route("id")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(long id, MailViewModel model)
+        public async Task<IActionResult> Edit(long id, MailRequestViewModel model)
         {
-            var certificate = _mailLetters.SingleOrDefault(_ => _.Id == id);
+            var certificate = await _emailSenderService.GetByIdAsync(id, CancellationToken.None);
             if (certificate == null)
                 return NotFound();
             certificate.From = model.From;
@@ -62,11 +65,10 @@ namespace O2NextGen.ESender.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public IActionResult CreateReally(MailViewModel model)
+        public async Task<IActionResult> CreateReally(MailRequestViewModel model)
         {
-            model.Id = _currentCertificateId++;
-            _mailLetters.Add(model);
-            _emailSender.Send(model.To, model.Subject, model.Body);
+            var emailRequest = await _emailSenderService.AddAsync(model.ToModel(), CancellationToken.None);
+            await _emailSender.Send(model.To, model.Subject, model.Body);
             return RedirectToAction("Index");
         }
     }

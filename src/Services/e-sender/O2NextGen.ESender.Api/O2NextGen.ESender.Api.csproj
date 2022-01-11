@@ -32,4 +32,9 @@
     <None Remove="Views\" />
     <None Remove="Views\EmailSender\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\O2NextGen.ESender.Business\O2NextGen.ESender.Business.csproj" />
+    <ProjectReference Include="..\O2NextGen.ESender.Impl\O2NextGen.ESender.Impl.csproj" />
+  </ItemGroup>
 </Project>
