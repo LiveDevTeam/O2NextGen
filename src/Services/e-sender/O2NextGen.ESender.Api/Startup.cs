@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +36,16 @@ namespace O2NextGen.ESender.Api
             {
                 app.UseHsts();
             }
+            app.Use(async (context, next) =>
+            {
+                context.Response.OnStarting(() =>
+                {
+                    context.Response.Headers.Add("X-Power-By", "O2NextGen: E-Sender");
+                    return Task.CompletedTask;
+                });
+
+                await next.Invoke();
+            });
             app.UseHttpsRedirection();
             app.UseMvc();
         }

@@ -1,6 +1,8 @@
 using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using O2NextGen.ESender.Api.Filters;
 using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Business.Services;
 using O2NextGen.ESender.Impl.Services;
@@ -32,6 +34,16 @@ namespace O2NextGen.ESender.Api.IoC
             //more business services...
             
             services.AddSingleton<IEmailSender, EmailSender>();
+            return services;
+        }
+        
+        public static IServiceCollection AddRequiredMvcComponents(this IServiceCollection services)
+        {
+            services.AddTransient<ApiExceptionFilter>();
+
+            var mvcBuilder = services.AddMvcCore(options => { options.Filters.Add<ApiExceptionFilter>(); });
+            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            mvcBuilder.AddJsonFormatters();
             return services;
         }
     }
