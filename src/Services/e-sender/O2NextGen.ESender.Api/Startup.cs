@@ -21,8 +21,8 @@ namespace O2NextGen.ESender.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddBusiness();
             services.ConfigurePOCO<SenderConfig>(AppConfiguration.GetSection("Sender"));
-            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

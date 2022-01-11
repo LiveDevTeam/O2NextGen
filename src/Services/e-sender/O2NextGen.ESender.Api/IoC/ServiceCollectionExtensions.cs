@@ -1,6 +1,9 @@
 using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using O2NextGen.ESender.Api.Helpers;
+using O2NextGen.ESender.Business.Services;
+using O2NextGen.ESender.Impl.Services;
 
 namespace O2NextGen.ESender.Api.IoC
 {
@@ -20,6 +23,16 @@ namespace O2NextGen.ESender.Api.IoC
             configuration.Bind(config);
             services.AddSingleton(config);
             return config;
+        }
+        public static IServiceCollection AddBusiness(this IServiceCollection services)
+        {
+            services.AddSingleton<IEmailSenderService, InMemoryEmailSenderService>();
+            // Include DataLayer
+            // services.AddScoped<IEmailSenderService, EmailSenderService>();
+            //more business services...
+            
+            services.AddSingleton<IEmailSender, EmailSender>();
+            return services;
         }
     }
 }
