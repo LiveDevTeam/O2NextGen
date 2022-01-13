@@ -27,9 +27,7 @@ namespace O2NextGen.Web.BFF.Core.Features.E_Sender.Services
 
         public async Task<MailRequestViewModel> GetAsync(long id, CancellationToken ct)
         {
-            var response = await _httpClient.GetAsync(_config.Value.ESenderUrl+"/api/mailsender",ct);
-            // if (response.StatusCode == HttpStatusCode.NotFound)
-            //     return NotFound();
+            var response = await _httpClient.GetAsync(_config.Value.ESenderUrl+"/api/emailsender",ct);
             return await response.Content.ReadAsAsync<MailRequestViewModel>(ct);
             
         }
