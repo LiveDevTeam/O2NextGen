@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace O2NextGen.Mobile.BFF.Core.Features.CGen
+namespace O2NextGen.Web.BFF.Core.Features.C_Gen
 {
     [Route("api/features/c-gen/[controller]")]
     public class VersionController : Controller
