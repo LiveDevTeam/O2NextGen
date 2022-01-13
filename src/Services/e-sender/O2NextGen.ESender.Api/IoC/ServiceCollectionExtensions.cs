@@ -1,7 +1,12 @@
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using O2NextGen.ESender.Api.Filters;
 using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Business.Services;
@@ -40,8 +45,10 @@ namespace O2NextGen.ESender.Api.IoC
         public static IServiceCollection AddRequiredMvcComponents(this IServiceCollection services)
         {
             services.AddTransient<ApiExceptionFilter>();
-
-            var mvcBuilder = services.AddMvcCore(options => { options.Filters.Add<ApiExceptionFilter>(); });
+            var mvcBuilder = services.AddMvcCore(options =>
+            {
+                options.Filters.Add<ApiExceptionFilter>();
+            });
             mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             mvcBuilder.AddJsonFormatters();
             return services;

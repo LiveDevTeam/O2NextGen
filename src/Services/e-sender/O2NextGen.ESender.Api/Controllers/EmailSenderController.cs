@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Api.Mappings;
@@ -8,6 +9,7 @@ using O2NextGen.ESender.Business.Services;
 
 namespace O2NextGen.ESender.Api.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     public class EmailSenderController : ControllerBase
     {
@@ -48,7 +50,7 @@ namespace O2NextGen.ESender.Api.Controllers
 
         [HttpPut]
         [Route("id")]
-        public async Task<IActionResult> UpdateAsync(long id, MailRequestViewModel model, CancellationToken ct)
+        public async Task<IActionResult> UpdateAsync(long id, [FromBody]MailRequestViewModel model, CancellationToken ct)
         {
             var certificate = await _emailSenderService.UpdateAsync(model.ToModel(), ct);
             return Ok(certificate.ToViewModel());
@@ -57,10 +59,10 @@ namespace O2NextGen.ESender.Api.Controllers
         [HttpPost]
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> AddAsync(MailRequestViewModel model, CancellationToken ct)
+        public async Task<IActionResult> AddAsync([FromBody]MailRequestViewModel model, CancellationToken ct)
         {
-            var certificate = await _emailSenderService.AddAsync(model.ToModel(), ct);
-            return CreatedAtAction(nameof(GetByIdAsync), new {id = certificate.Id}, certificate);
+            var emailRequest = await _emailSenderService.AddAsync(model.ToModel(), ct);
+            return CreatedAtAction(nameof(GetByIdAsync), new {id = emailRequest.Id}, emailRequest);
         }
 
         #endregion

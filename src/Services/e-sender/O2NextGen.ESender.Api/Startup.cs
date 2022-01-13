@@ -21,7 +21,7 @@ namespace O2NextGen.ESender.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddRequiredMvcComponents();
             services.AddBusiness();
             services.ConfigurePOCO<SenderConfig>(AppConfiguration.GetSection("Sender"));
         }
