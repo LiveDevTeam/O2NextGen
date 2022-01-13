@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace O2NextGen.Web.BFF.Core.Features.ESender
+namespace O2NextGen.Web.BFF.Core.Features.E_Sender
 {
     [Route("api/features/e-sender/[controller]")]
     public class VersionController : Controller
