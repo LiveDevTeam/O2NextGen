@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using O2NextGen.Web.BFF.Core.Config;
 using O2NextGen.Web.BFF.Core.Features.E_Sender.Services;
 
@@ -39,12 +31,6 @@ namespace O2NextGen.Web.BFF.Core
             {
                 app.UseDeveloperExceptionPage();
             }
-    
-            // app.UseHttpsRedirection();
-            // app.UseRouting();
-            //
-            // app.UseAuthorization();
-                
             app.UseMvc();
         }
     }
@@ -90,7 +76,6 @@ namespace O2NextGen.Web.BFF.Core
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             //register http services
-
             services
                 .AddHttpClient<IESenderService, ESenderService>();
 
