@@ -45,12 +45,26 @@ namespace O2NextGen.ESender.Api.IoC
         public static IServiceCollection AddRequiredMvcComponents(this IServiceCollection services)
         {
             services.AddTransient<ApiExceptionFilter>();
-            var mvcBuilder = services.AddMvcCore(options =>
+
+            var mvcBuilder = services.AddMvc(options =>
             {
                 options.Filters.Add<ApiExceptionFilter>();
             });
             mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            mvcBuilder.AddJsonFormatters();
+            //var mvcBuilder = services.AddMvcCore(options =>
+            //{
+            //    options.Filters.Add<ApiExceptionFilter>();
+            //});
+            //mvcBuilder.AddJsonFormatters();
+
+            //mvcBuilder.AddAuthorization();
+            // mvcBuilder.AddFormatterMappings();
+            //mvcBuilder.AddRazorViewEngine();
+            //mvcBuilder.AddRazorPages();
+            //mvcBuilder.AddCacheTagHelper();
+            //mvcBuilder.AddDataAnnotations();
+
+            //mvcBuilder.AddCors();
             return services;
         }
     }

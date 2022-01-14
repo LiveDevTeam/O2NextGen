@@ -30,7 +30,7 @@ namespace O2NextGen.Web.BFF.Core.Features.E_Sender
         [Route("{id}")]
         public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
         {
-            var result = _senderService.GetAsync(id, ct);
+            var result =await _senderService.GetAsync(id, ct);
             return Ok(result);
         }
 

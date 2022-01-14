@@ -46,6 +46,7 @@ namespace O2NextGen.ESender.Api
 
                 await next.Invoke();
             });
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();
         }
