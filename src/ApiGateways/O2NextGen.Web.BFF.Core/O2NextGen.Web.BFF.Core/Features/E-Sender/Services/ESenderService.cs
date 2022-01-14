@@ -21,13 +21,13 @@ namespace O2NextGen.Web.BFF.Core.Features.E_Sender.Services
         }
         public async Task<MailRequestViewModel> AddAsync(MailRequestViewModel model, CancellationToken ct)
         {
-            var response = await _httpClient.PostAsJsonAsync(_config.Value.ESenderUrl+"/api/emailsender",model,ct);
+            var response = await _httpClient.PostAsJsonAsync("api/emailsender",model,ct);
             return await response.Content.ReadAsAsync<MailRequestViewModel>(ct);
         }
 
         public async Task<MailRequestViewModel> GetAsync(long id, CancellationToken ct)
         {
-            var response = await _httpClient.GetAsync(_config.Value.ESenderUrl+$"/api/emailsender/{id}",ct);
+            var response = await _httpClient.GetAsync($"api/emailsender/{id}",ct);
             return await response.Content.ReadAsAsync<MailRequestViewModel>(ct);
             
         }

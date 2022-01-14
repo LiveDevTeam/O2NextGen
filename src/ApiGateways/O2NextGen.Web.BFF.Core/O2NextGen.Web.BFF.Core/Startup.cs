@@ -1,4 +1,5 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.Web.BFF.Core.Config;
 using O2NextGen.Web.BFF.Core.Features.E_Sender.Services;
+using Polly;
 
 namespace O2NextGen.Web.BFF.Core
 {
@@ -22,7 +24,7 @@ namespace O2NextGen.Web.BFF.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCustomMvc(Configuration);
-            services.AddApplicationServices();
+            services.AddApplicationServices(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -69,7 +71,7 @@ namespace O2NextGen.Web.BFF.Core
 
             return services;
         }
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services,IConfiguration configuration)
         {
             //register delegating handlers
             // services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
@@ -77,7 +79,12 @@ namespace O2NextGen.Web.BFF.Core
 
             //register http services
             services
-                .AddHttpClient<IESenderService, ESenderService>();
+                .AddHttpClient<IESenderService, ESenderService>("E-Sender",client =>
+                {
+                    client.BaseAddress = new Uri(configuration.GetValue<string>("urls:ESenderUrl"));
+                })
+                .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(5,arrempt=>TimeSpan.FromSeconds(arrempt*2)
+                   ));
 
             return services;
         }
