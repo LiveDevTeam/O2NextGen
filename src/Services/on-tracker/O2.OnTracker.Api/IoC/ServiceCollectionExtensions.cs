@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -40,7 +41,7 @@ namespace O2.OnTracker.Api.IoC
             {
                 // options.Filters.Add<ApiExceptionFilter>();
             });
-            // mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //var mvcBuilder = services.AddMvcCore(options =>
             //{
             //    options.Filters.Add<ApiExceptionFilter>();
