@@ -5,8 +5,9 @@ using System.Net;
 using System.Reflection;
 using MaxMind.Db;
 using O2.OnTracker.Api.Setup;
+using O2.Tracker.DbUtility;
 
-namespace O2.Tracker.DbUtility
+namespace O2.OnTracker.Api
 {
     public sealed class MaxMindLocalGeoIpAddressResolver : IGeoIpAddressResolver
     {
