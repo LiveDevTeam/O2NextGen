@@ -13,7 +13,7 @@ const Header = () => {
                     </div>
                     <div>
                         <p className="ml-2 text-2xl text-gray-700 uppercase font-bold">#PF_R Community</p>
-                        <p className="ml-2 text-gray-500 lowercase font-semibold">Сообщество специалистов</p>
+                        <p className="ml-2 text-gray-500 lowercase font-semibold">Community of specialists</p>
                     </div>
                 </div>
             </div>

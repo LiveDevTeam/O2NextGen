@@ -95,7 +95,7 @@ const SpecialistItem = (props) => {
                 </ul>
 
                 <div className="bg-white p-2 text-center mx-auto border">
-                    <iframe width="600" height="340"  src="https://www.youtube.com/embed/TIqJAHfl9SE"
+                    <iframe width="600" height="340"  src="https://www.youtube.com/embed/Ks8csGiEUS8"
                             title="YouTube video player" frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen></iframe>

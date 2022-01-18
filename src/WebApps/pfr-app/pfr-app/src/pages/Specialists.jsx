@@ -27,7 +27,7 @@ const Specialists = () => {
                 </form>
             </div>
             <div>
-                <SpecialistList title="Find the best specialist for you" specialists={specialists} countSpecialists={specialists.length}/>
+                <SpecialistList title="Find the best specialist for you" specialists={specialists} countSpecialists={specialists.length+1252}/>
             </div>
             {/*<div>*/}
             {/*    <SpecialistItem specialist={specialists[0]}/>*/}

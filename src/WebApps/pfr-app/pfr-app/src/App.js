@@ -12,6 +12,7 @@ import Trademarks from "./pages/Trademarks";
 import TermsOfUse from "./pages/TermsOfUse";
 import PrivacyStatement from "./pages/PrivacyStatement";
 import SiteMap from "./pages/SiteMap";
+import DetailSpecialist from "./pages/DetailSpecialist";
 
 function App() {
     return (
@@ -32,6 +33,10 @@ function App() {
                     </Route>
                     <Route path="/specialists">
                         <Specialists/>
+                        <Footer/>
+                    </Route>
+                    <Route path="/detail-specialist">
+                        <DetailSpecialist/>
                         <Footer/>
                     </Route>
                     <Route path="/about">

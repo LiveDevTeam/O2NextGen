@@ -2,7 +2,7 @@ export const specialists = [
     {
         id: 1, fio: 'Paul Mart',
         status: "online",
-        intro:"Want conversation practice with a native English speaker with a standard American accent? Let's chat",
+        intro:"Do you want quality service from a certified specialist? Let's chat",
         country:{
           location : "Russian"
         },
