@@ -5,12 +5,17 @@ import React from "react";
 
 const Header = () => {
     return (
-        <header className="flex items-center justify-between py-2 px-4">
+        <header  className="flex items-center justify-between py-2 px-4 xl:mx-20">
             <div className="flex flex-col justify-between items-center pt-2">
                 <div className="flex items-left justify-start">
-                <img src={logo} className="logo" alt="PF_R Community"  style={{ height: 50, width: 50 }}/>
-                <p className="ml-2 text-2xl text-gray-700 uppercase font-bold">#PF_R Community</p></div>
-
+                    <div>
+                        <img src={logo} className="logo" alt="PF_R Community" style={{height: 60, width: 60}}/>
+                    </div>
+                    <div>
+                        <p className="ml-2 text-2xl text-gray-700 uppercase font-bold">#PF_R Community</p>
+                        <p className="ml-2 text-gray-500 lowercase font-semibold">Сообщество специалистов</p>
+                    </div>
+                </div>
             </div>
             {/*<div className="menu-btn flex">*/}
             {/*    <div className="mx-4">*/}
@@ -43,23 +48,23 @@ const Header = () => {
             {/*    </ul>*/}
             {/*</div>*/}
             <div className="flex-col justify-end items-center">
-                <ul className="flex justify-end items-center mt-2" >
-                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                <ul className="flex justify-end items-center mt-2">
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold hover:text-pink-500">
                         <Link to="/"> Home</Link>
                     </li>
-                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold hover:text-indigo-500">
                         <Link to="/specialists"> Specialists</Link>
                     </li>
-                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold hover:text-green-500">
                         <Link to="/about"> About</Link>
                     </li>
-                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold hover:text-orange-700">
                         <Link to="/about"> Community</Link>
                     </li>
-                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold hover:text-blue-500">
                         <Link to="/about"> Login</Link>
                     </li>
-                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold hover:text-red-500">
                         <Link to="/about"> Sign up</Link>
                     </li>
                 </ul>

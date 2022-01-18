@@ -3,9 +3,9 @@ import Header from "../Components/Header";
 
 const PrivacyStatement = () => {
     return (
-        <div className="xl:mx-20">
-            <Header/>
-            <div>
+        <div >
+            <Header />
+            <div >
                 <h1> O2 Bionics Privacy Statement</h1>
                 <strong>Last Updated: December 2021 What's new?</strong>
                 <p>

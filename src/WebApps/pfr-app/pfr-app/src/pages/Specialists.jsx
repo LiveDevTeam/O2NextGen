@@ -6,19 +6,19 @@ import SpecialistItem from "../Components/SpecialistItem";
 
 const Specialists = () => {
     return (
-        <div>
-            <Header/>
+        <div >
+            <Header />
             <div className="flex justify-center items-center">
                 <ul className="flex justify-center items-center my-4">
-                    <li className="px-2"><button className="bg-gradient-to-br text-white from-yellow-400 to-orange-500 shadow-sm rounded-lg p-2">also speakers </button></li>
-                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-purple-500 to-indigo-500  shadow-sm rounded-lg p-2">from </button></li>
-                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-green-400 to-cyan-500  shadow-sm rounded-lg p-2">price </button></li>
-                    <li className="px-2"><button className="bg-gradient-to-br text-white from-orange-400 to-pink-600   shadow-sm rounded-lg p-2">type specialist </button></li>
-                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-fuchsia-500 to-purple-600   shadow-sm rounded-lg p-2">category </button></li>
-                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-cyan-400 to-light-blue-500 shadow-sm rounded-lg p-2">top </button></li>
-                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-light-blue-400 to-indigo-500 rounded-lg p-2">top </button></li>
-                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-pink-500 to-rose-500 rounded-lg p-2">top </button></li>
-                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-yellow-400 to-orange-500 rounded-lg p-2">top </button></li>
+                    <li className="px-2"><button className="bg-gradient-to-br text-white from-yellow-400 to-orange-500 shadow-sm rounded-lg p-2 px-4">also speakers </button></li>
+                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-purple-500 to-indigo-500  shadow-sm rounded-lg p-2 px-4">from </button></li>
+                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-green-400 to-cyan-500  shadow-sm rounded-lg p-2 px-4">price </button></li>
+                    <li className="px-2"><button className="bg-gradient-to-br text-white from-orange-400 to-pink-600   shadow-sm rounded-lg p-2 px-4">type specialist </button></li>
+                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-fuchsia-500 to-purple-600   shadow-sm rounded-lg p-2 px-4">category </button></li>
+                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-cyan-400 to-light-blue-500 shadow-sm rounded-lg p-2 px-4">top </button></li>
+                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-light-blue-400 to-indigo-500 rounded-lg p-2 px-4">top </button></li>
+                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-pink-500 to-rose-500 rounded-lg p-2 px-4">top </button></li>
+                    <li className="px-2"> <button className="bg-gradient-to-br text-white from-yellow-400 to-orange-500 rounded-lg p-2 px-4">top </button></li>
                 </ul>
 
 
@@ -27,7 +27,7 @@ const Specialists = () => {
                 </form>
             </div>
             <div>
-                <SpecialistList title="Specialists" specialists={specialists}/>
+                <SpecialistList title="Find the best specialist for you" specialists={specialists} countSpecialists={specialists.length}/>
             </div>
             {/*<div>*/}
             {/*    <SpecialistItem specialist={specialists[0]}/>*/}
