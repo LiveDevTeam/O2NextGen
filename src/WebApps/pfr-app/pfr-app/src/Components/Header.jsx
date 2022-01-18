@@ -1,10 +1,17 @@
 import {FaBars, FaSearch, FaShoppingCart, FaUserPlus} from 'react-icons/fa'
 import {Link} from "react-router-dom";
 import logo from "../pfr-logo.svg";
+import React from "react";
 
 const Header = () => {
     return (
-        <header className="flex items-center justify-between py-3">
+        <header className="flex items-center justify-between py-2 px-4">
+            <div className="flex flex-col justify-between items-center pl-6 pt-2">
+                <div className="flex items-center justify-start">
+                <img src={logo} className="logo" alt="PF_R Community"  style={{ height: 50, width: 50 }}/>
+                <p className="ml-2 text-2xl text-gray-700 uppercase font-bold">#PF_R Community</p></div>
+
+            </div>
             {/*<div className="menu-btn flex">*/}
             {/*    <div className="mx-4">*/}
             {/*        <FaBars />*/}
@@ -35,16 +42,25 @@ const Header = () => {
             {/*        <li>Support</li>*/}
             {/*    </ul>*/}
             {/*</div>*/}
-            <div>
-                <ul>
-                    <li>
+            <div className="flex-col justify-end items-center">
+                <ul className="flex justify-center items-center mt-2" >
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
                         <Link to="/"> Home</Link>
                     </li>
-                    <li>
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
                         <Link to="/specialists"> Specialists</Link>
                     </li>
-                    <li>
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
                         <Link to="/about"> About</Link>
+                    </li>
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                        <Link to="/about"> Community</Link>
+                    </li>
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                        <Link to="/about"> Login</Link>
+                    </li>
+                    <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
+                        <Link to="/about"> Sign up</Link>
                     </li>
                 </ul>
             </div>
