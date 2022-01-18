@@ -8,7 +8,7 @@ const Specialists = () => {
     return (
         <div >
             <Header />
-            <div className="flex justify-center items-center">
+            <div className="flex justify-between items-center xl:mx-40">
                 <ul className="flex justify-center items-center my-4">
                     <li className="px-2"><button className="bg-gradient-to-br text-white from-yellow-400 to-orange-500 shadow-sm rounded-lg p-2 px-4">also speakers </button></li>
                     <li className="px-2"> <button className="bg-gradient-to-br text-white from-purple-500 to-indigo-500  shadow-sm rounded-lg p-2 px-4">from </button></li>
