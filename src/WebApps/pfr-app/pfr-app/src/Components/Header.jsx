@@ -6,8 +6,8 @@ import React from "react";
 const Header = () => {
     return (
         <header className="flex items-center justify-between py-2 px-4">
-            <div className="flex flex-col justify-between items-center pl-6 pt-2">
-                <div className="flex items-center justify-start">
+            <div className="flex flex-col justify-between items-center pt-2">
+                <div className="flex items-left justify-start">
                 <img src={logo} className="logo" alt="PF_R Community"  style={{ height: 50, width: 50 }}/>
                 <p className="ml-2 text-2xl text-gray-700 uppercase font-bold">#PF_R Community</p></div>
 
@@ -43,7 +43,7 @@ const Header = () => {
             {/*    </ul>*/}
             {/*</div>*/}
             <div className="flex-col justify-end items-center">
-                <ul className="flex justify-center items-center mt-2" >
+                <ul className="flex justify-end items-center mt-2" >
                     <li className="px-2 text-gray-500 cursor-pointer uppercase font-bold">
                         <Link to="/"> Home</Link>
                     </li>
