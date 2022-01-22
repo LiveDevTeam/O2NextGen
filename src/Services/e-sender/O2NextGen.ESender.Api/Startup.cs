@@ -23,6 +23,7 @@ namespace O2NextGen.ESender.Api
         {
             services.AddRequiredMvcComponents();
             services.AddBusiness();
+            services.AddConfigEf(AppConfiguration);
             services.ConfigurePOCO<SenderConfig>(AppConfiguration.GetSection("Sender"));
         }
 

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using O2NextGen.ESender.Api.Extensions;
 using Serilog;
 
 namespace O2NextGen.ESender.Api
@@ -29,6 +30,7 @@ namespace O2NextGen.ESender.Api
                 var host = CreateWebHostBuilder(args).Build();
                 Log.Information($"############### {AppName} ##############");
                 Log.Information("################# Starting Application #################");
+                await host.EnsureDbUpdate();
                 await host.RunAsync();
                 Log.Information($"============== {AppName} - state is started =====================");
                 return 0;

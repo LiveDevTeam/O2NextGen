@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -10,6 +11,7 @@ using Newtonsoft.Json.Serialization;
 using O2NextGen.ESender.Api.Filters;
 using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Business.Services;
+using O2NextGen.ESender.Data;
 using O2NextGen.ESender.Impl.Services;
 
 namespace O2NextGen.ESender.Api.IoC
@@ -31,11 +33,20 @@ namespace O2NextGen.ESender.Api.IoC
             services.AddSingleton(config);
             return config;
         }
+        
+        public static IServiceCollection AddConfigEf(this IServiceCollection services, IConfiguration configuration)
+        {
+            var connectionString = configuration["ConnectionString"];
+            services.AddDbContext<ESenderDbContext>(x =>
+                x.UseSqlServer(connectionString));
+            return services;
+        }
+        
         public static IServiceCollection AddBusiness(this IServiceCollection services)
         {
-            services.AddSingleton<IEmailSenderService, InMemoryEmailSenderService>();
+            // services.AddSingleton<IEmailSenderService, InMemoryEmailSenderService>();
             // Include DataLayer
-            // services.AddScoped<IEmailSenderService, EmailSenderService>();
+            services.AddScoped<IEmailSenderService, EmailSenderService>();
             //more business services...
             
             services.AddSingleton<IEmailSender, EmailSender>();
