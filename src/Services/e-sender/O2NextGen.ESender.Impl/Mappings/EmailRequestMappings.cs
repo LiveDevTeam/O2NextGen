@@ -1,22 +1,23 @@
 using System.Collections.Generic;
 using O2NextGen.ESender.Business.Models;
+using O2NextGen.ESender.Data.Entities;
 
 namespace O2NextGen.ESender.Impl.Mappings
 {
-    //
-    // {
-    //     public static EmailRequest ToService(this EmailRequest entity)
-    //     {
-    //         return entity != null ? new EmailRequest() {Id = entity.Id, Name = entity.Name} : null;
-    //     }
-    //
-    //     public static EmailRequestEntity ToEntity(this EmailRequest model)
-    //     {
-    //         return model != null ? new EmailRequestEntity() {Id = model.Id, Name = model.Name} : null;
-    //     }
-    //
-    //     public static IReadOnlyCollection<EmailRequest>
-    //         ToService(this IReadOnlyCollection<EmailRequestEntity> entities) =>
-    //         entities.MapCollection(ToService);
-    // }
+    internal static class EmailRequestMappings 
+    {
+        public static EmailRequest ToService(this MailRequestEntity entity)
+        {
+            return entity != null ? new EmailRequest() {Id = entity.Id, From = entity.From, To = entity.To, Body = entity.Body,Subject = entity.Subject} : null;
+        }
+    
+        public static MailRequestEntity ToEntity(this EmailRequest model)
+        {
+            return model != null ? new MailRequestEntity() {Id = model.Id, From = model.From, To = model.To, Body = model.Body,Subject = model.Subject} : null;
+        }
+    
+        public static IReadOnlyCollection<EmailRequest>
+            ToService(this IReadOnlyCollection<MailRequestEntity> entities) =>
+            entities.MapCollection(ToService);
+    }
 }
