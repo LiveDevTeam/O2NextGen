@@ -99,7 +99,7 @@ const Home = () => {
             {/*                            на компьютере Mac или Windows.</p>*/}
             {/*                    </blockquote>*/}
             {/*                    <figcaption*/}
-            {/*                        className="flex items-center space-x-4 p-6 md:px-10 md:py-6 bg-gradient-to-br rounded-b-xl leading-6 font-semibold text-white from-green-400 to-cyan-500">*/}
+            {/*                        className="flex items-center space-x-4 p-6 md:px-10 md:py-6 bg-gradient-to-br from-green-400 to-cyan-500 rounded-b-xl leading-6 font-semibold text-white ">*/}
             
             {/*                        <div className="flex-auto">Скачивайте приложение в магазине приложенией<br/><span*/}
             {/*                            className="text-green-100">*/}
