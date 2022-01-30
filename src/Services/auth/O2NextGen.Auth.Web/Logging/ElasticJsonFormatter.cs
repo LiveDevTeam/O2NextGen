@@ -36,8 +36,11 @@ namespace O2NextGen.Auth.Web.Logging
 
 		private void FormatBody(LogEvent logEvent, TextWriter output)
 		{
+			using (var writer = new JsonTextWriter(output))
+			{
+				
+		
 			// add json body
-			var writer = new JsonTextWriter(output);
 			writer.WriteStartObject();
 
 			// write level
@@ -80,7 +83,7 @@ namespace O2NextGen.Auth.Web.Logging
 
 			writer.WriteEndObject();
 			writer.Flush();
-		}
+		}	}
 
 		private static string FormatLogLevel(LogEventLevel level)
 		{
