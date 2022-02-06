@@ -1,8 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using PFRApp.Services;
-using PFRApp.Views;
+﻿using Xamarin.Forms;
 
 namespace PFRApp
 {
@@ -13,7 +9,7 @@ namespace PFRApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
