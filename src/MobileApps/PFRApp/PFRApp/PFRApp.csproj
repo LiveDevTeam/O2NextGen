@@ -1291,6 +1291,8 @@
     <None Remove="Models\Assets\" />
     <None Remove="Models\Specialist\" />
     <None Remove="Modules\Info\" />
+    <None Remove="Common\Controls\" />
+    <None Remove="Modules\News\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\" />
@@ -1299,5 +1301,7 @@
     <Folder Include="Modules\Assets\" />
     <Folder Include="Modules\Specialist\" />
     <Folder Include="Modules\Info\" />
+    <Folder Include="Common\Controls\" />
+    <Folder Include="Modules\News\" />
   </ItemGroup>
 </Project>

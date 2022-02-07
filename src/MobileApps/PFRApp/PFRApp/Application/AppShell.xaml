@@ -4,13 +4,27 @@
        Title="PFRApp"
        xmlns:specialists="clr-namespace:PFRApp.Modules.Specialist"
        xmlns:about="clr-namespace:PFRApp.Modules.Info"
-       x:Class="PFRApp.AppShell">
+       xmlns:news="clr-namespace:PFRApp.Modules.News"
+       x:Class="PFRApp.AppShell"
+       xmlns:controls="clr-namespace:PFRApp.Common.Controls"
+       FlyoutBackgroundColor="LightSlateGray"
+       FlyoutHeaderBehavior="CollapseOnScroll"
+       FlyoutVerticalScrollMode="Enabled"
+       >
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader/>
+    </Shell.FlyoutHeader>
 
-      <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+      <FlyoutItem FlyoutDisplayOptions="AsSingleItem" Title="Main">
+          <Tab Title="Specialists">
           <ShellContent
               Title="Specialists"
               ContentTemplate="{DataTemplate specialists:SpecialistsView}"
               />
+              </Tab>
+          <Tab Title="News">
+              <ShellContent Title="News" ContentTemplate="{DataTemplate news:NewsView}"/>
+              </Tab>
       </FlyoutItem>
 
      <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">

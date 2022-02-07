@@ -105,7 +105,8 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_60pt%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_29pt.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_29pt%402x.png" />
-    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\pfr-logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
