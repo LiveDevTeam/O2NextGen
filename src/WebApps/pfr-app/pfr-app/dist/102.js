@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpfr_app=self.webpackChunkpfr_app||[]).push([[102],{102:(e,t,p)=>{p.r(t),p.d(t,{default:()=>a});var n=p(950),r=p.n(n);function a(){return r().createElement("div",{className:"p-5 bg-blue-500 text-white text-3xl font-bold"},"Fidget Spinner World")}}}]);
