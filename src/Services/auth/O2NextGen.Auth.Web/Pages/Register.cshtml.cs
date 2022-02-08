@@ -89,7 +89,15 @@ namespace O2NextGen.Auth.Web.Pages.Account
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     
-                    return LocalRedirect(returnUrl);
+                    if (string.IsNullOrWhiteSpace(returnUrl))
+                    {
+                        LocalRedirect("~/");
+                    }
+                    else
+                    {
+                        Redirect(returnUrl);
+                    }
+                    
                 }
                 foreach (var error in result.Errors)
                 {

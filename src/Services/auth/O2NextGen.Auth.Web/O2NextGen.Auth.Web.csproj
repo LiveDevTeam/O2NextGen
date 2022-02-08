@@ -36,6 +36,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Login.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Remove="Logs\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,14 +63,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Login.en.resx</DependentUpon>
     </Compile>
+    <Compile Remove="Logs\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Resources\SharedResource.en" />
     <None Remove="Resources\Resources.ru" />
+    <None Remove="Logs\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="css\core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Logs\**" />
   </ItemGroup>
 </Project>
