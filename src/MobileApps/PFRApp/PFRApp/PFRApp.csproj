@@ -1285,5 +1285,23 @@
     <None Remove="PFRApp\obj\Debug\netstandard2.0\PFRApp.csproj.FileListAbsolute.txt" />
     <None Remove="PFRApp\obj\Debug\netstandard2.0\PFRApp.dll" />
     <None Remove="PFRApp\obj\Debug\netstandard2.0\PFRApp.csproj.AssemblyReference.cache" />
+    <None Remove="Application\" />
+    <None Remove="Common\" />
+    <None Remove="Models\" />
+    <None Remove="Models\Assets\" />
+    <None Remove="Models\Specialist\" />
+    <None Remove="Modules\Info\" />
+    <None Remove="Common\Controls\" />
+    <None Remove="Modules\News\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\" />
+    <Folder Include="Common\" />
+    <Folder Include="Modules\" />
+    <Folder Include="Modules\Assets\" />
+    <Folder Include="Modules\Specialist\" />
+    <Folder Include="Modules\Info\" />
+    <Folder Include="Common\Controls\" />
+    <Folder Include="Modules\News\" />
   </ItemGroup>
 </Project>
