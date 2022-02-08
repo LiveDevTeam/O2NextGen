@@ -194,3 +194,28 @@ AK name - 'AK_columnName_columnNameId'
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen?ref=badge_large)
+
+
+# Versions
+
+#### Version information for an assembly consists of the following four values:
+
+```
+1.0.0.0
+```
+
+Description
+```
+major - Major Version
+minor - Minor Version 
+build number - Build Number 
+              0 - alpha
+                sample: 1.1.0.1 like (1.1-a.1)
+              1 - beta
+                sample: 1.1.1.2 like (1.1-b.2)
+              2 - release candidate
+                sample: 1.1.2.1 like (1.1-rc.1)
+              3 - release
+                sample: 1.1.3.3 like (1.1-r.3)
+revision - git revision
+  ```
