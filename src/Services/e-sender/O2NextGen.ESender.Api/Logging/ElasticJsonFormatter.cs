@@ -23,7 +23,7 @@ namespace O2NextGen.ESender.Api.Logging
 		}
 
 		public ElasticJsonFormatter()
-			: this(new CamelCaseNamingStrategy(), new JsonValueFormatter("$type"), "commspoint")
+			: this(new CamelCaseNamingStrategy(), new JsonValueFormatter("$type"), "o2nextgen")
 		{
 		}
 

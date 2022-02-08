@@ -1,15 +1,20 @@
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using O2NextGen.ESender.Api.Setup;
 
 namespace O2NextGen.ESender.Api.Helpers
 {
-    public class EmailSender
+    public class EmailSender : IEmailSender
     {
-        public EmailSender()
+        private readonly ILogger<EmailSender> _logger;
+
+        public EmailSender(SenderConfig senderConfig,ILogger<EmailSender> logger)
         {
+            _logger = logger;
             SmtpServerHost = "localhost";
             SmtpServerPort = 25;
-            From="example@example.com";
+            From= "support@pfr-centr.com";
         }
 
         public string From { get; set; }
@@ -25,14 +30,21 @@ namespace O2NextGen.ESender.Api.Helpers
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.Host = SmtpServerHost;
                 client.Port = SmtpServerPort;
+                //client.Credentials = new System.Net.NetworkCredential("support@pfr-centr.com", "password");
+                _logger.LogInformation($">> Settings for email server  host={client.Host} port={client.Port}");
                 using (var message = new MailMessage(From, to))
                 {
                     message.Subject = subject;
                     message.IsBodyHtml = true;
                     message.Body = bodyHtml;
+                    _logger.LogInformation($">> Send email to={to} subject={subject} message={message}");
                     await client.SendMailAsync(message).ConfigureAwait(false);
                 }
             }
         }
+    }
+    public interface IEmailSender
+    {
+        Task Send(string to, string subject, string bodyHtml);
     }
 }

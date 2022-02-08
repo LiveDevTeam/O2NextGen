@@ -2,13 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
     <Folder Include="Models\" />
     <Folder Include="Views\" />
-    <Folder Include="Views\EmailSender\" />
+    <Folder Include="Views\Board\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,5 +31,10 @@
     <None Remove="Models\" />
     <None Remove="Views\" />
     <None Remove="Views\EmailSender\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\O2NextGen.ESender.Business\O2NextGen.ESender.Business.csproj" />
+    <ProjectReference Include="..\O2NextGen.ESender.Impl\O2NextGen.ESender.Impl.csproj" />
   </ItemGroup>
 </Project>

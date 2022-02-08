@@ -1,65 +1,79 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using O2NextGen.ESender.Api.Helpers;
+using O2NextGen.ESender.Api.Mappings;
 using O2NextGen.ESender.Api.Models;
+using O2NextGen.ESender.Business.Services;
 
 namespace O2NextGen.ESender.Api.Controllers
 {
-    [Route("emailsender")]
-    public class EmailSenderController : Controller
-    {   
-        private static long _currentCertificateId = 1;
+    [AllowAnonymous]
+    [Route("api/[controller]")]
+    public class EmailSenderController : ControllerBase
+    {
+        #region Fields
 
-        private static List<MailViewModel> _mailLetters = new List<MailViewModel>()
-         {
-             new MailViewModel() {Id = 1, From ="from@eexample.com",To = "example@eexample.com", Subject="theme", Body="<h1>last</h1>"},
-             new MailViewModel() {Id = 2, From ="from@eexample.com",To = "example@eexample.com", Subject="theme", Body="<h1>last</h1>"},
-         };
+        private readonly IEmailSender _emailSender;
+        private readonly IEmailSenderService _emailSenderService;
+        
+        #endregion
+
+        #region Ctors
+        public EmailSenderController(IEmailSender emailSender, IEmailSenderService emailSenderService)
+        {
+            _emailSender = emailSender;
+            _emailSenderService = emailSenderService;
+        }
+        #endregion
+        
+        #region Methods
 
         [HttpGet]
         [Route("")]
-        public IActionResult Index() => View(_mailLetters);
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var models = await _emailSenderService.GetAllAsync(CancellationToken.None);
+            return Ok(models.ToViewModel());
+        }
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Detail(long id)
+        public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
         {
-            var certificate = _mailLetters.SingleOrDefault(_ => _.Id == id);
+            var certificate = await _emailSenderService.GetByIdAsync(id, ct);
             if (certificate == null)
                 return NotFound();
-            return View(certificate);
+            return Ok(certificate.ToViewModel());
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("id")]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(long id, MailViewModel model)
+        public async Task<IActionResult> UpdateAsync(long id, [FromBody]MailRequestViewModel model, CancellationToken ct)
         {
-            var certificate = _mailLetters.SingleOrDefault(_ => _.Id == id);
-            if (certificate == null)
-                return NotFound();
-            certificate.From = model.From;
-            certificate.To = model.To;
-            certificate.Subject = model.Subject;
-            certificate.Body = model.Body;
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        [Route("create")]
-        public IActionResult Create()
-        {
-            return View();
+            var certificate = await _emailSenderService.UpdateAsync(model.ToModel(), ct);
+            return Ok(certificate.ToViewModel());
         }
 
         [HttpPost]
+        [HttpPut]
         [Route("")]
-        public IActionResult CreateReally(MailViewModel model)
+        public async Task<IActionResult> AddAsync([FromBody]MailRequestViewModel model, CancellationToken ct)
         {
-            model.Id = _currentCertificateId++;
-            _mailLetters.Add(model);
-            return RedirectToAction("Index");
+            var emailRequest = await _emailSenderService.AddAsync(model.ToModel(), ct);
+            await _emailSender.Send(model.To, model.Subject, model.Body);
+            return CreatedAtAction(nameof(GetByIdAsync), new {id = emailRequest.Id}, emailRequest);
+        }
+
+        #endregion
+
+        [HttpDelete]
+        [Route("id")]
+        public async Task<IActionResult> RemoveAsync(long id,CancellationToken ct)
+        {
+            await _emailSenderService.RemoveAsync(id, ct);
+            return NoContent();
         }
     }
 }

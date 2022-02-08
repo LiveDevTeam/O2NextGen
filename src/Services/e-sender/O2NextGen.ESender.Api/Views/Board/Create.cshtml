@@ -1,0 +1,13 @@
+﻿@model MailRequestViewModel
+
+<form asp-controller="Board" asp-action="CreateReally" method="post">
+    <label asp-for="From">From</label>
+    <input asp-for="From" />
+    <label asp-for="To">To</label>
+    <input asp-for="To" />
+    <label asp-for="Subject">Subject</label>
+    <input asp-for="Subject" />
+    <label asp-for="Body">Body</label>
+    <input asp-for="Body" />
+    <button type="submit">Save</button>
+</form>
