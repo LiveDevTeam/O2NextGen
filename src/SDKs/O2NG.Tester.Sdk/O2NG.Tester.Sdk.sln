@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{0BD21E13-AC0B-4567-823C-CE1B4D286489}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XAMARIN", "XAMARIN", "{EF06ACB4-9E8C-47B5-B709-DBE7A4BED4E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NetCore", ".NetCore", "{B94CA396-F1CA-4326-B5E3-7C4FFA843076}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NG.Sdk.UnitTester.NetCore", "O2NG.Sdk.UnitTester.NetCore\O2NG.Sdk.UnitTester.NetCore.csproj", "{A93A8701-CF00-446D-9B51-8C762B896BB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NG.Sdk.IntegrationTester.NetCore", "O2NG.Sdk.UnitTester.NetCore\O2NG.Sdk.IntegrationTester.NetCore\O2NG.Sdk.IntegrationTester.NetCore.csproj", "{953F39E9-9D11-4C7F-AF76-9EEC2FA12644}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A93A8701-CF00-446D-9B51-8C762B896BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93A8701-CF00-446D-9B51-8C762B896BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A93A8701-CF00-446D-9B51-8C762B896BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A93A8701-CF00-446D-9B51-8C762B896BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{953F39E9-9D11-4C7F-AF76-9EEC2FA12644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{953F39E9-9D11-4C7F-AF76-9EEC2FA12644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{953F39E9-9D11-4C7F-AF76-9EEC2FA12644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{953F39E9-9D11-4C7F-AF76-9EEC2FA12644}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4670C972-682D-4FA8-9097-095CB3E02EBB}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A93A8701-CF00-446D-9B51-8C762B896BB6} = {B94CA396-F1CA-4326-B5E3-7C4FFA843076}
+		{953F39E9-9D11-4C7F-AF76-9EEC2FA12644} = {B94CA396-F1CA-4326-B5E3-7C4FFA843076}
+	EndGlobalSection
+EndGlobal
