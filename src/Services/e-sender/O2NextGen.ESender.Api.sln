@@ -11,6 +11,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.ESender.Impl", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.ESender.Data", "O2NextGen.ESender.Data\O2NextGen.ESender.Data.csproj", "{307B36BA-BFB2-4294-93DB-6C2F3455C06A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4D4C70FE-9CB3-4D78-837F-120EBAAD651B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Api", "Tests\IntegrationTests.O2NextGen.ESender.Api\IntegrationTests.O2NextGen.ESender.Api.csproj", "{0CA484B4-E79A-43E1-ABAC-30C661DD637D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.O2NextGen.ESender.Api", "Tests\UnitTests.O2NextGen.ESender.Api\UnitTests.O2NextGen.ESender.Api.csproj", "{0AD9CB1F-539F-4D06-9E19-C724C0350488}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.O2NextGen.ESender.Business", "Tests\UnitTests.O2NextGen.ESender.Business\UnitTests.O2NextGen.ESender.Business.csproj", "{313FF018-98BB-4229-A2E6-525F1ACA13D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Business", "Tests\IntegrationTests.O2NextGen.ESender.Business\IntegrationTests.O2NextGen.ESender.Business.csproj", "{C6455931-5324-40B0-B101-0B68A119C1C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Data", "Tests\IntegrationTests.O2NextGen.ESender.Data\IntegrationTests.O2NextGen.ESender.Data.csproj", "{FC4C87E2-DD4B-46E0-92EB-62482631A16C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.O2NextGen.ESender.Data", "Tests\UnitTests.O2NextGen.ESender.Data\UnitTests.O2NextGen.ESender.Data.csproj", "{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.O2NextGen.ESender.Impl", "Tests\UnitTests.O2NextGen.ESender.Impl\UnitTests.O2NextGen.ESender.Impl.csproj", "{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Impl", "Tests\IntegrationTests.O2NextGen.ESender.Impl\IntegrationTests.O2NextGen.ESender.Impl.csproj", "{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,11 +51,53 @@ Global
 		{307B36BA-BFB2-4294-93DB-6C2F3455C06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{307B36BA-BFB2-4294-93DB-6C2F3455C06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{307B36BA-BFB2-4294-93DB-6C2F3455C06A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA484B4-E79A-43E1-ABAC-30C661DD637D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA484B4-E79A-43E1-ABAC-30C661DD637D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA484B4-E79A-43E1-ABAC-30C661DD637D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA484B4-E79A-43E1-ABAC-30C661DD637D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AD9CB1F-539F-4D06-9E19-C724C0350488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AD9CB1F-539F-4D06-9E19-C724C0350488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AD9CB1F-539F-4D06-9E19-C724C0350488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AD9CB1F-539F-4D06-9E19-C724C0350488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{313FF018-98BB-4229-A2E6-525F1ACA13D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313FF018-98BB-4229-A2E6-525F1ACA13D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313FF018-98BB-4229-A2E6-525F1ACA13D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313FF018-98BB-4229-A2E6-525F1ACA13D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6455931-5324-40B0-B101-0B68A119C1C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6455931-5324-40B0-B101-0B68A119C1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6455931-5324-40B0-B101-0B68A119C1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6455931-5324-40B0-B101-0B68A119C1C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4C87E2-DD4B-46E0-92EB-62482631A16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4C87E2-DD4B-46E0-92EB-62482631A16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4C87E2-DD4B-46E0-92EB-62482631A16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4C87E2-DD4B-46E0-92EB-62482631A16C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B0B1A6AC-DCC6-4AAB-B22C-8767ECCB3CF2}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0CA484B4-E79A-43E1-ABAC-30C661DD637D} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
+		{0AD9CB1F-539F-4D06-9E19-C724C0350488} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
+		{313FF018-98BB-4229-A2E6-525F1ACA13D9} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
+		{C6455931-5324-40B0-B101-0B68A119C1C3} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
+		{FC4C87E2-DD4B-46E0-92EB-62482631A16C} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
+		{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
+		{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
+		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
 	EndGlobalSection
 EndGlobal
