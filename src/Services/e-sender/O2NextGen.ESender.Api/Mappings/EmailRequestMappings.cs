@@ -8,15 +8,23 @@ namespace O2NextGen.ESender.Api.Mappings
 {
     public static class EmailRequestMappings
     {
-        public static MailRequestViewModel ToViewModel(this EmailRequest model)
+        private static readonly
+            BaseMappings<EmailRequestViewModel, EmailRequestModel> BaseMappings;
+        
+        static EmailRequestMappings()
+        {
+            BaseMappings =
+                new BaseMappings<EmailRequestViewModel, EmailRequestModel>();
+        }
+        
+        public static EmailRequestViewModel ToViewModel(this EmailRequestModel model)
         {
             if (model == null)
                 return null;
 
-            var viewModel = new MailRequestViewModel();
+            var viewModel = BaseMappings.ToViewModel(model);
 
             //Bindings
-            viewModel.Id = model.Id;
             viewModel.From = model.From;
             viewModel.To = model.To;
             viewModel.Subject = model.Subject;
@@ -25,32 +33,31 @@ namespace O2NextGen.ESender.Api.Mappings
             return viewModel;
         }
 
-        public static EmailRequest ToModel(this MailRequestViewModel requestViewModel)
+        public static EmailRequestModel ToModel(this EmailRequestViewModel viewModel)
         {
-            if (requestViewModel == null)
+            if (viewModel == null)
                 return null;
 
-            var model = new EmailRequest();
+            var model = BaseMappings.ToServiceModel(viewModel);
 
             //Bindings
-            model.Id = requestViewModel.Id;
-            model.From = requestViewModel.From;
-            model.To = requestViewModel.To;
-            model.Subject = requestViewModel.Subject;
-            model.Body = requestViewModel.Body;
+            model.From = viewModel.From;
+            model.To = viewModel.To;
+            model.Subject = viewModel.Subject;
+            model.Body = viewModel.Body;
 
             return model;
         }
 
-        public static IReadOnlyCollection<MailRequestViewModel> ToViewModel(
-            this IReadOnlyCollection<EmailRequest> models)
+        public static IReadOnlyCollection<EmailRequestViewModel> ToViewModel(
+            this IReadOnlyCollection<EmailRequestModel> models)
         {
             if (models.Count == 0)
             {
-                return Array.Empty<MailRequestViewModel>();
+                return Array.Empty<EmailRequestViewModel>();
             }
 
-            var subscription = new MailRequestViewModel[models.Count];
+            var subscription = new EmailRequestViewModel[models.Count];
             var i = 0;
             foreach (var model in models)
             {
@@ -58,7 +65,23 @@ namespace O2NextGen.ESender.Api.Mappings
                 ++i;
             }
 
-            return new ReadOnlyCollection<MailRequestViewModel>(subscription);
+            return new ReadOnlyCollection<EmailRequestViewModel>(subscription);
+        }
+        
+        public static IReadOnlyCollection<EmailRequestModel> ToModel(
+            this IReadOnlyCollection<EmailRequestViewModel> models)
+        {
+            if (models.Count == 0) return Array.Empty<EmailRequestModel>();
+
+            var subscription = new EmailRequestModel[models.Count];
+            var i = 0;
+            foreach (var model in models)
+            {
+                subscription[i] = ToModel(model);
+                ++i;
+            }
+
+            return new ReadOnlyCollection<EmailRequestModel>(subscription);
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 
-namespace UnitTests.O2NextGen.ESender.Api
+namespace UnitTests.O2NextGen.ESender.Business.Models
 {
-    public class Tests
+    public class EmailRequestTests
     {
         [SetUp]
         public void Setup()
