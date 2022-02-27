@@ -27,7 +27,12 @@ jobs:
       working-directory: src/Services/e-sender
 
     - name: E-Sender - Unit Tests
-      run: dotnet test Tests.O2NextGen.ESender.Api.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+      run: |
+           dotnet test Tests.O2NextGen.ESender.Api.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+           dotnet test Tests.O2NextGen.ESender.Business.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+           dotnet test Tests.O2NextGen.ESender.Data.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+           dotnet test Tests.O2NextGen.ESender.Impl.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+
       working-directory: src/Services/e-sender/Tests/Tests.O2NextGen.ESender.Api/
 
     - name: E-Sender - Integration Tests
