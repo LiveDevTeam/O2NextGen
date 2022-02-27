@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>UnitTests.O2NextGen.ESender.Impl</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\O2NextGen.ESender.Api\O2NextGen.ESender.Api.csproj" />
     <ProjectReference Include="..\..\O2NextGen.ESender.Business\O2NextGen.ESender.Business.csproj" />
+    <ProjectReference Include="..\..\O2NextGen.ESender.Data\O2NextGen.ESender.Data.csproj" />
+    <ProjectReference Include="..\..\O2NextGen.ESender.Impl\O2NextGen.ESender.Impl.csproj" />
   </ItemGroup>
 
 </Project>

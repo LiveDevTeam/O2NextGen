@@ -4,17 +4,18 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>UnitTests.O2NextGen.ESender.Business</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\O2NextGen.ESender.Data\O2NextGen.ESender.Data.csproj" />
+    <ProjectReference Include="..\..\O2NextGen.ESender.Business\O2NextGen.ESender.Business.csproj" />
   </ItemGroup>
 
 </Project>
