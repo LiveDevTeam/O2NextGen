@@ -29,30 +29,30 @@ namespace O2NextGen.ESender.Impl.Services
         #endregion
         
         
-        public async Task<IReadOnlyCollection<EmailRequest>> GetAllAsync(CancellationToken ct)
+        public async Task<IReadOnlyCollection<EmailRequestModel>> GetAllAsync(CancellationToken ct)
         {
             var mailRequestEntities = await _context.MailRequests.AsNoTracking().OrderBy(_=>_.Id).ToListAsync();
-            return mailRequestEntities.ToService();
+            return mailRequestEntities.ToModel();
         }
 
-        public async Task<EmailRequest> GetByIdAsync(long id, CancellationToken ct)
+        public async Task<EmailRequestModel> GetByIdAsync(long id, CancellationToken ct)
         {
             var entity = await _context.MailRequests.AsNoTracking().SingleAsync(x => x.Id == id, ct);
-            return entity.ToService();
+            return entity.ToModel();
         }
 
-        public async Task<EmailRequest> UpdateAsync(EmailRequest certificate, CancellationToken ct)
+        public async Task<EmailRequestModel> UpdateAsync(EmailRequestModel certificate, CancellationToken ct)
         {
             var entityEntry = _context.MailRequests.Update(certificate.ToEntity());
             await _context.SaveChangesAsync(ct);
-            return entityEntry.Entity.ToService();
+            return entityEntry.Entity.ToModel();
         }
         
-        public async Task<EmailRequest> AddAsync(EmailRequest certificate, CancellationToken ct)
+        public async Task<EmailRequestModel> AddAsync(EmailRequestModel certificate, CancellationToken ct)
         {
             var entityEntry = await _context.MailRequests.AddAsync(certificate.ToEntity(), ct);
             await _context.SaveChangesAsync(ct);
-            return entityEntry.Entity.ToService();
+            return entityEntry.Entity.ToModel();
         }
 
         public async Task RemoveAsync(long id, CancellationToken ct)
