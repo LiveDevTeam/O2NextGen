@@ -15,17 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4D4C70FE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Api", "Tests\IntegrationTests.O2NextGen.ESender.Api\IntegrationTests.O2NextGen.ESender.Api.csproj", "{0CA484B4-E79A-43E1-ABAC-30C661DD637D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.O2NextGen.ESender.Api", "Tests\UnitTests.O2NextGen.ESender.Api\UnitTests.O2NextGen.ESender.Api.csproj", "{0AD9CB1F-539F-4D06-9E19-C724C0350488}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.ESender.Api", "Tests\Tests.O2NextGen.ESender.Api\Tests.O2NextGen.ESender.Api.csproj", "{0AD9CB1F-539F-4D06-9E19-C724C0350488}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.O2NextGen.ESender.Business", "Tests\UnitTests.O2NextGen.ESender.Business\UnitTests.O2NextGen.ESender.Business.csproj", "{313FF018-98BB-4229-A2E6-525F1ACA13D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.ESender.Business", "Tests\Tests.O2NextGen.ESender.Business\Tests.O2NextGen.ESender.Business.csproj", "{313FF018-98BB-4229-A2E6-525F1ACA13D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Business", "Tests\IntegrationTests.O2NextGen.ESender.Business\IntegrationTests.O2NextGen.ESender.Business.csproj", "{C6455931-5324-40B0-B101-0B68A119C1C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Data", "Tests\IntegrationTests.O2NextGen.ESender.Data\IntegrationTests.O2NextGen.ESender.Data.csproj", "{FC4C87E2-DD4B-46E0-92EB-62482631A16C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.O2NextGen.ESender.Data", "Tests\UnitTests.O2NextGen.ESender.Data\UnitTests.O2NextGen.ESender.Data.csproj", "{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.ESender.Data", "Tests\Tests.O2NextGen.ESender.Data\Tests.O2NextGen.ESender.Data.csproj", "{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.O2NextGen.ESender.Impl", "Tests\UnitTests.O2NextGen.ESender.Impl\UnitTests.O2NextGen.ESender.Impl.csproj", "{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.ESender.Impl", "Tests\Tests.O2NextGen.ESender.Impl\Tests.O2NextGen.ESender.Impl.csproj", "{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Impl", "Tests\IntegrationTests.O2NextGen.ESender.Impl\IntegrationTests.O2NextGen.ESender.Impl.csproj", "{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}"
 EndProject
