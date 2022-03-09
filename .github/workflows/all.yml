@@ -17,9 +17,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.x
+
     - name: C-Gen - Restore dependencies
       run: dotnet restore
       working-directory: src/Services/c-gen
+
     - name: C-Gen - Build
       run: dotnet build --no-restore
       working-directory: src/Services/c-gen
@@ -44,10 +46,57 @@ jobs:
       with:
        github-token: ${{ secrets.GITHUB_TOKEN }}
        path-to-lcov: src/Services/TestResults/coverage.info
-        
+
+    - name: E-Sender - Restore dependencies
+      run: dotnet restore
+      working-directory: src/Services/e-sender
+
+    - name: E-Sender - Build
+      run: dotnet build --no-restore
+      working-directory: src/Services/e-sender
+
+    - name: E-Sender - Unit Tests(Tests.O2NextGen.ESender.Api)
+      run: dotnet test Tests.O2NextGen.ESender.Api.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput==../../../TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/e-sender/Tests/Tests.O2NextGen.ESender.Api/
+
+    - name: E-Sender - Unit Tests (Tests.O2NextGen.ESender.Data)
+      run: dotnet test Tests.O2NextGen.ESender.Data.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/e-sender/Tests/Tests.O2NextGen.ESender.Data/
+
+    - name: E-Sender - Unit Tests (Tests.O2NextGen.ESender.Impl)
+      run: dotnet test Tests.O2NextGen.ESender.Impl.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/e-sender/Tests/Tests.O2NextGen.ESender.Impl/
+
+    - name: E-Sender - Unit Tests (Tests.O2NextGen.ESender.Business)
+      run: dotnet test Tests.O2NextGen.ESender.Business.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: src/Services/e-sender/Tests/Tests.O2NextGen.ESender.Business/
+
+    # - name: E-Sender - Integration Tests(IntegrationTests.O2NextGen.ESender.Api)
+    #   run: dotnet test IntegrationTests.O2NextGen.ESender.Api.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+    #   working-directory: src/Services/e-sender/Tests/IntegrationTests.O2NextGen.ESender.Api/
+    
+    # - name: E-Sender - Integration Tests(IntegrationTests.O2NextGen.ESender.Data)
+    #   run: dotnet test IntegrationTests.O2NextGen.ESender.Data.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+    #   working-directory: src/Services/e-sender/Tests/IntegrationTests.O2NextGen.ESender.Data/
+
+    # - name: E-Sender - Integration Tests(IntegrationTests.O2NextGen.ESender.Impl)
+    #   run: dotnet test IntegrationTests.O2NextGen.ESender.Impl.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+    #   working-directory: src/Services/e-sender/Tests/IntegrationTests.O2NextGen.ESender.Impl/
+
+    # - name: E-Sender - Integration Tests(IntegrationTests.O2NextGen.ESender.Business)
+    #   run: dotnet test IntegrationTests.O2NextGen.ESender.Business.csproj --no-build --verbosity normal /p:MergeWith=src/Services/TestResults/coverage.info /p:CollectCoverage=true  /p:CoverletOutput=../../../TestResults/ /p:CoverletOutputFormat=lcov
+    #   working-directory: src/Services/e-sender/Tests/IntegrationTests.O2NextGen.ESender.Business/
+    
+    - name: Publish coverage report to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+       github-token: ${{ secrets.GITHUB_TOKEN }}
+       path-to-lcov: src/Services/TestResults/coverage.info
+
     - name: Auth - Restore dependencies
       run: dotnet restore
       working-directory: src/Services/auth
+
     - name: Auth - Build
       run: dotnet build --no-restore
       working-directory: src/Services/auth

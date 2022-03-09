@@ -50,7 +50,7 @@ namespace O2NextGen.ESender.Api.Controllers
 
         [HttpPut]
         [Route("id")]
-        public async Task<IActionResult> UpdateAsync(long id, [FromBody]MailRequestViewModel model, CancellationToken ct)
+        public async Task<IActionResult> UpdateAsync(long id, [FromBody]EmailRequestViewModel model, CancellationToken ct)
         {
             var certificate = await _emailSenderService.UpdateAsync(model.ToModel(), ct);
             return Ok(certificate.ToViewModel());
@@ -59,7 +59,7 @@ namespace O2NextGen.ESender.Api.Controllers
         [HttpPost]
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> AddAsync([FromBody]MailRequestViewModel model, CancellationToken ct)
+        public async Task<IActionResult> AddAsync([FromBody]EmailRequestViewModel model, CancellationToken ct)
         {
             var emailRequest = await _emailSenderService.AddAsync(model.ToModel(), ct);
             await _emailSender.Send(model.To, model.Subject, model.Body);

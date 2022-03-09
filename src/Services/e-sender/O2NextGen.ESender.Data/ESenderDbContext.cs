@@ -8,7 +8,7 @@ namespace O2NextGen.ESender.Data
     {
         #region Fields
 
-        public DbSet<MailRequestEntity> MailRequests { get; set; }
+        public DbSet<EmailRequestDbEntity> MailRequests { get; set; }
 
         #endregion
         
@@ -25,10 +25,10 @@ namespace O2NextGen.ESender.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MailRequestEntity>(ConfigureMailRequestEntity);
+            modelBuilder.Entity<EmailRequestDbEntity>(ConfigureMailRequestEntity);
         }
 
-        private void ConfigureMailRequestEntity(EntityTypeBuilder<MailRequestEntity> builder)
+        private void ConfigureMailRequestEntity(EntityTypeBuilder<EmailRequestDbEntity> builder)
         {
             builder.ToTable("MailRequest");
 

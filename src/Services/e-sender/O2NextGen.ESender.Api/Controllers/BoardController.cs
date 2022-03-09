@@ -43,7 +43,7 @@ namespace O2NextGen.ESender.Api.Controllers
         [HttpPost]
         [Route("id")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, MailRequestViewModel model)
+        public async Task<IActionResult> Edit(long id, EmailRequestViewModel model)
         {
             var certificate = await _emailSenderService.GetByIdAsync(id, CancellationToken.None);
             if (certificate == null)
@@ -65,7 +65,7 @@ namespace O2NextGen.ESender.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> CreateReally(MailRequestViewModel model)
+        public async Task<IActionResult> CreateReally(EmailRequestViewModel model)
         {
             var emailRequest = await _emailSenderService.AddAsync(model.ToModel(), CancellationToken.None);
             await _emailSender.Send(model.To, model.Subject, model.Body);

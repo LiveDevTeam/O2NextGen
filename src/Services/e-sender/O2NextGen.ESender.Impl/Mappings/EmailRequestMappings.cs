@@ -4,20 +4,35 @@ using O2NextGen.ESender.Data.Entities;
 
 namespace O2NextGen.ESender.Impl.Mappings
 {
-    internal static class EmailRequestMappings 
+    public static class EmailRequestMappings 
     {
-        public static EmailRequest ToService(this MailRequestEntity entity)
+        private static readonly
+            BaseMappings<EmailRequestDbEntity, EmailRequestModel> BaseMappings;
+        
+        static EmailRequestMappings()
         {
-            return entity != null ? new EmailRequest() {Id = entity.Id, From = entity.From, To = entity.To, Body = entity.Body,Subject = entity.Subject} : null;
+            BaseMappings =
+                new BaseMappings<EmailRequestDbEntity, EmailRequestModel>();
+            
+        }
+        public static EmailRequestModel ToModel(this EmailRequestDbEntity dbEntity)
+        {
+            return dbEntity != null ? new EmailRequestModel()
+            {
+                Id = dbEntity.Id, From = dbEntity.From, To = dbEntity.To, Body = dbEntity.Body,Subject = dbEntity.Subject
+            } : null;
         }
     
-        public static MailRequestEntity ToEntity(this EmailRequest model)
+        public static EmailRequestDbEntity ToEntity(this EmailRequestModel model)
         {
-            return model != null ? new MailRequestEntity() {Id = model.Id, From = model.From, To = model.To, Body = model.Body,Subject = model.Subject} : null;
+            return model != null ? new EmailRequestDbEntity()
+            {
+                Id = model.Id, From = model.From, To = model.To, Body = model.Body,Subject = model.Subject
+            } : null;
         }
     
-        public static IReadOnlyCollection<EmailRequest>
-            ToService(this IReadOnlyCollection<MailRequestEntity> entities) =>
-            entities.MapCollection(ToService);
+        public static IReadOnlyCollection<EmailRequestModel>
+            ToModel(this IReadOnlyCollection<EmailRequestDbEntity> entities) =>
+            entities.MapCollection(ToModel);
     }
 }
