@@ -7,13 +7,13 @@ namespace O2NextGen.ESender.Business.Services
 {
     public interface IEmailSenderService
     {
-        Task<IReadOnlyCollection<EmailRequest>> GetAllAsync(CancellationToken ct);
+        Task<IReadOnlyCollection<EmailRequestModel>> GetAllAsync(CancellationToken ct);
 
-        Task<EmailRequest> GetByIdAsync(long id, CancellationToken ct);
+        Task<EmailRequestModel> GetByIdAsync(long id, CancellationToken ct);
 
-        Task<EmailRequest> UpdateAsync(EmailRequest emailRequest, CancellationToken ct);
+        Task<EmailRequestModel> UpdateAsync(EmailRequestModel emailRequestModel, CancellationToken ct);
 
-        Task<EmailRequest> AddAsync(EmailRequest emailRequest, CancellationToken ct);
+        Task<EmailRequestModel> AddAsync(EmailRequestModel emailRequestModel, CancellationToken ct);
         
         Task RemoveAsync(long id, CancellationToken ct);
     }

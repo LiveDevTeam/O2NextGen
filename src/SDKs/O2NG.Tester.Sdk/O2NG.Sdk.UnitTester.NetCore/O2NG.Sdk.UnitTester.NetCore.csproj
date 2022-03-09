@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\.NETCoreApp,Version=v2.1.AssemblyAttributes.cs" />
+    <Compile Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.Program.cs" />
+    <Compile Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.AssemblyInfo.cs" />
+    <Compile Remove="O2NG.Sdk.IntegrationTester.NetCore\Mappers\UnitTest1.cs" />
+    <Compile Remove="O2NG.Sdk.IntegrationTester.NetCore\UnitTest1.cs" />
+    <Compile Remove="O2NG.Sdk.IntegrationTester.NetCore\UnitTest1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\O2NG.Sdk.IntegrationTester.NetCore.csproj.nuget.g.props" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\O2NG.Sdk.IntegrationTester.NetCore.csproj.nuget.g.targets" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\project.nuget.cache" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\O2NG.Sdk.IntegrationTester.NetCore.csproj.nuget.dgspec.json" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\project.assets.json" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.csproj.FileListAbsolute.txt" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.dll" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.csproj.AssemblyReference.cache" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.pdb" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.assets.cache" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.csproj.CoreCompileInputs.cache" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.genruntimeconfig.cache" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.AssemblyInfoInputs.cache" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\bin\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.deps.json" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\bin\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.dll" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\bin\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.runtimeconfig.json" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\bin\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.pdb" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\bin\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.runtimeconfig.dev.json" />
+    <None Remove="O2NG.Sdk.IntegrationTester.NetCore\obj\Debug\netcoreapp2.1\O2NG.Sdk.IntegrationTester.NetCore.csproj.AssemblyReference.cache" />
+    <None Remove="Mappers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mappers\" />
+  </ItemGroup>
+</Project>

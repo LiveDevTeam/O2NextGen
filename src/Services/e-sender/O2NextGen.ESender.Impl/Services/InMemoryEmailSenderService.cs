@@ -12,9 +12,9 @@ namespace O2NextGen.ESender.Impl.Services
     {
         #region Fields
 
-        private static readonly List<EmailRequest> Certificates = new List<EmailRequest>()
+        private static readonly List<EmailRequestModel> Certificates = new List<EmailRequestModel>()
         {
-            new EmailRequest()
+            new EmailRequestModel()
             {
                 Id = 1, From = "from@eexample.com", To = "example@eexample.com", Subject = "theme",
                 Body = "<h1>last</h1>"
@@ -36,19 +36,19 @@ namespace O2NextGen.ESender.Impl.Services
 
         #region Methods
 
-        public async Task<IReadOnlyCollection<EmailRequest>> GetAllAsync(CancellationToken ct)
+        public async Task<IReadOnlyCollection<EmailRequestModel>> GetAllAsync(CancellationToken ct)
         {
             await Task.Delay(3000, ct);
-            return await Task.FromResult<IReadOnlyCollection<EmailRequest>>(Certificates.AsReadOnly());
+            return await Task.FromResult<IReadOnlyCollection<EmailRequestModel>>(Certificates.AsReadOnly());
         }
 
-        public async Task<EmailRequest> GetByIdAsync(long id, CancellationToken ct)
+        public async Task<EmailRequestModel> GetByIdAsync(long id, CancellationToken ct)
         {
             await Task.Delay(3000, ct);
             return await Task.FromResult(Certificates.SingleOrDefault(g => g.Id == id));
         }
 
-        public async Task<EmailRequest> UpdateAsync(EmailRequest certificate, CancellationToken ct)
+        public async Task<EmailRequestModel> UpdateAsync(EmailRequestModel certificate, CancellationToken ct)
         {
             await Task.Delay(5000, ct);
             var toUpdate = Certificates.SingleOrDefault(g => g.Id == certificate.Id);
@@ -63,7 +63,7 @@ namespace O2NextGen.ESender.Impl.Services
             return await Task.FromResult(toUpdate);
         }
 
-        public async Task<EmailRequest> AddAsync(EmailRequest certificate, CancellationToken ct)
+        public async Task<EmailRequestModel> AddAsync(EmailRequestModel certificate, CancellationToken ct)
         {
             await Task.Delay(3000, ct);
             certificate.Id = ++_currentId;
