@@ -1,8 +1,46 @@
 version: '3.4'
+
 services:
-  certificate.api:
+
+  o2nextgen.auth.web:
     environment:
-        - ASPNETCORE_ENVIRONMENT=Development
-        - ConnectionString=${O2_AZURE_IDENTITY_DB:-Server=sql.data;Database=O2Bionics.o2nextgen.CertificateDb;User Id=sa;Password=Pass@word;}
+      - ASPNETCORE_ENVIRONMENT=Development
+      #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-        - "10102:80"
+      - "80:5001"
+      - "443:10001"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  o2nextgen.certificatemanagement.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      #- ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80:5002"
+      - "443:10002"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  o2nextgen.smalltalk.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      #- ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80:5003"
+      - "443:10003"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  o2nextgen.esender.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      #- ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80:5004"
+      - "443:10004"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
