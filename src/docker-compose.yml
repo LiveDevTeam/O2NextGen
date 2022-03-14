@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+
+  o2nextgen.auth.web:
+    image: ${DOCKER_REGISTRY-}o2ng-auth-web
+    build:
+      context: .
+      dockerfile: Services/auth/O2NextGen.Auth.Web/Dockerfile
+
+  o2nextgen.certificatemanagement.api:
+    image: ${DOCKER_REGISTRY-}o2ng-cgen-api
+    build:
+      context: .
+      dockerfile: Services/c-gen/O2NextGen.CertificateManagement.Api/Dockerfile
+
+
+  o2nextgen.smalltalk.api:
+    image: ${DOCKER_REGISTRY-}o2ng-smalltalk-api
+    build:
+      context: .
+      dockerfile: Services/smalltalk/O2NextGen.SmallTalk.Api/Dockerfile
+
+
+  o2nextgen.esender.api:
+    image: ${DOCKER_REGISTRY-}o2ng-esender-api
+    build:
+      context: .
+      dockerfile: Services/e-sender/O2NextGen.ESender.Api/Dockerfile
+
