@@ -1,46 +1,78 @@
 version: '3.4'
 
+networks:
+  frontend:
+  backend:
+
 services:
+  sql.data:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: sqldatacontainer
+    environment:
+      - SA_PASSWORD=your@Password
+      - ACCEPT_EULA=Y
+      # - MSSQL_PID=Developer
+    ports:
+      - "5433:1433"
+    networks:
+      - backend
 
   o2nextgen.auth.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString="Server=sql.data;Initial Catalog=O2NextGen.AuthDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;"
       #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80:5001"
-      - "443:10001"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "5001:80"
+      # - "10001:443"
+    #volumes:
+    #  - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - sql.data
+    networks:
+      - backend
 
   o2nextgen.certificatemanagement.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=Server=sql.data;Initial Catalog=O2NextGen.CGenDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;
+      #- Serilog__Enrich=FromLogContext
+      #- Serilog__WriteTo__Name=Console
       #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80:5002"
-      - "443:10002"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "5002:80"
+    depends_on:
+      - sql.data
+    networks:
+      - backend
+      # - "10002:443"
+    #volumes:
+      #- ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      #- ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   o2nextgen.smalltalk.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80:5003"
-      - "443:10003"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "5003:80"
+      # - "10003:443"
+    #volumes:
+    #  - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    #  - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   o2nextgen.esender.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=Server=sql.data;Initial Catalog=O2NextGen.ESenderDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;
       #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80:5004"
-      - "443:10004"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "5004:80"
+    depends_on:
+      - sql.data
+    networks:
+      - backend
+      # - "10004:443"
+    #volumes:
+    #  - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    #  - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

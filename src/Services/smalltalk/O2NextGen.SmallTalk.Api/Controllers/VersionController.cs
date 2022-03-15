@@ -28,6 +28,7 @@ namespace O2NextGen.SmallTalk.Api.Controllers
 
         #endregion
 
+
         [HttpGet("[controller]")]
         public object Index()
         {
