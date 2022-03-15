@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "o2nextgen.auth.web": "StartDebugging",
+        "o2nextgen.certificatemanagement.api": "StartDebugging",
+        "o2nextgen.esender.api": "StartDebugging",
+        "o2nextgen.smalltalk.api": "StartDebugging",
+        "sql.data": "StartWithoutDebugging"
+      }
+    }
+  }
+}
