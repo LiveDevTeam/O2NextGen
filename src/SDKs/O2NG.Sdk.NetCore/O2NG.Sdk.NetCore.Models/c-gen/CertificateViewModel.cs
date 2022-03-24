@@ -1,4 +1,4 @@
-namespace O2NextGen.CertificateManagement.Api.Models
+namespace O2NextGen.CertificateManagement.Api.Models.CGen
 {
     public class CertificateViewModel
     {
