@@ -1,5 +1,4 @@
-﻿using System;
-namespace O2NextGen.ESender.Api.Models
+﻿namespace O2NextGen.ESender.Api.Models
 {
     public interface IViewModel
     {
