@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace IntegrationTests.O2NextGen.SmartSubscriber.Api
