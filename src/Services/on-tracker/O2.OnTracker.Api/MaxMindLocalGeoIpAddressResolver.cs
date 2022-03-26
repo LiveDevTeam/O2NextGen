@@ -4,10 +4,10 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using MaxMind.Db;
-using O2.OnTracker.Api.Setup;
-using O2.Tracker.DbUtility;
+using O2NetGen.OnTracker.Api.Setup;
+using O2NextGen.Tracker.DbUtility;
 
-namespace O2.OnTracker.Api
+namespace O2NetGen.OnTracker.Api
 {
     public sealed class MaxMindLocalGeoIpAddressResolver : IGeoIpAddressResolver
     {
@@ -40,17 +40,17 @@ namespace O2.OnTracker.Api
                 return null;
 
             var result = new GeoLocation
-                {
-                    Country = response.Country?.Names[DefaultLang],
-                    City = response.City?.Names[DefaultLang]
-                };
+            {
+                Country = response.Country?.Names[DefaultLang],
+                City = response.City?.Names[DefaultLang]
+            };
             var location = response.Location;
             if (location?.HasCoordinates == true)
                 result.Point = new Point
-                    {
-                        lat = location.Latitude.Value,
-                        lon = location.Longitude.Value
-                    };
+                {
+                    lat = location.Latitude.Value,
+                    lon = location.Longitude.Value
+                };
 
             return result;
         }
@@ -66,7 +66,7 @@ namespace O2.OnTracker.Api
 
             public IReadOnlyDictionary<string, string> Names { get; }
         }
-        
+
         private sealed class Country : NamedEntity
         {
             [Constructor]
@@ -76,7 +76,7 @@ namespace O2.OnTracker.Api
             {
             }
         }
-        
+
         private sealed class Location
         {
             [Constructor]
@@ -94,7 +94,7 @@ namespace O2.OnTracker.Api
 
             public double? Longitude { get; }
         }
-        
+
         private sealed class GeoLocationData
         {
             [Constructor]

@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using O2.OnTracker.Api.IoC;
-using O2.OnTracker.Api.Setup;
-using O2.Tracker.DbUtility;
+using O2NetGen.OnTracker.Api.IoC;
+using O2NetGen.OnTracker.Api.Setup;
+using O2NextGen.Tracker.DbUtility;
 
-namespace O2.OnTracker.Api
+namespace O2NetGen.OnTracker.Api
 {
     public class Startup
     {

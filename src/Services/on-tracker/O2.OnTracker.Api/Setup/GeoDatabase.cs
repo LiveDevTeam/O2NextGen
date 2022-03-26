@@ -1,7 +1,7 @@
-namespace O2.OnTracker.Api.Setup
+namespace O2NetGen.OnTracker.Api.Setup
 {
     public class GeoDatabase
     {
-        public string  ConnectionDb { get; set; }
+        public string ConnectionDb { get; set; }
     }
 }
