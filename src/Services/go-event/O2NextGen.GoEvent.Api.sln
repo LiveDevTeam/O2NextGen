@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.GoEvent.Api", "O2NextGen.GoEvent.Api\O2NextGen.GoEvent.Api.csproj", "{FFBCB4B3-9F13-4429-8B2B-CFA203EDCC0B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.GoEvent.Data", "O2NextGen.GoEvent.Data\O2NextGen.GoEvent.Data.csproj", "{128BEE44-DF42-4C1E-A713-C53F714E3467}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.GoEvent.Business", "O2NextGen.GoEvent.Business\O2NextGen.GoEvent.Business.csproj", "{977A9773-AA5C-4680-B31A-A9802234771F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.GoEvent.Impl", "O2NextGen.GoEvent.Impl\O2NextGen.GoEvent.Impl.csproj", "{A5DCC75E-2546-454F-84CC-0ABFA5912E29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8A20718D-D1D1-4374-BBAC-B19363EBF2C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.GoEvent.Api", "Tests\Tests.O2NextGen.GoEvent.Api\Tests.O2NextGen.GoEvent.Api.csproj", "{EDC7EE36-BFDC-4D7C-A0C9-D4DB6B0944F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.GoEvent.Data", "Tests\Tests.O2NextGen.GoEvent.Data\Tests.O2NextGen.GoEvent.Data.csproj", "{4E543CCC-7717-4B3A-81D0-12E605E6A6BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.GoEvent.Business", "Tests\Tests.O2NextGen.GoEvent.Business\Tests.O2NextGen.GoEvent.Business.csproj", "{6D5B87CC-F843-4808-9DFA-C947970C9F4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.GoEvent.Impl", "Tests\Tests.O2NextGen.GoEvent.Impl\Tests.O2NextGen.GoEvent.Impl.csproj", "{21335271-D439-4EE8-B321-7140CDDC3CB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.GoEvent.Api", "Tests\IntegrationTests.O2NextGen.GoEvent.Api\IntegrationTests.O2NextGen.GoEvent.Api.csproj", "{C2F2DE5D-D2B9-4BD3-97D7-E9E6E721F06B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFBCB4B3-9F13-4429-8B2B-CFA203EDCC0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFBCB4B3-9F13-4429-8B2B-CFA203EDCC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFBCB4B3-9F13-4429-8B2B-CFA203EDCC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFBCB4B3-9F13-4429-8B2B-CFA203EDCC0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{128BEE44-DF42-4C1E-A713-C53F714E3467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{128BEE44-DF42-4C1E-A713-C53F714E3467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{128BEE44-DF42-4C1E-A713-C53F714E3467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{128BEE44-DF42-4C1E-A713-C53F714E3467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977A9773-AA5C-4680-B31A-A9802234771F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977A9773-AA5C-4680-B31A-A9802234771F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977A9773-AA5C-4680-B31A-A9802234771F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977A9773-AA5C-4680-B31A-A9802234771F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5DCC75E-2546-454F-84CC-0ABFA5912E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5DCC75E-2546-454F-84CC-0ABFA5912E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5DCC75E-2546-454F-84CC-0ABFA5912E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DCC75E-2546-454F-84CC-0ABFA5912E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC7EE36-BFDC-4D7C-A0C9-D4DB6B0944F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC7EE36-BFDC-4D7C-A0C9-D4DB6B0944F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC7EE36-BFDC-4D7C-A0C9-D4DB6B0944F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC7EE36-BFDC-4D7C-A0C9-D4DB6B0944F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E543CCC-7717-4B3A-81D0-12E605E6A6BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E543CCC-7717-4B3A-81D0-12E605E6A6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E543CCC-7717-4B3A-81D0-12E605E6A6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E543CCC-7717-4B3A-81D0-12E605E6A6BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D5B87CC-F843-4808-9DFA-C947970C9F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D5B87CC-F843-4808-9DFA-C947970C9F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D5B87CC-F843-4808-9DFA-C947970C9F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D5B87CC-F843-4808-9DFA-C947970C9F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21335271-D439-4EE8-B321-7140CDDC3CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21335271-D439-4EE8-B321-7140CDDC3CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21335271-D439-4EE8-B321-7140CDDC3CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21335271-D439-4EE8-B321-7140CDDC3CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2F2DE5D-D2B9-4BD3-97D7-E9E6E721F06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F2DE5D-D2B9-4BD3-97D7-E9E6E721F06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F2DE5D-D2B9-4BD3-97D7-E9E6E721F06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F2DE5D-D2B9-4BD3-97D7-E9E6E721F06B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EDC7EE36-BFDC-4D7C-A0C9-D4DB6B0944F5} = {8A20718D-D1D1-4374-BBAC-B19363EBF2C1}
+		{4E543CCC-7717-4B3A-81D0-12E605E6A6BC} = {8A20718D-D1D1-4374-BBAC-B19363EBF2C1}
+		{6D5B87CC-F843-4808-9DFA-C947970C9F4F} = {8A20718D-D1D1-4374-BBAC-B19363EBF2C1}
+		{21335271-D439-4EE8-B321-7140CDDC3CB9} = {8A20718D-D1D1-4374-BBAC-B19363EBF2C1}
+		{C2F2DE5D-D2B9-4BD3-97D7-E9E6E721F06B} = {8A20718D-D1D1-4374-BBAC-B19363EBF2C1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE580401-4E4D-4937-BEBC-2503D25E0EEC}
+	EndGlobalSection
+EndGlobal
