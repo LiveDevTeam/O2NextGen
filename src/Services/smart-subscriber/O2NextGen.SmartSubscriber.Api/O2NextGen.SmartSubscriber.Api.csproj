@@ -13,4 +13,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\O2NextGen.SmartSubscriber.Business\O2NextGen.SmartSubscriber.Business.csproj" />
+    <ProjectReference Include="..\O2NextGen.SmartSubscriber.Data\O2NextGen.SmartSubscriber.Data.csproj" />
+    <ProjectReference Include="..\O2NextGen.SmartSubscriber.Impl\O2NextGen.SmartSubscriber.Impl.csproj" />
+  </ItemGroup>
+
 </Project>
