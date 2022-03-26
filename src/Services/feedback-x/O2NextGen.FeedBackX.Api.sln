@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.FeedBackX.Api", ".\O2NextGen.FeedBackX.Api\O2NextGen.FeedBackX.Api.csproj", "{CFECE6E9-68F3-4151-9AC5-02EA78F5DDE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FBF4A821-E179-491F-B1EF-F2A2C0CA4041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.FeedBackX.Api", ".\Tests\Tests.O2NextGen.FeedBackX.Api\Tests.O2NextGen.FeedBackX.Api.csproj", "{C1793159-6373-4534-BA0E-87BA84F46674}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.FeedBackX.Business", ".\O2NextGen.FeedBackX.Business\O2NextGen.FeedBackX.Business.csproj", "{5C1ED6D9-3DD9-45A2-AB8F-6A466A7E52E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.FeedBackX.Api", ".\Tests\IntegrationTests.O2NextGen.FeedBackX.Api\IntegrationTests.O2NextGen.FeedBackX.Api.csproj", "{5E2C7CDA-D655-4495-92A9-20ADAD455F5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.FeedBackX.Data", ".\O2NextGen.FeedBackX.Data\O2NextGen.FeedBackX.Data.csproj", "{00CF5E41-5B8E-4AE4-84E8-C081CA312396}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.FeedBackX.Impl", ".\O2NextGen.FeedBackX.Impl\O2NextGen.FeedBackX.Impl.csproj", "{01C937DF-D65F-4FD2-B5C7-D4B20C7A148F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.FeedBackX.Business", ".\Tests\Tests.O2NextGen.FeedBackX.Business\Tests.O2NextGen.FeedBackX.Business.csproj", "{1857BDA4-5DD7-4980-B652-94EC47BD205F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.FeedBackX.Data", ".\Tests\Tests.O2NextGen.FeedBackX.Data\Tests.O2NextGen.FeedBackX.Data.csproj", "{E5FE3437-62BD-4E98-A539-B47E99BF5329}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.FeedBackX.Impl", ".\Tests\Tests.O2NextGen.FeedBackX.Impl\Tests.O2NextGen.FeedBackX.Impl.csproj", "{340B279B-C527-41D6-A5DE-359F8B51F9A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFECE6E9-68F3-4151-9AC5-02EA78F5DDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFECE6E9-68F3-4151-9AC5-02EA78F5DDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFECE6E9-68F3-4151-9AC5-02EA78F5DDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFECE6E9-68F3-4151-9AC5-02EA78F5DDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1793159-6373-4534-BA0E-87BA84F46674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1793159-6373-4534-BA0E-87BA84F46674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1793159-6373-4534-BA0E-87BA84F46674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1793159-6373-4534-BA0E-87BA84F46674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C1ED6D9-3DD9-45A2-AB8F-6A466A7E52E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C1ED6D9-3DD9-45A2-AB8F-6A466A7E52E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C1ED6D9-3DD9-45A2-AB8F-6A466A7E52E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C1ED6D9-3DD9-45A2-AB8F-6A466A7E52E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2C7CDA-D655-4495-92A9-20ADAD455F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2C7CDA-D655-4495-92A9-20ADAD455F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2C7CDA-D655-4495-92A9-20ADAD455F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2C7CDA-D655-4495-92A9-20ADAD455F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00CF5E41-5B8E-4AE4-84E8-C081CA312396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00CF5E41-5B8E-4AE4-84E8-C081CA312396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00CF5E41-5B8E-4AE4-84E8-C081CA312396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00CF5E41-5B8E-4AE4-84E8-C081CA312396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C937DF-D65F-4FD2-B5C7-D4B20C7A148F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C937DF-D65F-4FD2-B5C7-D4B20C7A148F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C937DF-D65F-4FD2-B5C7-D4B20C7A148F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C937DF-D65F-4FD2-B5C7-D4B20C7A148F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1857BDA4-5DD7-4980-B652-94EC47BD205F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1857BDA4-5DD7-4980-B652-94EC47BD205F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1857BDA4-5DD7-4980-B652-94EC47BD205F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1857BDA4-5DD7-4980-B652-94EC47BD205F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5FE3437-62BD-4E98-A539-B47E99BF5329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FE3437-62BD-4E98-A539-B47E99BF5329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5FE3437-62BD-4E98-A539-B47E99BF5329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FE3437-62BD-4E98-A539-B47E99BF5329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340B279B-C527-41D6-A5DE-359F8B51F9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340B279B-C527-41D6-A5DE-359F8B51F9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340B279B-C527-41D6-A5DE-359F8B51F9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340B279B-C527-41D6-A5DE-359F8B51F9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C1793159-6373-4534-BA0E-87BA84F46674} = {FBF4A821-E179-491F-B1EF-F2A2C0CA4041}
+		{5E2C7CDA-D655-4495-92A9-20ADAD455F5F} = {FBF4A821-E179-491F-B1EF-F2A2C0CA4041}
+		{1857BDA4-5DD7-4980-B652-94EC47BD205F} = {FBF4A821-E179-491F-B1EF-F2A2C0CA4041}
+		{E5FE3437-62BD-4E98-A539-B47E99BF5329} = {FBF4A821-E179-491F-B1EF-F2A2C0CA4041}
+		{340B279B-C527-41D6-A5DE-359F8B51F9A8} = {FBF4A821-E179-491F-B1EF-F2A2C0CA4041}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD873B2D-C019-4595-98F4-60CD9772C12E}
+	EndGlobalSection
+EndGlobal
