@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace O2NextGen.OnTracker.Api
+namespace O2NetGen.OnTracker.Api
 {
     public class Program
     {

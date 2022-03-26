@@ -1,13 +1,33 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1700.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{897A7BA2-3AAB-4D74-BA13-E6AEF977AE98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.Tracker.DbUtility", "O2.Tracker.DbUtility\O2.Tracker.DbUtility.csproj", "{77D9E353-F5AE-440B-8EE8-70EBB92099AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Tracker.DbUtility", "O2.Tracker.DbUtility\O2NextGen.Tracker.DbUtility.csproj", "{77D9E353-F5AE-440B-8EE8-70EBB92099AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2.OnTracker.Api", "O2.OnTracker.Api\O2.OnTracker.Api.csproj", "{2288664B-04A5-4C80-8685-2AF877F5D335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NetGen.OnTracker.Api", "O2.OnTracker.Api\O2NetGen.OnTracker.Api.csproj", "{2288664B-04A5-4C80-8685-2AF877F5D335}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.OnTracker.Data", "O2NextGen.OnTracker.Data\O2NextGen.OnTracker.Data.csproj", "{23CB3AC5-E48E-4A46-B5F7-8FB1F0F00A71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.OnTracker.Business", "O2NextGen.OnTracker.Business\O2NextGen.OnTracker.Business.csproj", "{0ABEF2F5-30E5-4AA8-A42A-C7382BE7F011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.OnTracker.Impl", "O2NextGen.OnTracker.Impl\O2NextGen.OnTracker.Impl.csproj", "{0D765011-A2C2-4EF9-BA28-961EF8267D40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7BD2C74D-C741-4D66-BAAD-DDF5BEA8CC8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.OnTracker.Api", "Tests\IntegrationTests.O2NextGen.OnTracker.Api\IntegrationTests.O2NextGen.OnTracker.Api.csproj", "{C0076E03-0BFE-4977-ACA0-FF7EC9EAD3C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.OnTracker.Api", "Tests\Tests.O2NextGen.OnTracker.Api\Tests.O2NextGen.OnTracker.Api.csproj", "{7DFD020A-9FD4-4E1E-8836-FFEF1A5F66F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.OnTracker.Business", "Tests\Tests.O2NextGen.OnTracker.Business\Tests.O2NextGen.OnTracker.Business.csproj", "{4FE95E79-25D1-47D5-AB58-505713FE9835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.OnTracker.Data", "Tests\Tests.O2NextGen.OnTracker.Data\Tests.O2NextGen.OnTracker.Data.csproj", "{B2B3EDDA-CCCE-4900-80BC-14CF0A2A7EB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.OnTracker.Impl", "Tests\Tests.O2NextGen.OnTracker.Impl\Tests.O2NextGen.OnTracker.Impl.csproj", "{18B3EF0B-1FB1-434B-8291-BF45094C97F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.Tracker.DbUtility", "Tests\Tests.O2NextGen.Tracker.DbUtility\Tests.O2NextGen.Tracker.DbUtility.csproj", "{2B77211A-B680-4241-A73C-4C7F88CF35A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +43,56 @@ Global
 		{2288664B-04A5-4C80-8685-2AF877F5D335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2288664B-04A5-4C80-8685-2AF877F5D335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2288664B-04A5-4C80-8685-2AF877F5D335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23CB3AC5-E48E-4A46-B5F7-8FB1F0F00A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23CB3AC5-E48E-4A46-B5F7-8FB1F0F00A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23CB3AC5-E48E-4A46-B5F7-8FB1F0F00A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23CB3AC5-E48E-4A46-B5F7-8FB1F0F00A71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ABEF2F5-30E5-4AA8-A42A-C7382BE7F011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ABEF2F5-30E5-4AA8-A42A-C7382BE7F011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ABEF2F5-30E5-4AA8-A42A-C7382BE7F011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ABEF2F5-30E5-4AA8-A42A-C7382BE7F011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D765011-A2C2-4EF9-BA28-961EF8267D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D765011-A2C2-4EF9-BA28-961EF8267D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D765011-A2C2-4EF9-BA28-961EF8267D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D765011-A2C2-4EF9-BA28-961EF8267D40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0076E03-0BFE-4977-ACA0-FF7EC9EAD3C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0076E03-0BFE-4977-ACA0-FF7EC9EAD3C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0076E03-0BFE-4977-ACA0-FF7EC9EAD3C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0076E03-0BFE-4977-ACA0-FF7EC9EAD3C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DFD020A-9FD4-4E1E-8836-FFEF1A5F66F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DFD020A-9FD4-4E1E-8836-FFEF1A5F66F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DFD020A-9FD4-4E1E-8836-FFEF1A5F66F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DFD020A-9FD4-4E1E-8836-FFEF1A5F66F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FE95E79-25D1-47D5-AB58-505713FE9835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE95E79-25D1-47D5-AB58-505713FE9835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE95E79-25D1-47D5-AB58-505713FE9835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE95E79-25D1-47D5-AB58-505713FE9835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2B3EDDA-CCCE-4900-80BC-14CF0A2A7EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B3EDDA-CCCE-4900-80BC-14CF0A2A7EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B3EDDA-CCCE-4900-80BC-14CF0A2A7EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B3EDDA-CCCE-4900-80BC-14CF0A2A7EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18B3EF0B-1FB1-434B-8291-BF45094C97F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B3EF0B-1FB1-434B-8291-BF45094C97F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18B3EF0B-1FB1-434B-8291-BF45094C97F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18B3EF0B-1FB1-434B-8291-BF45094C97F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B77211A-B680-4241-A73C-4C7F88CF35A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B77211A-B680-4241-A73C-4C7F88CF35A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B77211A-B680-4241-A73C-4C7F88CF35A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B77211A-B680-4241-A73C-4C7F88CF35A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D93882A4-4B7E-4814-8462-14D882FB336B}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{77D9E353-F5AE-440B-8EE8-70EBB92099AD} = {897A7BA2-3AAB-4D74-BA13-E6AEF977AE98}
+		{C0076E03-0BFE-4977-ACA0-FF7EC9EAD3C1} = {7BD2C74D-C741-4D66-BAAD-DDF5BEA8CC8B}
+		{7DFD020A-9FD4-4E1E-8836-FFEF1A5F66F1} = {7BD2C74D-C741-4D66-BAAD-DDF5BEA8CC8B}
+		{4FE95E79-25D1-47D5-AB58-505713FE9835} = {7BD2C74D-C741-4D66-BAAD-DDF5BEA8CC8B}
+		{B2B3EDDA-CCCE-4900-80BC-14CF0A2A7EB7} = {7BD2C74D-C741-4D66-BAAD-DDF5BEA8CC8B}
+		{18B3EF0B-1FB1-434B-8291-BF45094C97F7} = {7BD2C74D-C741-4D66-BAAD-DDF5BEA8CC8B}
+		{2B77211A-B680-4241-A73C-4C7F88CF35A8} = {897A7BA2-3AAB-4D74-BA13-E6AEF977AE98}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D93882A4-4B7E-4814-8462-14D882FB336B}
 	EndGlobalSection
 EndGlobal

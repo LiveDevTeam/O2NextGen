@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using O2NextGen.Tracker.DbUtility;
 
-namespace O2NextGen.OnTracker.Api.Controllers
+namespace O2NetGen.OnTracker.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -29,7 +29,7 @@ namespace O2NextGen.OnTracker.Api.Controllers
                 // This usually only happens when the browser is on the same machine as the server.
                 if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
                 {
-                    remoteIpAddress = System.Net.Dns.GetHostEntry(remoteIpAddress).AddressList
+                    remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
                         .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
                 }
                 result = remoteIpAddress.ToString();

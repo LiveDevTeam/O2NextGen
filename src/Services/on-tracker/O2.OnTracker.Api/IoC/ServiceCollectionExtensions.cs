@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace O2NextGen.OnTracker.Api.IoC
+namespace O2NetGen.OnTracker.Api.IoC
 {
     public static class ServiceCollectionExtensions
     {
@@ -32,7 +32,7 @@ namespace O2NextGen.OnTracker.Api.IoC
             // services.AddSingleton<IEmailSender, EmailSender>();
             return services;
         }
-        
+
         public static IServiceCollection AddRequiredMvcComponents(this IServiceCollection services)
         {
             // services.AddTransient<ApiExceptionFilter>();
