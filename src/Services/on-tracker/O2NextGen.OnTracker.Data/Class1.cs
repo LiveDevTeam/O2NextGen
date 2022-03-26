@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace O2NextGen.OnTracker.Data
+﻿namespace O2NextGen.OnTracker.Data
 {
     public class Class1
     {
