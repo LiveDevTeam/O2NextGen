@@ -2,9 +2,9 @@
 using System.Net;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
-using O2.Tracker.DbUtility;
+using O2NextGen.Tracker.DbUtility;
 
-namespace O2.OnTracker.Api.Controllers
+namespace O2NextGen.OnTracker.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

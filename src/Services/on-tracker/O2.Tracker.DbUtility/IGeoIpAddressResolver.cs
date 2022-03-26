@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace O2.Tracker.DbUtility
+namespace O2NextGen.Tracker.DbUtility
 {
     public interface IGeoIpAddressResolver
     {

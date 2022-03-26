@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace O2.Tracker.DbUtility
+namespace O2NextGen.Tracker.DbUtility
 {
     [DataContract]
     public sealed class GeoLocation

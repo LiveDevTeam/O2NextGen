@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace O2.OnTracker.Api.IoC
+namespace O2NextGen.OnTracker.Api.IoC
 {
     public static class ServiceCollectionExtensions
     {
