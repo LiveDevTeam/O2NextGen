@@ -14,10 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\O2.Tracker.DbUtility\O2NextGen.Tracker.DbUtility.csproj" />
     <ProjectReference Include="..\O2NextGen.OnTracker.Business\O2NextGen.OnTracker.Business.csproj" />
     <ProjectReference Include="..\O2NextGen.OnTracker.Data\O2NextGen.OnTracker.Data.csproj" />
     <ProjectReference Include="..\O2NextGen.OnTracker.Impl\O2NextGen.OnTracker.Impl.csproj" />
+    <ProjectReference Include="..\O2NextGen.Tracker.DbUtility\O2NextGen.Tracker.DbUtility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
