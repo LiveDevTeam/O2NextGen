@@ -15,9 +15,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+	<PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NG.Sdk.NetCore.Models.csproj" />
     <ProjectReference Include="..\O2NextGen.SmallTalk.Business\O2NextGen.SmallTalk.Business.csproj" />
     <ProjectReference Include="..\O2NextGen.SmallTalk.Data\O2NextGen.SmallTalk.Data.csproj" />
     <ProjectReference Include="..\O2NextGen.SmallTalk.Impl\O2NextGen.SmallTalk.Impl.csproj" />
