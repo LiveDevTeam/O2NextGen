@@ -1,5 +1,5 @@
-﻿using O2NextGen.SmallTalk.Business.Models;
-using O2NG.Sdk.NetCore.Models.smalltalk;
+﻿using O2NextGen.Sdk.NetCore.Models.smalltalk;
+using O2NextGen.SmallTalk.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

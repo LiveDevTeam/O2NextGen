@@ -2,6 +2,7 @@
 using O2NextGen.SmallTalk.Business.Models;
 using O2NextGen.SmallTalk.Business.Services;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace O2NextGen.SmallTalk.Impl.Services
@@ -16,8 +17,8 @@ namespace O2NextGen.SmallTalk.Impl.Services
                 throw new System.ArgumentNullException(nameof(sessionManager));
         }
 
-
-        public async Task<ChatMessageModel> AddMessage(ChatMessageModel chatMessageModel)
+        #region Messages
+        public async Task<ChatMessageModel> AddMessage(ChatMessageModel chatMessageModel, CancellationToken ct)
         {
             var chatMessage = Creator<ChatMessageModel>.CreateObject();
             chatMessage.Message = chatMessageModel.Message;
@@ -35,17 +36,33 @@ namespace O2NextGen.SmallTalk.Impl.Services
                 // new session
                 var newChatSession = Creator<ChatSessionModel>.CreateObject();
                 newChatSession.Messages.Add(chatMessage);
-                chatSession = await _sessionManager.AddSessionAsync(newChatSession, System.Threading.CancellationToken.None);
+                chatSession = await _sessionManager.AddSessionAsync(newChatSession, ct);
             }
 
 
             return chatMessage;
         }
 
-        public async Task<IReadOnlyCollection<ChatMessageModel>> GetMessages()
+        public Task<ChatMessageModel> GetMessageByIdAsync(long id, CancellationToken ct)
         {
-            var result = await _sessionManager.GetMessages(System.Threading.CancellationToken.None);
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<IReadOnlyCollection<ChatMessageModel>> GetMessages(CancellationToken ct)
+        {
+            var result = await _sessionManager.GetMessages(ct);
             return result;
         }
+
+        public Task RemoveMessageAsync(long id, CancellationToken ct)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<ChatMessageModel> UpdateMessageAsync(ChatMessageModel chatMessageModel, CancellationToken ct)
+        {
+            throw new System.NotImplementedException();
+        }
+        #endregion
     }
 }
