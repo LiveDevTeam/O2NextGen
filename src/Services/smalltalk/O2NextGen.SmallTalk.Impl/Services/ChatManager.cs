@@ -18,7 +18,7 @@ namespace O2NextGen.SmallTalk.Impl.Services
         }
 
         #region Messages
-        public async Task<ChatMessageModel> AddMessage(ChatMessageModel chatMessageModel, CancellationToken ct)
+        public async Task<ChatMessageModel> AddMessage(long sessionId,ChatMessageModel chatMessageModel, CancellationToken ct)
         {
             var chatMessage = Creator<ChatMessageModel>.CreateObject();
             chatMessage.Message = chatMessageModel.Message;
@@ -26,9 +26,11 @@ namespace O2NextGen.SmallTalk.Impl.Services
 
             ChatSessionModel chatSession = null;
             //Checking if a session exists or not
-            if (await _sessionManager.ExistSessionAsync())
+            if (await _sessionManager.ExistSessionAsync(sessionId,ct))
             {
-                chatSession = await _sessionManager.GetSessionAsync();
+                chatSession = await _sessionManager.GetSessionAsync(sessionId,ct);
+                var count = chatSession.Messages.Count;
+                chatMessage.Id = ++count;
                 chatSession.Messages.Add(chatMessage);
             }
             else
@@ -58,12 +60,12 @@ namespace O2NextGen.SmallTalk.Impl.Services
             return result;
         }
 
-        public Task RemoveMessageAsync(long id, CancellationToken ct)
+        public Task RemoveMessageAsync(long sessionId, long id, CancellationToken ct)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<ChatMessageModel> UpdateMessageAsync(ChatMessageModel chatMessageModel, CancellationToken ct)
+        public Task<ChatMessageModel> UpdateMessageAsync(long sessionId, ChatMessageModel chatMessageModel, CancellationToken ct)
         {
             throw new System.NotImplementedException();
         }

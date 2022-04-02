@@ -56,30 +56,30 @@ namespace O2NextGen.SmallTalk.Api.Controllers
 
         [HttpPost]
         [HttpPut]
-        [Route("")]
-        public async Task<IActionResult> AddAsync(ChatMessage chatMessage, CancellationToken ct)
+        [Route("session/{sessionId}/messages")]
+        public async Task<IActionResult> AddAsync(long sessionId, ChatMessage chatMessage, CancellationToken ct)
         {
             if (chatMessage == null)
                 throw new System.ArgumentNullException(nameof(chatMessage));
 
-            ChatMessageModel resultSession = await _chatManager.AddMessage(chatMessage.ToModel(), ct);
+            ChatMessageModel resultSession = await _chatManager.AddMessage(sessionId, chatMessage.ToModel(), ct);
 
             return Ok(resultSession.ToViewModel());
         }
 
         [HttpPut]
-        [Route("id")]
-        public async Task<IActionResult> UpdateAsync(long id, ChatMessage model, CancellationToken ct)
+        [Route("session/{sessionId}/messages/{id}")]
+        public async Task<IActionResult> UpdateAsync(long sessionId, long id, ChatMessage model, CancellationToken ct)
         {
-            var certificate = await _chatManager.UpdateMessageAsync(model.ToModel(), ct);
+            var certificate = await _chatManager.UpdateMessageAsync(sessionId, model.ToModel(), ct);
             return Ok(certificate.ToViewModel());
         }
 
         [HttpDelete]
-        [Route("id")]
-        public async Task<IActionResult> RemoveAsync(long id, CancellationToken ct)
+        [Route("session/{sessionId}/messages/{id}")]
+        public async Task<IActionResult> RemoveAsync(long sessionId, long id, CancellationToken ct)
         {
-            await _chatManager.RemoveMessageAsync(id, ct);
+            await _chatManager.RemoveMessageAsync(sessionId,id, ct);
             return NoContent();
         }
 
