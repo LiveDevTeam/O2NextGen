@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.SmallTalk.Api.Services;
+using O2NextGen.SmallTalk.Business.Services;
+using O2NextGen.SmallTalk.Impl.Services;
 using System;
 
 namespace O2NextGen.SmallTalk.Api.Helpers
@@ -33,19 +35,18 @@ namespace O2NextGen.SmallTalk.Api.Helpers
             //more business services...
 
             services.AddSingleton<IChatService, InMemoryChatService>();
+            services.AddSingleton<ISessionManager, InMemorySessionManager>();
+            services.AddSingleton<IChatManager, ChatManager>();
             return services;
         }
 
         public static IServiceCollection AddRequiredMvcComponents(this IServiceCollection services)
         {
-            //services.AddTransient<ApiExceptionFilter>();
-
-            var mvcBuilder = services.AddMvc(options =>
-            {
-                //    options.Filters.Add<ApiExceptionFilter>();
+            var mvcBuilder = services.AddMvcCore(options => { 
+                //options.Filters.Add<ApiExceptionFilter>();
             });
             mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            
+            mvcBuilder.AddJsonFormatters();
             return services;
         }
     }
