@@ -8,12 +8,12 @@
       },
       "applicationUrl": "https://localhost:10002;http://localhost:5002"
     },
-    //"Docker": {
-    //  "commandName": "Docker",
-    //  "launchBrowser": true,
-    //  "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-    //  "publishAllPorts": true,
-    //  "useSSL": true
-    //}
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
   }
 }
