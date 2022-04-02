@@ -1,13 +1,8 @@
 using System;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using O2NextGen.ESender.Api.Filters;
 using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Business.Services;

@@ -1,10 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Api.IoC;
 using O2NextGen.ESender.Api.Setup;
 

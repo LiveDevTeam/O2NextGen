@@ -1,13 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>e7c66e1c-578d-4339-9f29-38bda0a56f64</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Board\" />
   </ItemGroup>
@@ -15,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="2.1.1">
     </PackageReference>
     <PackageReference Include="Serilog.Settings.Configuration" Version="2.2.0">
@@ -34,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NG.Sdk.NetCore.Models.csproj" />
     <ProjectReference Include="..\O2NextGen.ESender.Business\O2NextGen.ESender.Business.csproj" />
     <ProjectReference Include="..\O2NextGen.ESender.Impl\O2NextGen.ESender.Impl.csproj" />
   </ItemGroup>
