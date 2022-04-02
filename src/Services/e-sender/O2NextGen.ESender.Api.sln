@@ -1,33 +1,37 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1700.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.ESender.Api", "O2NextGen.ESender.Api\O2NextGen.ESender.Api.csproj", "{89FADD48-B8C5-4923-AA5C-D9FFF0B21E87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.ESender.Api", "O2NextGen.ESender.Api\O2NextGen.ESender.Api.csproj", "{89FADD48-B8C5-4923-AA5C-D9FFF0B21E87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.ESender.Business", "O2NextGen.ESender.Business\O2NextGen.ESender.Business.csproj", "{AEB3AF96-A144-41F3-9F9D-715476640C42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.ESender.Business", "O2NextGen.ESender.Business\O2NextGen.ESender.Business.csproj", "{AEB3AF96-A144-41F3-9F9D-715476640C42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.ESender.Impl", "O2NextGen.ESender.Impl\O2NextGen.ESender.Impl.csproj", "{912084D1-1E1A-4170-A345-375621788E06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.ESender.Impl", "O2NextGen.ESender.Impl\O2NextGen.ESender.Impl.csproj", "{912084D1-1E1A-4170-A345-375621788E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.ESender.Data", "O2NextGen.ESender.Data\O2NextGen.ESender.Data.csproj", "{307B36BA-BFB2-4294-93DB-6C2F3455C06A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.ESender.Data", "O2NextGen.ESender.Data\O2NextGen.ESender.Data.csproj", "{307B36BA-BFB2-4294-93DB-6C2F3455C06A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4D4C70FE-9CB3-4D78-837F-120EBAAD651B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Api", "Tests\IntegrationTests.O2NextGen.ESender.Api\IntegrationTests.O2NextGen.ESender.Api.csproj", "{0CA484B4-E79A-43E1-ABAC-30C661DD637D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests.O2NextGen.ESender.Api", "Tests\IntegrationTests.O2NextGen.ESender.Api\IntegrationTests.O2NextGen.ESender.Api.csproj", "{0CA484B4-E79A-43E1-ABAC-30C661DD637D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.ESender.Api", "Tests\Tests.O2NextGen.ESender.Api\Tests.O2NextGen.ESender.Api.csproj", "{0AD9CB1F-539F-4D06-9E19-C724C0350488}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.O2NextGen.ESender.Api", "Tests\Tests.O2NextGen.ESender.Api\Tests.O2NextGen.ESender.Api.csproj", "{0AD9CB1F-539F-4D06-9E19-C724C0350488}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.ESender.Business", "Tests\Tests.O2NextGen.ESender.Business\Tests.O2NextGen.ESender.Business.csproj", "{313FF018-98BB-4229-A2E6-525F1ACA13D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.O2NextGen.ESender.Business", "Tests\Tests.O2NextGen.ESender.Business\Tests.O2NextGen.ESender.Business.csproj", "{313FF018-98BB-4229-A2E6-525F1ACA13D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Business", "Tests\IntegrationTests.O2NextGen.ESender.Business\IntegrationTests.O2NextGen.ESender.Business.csproj", "{C6455931-5324-40B0-B101-0B68A119C1C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests.O2NextGen.ESender.Business", "Tests\IntegrationTests.O2NextGen.ESender.Business\IntegrationTests.O2NextGen.ESender.Business.csproj", "{C6455931-5324-40B0-B101-0B68A119C1C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Data", "Tests\IntegrationTests.O2NextGen.ESender.Data\IntegrationTests.O2NextGen.ESender.Data.csproj", "{FC4C87E2-DD4B-46E0-92EB-62482631A16C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests.O2NextGen.ESender.Data", "Tests\IntegrationTests.O2NextGen.ESender.Data\IntegrationTests.O2NextGen.ESender.Data.csproj", "{FC4C87E2-DD4B-46E0-92EB-62482631A16C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.ESender.Data", "Tests\Tests.O2NextGen.ESender.Data\Tests.O2NextGen.ESender.Data.csproj", "{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.O2NextGen.ESender.Data", "Tests\Tests.O2NextGen.ESender.Data\Tests.O2NextGen.ESender.Data.csproj", "{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.ESender.Impl", "Tests\Tests.O2NextGen.ESender.Impl\Tests.O2NextGen.ESender.Impl.csproj", "{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.O2NextGen.ESender.Impl", "Tests\Tests.O2NextGen.ESender.Impl\Tests.O2NextGen.ESender.Impl.csproj", "{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.ESender.Impl", "Tests\IntegrationTests.O2NextGen.ESender.Impl\IntegrationTests.O2NextGen.ESender.Impl.csproj", "{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests.O2NextGen.ESender.Impl", "Tests\IntegrationTests.O2NextGen.ESender.Impl\IntegrationTests.O2NextGen.ESender.Impl.csproj", "{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDKs", "SDKs", "{3D7F731F-E1D7-43CA-B379-F435AA2D728B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Sdk.NetCore.Models", "..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj", "{76217422-22FA-4223-BA10-05C36117715F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,12 +87,13 @@ Global
 		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76217422-22FA-4223-BA10-05C36117715F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76217422-22FA-4223-BA10-05C36117715F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76217422-22FA-4223-BA10-05C36117715F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76217422-22FA-4223-BA10-05C36117715F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B0B1A6AC-DCC6-4AAB-B22C-8767ECCB3CF2}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0CA484B4-E79A-43E1-ABAC-30C661DD637D} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
@@ -99,5 +104,9 @@ Global
 		{EA85C970-EF8B-4860-B6F2-0C6FDCAD5BCD} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
 		{0A589BE0-F0F3-4E52-BAC3-87F12D31E8CA} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
 		{534D8645-6FA7-4F66-A90F-4C99FD5DED4D} = {4D4C70FE-9CB3-4D78-837F-120EBAAD651B}
+		{76217422-22FA-4223-BA10-05C36117715F} = {3D7F731F-E1D7-43CA-B379-F435AA2D728B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0B1A6AC-DCC6-4AAB-B22C-8767ECCB3CF2}
 	EndGlobalSection
 EndGlobal
