@@ -35,22 +35,26 @@ namespace O2NextGen.SmallTalk.Impl.Services
             {
                 // new session
                 var newChatSession = Creator<ChatSessionModel>.CreateObject();
+                
+                var count = newChatSession.Messages.Count;
+                chatMessage.Id = ++count;
+
                 newChatSession.Messages.Add(chatMessage);
                 chatSession = await _sessionManager.AddSessionAsync(newChatSession, ct);
             }
 
-
             return chatMessage;
         }
 
-        public Task<ChatMessageModel> GetMessageByIdAsync(long id, CancellationToken ct)
+        public async Task<ChatMessageModel> GetMessageByIdAsync(long sessionId, long id, CancellationToken ct)
         {
-            throw new System.NotImplementedException();
+            var result = await _sessionManager.GetMessageByIdAsync(sessionId, id, ct);
+            return result;
         }
 
-        public async Task<IReadOnlyCollection<ChatMessageModel>> GetMessages(CancellationToken ct)
+        public async Task<IReadOnlyCollection<ChatMessageModel>> GetMessages(long idSession,CancellationToken ct)
         {
-            var result = await _sessionManager.GetMessages(ct);
+            var result = await _sessionManager.GetMessages(idSession,ct);
             return result;
         }
 

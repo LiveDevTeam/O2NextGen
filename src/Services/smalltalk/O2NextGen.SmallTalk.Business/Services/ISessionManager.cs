@@ -11,6 +11,7 @@ namespace O2NextGen.SmallTalk.Api.Services
         Task<ChatSessionModel> AddSessionAsync(ChatSessionModel chatSession, CancellationToken ct);
         Task<bool> ExistSessionAsync();
         Task<ChatSessionModel> GetSessionAsync();
-        Task<IReadOnlyCollection<ChatMessageModel>> GetMessages(CancellationToken ct);
+        Task<IReadOnlyCollection<ChatMessageModel>> GetMessages(long idSession, CancellationToken ct);
+        Task<ChatMessageModel> GetMessageByIdAsync(long idSession, long id, CancellationToken ct);
     }
 }

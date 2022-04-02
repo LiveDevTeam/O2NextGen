@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace O2NextGen.SmallTalk.Api.Controllers
 {
-    [Route("api/message")]
+    [Route("api/chat")]
     [ApiController]
-    public class MessageController : ControllerBase
+    public class ChatController : ControllerBase
     {
         #region Fields
 
@@ -25,7 +25,7 @@ namespace O2NextGen.SmallTalk.Api.Controllers
 
         #region Ctors
 
-        public MessageController(IHostingEnvironment environment, ILogger<VersionController> logger,
+        public ChatController(IHostingEnvironment environment, ILogger<VersionController> logger,
             IChatManager chatManager)
         {
             _environment = environment;
@@ -39,19 +39,19 @@ namespace O2NextGen.SmallTalk.Api.Controllers
         #region Methods
 
         [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
+        [Route("session/{sessionId}/messages/{id}")]
+        public async Task<IActionResult> GetByIdAsync(long sessionId, long id, CancellationToken ct)
         {
-            var resultSession = await _chatManager.GetMessageByIdAsync(id, ct);
+            var resultSession = await _chatManager.GetMessageByIdAsync(sessionId, id, ct);
             return Ok(resultSession.ToViewModel());
         }
 
         [HttpGet]
-        [Route("")]
-        public async Task<IActionResult> GetMessagesAsync(CancellationToken ct)
+        [Route("session/{sessionId}/messages")]
+        public async Task<IActionResult> GetMessagesAsync(long sessionId, CancellationToken ct)
         {
-            var resultSession = await _chatManager.GetMessages(ct);
-            return Ok(resultSession.ToViewModel());
+            var resultWithMessages = await _chatManager.GetMessages(sessionId, ct);
+            return Ok(resultWithMessages.ToViewModel());
         }
 
         [HttpPost]

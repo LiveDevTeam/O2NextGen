@@ -43,7 +43,9 @@ namespace O2NextGen.SmallTalk.Impl.Services
     {
         internal static object Create()
         {
-            var chatMessage = new ChatMessageModel();
+            var chatMessage = new ChatMessageModel()
+            {
+            };
             return chatMessage;
         }
     }

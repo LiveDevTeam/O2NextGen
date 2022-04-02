@@ -33,10 +33,37 @@ namespace O2NextGen.SmallTalk.Api.Services
                     },
                     new ChatMessageModel()
                     {
-                        Id=2,
+                        Id=3,
                         SenderId=2,
                         RecipientId=1,
                         Message = "Back Test message 1"
+                    },
+                },
+            },
+                new ChatSessionModel()
+            {        Id = 2,
+                Messages = new List<ChatMessageModel>()
+                {
+                    new ChatMessageModel()
+                    {
+                        Id=1,
+                        SenderId=1,
+                        RecipientId=2,
+                        Message = "s2 Test message"
+                    },
+                    new ChatMessageModel()
+                    {
+                        Id=2,
+                        SenderId=1,
+                        RecipientId=2,
+                        Message = "s2 Test message 2"
+                    },
+                    new ChatMessageModel()
+                    {
+                        Id=3,
+                        SenderId=2,
+                        RecipientId=1,
+                        Message = "s2 Back Test message 1"
                     },
                 }
             }
@@ -77,11 +104,18 @@ namespace O2NextGen.SmallTalk.Api.Services
             throw new System.NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<ChatMessageModel>> GetMessages(CancellationToken ct)
+        public async Task<IReadOnlyCollection<ChatMessageModel>> GetMessages(long idSession, CancellationToken ct)
         {
             await Task.Delay(3000, ct);
-            var messages = Sessions.First().Messages;            
+            var messages = Sessions.Single(_ => _.Id == idSession).Messages;
             return await Task.FromResult<IReadOnlyCollection<ChatMessageModel>>(messages.AsReadOnly());
+        }
+
+        public async Task<ChatMessageModel> GetMessageByIdAsync(long idSession, long id, CancellationToken ct)
+        {
+            await Task.Delay(3000, ct);
+            var message = Sessions.Single(_ => _.Id == idSession).Messages.Single(_ => _.Id == id);
+            return await Task.FromResult(message);
         }
     }
 }
