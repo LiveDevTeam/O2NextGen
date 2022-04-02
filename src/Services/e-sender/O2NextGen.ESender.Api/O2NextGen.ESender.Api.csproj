@@ -38,8 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NG.Sdk.NetCore.Models.csproj" />
+    <ProjectReference Include="..\..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj" />
     <ProjectReference Include="..\O2NextGen.ESender.Business\O2NextGen.ESender.Business.csproj" />
+    <ProjectReference Include="..\O2NextGen.ESender.Data\O2NextGen.ESender.Data.csproj" />
     <ProjectReference Include="..\O2NextGen.ESender.Impl\O2NextGen.ESender.Impl.csproj" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-using O2NextGen.ESender.Api.Models;
+using O2NextGen.CertificateManagement.Api.Models.ESender;
 
 namespace UnitTests.O2NextGen.ESender.Api
 {
