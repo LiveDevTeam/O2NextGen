@@ -46,6 +46,33 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
                             RecipientId = 1
                     }
                 }
+            },
+            new ChatSession() {
+                Id = 2,
+                Messages=new List<ChatMessage>()
+                {
+                    new ChatMessage()
+                    {
+                            Id = 1,
+                            Message = "Tests",
+                            SenderId = 1,
+                            RecipientId = 2
+                    },
+                        new ChatMessage()
+                    {
+                            Id = 2,
+                            Message = "Tests 2",
+                            SenderId = 1,
+                            RecipientId = 2
+                    },
+                        new ChatMessage()
+                    {
+                            Id = 2,
+                            Message = "Tests 2 sender",
+                            SenderId = 2,
+                            RecipientId = 1
+                    }
+                }
             }
         };
 

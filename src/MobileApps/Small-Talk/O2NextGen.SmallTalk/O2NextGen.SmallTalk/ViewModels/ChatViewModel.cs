@@ -33,12 +33,7 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
         public ChatViewModel()
         {
             this.MultipleInitialization = true;
-            Sessions = new ObservableCollection<ChatSession>()
-            {
-                 new ChatSession(){
-                    Id = 1, Name ="Test session", Messages=new List<ChatMessage>()
-                }
-            };
+            Sessions = new ObservableCollection<ChatSession>();
             _chatService = DependencyService.Get<IChatService>();
         }
 
@@ -49,8 +44,7 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
         public override async Task InitializeAsync(IDictionary<string, string> query)
         {
             IsBusy = true;
-            var result = await _chatService.GetSessionsAsync();
-            //Sessions = result;
+            Sessions = await _chatService.GetSessionsAsync();
             IsBusy = false;
         }
         #endregion
