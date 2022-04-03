@@ -100,5 +100,12 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
 
             return new ObservableCollection<ChatMessage>(MockSessions[0].Messages);
         }
+
+        public async Task AddMessageToSessionAsync(string message)
+        {
+            await Task.Delay(10);
+            long index = MockSessions.Count+1;
+            MockSessions[0].Messages.Add(new ChatMessage() { Id = index,Message=message,SenderId=1,RecipientId=2 });
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
         Task<ObservableCollection<ChatSession>> GetSessionsAsync();
         Task<ChatSession> GetSessionAsync();
         Task<ObservableCollection<ChatMessage>> GetMessageAsync();
+        Task AddMessageToSessionAsync(string message);
     }
 }

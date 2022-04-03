@@ -14,7 +14,8 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding Messages}">
+            <ListView ItemsSource="{Binding Messages}" SeparatorVisibility="None"
+                  HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="smalltalk:ChatMessage">
                         <ViewCell>
@@ -26,6 +27,13 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackLayout Grid.Row="1"
+                     Orientation="Horizontal">
+            <Entry Text="{Binding Message}"
+                   
+                   HorizontalOptions="FillAndExpand"></Entry>
+            <Button Text="Send" Command="{Binding SendMsgCommand}"/>
+        </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </baseView:ContentPageBase>

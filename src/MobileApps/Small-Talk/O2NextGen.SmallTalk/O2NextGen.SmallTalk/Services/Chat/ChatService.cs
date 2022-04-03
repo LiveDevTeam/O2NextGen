@@ -7,6 +7,11 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
 {
     public class ChatService : IChatService
     {
+        public Task AddMessageToSessionAsync(string message)
+        {
+            throw new NotImplementedException();
+        }
+
         public void GetByIdMessage(long sessionId, long id)
         {
             throw new NotImplementedException();
