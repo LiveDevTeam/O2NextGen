@@ -14,26 +14,70 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding Messages}" SeparatorVisibility="None"
+            <ListView ItemsSource="{Binding Messages}" SeparatorVisibility="None" 
                   HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="smalltalk:ChatMessage">
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <Grid >
+                                <Grid ColumnDefinitions="*, 40" Margin="10"
+                                  Grid.Row="1"
+                                  >
+                                    <!--<Label Text="{Binding UserName}"/>-->
+                                    <Frame CornerRadius="10"
+                                       HasShadow="True"
+                                       HorizontalOptions="Start"
+                                       Margin="0"
+                                       Grid.Column="0"  
+                                       Padding="10">
+                                        <StackLayout>
+                                            <Label  Margin="0,0,0,0" Text="{Binding Message}" LineBreakMode="WordWrap"/>
+                                            <Label Text="10:18 PM"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+
+                                <Grid ColumnDefinitions="40, *" Margin="10">
+                                    <Label Text="{Binding Id}"/>
+                                    <Frame CornerRadius="10"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       HasShadow="True"
+                                       Margin="0"
+                                       BackgroundColor="LightGray"
+                                       Padding="10">
+                                        <StackLayout>
+                                            <Label  Margin="0,0,0,0" Text="{Binding Message}" LineBreakMode="WordWrap"/>
+                                            <Label Text="10:18 PM"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+
+                                <!--<StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Id}"/>
-                                <Label Text="{Binding Message}"/>
-                            </StackLayout>
+                                <Frame CornerRadius="10"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       HasShadow="True"
+                                       Margin="0"
+                                       BackgroundColor="LightGray"
+                                       Padding="10">
+
+                                    <Label  Margin="10" Text="{Binding Message}" LineBreakMode="WordWrap"/>
+                                </Frame>
+                            </StackLayout>-->
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <StackLayout Grid.Row="1"
                      Orientation="Horizontal">
-            <Entry Text="{Binding Message}"
+                <Entry Text="{Binding Message}"
                    
                    HorizontalOptions="FillAndExpand"></Entry>
-            <Button Text="Send" Command="{Binding SendMsgCommand}"/>
-        </StackLayout>
+                <Button Text="Send" Command="{Binding SendMsgCommand}"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </baseView:ContentPageBase>
