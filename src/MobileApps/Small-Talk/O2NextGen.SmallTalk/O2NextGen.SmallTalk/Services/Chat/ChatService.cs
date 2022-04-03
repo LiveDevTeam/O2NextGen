@@ -1,4 +1,7 @@
-﻿using System;
+﻿using O2NextGen.Sdk.NetCore.Models.smalltalk;
+using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace O2NextGen.SmallTalk.Core.Services.Chat
 {
@@ -10,6 +13,11 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
         }
 
         public void GetMessages(long sessionId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ObservableCollection<ChatSession>> GetSessionsAsync()
         {
             throw new NotImplementedException();
         }
