@@ -87,5 +87,18 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
         {
             throw new NotImplementedException();
         }
+
+        public async Task<ChatSession> GetSessionAsync()
+        {
+            await Task.Delay(10);
+
+            return MockSessions[0];
+        }
+        public async Task<ObservableCollection<ChatMessage>> GetMessageAsync()
+        {
+            await Task.Delay(10);
+
+            return new ObservableCollection<ChatMessage>(MockSessions[0].Messages);
+        }
     }
 }

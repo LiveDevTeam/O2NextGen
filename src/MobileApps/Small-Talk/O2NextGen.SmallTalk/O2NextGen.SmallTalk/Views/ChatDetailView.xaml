@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:ContentPageBase  
+             xmlns:baseView="clr-namespace:O2NextGen.SmallTalk.Core.Views" 
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="O2NextGen.SmallTalk.Core.Views.ChatDetailView"
+              xmlns:viewModelBase="clr-namespace:O2NextGen.SmallTalk.Core.ViewModels.Base" 
+             xmlns:viewmodels="clr-namespace:O2NextGen.SmallTalk.Core.ViewModels" xmlns:smalltalk="clr-namespace:O2NextGen.Sdk.NetCore.Models.smalltalk;assembly=O2NextGen.Sdk.Models"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="viewmodels:ChatDetailViewModel">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Session}"></Label>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Messages}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="smalltalk:ChatMessage">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Id}"/>
+                                <Label Text="{Binding Message}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</baseView:ContentPageBase>

@@ -30,6 +30,7 @@ namespace O2NextGen.SmallTalk.Core.ViewModels.Base
 
             // View models - by default, TinyIoC will register concrete classes as multi-instance.
             Xamarin.Forms.DependencyService.Register<ChatViewModel>();
+            Xamarin.Forms.DependencyService.Register<ChatDetailViewModel>();
 
 
         }

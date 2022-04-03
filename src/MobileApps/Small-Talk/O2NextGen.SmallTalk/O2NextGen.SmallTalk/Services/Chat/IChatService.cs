@@ -10,5 +10,7 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
         void GetMessages(long sessionId);
         void Sessions(long sessionId);
         Task<ObservableCollection<ChatSession>> GetSessionsAsync();
+        Task<ChatSession> GetSessionAsync();
+        Task<ObservableCollection<ChatMessage>> GetMessageAsync();
     }
 }

@@ -10,7 +10,7 @@ namespace O2NextGen.SmallTalk
         {
             InitializeComponent();
             InitApp();
-            MainPage = new ChatView();
+            MainPage = new ChatDetailView();
         }
         private void InitApp()
         {

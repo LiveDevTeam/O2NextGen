@@ -12,7 +12,17 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
             throw new NotImplementedException();
         }
 
+        public Task<ObservableCollection<ChatMessage>> GetMessageAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public void GetMessages(long sessionId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ChatSession> GetSessionAsync()
         {
             throw new NotImplementedException();
         }
