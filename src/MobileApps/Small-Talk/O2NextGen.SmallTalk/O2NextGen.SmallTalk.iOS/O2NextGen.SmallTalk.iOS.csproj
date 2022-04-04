@@ -123,14 +123,14 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\O2NextGen.SmallTalk\O2NextGen.SmallTalk.csproj">
-      <Project>{67BA1B80-01B3-4983-8722-BA8B62695A17}</Project>
-      <Name>O2NextGen.SmallTalk</Name>
+    <ProjectReference Include="..\O2NextGen.SmallTalk\O2NextGen.SmallTalk.Core.csproj">
+      <Project>{4F14E841-3A6D-4797-BC64-70EF972C3A9D}</Project>
+      <Name>O2NextGen.SmallTalk.Core</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

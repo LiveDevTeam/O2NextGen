@@ -1,6 +1,6 @@
-﻿using System;
+﻿using O2NextGen.SmallTalk.Core.ViewModels.Base;
+using O2NextGen.SmallTalk.Core.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace O2NextGen.SmallTalk
 {
@@ -9,20 +9,14 @@ namespace O2NextGen.SmallTalk
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            InitApp();
+            MainPage = new ChatDetailView();
         }
-
-        protected override void OnStart()
+        private void InitApp()
         {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            //_settingsService = ViewModelLocator.Resolve<ISettingsService>();
+            //if (!_settingsService.UseMocks)
+                ViewModelLocator.UpdateDependencies(true);
         }
     }
 }

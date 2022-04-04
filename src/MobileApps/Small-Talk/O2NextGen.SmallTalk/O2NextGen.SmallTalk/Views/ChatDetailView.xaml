@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:ContentPageBase  
+             xmlns:baseView="clr-namespace:O2NextGen.SmallTalk.Core.Views" 
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="O2NextGen.SmallTalk.Core.Views.ChatDetailView"
+              xmlns:viewModelBase="clr-namespace:O2NextGen.SmallTalk.Core.ViewModels.Base" 
+             xmlns:viewmodels="clr-namespace:O2NextGen.SmallTalk.Core.ViewModels" 
+             xmlns:smalltalk="clr-namespace:O2NextGen.Sdk.NetCore.Models.smalltalk;assembly=O2NextGen.Sdk.Models" xmlns:converter="clr-namespace:O2NextGen.SmallTalk.Core.Converters"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="viewmodels:ChatDetailViewModel">
+    <ContentPage.Resources>
+        <converter:OwnerConverter x:Key="OwnerConverter"/>
+        <converter:InversOwnerConverter x:Key="InversOwnerConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Session}"></Label>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Messages}" SeparatorVisibility="None" 
+                  HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="smalltalk:ChatMessage">
+                        <ViewCell>
+                            <Grid RowDefinitions="auto,auto">
+                                <Grid ColumnDefinitions="*, 40" Margin="10" IsVisible="{Binding SenderId,Converter={StaticResource OwnerConverter}}"
+                                  Grid.Row="1"
+                                  >
+                                    <!--<Label Text="{Binding UserName}"/>-->
+                                    <Frame CornerRadius="10"
+                                       HasShadow="True"
+                                       HorizontalOptions="Start"
+                                       Margin="0"
+                                       BackgroundColor="DeepSkyBlue"
+                                       Grid.Column="0"  
+                                       Padding="10">
+                                        <StackLayout>
+                                            <Label  Margin="0,0,0,0" Text="{Binding Message}" LineBreakMode="WordWrap"/>
+                                            <Label Text="10:18 PM"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+
+                                <Grid ColumnDefinitions="40, *" Margin="10" IsVisible="{Binding SenderId,Converter={StaticResource InversOwnerConverter}}">
+                                    <!--<Label Text="{Binding Id}"/>-->
+                                    <Frame CornerRadius="10"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       HasShadow="True"
+                                       Margin="0"
+                                       BackgroundColor="Gray"
+                                       Padding="10">
+                                        <StackLayout>
+                                            <Label  Margin="0,0,0,0" Text="{Binding Message}" LineBreakMode="WordWrap"/>
+                                            <Label Text="10:18 PM"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Grid.Row="1"
+                     Orientation="Horizontal">
+                <Entry Text="{Binding Message}"
+                   
+                   HorizontalOptions="FillAndExpand"></Entry>
+                <Button Text="Send" Command="{Binding SendMsgCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</baseView:ContentPageBase>

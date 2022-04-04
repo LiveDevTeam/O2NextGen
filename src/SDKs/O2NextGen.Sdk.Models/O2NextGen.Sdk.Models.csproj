@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\smalltalk\ChatEvent.cs" Link="smalltalk\ChatEvent.cs" />
+    <Compile Include="..\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\smalltalk\ChatMessage.cs" Link="smalltalk\ChatMessage.cs" />
+    <Compile Include="..\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\smalltalk\ChatMessageViewModel.cs" Link="smalltalk\ChatMessageViewModel.cs" />
+    <Compile Include="..\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\smalltalk\ChatSession.cs" Link="smalltalk\ChatSession.cs" />
+    <Compile Include="..\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\smalltalk\ChatSessionInvite.cs" Link="smalltalk\ChatSessionInvite.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="smalltalk\" />
+  </ItemGroup>
+
+</Project>
