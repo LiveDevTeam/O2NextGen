@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDKs", "SDKs", "{B03A4DA5-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Sdk.NetCore.Models", "..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj", "{011B24B8-B1CA-4585-9862-916BE9A090AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.SmallTalk.SignalrHub", "O2NextGen.SmallTalk.SignalrHub\O2NextGen.SmallTalk.SignalrHub.csproj", "{03A09C6B-B835-4748-839E-33E395D8197C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{011B24B8-B1CA-4585-9862-916BE9A090AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{011B24B8-B1CA-4585-9862-916BE9A090AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{011B24B8-B1CA-4585-9862-916BE9A090AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03A09C6B-B835-4748-839E-33E395D8197C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A09C6B-B835-4748-839E-33E395D8197C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A09C6B-B835-4748-839E-33E395D8197C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A09C6B-B835-4748-839E-33E395D8197C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
