@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="EventHandling\" />
+    <Folder Include="Events\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
