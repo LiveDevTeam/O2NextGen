@@ -36,11 +36,11 @@ namespace O2NextGen.SmallTalk.SignalrHub
             app.UseAuthentication();
             //app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHub<NotificationsHub>("/hub/chathub", 
-                    options => options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransports.All);
-            };
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapHub<NotificationsHub>("/hub/chathub", 
+            //        options => options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransports.All);
+            //};
             //    app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");

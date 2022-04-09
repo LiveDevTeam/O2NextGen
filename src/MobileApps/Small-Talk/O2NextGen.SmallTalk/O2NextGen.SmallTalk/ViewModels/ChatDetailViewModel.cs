@@ -1,7 +1,6 @@
 ﻿using O2NextGen.Sdk.NetCore.Models.smalltalk;
 using O2NextGen.SmallTalk.Core.Services.Chat;
 using O2NextGen.SmallTalk.Core.ViewModels.Base;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -84,7 +83,7 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
         private async Task RelaodData()
         {
             IsBusy = true;
-            Session = await _chatService.GetSessionAsync();
+            //Session = await _chatService.GetSessionAsync();
             Messages = await _chatService.GetMessageAsync();
             IsBusy = false;
         }

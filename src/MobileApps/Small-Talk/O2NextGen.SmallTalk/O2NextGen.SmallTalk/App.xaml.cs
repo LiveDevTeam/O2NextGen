@@ -16,7 +16,7 @@ namespace O2NextGen.SmallTalk
         {
             //_settingsService = ViewModelLocator.Resolve<ISettingsService>();
             //if (!_settingsService.UseMocks)
-                ViewModelLocator.UpdateDependencies(true);
+                ViewModelLocator.UpdateDependencies(false);
         }
     }
 }

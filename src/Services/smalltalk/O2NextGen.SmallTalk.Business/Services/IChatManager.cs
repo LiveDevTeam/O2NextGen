@@ -12,5 +12,6 @@ namespace O2NextGen.SmallTalk.Business.Services
         Task RemoveMessageAsync(long sessionId, long id, CancellationToken ct);
         Task<ChatMessageModel> UpdateMessageAsync(long sessionId, ChatMessageModel chatMessageModel, CancellationToken ct);
         Task<ChatMessageModel> GetMessageByIdAsync(long sessionId, long id, CancellationToken ct);
+        Task GetSession(long sessionId, CancellationToken ct);
     }
 }

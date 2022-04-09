@@ -1,4 +1,5 @@
 ﻿using O2NextGen.SmallTalk.Core.Services.Chat;
+using O2NextGen.SmallTalk.Core.Services.RequestProvider;
 using System;
 using System.Globalization;
 using System.Reflection;
@@ -21,31 +22,38 @@ namespace O2NextGen.SmallTalk.Core.ViewModels.Base
             bindable.SetValue(ViewModelLocator.AutoWireViewModelProperty, value);
         }
 
-        public static bool UseMockService { get; set; } = true;
+        public static bool UseMockService { get; set; } = false;
         static ViewModelLocator()
         {
+            //var settingsService = new SettingsService();
+            var requestProvider = new RequestProvider();
+
             // Services - by default, TinyIoC will register interface registrations as singletons.
             // Xamarin.Forms.DependencyService.RegisterSingleton<IDependencyService>(new Services.Dependency.DependencyService());
+            Xamarin.Forms.DependencyService.RegisterSingleton<IRequestProvider>(requestProvider); 
             Xamarin.Forms.DependencyService.RegisterSingleton<IChatService>(new ChatServiceMock());
 
             // View models - by default, TinyIoC will register concrete classes as multi-instance.
             Xamarin.Forms.DependencyService.Register<ChatViewModel>();
             Xamarin.Forms.DependencyService.Register<ChatDetailViewModel>();
-
+            UseMockService = false;
 
         }
 
         public static void UpdateDependencies(bool useMockServices)
         {
+            var requestProvider = DependencyService.Get<IRequestProvider>();
             // Change injected dependencies
             if (useMockServices)
             {
+                
                 Xamarin.Forms.DependencyService.RegisterSingleton<IChatService>(new ChatServiceMock());
                 UseMockService = true;
             }
             else
             {
-                Xamarin.Forms.DependencyService.RegisterSingleton<IChatService>(new ChatService());
+               
+                Xamarin.Forms.DependencyService.RegisterSingleton<IChatService>(new ChatService(requestProvider));
                 UseMockService = false;
             }
         }
