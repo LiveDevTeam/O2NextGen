@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.SmallTalk.Api.Helpers;
+using System.Threading.Tasks;
 
 namespace O2NextGen.SmallTalk.Api
 {
@@ -32,7 +33,19 @@ namespace O2NextGen.SmallTalk.Api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
+            app.Use(async (context, next) =>
+            {
+                context.Response.OnStarting(() =>
+                {
+                    context.Response.Headers.Add("X-Power-By", "O2NextGen: SmallTalk Api");
+                    return Task.CompletedTask;
+                });
+
+                await next.Invoke();
+            });
+
             app.UseMvc();
         }
     }

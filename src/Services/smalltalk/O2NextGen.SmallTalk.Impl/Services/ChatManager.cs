@@ -22,7 +22,8 @@ namespace O2NextGen.SmallTalk.Impl.Services
         {
             var chatMessage = Creator<ChatMessageModel>.CreateObject();
             chatMessage.Message = chatMessageModel.Message;
-
+            chatMessage.SenderId = chatMessageModel.SenderId;
+            chatMessage.RecipientId = chatMessageModel.RecipientId;
 
             ChatSessionModel chatSession = null;
             //Checking if a session exists or not
@@ -58,6 +59,11 @@ namespace O2NextGen.SmallTalk.Impl.Services
         {
             var result = await _sessionManager.GetMessages(idSession,ct);
             return result;
+        }
+
+        public Task GetSession(long sessionId, CancellationToken ct)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Task RemoveMessageAsync(long sessionId, long id, CancellationToken ct)
