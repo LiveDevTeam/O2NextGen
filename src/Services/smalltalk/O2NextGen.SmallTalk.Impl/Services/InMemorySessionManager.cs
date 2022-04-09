@@ -94,13 +94,13 @@ namespace O2NextGen.SmallTalk.Api.Services
             return await Task.FromResult(chatSession);
         }
 
-        public async Task<bool> ExistSessionAsync(long sessionId,CancellationToken ct)
+        public async Task<bool> ExistSessionAsync(long sessionId, CancellationToken ct)
         {
             var result = Sessions.Any(_ => _.Id == sessionId);
             return await Task.FromResult<bool>(result);
         }
 
-        public async Task<ChatSessionModel> GetSessionAsync(long sessionId,CancellationToken ct)
+        public async Task<ChatSessionModel> GetSessionAsync(long sessionId, CancellationToken ct)
         {
             var result = Sessions.Single(_ => _.Id == sessionId);
             return await Task.FromResult(result);
