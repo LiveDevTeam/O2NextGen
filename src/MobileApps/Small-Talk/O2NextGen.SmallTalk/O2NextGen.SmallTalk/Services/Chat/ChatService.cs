@@ -24,7 +24,10 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
 
             var addMessage = await _requestProvider.PostAsync(uri, new ChatMessage()
             {
-                Message = message,Id = 0,RecipientId=2, SenderId=1
+                Id = 0,
+                Message = message,
+                RecipientId = 2,
+                SenderId = 1
             });
 
             return addMessage;

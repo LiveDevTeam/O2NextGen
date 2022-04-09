@@ -75,9 +75,9 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
         private async Task SendMsgAsync()
         {
             await AddMessageAsync();
-            await RelaodData();
             Message = string.Empty;
             RaisePropertyChanged(() => Messages);
+            await RelaodData();
         }
 
         private async Task RelaodData()
