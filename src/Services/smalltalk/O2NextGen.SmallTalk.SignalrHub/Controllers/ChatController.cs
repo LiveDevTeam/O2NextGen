@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using O2NextGen.SmallTalk.SignalrHub.Hubs;
+using System.Threading.Tasks;
 
 namespace O2NextGen.SmallTalk.SignalrHub.Controllers
 {
@@ -7,16 +9,20 @@ namespace O2NextGen.SmallTalk.SignalrHub.Controllers
     [ApiController]
     public class ChatController : ControllerBase
     {
-        private readonly IChatHub chatHub;
+        private IHubContext<ChatHub> _hubContext;
 
-        public ChatController(IChatHub chatHub)
+        public ChatController(IHubContext<ChatHub> chatHub)
         {
-            this.chatHub = chatHub;
+            this._hubContext = chatHub;
         }
         [HttpGet]
-        public void Test()
+        public async Task<IActionResult> Test()
         {
-            chatHub.UpdateMessages();
+            //await chatHub.UpdateMessages();
+            await _hubContext.Clients
+                .Group("Denis")
+                .SendAsync("OnUpdateMessage");
+            return Ok("Ok");
         }
     }
 }

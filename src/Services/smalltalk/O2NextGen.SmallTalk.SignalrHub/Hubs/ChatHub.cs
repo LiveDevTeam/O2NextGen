@@ -9,15 +9,24 @@ namespace O2NextGen.SmallTalk.SignalrHub.Hubs
     }
     public class ChatHub : Hub, IChatHub
     {
+        string username;
         public async Task NewUserAsync(string username)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, username);
+            this.username = username;
             await base.OnConnectedAsync();
+        }
+
+        public override Task OnConnectedAsync()
+        {
+             
+            return base.OnConnectedAsync();
         }
 
         public async Task UpdateMessages()
         {
-            await Clients.All.SendAsync("OnUpdateMessage");
+           await Clients.Group(username).SendAsync("OnUpdateMessage");
+            //await Groups..All.SendAsync("OnUpdateMessage");
         }
 
         //public override async Task OnConnectedAsync()

@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{64D081A5-7679-4BA4-B1D9-9577379FF16F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.SmallTalk.Api", "O2NextGen.SmallTalk.Api\O2NextGen.SmallTalk.Api.csproj", "{4D3AF6CE-4262-4F0E-9DAC-86A4781C7D96}"
+	ProjectSection(ProjectDependencies) = postProject
+		{03A09C6B-B835-4748-839E-33E395D8197C} = {03A09C6B-B835-4748-839E-33E395D8197C}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests.O2NextGen.SmallTalk.Api", "Tests\IntegrationTests.O2NextGen.SmallTalk.Api\IntegrationTests.O2NextGen.SmallTalk.Api.csproj", "{9BBF5376-E08B-4181-9187-2BE4A8787CF4}"
 EndProject
@@ -27,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDKs", "SDKs", "{B03A4DA5-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Sdk.NetCore.Models", "..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj", "{011B24B8-B1CA-4585-9862-916BE9A090AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.SmallTalk.SignalrHub", "O2NextGen.SmallTalk.SignalrHub\O2NextGen.SmallTalk.SignalrHub.csproj", "{03A09C6B-B835-4748-839E-33E395D8197C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.SmallTalk.SignalrHub", "O2NextGen.SmallTalk.SignalrHub\O2NextGen.SmallTalk.SignalrHub.csproj", "{03A09C6B-B835-4748-839E-33E395D8197C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

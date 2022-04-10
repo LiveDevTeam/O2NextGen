@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.SmallTalk.Api.Helpers;
+using O2NextGen.SmallTalk.Api.Services;
+using Polly;
+using System;
 using System.Threading.Tasks;
 
 namespace O2NextGen.SmallTalk.Api
@@ -20,6 +24,7 @@ namespace O2NextGen.SmallTalk.Api
         {
             services.AddRequiredMvcComponents();
             services.AddBusiness();
+            services.AddApplicationServices(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -49,5 +54,25 @@ namespace O2NextGen.SmallTalk.Api
             app.UseMvc();
         }
     }
-}
+    public static class ServiceCollectionExtensions
+    {
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            //register delegating handlers
+            // services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //register http services
+            services
+                .AddHttpClient<ISignalRService, SignalRService>("Signal-R", client =>
+                {
+                    client.BaseAddress = new Uri(configuration.GetValue<string>("urls:SignalRUrl"));
+                })
+                .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(5, arrempt => TimeSpan.FromSeconds(arrempt * 2)
+                   ));
+
+            return services;
+        }
+    }
+    }
 

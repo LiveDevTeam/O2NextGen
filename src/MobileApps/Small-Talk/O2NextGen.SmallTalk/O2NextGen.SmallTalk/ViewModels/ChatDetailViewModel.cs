@@ -23,7 +23,7 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
 
         #region Commands
         public ICommand SendMsgCommand { get; private set; }
-
+        public ICommand LoadItemsCommand { get; private set; }
         private readonly HubConnection hubConnection;
         #endregion
 
@@ -38,7 +38,7 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
             this.MultipleInitialization = true;
             _chatService = DependencyService.Get<IChatService>();
             SendMsgCommand = new Command(async (item) => await SendMsgAsync());
-
+            LoadItemsCommand = new Command(async () => await RelaodData());
             hubConnection = new HubConnectionBuilder()
                  .WithUrl(GlobalSetting.Instance.HubConnectionURL)
                  .Build();
@@ -84,11 +84,9 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
         #region Methods
         public override async Task InitializeAsync(IDictionary<string, string> query)
         {
-           
-           
             await hubConnection.StartAsync();
             await hubConnection.InvokeAsync("NewUserAsync","Denis");
-
+            await RelaodData();
         }
 
         private async Task SendMsgAsync()

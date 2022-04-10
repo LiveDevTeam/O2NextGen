@@ -1,28 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <UserSecretsId>3e239bd5-b8d6-455f-8e46-ea4782668914</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..\..</DockerfileContext>
-    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.2</TargetFramework>
+		<UserSecretsId>3e239bd5-b8d6-455f-8e46-ea4782668914</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..</DockerfileContext>
+		<DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-	<PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly">
+			<Version>2.2.0</Version>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj" />
-    <ProjectReference Include="..\O2NextGen.SmallTalk.Business\O2NextGen.SmallTalk.Business.csproj" />
-    <ProjectReference Include="..\O2NextGen.SmallTalk.Data\O2NextGen.SmallTalk.Data.csproj" />
-    <ProjectReference Include="..\O2NextGen.SmallTalk.Impl\O2NextGen.SmallTalk.Impl.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj" />
+		<ProjectReference Include="..\O2NextGen.SmallTalk.Business\O2NextGen.SmallTalk.Business.csproj" />
+		<ProjectReference Include="..\O2NextGen.SmallTalk.Data\O2NextGen.SmallTalk.Data.csproj" />
+		<ProjectReference Include="..\O2NextGen.SmallTalk.Impl\O2NextGen.SmallTalk.Impl.csproj" />
+	</ItemGroup>
 
 </Project>

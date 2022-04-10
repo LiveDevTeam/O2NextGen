@@ -6,7 +6,7 @@
              x:Class="O2NextGen.SmallTalk.Core.Views.ChatDetailView"
               xmlns:viewModelBase="clr-namespace:O2NextGen.SmallTalk.Core.ViewModels.Base" 
              xmlns:viewmodels="clr-namespace:O2NextGen.SmallTalk.Core.ViewModels" 
-             xmlns:smalltalk="clr-namespace:O2NextGen.Sdk.NetCore.Models.smalltalk;assembly=O2NextGen.Sdk.Models" xmlns:converter="clr-namespace:O2NextGen.SmallTalk.Core.Converters"
+             xmlns:smalltalk="clr-namespace:O2NextGen.Sdk.NetCore.Models.smalltalk;assembly=O2NextGen.Sdk.Models" xmlns:converter="clr-namespace:O2NextGen.SmallTalk.Core.Converters" xmlns:controls="clr-namespace:O2NextGen.SmallTalk.Core.Controls"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              x:DataType="viewmodels:ChatDetailViewModel">
     <ContentPage.Resources>
@@ -19,9 +19,9 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding Messages}" SeparatorVisibility="None" 
+            <controls:ExtendedListView ItemsSource="{Binding Messages}" SeparatorVisibility="None" x:Name="ItemsListView"
                   HasUnevenRows="True">
-                <ListView.ItemTemplate>
+                <controls:ExtendedListView.ItemTemplate>
                     <DataTemplate x:DataType="smalltalk:ChatMessage">
                         <ViewCell>
                             <Grid RowDefinitions="auto,auto">
@@ -60,8 +60,8 @@
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </controls:ExtendedListView.ItemTemplate>
+            </controls:ExtendedListView>
             <StackLayout Grid.Row="1"
                      Orientation="Horizontal">
                 <Entry Text="{Binding Message}"

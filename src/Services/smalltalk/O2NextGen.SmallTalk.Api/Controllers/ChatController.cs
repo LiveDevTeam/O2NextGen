@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using O2NextGen.Sdk.NetCore.Models.smalltalk;
 using O2NextGen.SmallTalk.Api.Mappings;
+using O2NextGen.SmallTalk.Api.Services;
 using O2NextGen.SmallTalk.Business.Models;
 using O2NextGen.SmallTalk.Business.Services;
 using System.Threading;
@@ -18,6 +19,7 @@ namespace O2NextGen.SmallTalk.Api.Controllers
 
         private readonly IHostingEnvironment _environment;
         private readonly ILogger<VersionController> _logger;
+        private readonly ISignalRService _signalRService;
         private readonly IChatManager _chatManager;
 
         #endregion
@@ -25,11 +27,12 @@ namespace O2NextGen.SmallTalk.Api.Controllers
 
         #region Ctors
 
-        public ChatController(IHostingEnvironment environment, ILogger<VersionController> logger,
+        public ChatController(IHostingEnvironment environment, ILogger<VersionController> logger, ISignalRService signalRService,
             IChatManager chatManager)
         {
             _environment = environment;
             _logger = logger;
+            _signalRService = signalRService;
             _chatManager = chatManager;
         }
 
@@ -71,7 +74,7 @@ namespace O2NextGen.SmallTalk.Api.Controllers
                 throw new System.ArgumentNullException(nameof(chatMessage));
 
             ChatMessageModel resultSession = await _chatManager.AddMessage(sessionId, chatMessage.ToModel(), ct);
-
+            await _signalRService.GetAsync(ct);
             return Ok(resultSession.ToViewModel());
         }
 

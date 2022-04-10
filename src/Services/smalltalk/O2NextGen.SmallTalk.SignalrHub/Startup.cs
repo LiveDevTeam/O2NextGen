@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.SmallTalk.SignalrHub.Hubs;
 
@@ -11,6 +12,11 @@ namespace O2NextGen.SmallTalk.SignalrHub
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var mvcBuilder = services.AddMvcCore(options => {
+                //options.Filters.Add<ApiExceptionFilter>();
+            });
+            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            mvcBuilder.AddJsonFormatters();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
