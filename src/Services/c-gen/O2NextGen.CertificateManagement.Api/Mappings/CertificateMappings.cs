@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using O2NextGen.CertificateManagement.Api.Models;
+using O2NextGen.CertificateManagement.Api.Models.CGen;
 using O2NextGen.CertificateManagement.Business.Models;
 
 namespace O2NextGen.CertificateManagement.Api.Mappings

@@ -1,6 +1,6 @@
 using NUnit.Framework;
+using O2NextGen.CertificateManagement.Api.Models.ESender;
 using O2NextGen.ESender.Api.Mappings;
-using O2NextGen.ESender.Api.Models;
 using O2NextGen.ESender.Business.Models;
 
 namespace UnitTests.O2NextGen.ESender.Api

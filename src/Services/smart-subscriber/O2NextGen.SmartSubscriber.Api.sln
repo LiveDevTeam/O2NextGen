@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.SmartSubscriber.Api", "O2NextGen.SmartSubscriber.Api\O2NextGen.SmartSubscriber.Api.csproj", "{DE15D281-4ACD-482F-9323-BA06E53E86E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.SmartSubscriber.Data", "O2NextGen.SmartSubscriber.Data\O2NextGen.SmartSubscriber.Data.csproj", "{860DF0EC-01B1-4022-BDAD-3ADADD7CAD8E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.SmartSubscriber.Business", "O2NextGen.SmartSubscriber.Business\O2NextGen.SmartSubscriber.Business.csproj", "{246C4D42-4008-402A-8BD2-90250840B906}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.SmartSubscriber.Impl", "O2NextGen.SmartSubscriber.Impl\O2NextGen.SmartSubscriber.Impl.csproj", "{6B83709F-FAF9-4144-8311-58B989FC4767}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BD99560F-E175-44CE-B384-BDF4515C7DB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.SmartSubscriber.Api", "Tests\Tests.O2NextGen.SmartSubscriber.Api\Tests.O2NextGen.SmartSubscriber.Api.csproj", "{20D4431B-5013-45F1-9AF0-47C2CE084D87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.SmartSubscriber.Business", "Tests\Tests.O2NextGen.SmartSubscriber.Business\Tests.O2NextGen.SmartSubscriber.Business.csproj", "{C74D52BB-491F-475B-AE72-E8CC296C6527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.SmartSubscriber.Data", "Tests\Tests.O2NextGen.SmartSubscriber.Data\Tests.O2NextGen.SmartSubscriber.Data.csproj", "{448398BA-496F-4CCD-93C9-B2271C8C6DB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.SmartSubscriber.Impl", "Tests\Tests.O2NextGen.SmartSubscriber.Impl\Tests.O2NextGen.SmartSubscriber.Impl.csproj", "{2CB74D97-F7F9-4920-85FA-38F539BF3949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.SmartSubscriber.Api", "Tests\IntegrationTests.O2NextGen.SmartSubscriber.Api\IntegrationTests.O2NextGen.SmartSubscriber.Api.csproj", "{225EFEC4-B5D6-4886-864A-C0CD23DA709A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE15D281-4ACD-482F-9323-BA06E53E86E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE15D281-4ACD-482F-9323-BA06E53E86E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE15D281-4ACD-482F-9323-BA06E53E86E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE15D281-4ACD-482F-9323-BA06E53E86E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{860DF0EC-01B1-4022-BDAD-3ADADD7CAD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{860DF0EC-01B1-4022-BDAD-3ADADD7CAD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{860DF0EC-01B1-4022-BDAD-3ADADD7CAD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{860DF0EC-01B1-4022-BDAD-3ADADD7CAD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246C4D42-4008-402A-8BD2-90250840B906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246C4D42-4008-402A-8BD2-90250840B906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246C4D42-4008-402A-8BD2-90250840B906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246C4D42-4008-402A-8BD2-90250840B906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B83709F-FAF9-4144-8311-58B989FC4767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B83709F-FAF9-4144-8311-58B989FC4767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B83709F-FAF9-4144-8311-58B989FC4767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B83709F-FAF9-4144-8311-58B989FC4767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20D4431B-5013-45F1-9AF0-47C2CE084D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20D4431B-5013-45F1-9AF0-47C2CE084D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20D4431B-5013-45F1-9AF0-47C2CE084D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20D4431B-5013-45F1-9AF0-47C2CE084D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C74D52BB-491F-475B-AE72-E8CC296C6527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C74D52BB-491F-475B-AE72-E8CC296C6527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C74D52BB-491F-475B-AE72-E8CC296C6527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C74D52BB-491F-475B-AE72-E8CC296C6527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{448398BA-496F-4CCD-93C9-B2271C8C6DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{448398BA-496F-4CCD-93C9-B2271C8C6DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{448398BA-496F-4CCD-93C9-B2271C8C6DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{448398BA-496F-4CCD-93C9-B2271C8C6DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CB74D97-F7F9-4920-85FA-38F539BF3949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CB74D97-F7F9-4920-85FA-38F539BF3949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CB74D97-F7F9-4920-85FA-38F539BF3949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CB74D97-F7F9-4920-85FA-38F539BF3949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{225EFEC4-B5D6-4886-864A-C0CD23DA709A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{225EFEC4-B5D6-4886-864A-C0CD23DA709A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{225EFEC4-B5D6-4886-864A-C0CD23DA709A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{225EFEC4-B5D6-4886-864A-C0CD23DA709A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{20D4431B-5013-45F1-9AF0-47C2CE084D87} = {BD99560F-E175-44CE-B384-BDF4515C7DB6}
+		{C74D52BB-491F-475B-AE72-E8CC296C6527} = {BD99560F-E175-44CE-B384-BDF4515C7DB6}
+		{448398BA-496F-4CCD-93C9-B2271C8C6DB1} = {BD99560F-E175-44CE-B384-BDF4515C7DB6}
+		{2CB74D97-F7F9-4920-85FA-38F539BF3949} = {BD99560F-E175-44CE-B384-BDF4515C7DB6}
+		{225EFEC4-B5D6-4886-864A-C0CD23DA709A} = {BD99560F-E175-44CE-B384-BDF4515C7DB6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {926D1FBB-9A45-4C4B-9FDD-9CC960F32CA7}
+	EndGlobalSection
+EndGlobal

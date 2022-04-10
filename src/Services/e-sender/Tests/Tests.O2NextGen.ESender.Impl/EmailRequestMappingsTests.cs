@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using NUnit.Framework;
+using O2NextGen.CertificateManagement.Api.Models.ESender;
 using O2NextGen.ESender.Api.Extensions;
-using O2NextGen.ESender.Api.Models;
 using O2NextGen.ESender.Business.Models;
 using O2NextGen.ESender.Data.Entities;
 using O2NextGen.ESender.Impl.Mappings;
