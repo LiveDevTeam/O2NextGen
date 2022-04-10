@@ -1,6 +1,8 @@
-﻿using O2NextGen.Sdk.NetCore.Models.smalltalk;
+﻿using Microsoft.AspNetCore.SignalR.Client;
+using O2NextGen.Sdk.NetCore.Models.smalltalk;
 using O2NextGen.SmallTalk.Core.Services.Chat;
 using O2NextGen.SmallTalk.Core.ViewModels.Base;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -16,10 +18,13 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
         private ChatSession session;
         private ObservableCollection<ChatMessage> messages;
         private string message;
+
         #endregion
 
         #region Commands
         public ICommand SendMsgCommand { get; private set; }
+
+        private readonly HubConnection hubConnection;
         #endregion
 
         #region Props
@@ -33,6 +38,18 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
             this.MultipleInitialization = true;
             _chatService = DependencyService.Get<IChatService>();
             SendMsgCommand = new Command(async (item) => await SendMsgAsync());
+
+            hubConnection = new HubConnectionBuilder()
+                 .WithUrl(GlobalSetting.Instance.HubConnectionURL)
+                 .Build();
+
+            hubConnection.On("OnUpdateMessage", async () =>
+            {
+                Console.WriteLine("TestMessage");
+                await RelaodData();
+            });
+
+
         }
 
         public ChatSession Session
@@ -68,8 +85,10 @@ namespace O2NextGen.SmallTalk.Core.ViewModels
         public override async Task InitializeAsync(IDictionary<string, string> query)
         {
            
-            await RelaodData();
-            
+           
+            await hubConnection.StartAsync();
+            await hubConnection.InvokeAsync("NewUserAsync","Denis");
+
         }
 
         private async Task SendMsgAsync()

@@ -26,8 +26,8 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
             {
                 Id = 0,
                 Message = message,
-                RecipientId = 2,
-                SenderId = 1
+                RecipientId = 1,
+                SenderId = 2
             });
 
             return addMessage;

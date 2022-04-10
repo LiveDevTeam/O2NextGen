@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using O2NextGen.SmallTalk.SignalrHub.Hubs;
 
 namespace O2NextGen.SmallTalk.SignalrHub
 {
@@ -19,6 +20,7 @@ namespace O2NextGen.SmallTalk.SignalrHub
                     .SetIsOriginAllowed((host) => true)
                     .AllowCredentials());
             });
+            services.AddSingleton<IChatHub,ChatHub>();
             services.AddSignalR();
         }
 
@@ -29,13 +31,27 @@ namespace O2NextGen.SmallTalk.SignalrHub
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            //else
+            //{
+            //    app.UseHsts();
+            //}
             app.UseCors("CorsPolicy");
+          
             //app.UseRouting();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
             //app.UseAuthorization();
-
+            app.UseSignalR((routes) =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+            });
+            app.UseMvc();
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //    endpoints.MapHub<SignalRtcHub>("/signalrtc");
+            //    endpoints.MapHub<O2Hub>("/o2hub");
+            //});
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapHub<NotificationsHub>("/hub/chathub", 

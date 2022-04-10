@@ -4,18 +4,32 @@ using System.Threading.Tasks;
 
 namespace O2NextGen.SmallTalk.SignalrHub.Hubs
 {
-    public class ChatHub : Hub
+    public interface IChatHub {
+        Task UpdateMessages();
+    }
+    public class ChatHub : Hub, IChatHub
     {
-        public override async Task OnConnectedAsync()
+        public async Task NewUserAsync(string username)
         {
-            await Groups.AddToGroupAsync(Context.ConnectionId, Context.User.Identity.Name);
+            await Groups.AddToGroupAsync(Context.ConnectionId, username);
             await base.OnConnectedAsync();
         }
 
-        public override async Task OnDisconnectedAsync(Exception ex)
+        public async Task UpdateMessages()
         {
-            await Groups.RemoveFromGroupAsync(Context.ConnectionId, Context.User.Identity.Name);
-            await base.OnDisconnectedAsync(ex);
+            await Clients.All.SendAsync("OnUpdateMessage");
         }
+
+        //public override async Task OnConnectedAsync()
+        //{
+        //    await Groups.AddToGroupAsync(Context.ConnectionId, Context.User.Identity.Name);
+        //    await base.OnConnectedAsync();
+        //}
+
+        //public override async Task OnDisconnectedAsync(Exception ex)
+        //{
+        //    await Groups.RemoveFromGroupAsync(Context.ConnectionId, Context.User.Identity.Name);
+        //    await base.OnDisconnectedAsync(ex);
+        //}
     }
 }
