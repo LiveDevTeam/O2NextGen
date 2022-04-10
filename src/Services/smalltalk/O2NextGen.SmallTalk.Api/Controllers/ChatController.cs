@@ -54,6 +54,14 @@ namespace O2NextGen.SmallTalk.Api.Controllers
             return Ok(resultWithMessages.ToViewModel());
         }
 
+        //[HttpGet]
+        //[Route("session/{sessionId}")]
+        //public async Task<IActionResult> GetSessionsAsync(long sessionId, CancellationToken ct)
+        //{
+        //    var resultWithMessages = await _chatManager.GetSession(sessionId, ct);
+        //    return Ok(resultWithMessages.ToViewModel());
+        //}
+
         [HttpPost]
         [HttpPut]
         [Route("session/{sessionId}/messages")]

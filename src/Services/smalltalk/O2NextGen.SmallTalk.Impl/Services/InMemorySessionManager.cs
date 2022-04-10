@@ -82,13 +82,13 @@ namespace O2NextGen.SmallTalk.Api.Services
         #endregion
         public async Task<IReadOnlyCollection<ChatSessionModel>> GetAllAsync(CancellationToken ct)
         {
-            await Task.Delay(3000, ct);
+            await Task.Delay(1, ct);
             return await Task.FromResult<IReadOnlyCollection<ChatSessionModel>>(Sessions.AsReadOnly());
         }
 
         public async Task<ChatSessionModel> AddSessionAsync(ChatSessionModel chatSession, CancellationToken ct)
         {
-            await Task.Delay(3000, ct);
+            await Task.Delay(1, ct);
             chatSession.Id = ++_currentId;
             Sessions.Add(chatSession);
             return await Task.FromResult(chatSession);
@@ -108,14 +108,14 @@ namespace O2NextGen.SmallTalk.Api.Services
 
         public async Task<IReadOnlyCollection<ChatMessageModel>> GetMessages(long idSession, CancellationToken ct)
         {
-            await Task.Delay(3000, ct);
+            await Task.Delay(1, ct);
             var messages = Sessions.Single(_ => _.Id == idSession).Messages;
             return await Task.FromResult<IReadOnlyCollection<ChatMessageModel>>(messages.AsReadOnly());
         }
 
         public async Task<ChatMessageModel> GetMessageByIdAsync(long idSession, long id, CancellationToken ct)
         {
-            await Task.Delay(3000, ct);
+            await Task.Delay(1, ct);
             var message = Sessions.Single(_ => _.Id == idSession).Messages.Single(_ => _.Id == id);
             return await Task.FromResult(message);
         }

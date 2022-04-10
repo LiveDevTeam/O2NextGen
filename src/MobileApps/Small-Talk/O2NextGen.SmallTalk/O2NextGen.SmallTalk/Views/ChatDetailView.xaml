@@ -26,8 +26,7 @@
                         <ViewCell>
                             <Grid RowDefinitions="auto,auto">
                                 <Grid ColumnDefinitions="*, 40" Margin="10" IsVisible="{Binding SenderId,Converter={StaticResource OwnerConverter}}"
-                                  Grid.Row="1"
-                                  >
+                                  Grid.Row="1">
                                     <!--<Label Text="{Binding UserName}"/>-->
                                     <Frame CornerRadius="10"
                                        HasShadow="True"

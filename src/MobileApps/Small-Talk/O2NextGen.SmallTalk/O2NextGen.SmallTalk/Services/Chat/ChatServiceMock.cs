@@ -13,12 +13,12 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
             throw new NotImplementedException();
         }
 
-        public void GetMessages(long sessionId)
+        public void GetMessagesAsync(long sessionId)
         {
             throw new NotImplementedException();
         }
 
-        private ObservableCollection<ChatSession> MockSessions = new ObservableCollection<ChatSession>
+        private ObservableCollection<ChatSession> _mockSessions = new ObservableCollection<ChatSession>
         {
             new ChatSession() {
                 Id = 1,
@@ -35,7 +35,6 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
                     {
                             Id = 2,
                             Message = "Tests 2",
-                            SenderId = 1,
                             RecipientId = 2
                     },
                         new ChatMessage()
@@ -80,7 +79,7 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
         {
             await Task.Delay(10);
 
-            return MockSessions;
+            return _mockSessions;
         }
 
         public void Sessions(long sessionId)
@@ -92,20 +91,22 @@ namespace O2NextGen.SmallTalk.Core.Services.Chat
         {
             await Task.Delay(10);
 
-            return MockSessions[0];
+            return _mockSessions[0];
         }
         public async Task<ObservableCollection<ChatMessage>> GetMessageAsync()
         {
             await Task.Delay(10);
 
-            return new ObservableCollection<ChatMessage>(MockSessions[0].Messages);
+            return new ObservableCollection<ChatMessage>(_mockSessions[0].Messages);
         }
 
-        public async Task AddMessageToSessionAsync(string message)
+        public async Task<ChatMessage> AddMessageToSessionAsync(string message)
         {
             await Task.Delay(10);
-            long index = MockSessions.Count+1;
-            MockSessions[0].Messages.Add(new ChatMessage() { Id = index,Message=message,SenderId=1,RecipientId=2 });
+            long index = _mockSessions.Count + 1;
+            var addMessage = new ChatMessage() { Id = index, Message = message, SenderId = 1, RecipientId = 2 };
+            _mockSessions[0].Messages.Add(addMessage);
+            return addMessage;
         }
     }
 }
