@@ -1,5 +1,4 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 
 namespace IntegrationTests.O2NextGen.ESender.Impl
 {

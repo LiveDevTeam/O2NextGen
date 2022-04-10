@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using O2NextGen.SmallTalk.Api.Helpers;
+using O2NextGen.SmallTalk.Api.Services;
+using Polly;
+using System;
+using System.Threading.Tasks;
 
 namespace O2NextGen.SmallTalk.Api
 {
@@ -22,13 +20,13 @@ namespace O2NextGen.SmallTalk.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddRequiredMvcComponents();
+            services.AddBusiness();
+            services.AddApplicationServices(Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -40,9 +38,41 @@ namespace O2NextGen.SmallTalk.Api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
+            app.Use(async (context, next) =>
+            {
+                context.Response.OnStarting(() =>
+                {
+                    context.Response.Headers.Add("X-Power-By", "O2NextGen: SmallTalk Api");
+                    return Task.CompletedTask;
+                });
+
+                await next.Invoke();
+            });
+
             app.UseMvc();
         }
     }
-}
+    public static class ServiceCollectionExtensions
+    {
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            //register delegating handlers
+            // services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //register http services
+            services
+                .AddHttpClient<ISignalRService, SignalRService>("Signal-R", client =>
+                {
+                    client.BaseAddress = new Uri(configuration.GetValue<string>("urls:SignalRUrl"));
+                })
+                .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(5, arrempt => TimeSpan.FromSeconds(arrempt * 2)
+                   ));
+
+            return services;
+        }
+    }
+    }
 

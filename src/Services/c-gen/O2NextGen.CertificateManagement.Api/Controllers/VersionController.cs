@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -7,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace O2NextGen.CertificateManagement.Api.Controllers
 {
-    
+
     [AllowAnonymous]
     public class VersionController:ControllerBase
     {

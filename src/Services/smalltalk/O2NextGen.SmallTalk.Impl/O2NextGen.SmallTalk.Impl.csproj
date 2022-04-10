@@ -4,4 +4,8 @@
         <TargetFramework>netcoreapp2.2</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\O2NextGen.SmallTalk.Business\O2NextGen.SmallTalk.Business.csproj" />
+    </ItemGroup>
+
 </Project>
