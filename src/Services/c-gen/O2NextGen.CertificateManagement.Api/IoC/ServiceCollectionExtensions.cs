@@ -33,6 +33,7 @@ namespace O2NextGen.CertificateManagement.Api.IoC
             services.AddTransient<ApiExceptionFilter>();
 
             var mvcBuilder = services.AddMvcCore(options => { options.Filters.Add<ApiExceptionFilter>(); });
+            mvcBuilder.AddApiExplorer(); //for swagger
             mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             mvcBuilder.AddJsonFormatters();
             return services;

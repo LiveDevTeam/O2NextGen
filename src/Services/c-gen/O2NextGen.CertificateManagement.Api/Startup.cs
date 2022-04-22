@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.CertificateManagement.Api.Setup;
 using O2NextGen.CertificateManagement.Api.Helpers;
 using O2NextGen.CertificateManagement.Api.IoC;
+using Swashbuckle.AspNetCore.Swagger;
 
 [assembly: ApiController]
 namespace O2NextGen.CertificateManagement.Api
@@ -28,6 +29,17 @@ namespace O2NextGen.CertificateManagement.Api
         {
             services.AddRequiredMvcComponents();
             services.AddBusiness();
+            services.AddSwaggerGen(options =>
+            {
+                options.DescribeAllEnumsAsStrings();
+                options.SwaggerDoc("v1",new Info()
+                {
+                    Title = "O2NextGen Platform. C-Gen HTTP API",
+                    Version = "v1",
+                    Description = "C-Gen API Service. The service allows you to create certificates",
+                    TermsOfService = "Terms of Service"
+                });
+            });
             services.AddConfigEf(AppConfiguration);
             services.ConfigurePOCO<UrlsConfig>(AppConfiguration.GetSection("Urls"));
         }
@@ -58,7 +70,11 @@ namespace O2NextGen.CertificateManagement.Api
             }
             
             app.UseStaticFiles();
-            
+            app.UseSwagger()
+                .UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint($"/swagger/v1/swagger.json", "C-Gen API V1");
+                });
             app.Use(async (context, next) =>
             {
                 context.Response.OnStarting(() =>
