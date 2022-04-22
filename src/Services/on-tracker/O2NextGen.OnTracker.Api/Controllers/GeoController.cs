@@ -8,11 +8,11 @@ namespace O2NetGen.OnTracker.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class GeoController : ControllerBase
     {
         private readonly IGeoIpAddressResolver _geoIpAddressResolver;
 
-        public ValuesController(IGeoIpAddressResolver geoIpAddressResolver)
+        public GeoController(IGeoIpAddressResolver geoIpAddressResolver)
         {
             _geoIpAddressResolver = geoIpAddressResolver;
         }

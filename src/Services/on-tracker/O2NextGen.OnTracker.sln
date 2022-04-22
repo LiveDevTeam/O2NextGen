@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{897A7BA2-3AAB-4D74-BA13-E6AEF977AE98}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Tracker.DbUtility", "O2.Tracker.DbUtility\O2NextGen.Tracker.DbUtility.csproj", "{77D9E353-F5AE-440B-8EE8-70EBB92099AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Tracker.DbUtility", "O2NextGen.Tracker.DbUtility\O2NextGen.Tracker.DbUtility.csproj", "{77D9E353-F5AE-440B-8EE8-70EBB92099AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NetGen.OnTracker.Api", "O2.OnTracker.Api\O2NetGen.OnTracker.Api.csproj", "{2288664B-04A5-4C80-8685-2AF877F5D335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NetGen.OnTracker.Api", "O2NextGen.OnTracker.Api\O2NextGen.OnTracker.Api.csproj", "{2288664B-04A5-4C80-8685-2AF877F5D335}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.OnTracker.Data", "O2NextGen.OnTracker.Data\O2NextGen.OnTracker.Data.csproj", "{23CB3AC5-E48E-4A46-B5F7-8FB1F0F00A71}"
 EndProject

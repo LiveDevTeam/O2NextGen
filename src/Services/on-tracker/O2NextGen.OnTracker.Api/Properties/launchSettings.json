@@ -3,7 +3,7 @@
     "O2.OnTracker.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "swagger",
       "applicationUrl": "https://localhost:57549;http://localhost:43192",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
