@@ -8,6 +8,7 @@ using O2NextGen.SmallTalk.Api.Services;
 using Polly;
 using System;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace O2NextGen.SmallTalk.Api
 {
@@ -24,6 +25,17 @@ namespace O2NextGen.SmallTalk.Api
         {
             services.AddRequiredMvcComponents();
             services.AddBusiness();
+            services.AddSwaggerGen(options =>
+            {
+                options.DescribeAllEnumsAsStrings();
+                options.SwaggerDoc("v1", new Info()
+                {
+                    Title = "O2NextGen Platform. SmallTalk HTTP API",
+                    Version = "v1",
+                    Description = "SmallTalk API Service. The service allows you to create chats",
+                    TermsOfService = "Terms of Service"
+                });
+            });
             services.AddApplicationServices(Configuration);
         }
 
@@ -39,12 +51,14 @@ namespace O2NextGen.SmallTalk.Api
             }
 
             app.UseStaticFiles();
+            app.UseSwagger()
+                .UseSwaggerUI(c => { c.SwaggerEndpoint($"/swagger/v1/swagger.json", "SmallTalk API V1"); });
 
             app.Use(async (context, next) =>
             {
                 context.Response.OnStarting(() =>
                 {
-                    context.Response.Headers.Add("X-Power-By", "O2NextGen: SmallTalk Api");
+                    context.Response.Headers.Add("X-Power-By", "O2NextGen: SmallTalk API");
                     return Task.CompletedTask;
                 });
 
@@ -54,9 +68,11 @@ namespace O2NextGen.SmallTalk.Api
             app.UseMvc();
         }
     }
+
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services,
+            IConfiguration configuration)
         {
             //register delegating handlers
             // services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
@@ -64,15 +80,13 @@ namespace O2NextGen.SmallTalk.Api
 
             //register http services
             services
-                .AddHttpClient<ISignalRService, SignalRService>("Signal-R", client =>
-                {
-                    client.BaseAddress = new Uri(configuration.GetValue<string>("urls:SignalRUrl"));
-                })
-                .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(5, arrempt => TimeSpan.FromSeconds(arrempt * 2)
-                   ));
+                .AddHttpClient<ISignalRService, SignalRService>("Signal-R",
+                    client => { client.BaseAddress = new Uri(configuration.GetValue<string>("urls:SignalRUrl")); })
+                .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(5,
+                    arrempt => TimeSpan.FromSeconds(arrempt * 2)
+                ));
 
             return services;
         }
     }
-    }
-
+}
