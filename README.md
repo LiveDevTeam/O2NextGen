@@ -213,6 +213,11 @@ build number - Build Number
                 sample: 1.1.0.1 like (1.1-a.1)
               1 - beta
                 sample: 1.1.1.2 like (1.1-b.2)
+                
+                
+                
+                
+                %LocalAppData%\Microsoft\VSCommon\OnlineLicensing
               2 - release candidate
                 sample: 1.1.2.1 like (1.1-rc.1)
               3 - release
