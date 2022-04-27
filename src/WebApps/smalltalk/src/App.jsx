@@ -14,14 +14,15 @@ import iconAttach from './assets/attachment_black_24dp.svg';
 import iconSend from './assets/send_black_24dp.svg';
 import iconEmo from './assets/insert_emoticon_black_24dp.svg';
 import iconAvatar from './assets/avatar-1.jpeg';
+import iconDenisAvatar from './assets/Denis_prox.jpg';
 function App() {
   const [connection, setConnection] = useState(null);
   const messageRef = useRef();
 
   const [messages, setMessages] = useState([
-    { id: 1, message: 'denis prokhorchik' },
-    { id: 2, message: 'denis prokhorchik2' },
-    { id: 3, message: 'denis prokhorchik2' }
+    { id: 1, message: 'it is me', senderId: 1, recipientId: 2, },
+    { id: 2, message: 'Who?', senderId: 2, recipientId: 1, },
+    { id: 3, message: 'denis prokhorchik2', senderId: 1, recipientId: 2, },
   ])
 
   const [message, setMessage] = useState('')
@@ -57,7 +58,7 @@ function App() {
   }
   async function sendMessage() {
     try {
-      const newMessage = { id: 1, SenderId: 1, RecipientId: 2, Message: message };
+      const newMessage = { id: 1, senderId: 1, recipientId: 2, message: message };
       await axios.post("https://api-smalltalk.o2bus.com/api/chat/session/1/messages",
         newMessage
       )
@@ -118,7 +119,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="w-60 h-screen bg-gray-100">
+      <div className="w-60 h-screen bg-gray-100 border-b-2 border-gray-500">
         <div className="text-xl p-3">
           Chats
         </div>
@@ -132,7 +133,7 @@ function App() {
 
         <div className="flex">
           <div className="p-2">
-            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
+            <img className="w-8 h-8 rounded-full" src={iconDenisAvatar} alt="Denis" />
             <div className="w-3 h-3 relative left-6 bottom-3 bg-green-300 rounded-full"></div>
             <div className="text-gray-500 text-xm pt-1">Denis</div>
           </div>
@@ -162,18 +163,21 @@ function App() {
         <div className="w-full h-14 bg-white">
           <div>
             <div className="p-2 flex">
-              <div>
-                <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
+              <div className="pl-2">
+                <img className="w-9 h-9 rounded-full" src={iconDenisAvatar} alt="Denis" />
                 <div className="w-3 h-3 relative left-6 bottom-3 bg-green-300 rounded-full"></div>
               </div>
-              <div className="text-gray-500 text-xm pt-1 ml-2">Denis</div>
+              <div className="pl-2">
+                <div className="text-gray-500 text-xm pt-1 ml-2">Denis Prokharchyk</div>
+                <div className="text-gray-700 text-xs ml-2">online</div>
+              </div>
             </div>
           </div>
 
         </div>
         <div className="w-full flex-grow" >
           <div ref={messageRef}>
-            <div className="overflow-y-scroll">
+            <div className="overflow-y-scroll p-4">
               <div >
                 {messages.map((item) =>
                   <MessageItem message={item} key={item.id}></MessageItem>
@@ -182,50 +186,47 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="w-full h-14 bg-green-100 px-3">
+        <div className="w-full h-16 flex px-3">
 
-          <form onSubmit={e => {
-            sendMessage(message)
+          <input className="flex-grow focus:outline-none" type="text" placeholder="Type your message..." value={message} onChange={(e) => {
+            setMessage(e.target.value)
+          }} />
 
-          }}>
-            <input className="flex-grow w-10/12 focus:outline-none " type="text" placeholder="write you message..." value={message} onChange={(e) => {
-              setMessage(e.target.value)
-            }} />
+          <div className="flex">
+            <button className="btn bg-blue-500 m-2 py-2 px-4 rounded-full" onClick={(e) => {
+              e.preventDefault()
+              sendMessage()
+            }}>  <img className="w-5" src={iconAttach} alt="" />
+            </button>
+          </div>
 
-            <button className="btn bg-blue-500 m-1 py-2 px-4" onClick={(e) => {
+          <div className="flex">
+            <button className="btn bg-blue-500 m-2 py-2 px-4 rounded-full" onClick={(e) => {
               e.preventDefault()
               sendMessage()
             }}>
-              <img src={iconAttach} alt="" />
+              <img className="w-5" src={iconEmo} alt="" />
             </button>
-
-            <button className="btn bg-blue-500 m-1 py-2 px-4" onClick={(e) => {
+          </div> 
+          
+          <div className="flex">
+            <button className="btn bg-blue-500 m-2 py-2 px-4 rounded-full" onClick={(e) => {
               e.preventDefault()
               sendMessage()
             }}>
-              <img src={iconEmo} alt="" />
+              <img className="w-5" src={iconSend} alt="" />
             </button>
-
-            <button className="btn bg-blue-500 m-1 py-2 px-4" onClick={(e) => {
-              e.preventDefault()
-              sendMessage()
-            }}>
-              <img src={iconSend} alt="" />
-            </button>
-
-
-          </form>
-
+          </div>
 
         </div>
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <button className="btn bg-red-300 m-1 py-2 px-4" onClick={fetchData}> Get Messages</button>
-        </div>
-      </div>
+        </div> */}
+      </div >
 
 
 
-    </div>
+    </div >
   );
 }
 ReactDOM.render(<App />, document.getElementById("app"));
