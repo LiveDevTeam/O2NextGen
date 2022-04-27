@@ -134,7 +134,9 @@ function App() {
         <div className="flex">
           <div className="p-2">
             <img className="w-8 h-8 rounded-full" src={iconDenisAvatar} alt="Denis" />
-            <div className="w-3 h-3 relative left-6 bottom-3 bg-green-300 rounded-full"></div>
+            <div className="w-4 h-4 relative left-5 bottom-3 bg-gray-100 rounded-full"></div>
+            <div className="w-2 h-2 relative left-6 bottom-6 bg-green-500 rounded-full"></div>
+            
             <div className="text-gray-500 text-xm pt-1">Denis</div>
           </div>
 
@@ -165,19 +167,26 @@ function App() {
             <div className="p-2 flex">
               <div className="pl-2">
                 <img className="w-9 h-9 rounded-full" src={iconDenisAvatar} alt="Denis" />
-                <div className="w-3 h-3 relative left-6 bottom-3 bg-green-300 rounded-full"></div>
+                <div className="w-4 h-4 relative left-5 bottom-3 bg-white rounded-full"></div>
+                <div className="w-2 h-2 relative left-6 bottom-6 bg-green-500 rounded-full"></div>
               </div>
               <div className="pl-2">
-                <div className="text-gray-500 text-xm pt-1 ml-2">Denis Prokharchyk</div>
+                <div className="text-gray-800 text-xm pt-1 ml-2 font-bold">Denis Prokharchyk</div>
                 <div className="text-gray-700 text-xs ml-2">online</div>
               </div>
+
             </div>
           </div>
+          
 
         </div>
         <div className="w-full flex-grow" >
           <div ref={messageRef}>
-            <div className="overflow-y-scroll p-4">
+            <div className="flex overflow-y-auto flex-col-reverse p-4" style={{
+
+              minHeight: '10%',
+              maxHeight: '85vh',
+            }}>
               <div >
                 {messages.map((item) =>
                   <MessageItem message={item} key={item.id}></MessageItem>
@@ -207,8 +216,8 @@ function App() {
             }}>
               <img className="w-5" src={iconEmo} alt="" />
             </button>
-          </div> 
-          
+          </div>
+
           <div className="flex">
             <button className="btn bg-blue-500 m-2 py-2 px-4 rounded-full" onClick={(e) => {
               e.preventDefault()

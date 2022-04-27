@@ -20,7 +20,8 @@ const MessageItem = (props) => {
 
                     <div className="p-2">
                         <img className="w-8 h-8 rounded-full" src={iconDenisAvatar} alt="Denis" />
-                        <div className="w-3 h-3 relative left-6 bottom-3 bg-green-300 rounded-full"></div>
+                        <div className="w-4 h-4 relative left-5 bottom-3 bg-white rounded-full"></div>
+                        <div className="w-2 h-2 relative left-6 bottom-6 bg-red-500 rounded-full"></div>
                     </div>
 
                     <div className="m-2 bg-gray-100 p-3 items-start flex-colq rounded-tl-lg rounded-tr-lg rounded-br-lg">
@@ -36,7 +37,7 @@ const MessageItem = (props) => {
                 </div>
                 :
                 <div className="flex justify-end m-8">
-                    <div className="bg-blue-600 p-3 items-end flex-col rounded-tl-lg rounded-tr-lg rounded-bl-lg ">
+                    <div className="bg-blue-500 p-3 items-end flex-col rounded-tl-lg rounded-tr-lg rounded-bl-lg ">
                         {/* < p > sender: {props.message.senderId}</p >
                     <p>recipient: {props.message.recipientId}</p> */}
                         <p className='text-sm text-white'>me (<strong>{props.message.recipientId}</strong>)</p>
@@ -47,7 +48,8 @@ const MessageItem = (props) => {
                     </div >
                     <div className="p-2">
                         <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
-                        <div className="w-3 h-3 relative left-6 bottom-3 bg-green-300 rounded-full"></div>
+                        <div className="w-4 h-4 relative left-5 bottom-3 bg-white rounded-full"></div>
+                        <div className="w-2 h-2 relative left-6 bottom-6 bg-green-500 rounded-full"></div>
 
                     </div>
                 </div>
