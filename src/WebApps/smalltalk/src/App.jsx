@@ -15,6 +15,7 @@ import iconSend from './assets/send_black_24dp.svg';
 import iconEmo from './assets/insert_emoticon_black_24dp.svg';
 import iconAvatar from './assets/avatar-1.jpeg';
 import iconDenisAvatar from './assets/Denis_prox.jpg';
+import logo from './assets/SmallTalk-Logo_no_signature.png'
 function App() {
   const [connection, setConnection] = useState(null);
   const messageRef = useRef();
@@ -80,7 +81,7 @@ function App() {
     <div className="flex">
       <div className="w-14 h-screen flex flex-col items-center justify-between">
         <div className="w-10 m-2">
-          <img src="https://seeklogo.com/images/P/pypestream-logo-51F60D3389-seeklogo.com.png" alt="" />
+          <img src={logo} alt="" />
         </div>
 
         <div className="flex flex-col">
