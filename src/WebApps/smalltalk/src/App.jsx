@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import MessageItem from "./components/MessageItem";
+import SessionItem from "./components/SessionItem";
 import "./index.scss";
 import * as signalR from '@microsoft/signalr';
 import iconBookmarks from './assets/bookmarks_black_24dp.svg';
@@ -120,7 +121,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="w-60 h-screen bg-gray-100 border-b-2 border-gray-500">
+      <div className="w-74 h-screen bg-gray-100 border-b-2 border-gray-500">
         <div className="text-xl p-3">
           Chats
         </div>
@@ -133,12 +134,16 @@ function App() {
         </div>
 
         <div className="flex">
-          <div className="p-2">
+          <div className="pl-2 pr-2 lt-2">
             <img className="w-8 h-8 rounded-full" src={iconDenisAvatar} alt="Denis" />
             <div className="w-4 h-4 relative left-5 bottom-3 bg-gray-100 rounded-full"></div>
             <div className="w-2 h-2 relative left-6 bottom-6 bg-green-500 rounded-full"></div>
-            
-            <div className="text-gray-500 text-xm pt-1">Denis</div>
+            {/* <div className="text-gray-500 text-xm pt-1">Denis</div> */}
+          </div>
+
+          {/* <div className="p-2">
+            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
+            <div className="text-gray-500 text-xm pt-3">Denis</div>
           </div>
 
           <div className="p-2">
@@ -150,15 +155,22 @@ function App() {
             <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
             <div className="text-gray-500 text-xm pt-3">Denis</div>
           </div>
+          <div className="p-2">
+            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
+            <div className="text-gray-500 text-xm pt-3">Denis</div>
+          </div> */}
+        </div>
 
-          <div className="p-2">
-            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
-            <div className="text-gray-500 text-xm pt-3">Denis</div>
-          </div>
-          <div className="p-2">
-            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
-            <div className="text-gray-500 text-xm pt-3">Denis</div>
-          </div>
+        <div className="flex overflow-y-auto flex-col-reverse p-2" style={{
+
+          minHeight: '10%',
+          maxHeight: '82vh',
+        }}>
+
+          <SessionItem/>
+          <SessionItem />
+          <SessionItem />
+          
         </div>
 
       </div>
@@ -178,7 +190,7 @@ function App() {
 
             </div>
           </div>
-          
+
 
         </div>
         <div className="w-full flex-grow" >
