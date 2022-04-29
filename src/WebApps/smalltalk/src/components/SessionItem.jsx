@@ -19,8 +19,8 @@ const SessionItem = (props) => {
           </div>
           <div className="flex">
               <div className="relative bottom-4 left-2">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full">
-                      <div className="text-white relative left-2">3</div>
+                  <div className="w-5 h-5 bg-blue-500 rounded-full">
+                      <div className="text-white relative left-1 top-1 text-xs">21</div>
                   </div>
               </div>
           </div>
