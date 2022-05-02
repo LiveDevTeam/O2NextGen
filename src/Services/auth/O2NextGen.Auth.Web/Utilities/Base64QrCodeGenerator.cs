@@ -8,7 +8,6 @@ namespace O2NextGen.Auth.Web.Utilities
     {
         public string Generate(Uri target)
         {
-            // https://github.com/guitarrapc/SkiaSharp.QrCode
             using (var generator = new QRCodeGenerator())
             {
                 var code = generator.CreateQrCode(target.OriginalString, ECCLevel.Q);
