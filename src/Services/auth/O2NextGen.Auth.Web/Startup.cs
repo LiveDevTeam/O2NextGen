@@ -15,12 +15,13 @@ namespace O2NextGen.Auth.Web
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc()
@@ -30,30 +31,15 @@ namespace O2NextGen.Auth.Web
                     options.Conventions.AuthorizeFolder("/Account");
                 } );
 
-            services.AddDbContext<AuthDbContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionString"]));
-            
-            //Todo: will change vars to Auth-Config envs 
-            services
-                .AddIdentity<O2User,IdentityRole>(options =>
-                {
-                    options.Password.RequireDigit = true;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = true;
-                    options.Password.RequiredLength = 6;
-                })
-                .AddEntityFrameworkStores<AuthDbContext>()
-                .AddDefaultTokenProviders();
-            
-            services.AddApplicationServices(Configuration);
+            services.AddApplicationServices(_configuration);
             
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Login";
                 options.LogoutPath = "/Logout";
                 options.AccessDeniedPath = "/AccessDenied";
-            });
+            })
+                .AddConfiguredIdentity( _configuration);
             services.AddConfiguredLocalization();
             services.AddSingleton<IEmailSender, DummyEmailSender>();
         }
@@ -64,13 +50,14 @@ namespace O2NextGen.Auth.Web
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+            app.UseHsts();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //app.UseIdentityServer();
             var v = app.ApplicationServices
                 .GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
             app.UseRequestLocalization(v);
             app.UseCookiePolicy();
-            
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
         }
