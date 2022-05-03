@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using O2NextGen.Auth.Web.Data;
 using O2NextGen.Auth.Web.Extensions;
 using O2NextGen.Auth.Web.Helpers;
+using O2NextGen.Auth.Web.Utilities;
 
 namespace O2NextGen.Auth.Web
 {
@@ -32,15 +33,26 @@ namespace O2NextGen.Auth.Web
                 } );
 
             services.AddApplicationServices(_configuration);
-            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed((host) => true)
+                    .AllowCredentials());
+            });
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Login";
                 options.LogoutPath = "/Logout";
                 options.AccessDeniedPath = "/AccessDenied";
             })
-                .AddConfiguredIdentity( _configuration);
+                
+                .AddConfiguredIdentity(_configuration);
             services.AddConfiguredLocalization();
+
+            services.AddSingleton<IBase64QrCodeGenerator, Base64QrCodeGenerator>();
             services.AddSingleton<IEmailSender, DummyEmailSender>();
         }
 
@@ -52,13 +64,15 @@ namespace O2NextGen.Auth.Web
             }
             app.UseHsts();
             app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
             app.UseStaticFiles();
-            //app.UseIdentityServer();
+            app.UseIdentityServer();
             var v = app.ApplicationServices
                 .GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
             app.UseRequestLocalization(v);
             app.UseCookiePolicy();
             app.UseAuthentication();
+            
             app.UseMvcWithDefaultRoute();
         }
     }

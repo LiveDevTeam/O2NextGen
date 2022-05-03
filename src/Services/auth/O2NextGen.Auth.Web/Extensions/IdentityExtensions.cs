@@ -1,12 +1,8 @@
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.Auth.Web.Data;
-using O2NextGen.Auth.Web.Helpers;
-using O2NextGen.Auth.Web.Utilities;
 
 namespace O2NextGen.Auth.Web.Extensions
 {
@@ -19,6 +15,7 @@ namespace O2NextGen.Auth.Web.Extensions
                 options.UseSqlServer(configuration["ConnectionString"]));
             
             services
+                  
                 .AddIdentity<O2User, IdentityRole>(options =>
                 {
                     options.Password.RequireDigit = false;
@@ -31,10 +28,8 @@ namespace O2NextGen.Auth.Web.Extensions
                 .AddEntityFrameworkStores<AuthDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddSingleton<IEmailSender, DummyEmailSender>();
-            services.AddSingleton<IBase64QrCodeGenerator, Base64QrCodeGenerator>();
-            
-            
+            services.AddConfiguredIdentityServer(configuration);
+
             return services;
         }
     }
