@@ -24,7 +24,7 @@ const MessageItem = (props) => {
                             <div className="w-2 h-2 relative left-6 bottom-6 bg-red-500 rounded-full"></div>
                         </div>
                     </div>
-                    <div className="m-2 bg-gray-100 p-3  flex-colq rounded-tl-lg rounded-tr-lg rounded-br-lg">
+                    <div className="m-2 bg-gray-100 p-3  flex-col rounded-tl-lg rounded-tr-lg rounded-br-lg">
                         {/* < p > sender: { props.message.senderId }</p >
                 <p>recipient: {props.message.recipientId}</p> */}
                         <p className='text-sm'>Denis Prokharchyk (<strong>{props.message.recipientId}</strong>)</p>
