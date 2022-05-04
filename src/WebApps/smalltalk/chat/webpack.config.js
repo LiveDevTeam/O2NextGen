@@ -49,8 +49,13 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "smalltalk",
       filename: "remoteEntry.js",
-      remotes: {},
-      exposes: {},
+      remotes: {
+        
+      },
+      exposes: {
+        './SessionItem':"./src/components/SessionItem.jsx",
+        './MessageItem': "./src/components/MessageItem.jsx"
+      },
       shared: {
         ...deps,
         react: {

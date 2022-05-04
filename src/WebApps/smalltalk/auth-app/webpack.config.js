@@ -43,8 +43,11 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "auth_app",
       filename: "remoteEntry.js",
-      remotes: {},
-      exposes: {},
+      remotes: {
+        "smalltalk": "smalltalk@http://localhost:3002/remoteEntry.js",
+      },
+      exposes: {
+      },
       shared: {
         ...deps,
         react: {
