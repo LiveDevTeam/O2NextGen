@@ -53,16 +53,21 @@ namespace O2NextGen.Auth.Web.Extensions
             };
         }
         
-        private static IEnumerable<ApiResource> GetApis()
-        {
-            var apiResource = new ApiResource("GroupManagement", "Group Management");
-            apiResource.Scopes.First().Required = true;
-            return new[]
+        // private static IEnumerable<ApiResource> GetApis()
+        // {
+        //     var apiResource = new ApiResource("smalltalkapi", "smalltalkapi");
+        //     apiResource.Scopes.First().Required = true;
+        //     return new[]
+        //     {
+        //         apiResource
+        //     };
+        // }
+        public static IEnumerable<ApiResource> GetApis() =>
+            new List<ApiResource>
             {
-                apiResource
+                new ApiResource("smalltalkapi", "smalltalkapi")
             };
-        }
-
+        
         private static IEnumerable<Client> GetClients()
         {
             return new[]
@@ -88,7 +93,7 @@ namespace O2NextGen.Auth.Web.Extensions
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        //"GroupManagement",
+                        "smalltalkapi",
                         //IdentityServerConstants.StandardScopes.OfflineAccess
                     },
                     AllowAccessTokensViaBrowser = true,

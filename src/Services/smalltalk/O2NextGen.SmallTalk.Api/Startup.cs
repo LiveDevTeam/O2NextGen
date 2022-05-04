@@ -36,6 +36,30 @@ namespace O2NextGen.SmallTalk.Api
                     TermsOfService = "Terms of Service"
                 });
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .SetIsOriginAllowed((host) => true)
+                        .AllowCredentials());
+            });
+            // adds DI services to DI and configures bearer as the default scheme
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    // identity server issuing token
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
+
+                    // // allow self-signed SSL certs
+                    // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
+
+                    // the scope id of this api
+                    options.Audience = "smalltalkapi";
+                });
+            services.AddAuthorization();
             services.AddApplicationServices(Configuration);
         }
 
@@ -49,7 +73,7 @@ namespace O2NextGen.SmallTalk.Api
             {
                 app.UseHsts();
             }
-
+            app.UseCors("CorsPolicy");
             app.UseStaticFiles();
             app.UseSwagger()
                 .UseSwaggerUI(c => { c.SwaggerEndpoint($"/swagger/v1/swagger.json", "SmallTalk API V1"); });
@@ -64,7 +88,8 @@ namespace O2NextGen.SmallTalk.Api
 
                 await next.Invoke();
             });
-
+            // adds authentication middleware to the pipeline so authentication will be performed on every request
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

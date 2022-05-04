@@ -13,7 +13,7 @@ authority: "http://localhost:5001/",
     client_id: "smalltalk_client_reactjs",
     redirect_uri: "http://localhost:3003/signin-oidc",
     response_type: "id_token token",
-    scope: "openid profile",
+    scope: "openid profile smalltalkapi",
     loadUserInfo: true,
     post_logout_redirect_uri: "http://localhost:3003/signout-oidc"}
 

@@ -8,9 +8,11 @@ using O2NextGen.SmallTalk.Business.Models;
 using O2NextGen.SmallTalk.Business.Services;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace O2NextGen.SmallTalk.Api.Controllers
 {
+    [Authorize]
     [Route("api/chat")]
     [ApiController]
     public class ChatController : ControllerBase

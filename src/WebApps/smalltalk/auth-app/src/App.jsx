@@ -32,7 +32,7 @@ function App() {
                         <Route path="/signout-oidc" component={SignoutOidc} />
                         <Route path="/signin-oidc" component={SigninOidc} />
                         <PrivateRoute exact path="/" component={Home} />
-                        <PrivateRoute path="/test" component={test}/>
+                        <Route path="/test" component={test}/>
                     </Switch>
                 </Router>
             </AuthProvider>
