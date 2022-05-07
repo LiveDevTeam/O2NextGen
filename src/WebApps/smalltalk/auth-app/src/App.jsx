@@ -8,20 +8,26 @@ import SigninOidc from './pages/signin-oidc'
 import SignoutOidc from './pages/signout-oidc'
 import Home from './pages/home'
 import Login from './pages/login'
-import { Provider } from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import store from './store';
 import userManager, { loadUserFromStorage } from './services/userService'
 import AuthProvider from './utils/authProvider'
 import PrivateRoute from './utils/protectedRoute'
 import test from "./pages/test";
+import * as signalR from '@microsoft/signalr';
+import {HttpTransportType} from "@microsoft/signalr";
 
 
 function App() {
+    // const user = useSelector(state => state.auth.user)
+    // // const user = useSelector(state => state.auth.user)
+    // useEffect(() => {
+    //
+    //
+    //
+    // }, []);
 
-    useEffect(() => {
-        // fetch current user from cookies
-        loadUserFromStorage(store)
-    }, [])
+
 
     return (
         <Provider store={store}>

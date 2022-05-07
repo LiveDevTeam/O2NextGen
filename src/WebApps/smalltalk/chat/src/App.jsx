@@ -140,25 +140,6 @@ function App() {
             <div className="w-2 h-2 relative left-6 bottom-6 bg-green-500 rounded-full"></div>
             {/* <div className="text-gray-500 text-xm pt-1">Denis</div> */}
           </div>
-
-          {/* <div className="p-2">
-            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
-            <div className="text-gray-500 text-xm pt-3">Denis</div>
-          </div>
-
-          <div className="p-2">
-            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
-            <div className="text-gray-500 text-xm pt-3">Denis</div>
-          </div>
-
-          <div className="p-2">
-            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
-            <div className="text-gray-500 text-xm pt-3">Denis</div>
-          </div>
-          <div className="p-2">
-            <img className="w-8 h-8 rounded-full" src={iconAvatar} alt="Denis" />
-            <div className="text-gray-500 text-xm pt-3">Denis</div>
-          </div> */}
         </div>
 
         <div className="flex overflow-y-auto flex-col-reverse p-2" style={{

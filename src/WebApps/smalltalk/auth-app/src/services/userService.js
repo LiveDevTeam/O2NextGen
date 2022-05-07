@@ -9,13 +9,15 @@ import { storeUserError, storeUser } from '../actions/authActions'
 //   redirect_uri: "http://localhost:3003/signin-oidc"
 // };
 const config = {
-authority: "http://localhost:5001/",
+    authority: "http://localhost:5001/",
     client_id: "smalltalk_client_reactjs",
     redirect_uri: "http://localhost:3003/signin-oidc",
-    response_type: "id_token token",
-    scope: "openid profile smalltalkapi",
+    response_type: "code",
+    //client_secret: "secret",
+    scope: "openid profile smalltalkapi smalltalkapisignalr",
     loadUserInfo: true,
-    post_logout_redirect_uri: "http://localhost:3003/signout-oidc"}
+    // post_logout_redirect_uri: "http://localhost:3003/signout-oidc"
+  }
 
 const userManager = new UserManager(config)
 

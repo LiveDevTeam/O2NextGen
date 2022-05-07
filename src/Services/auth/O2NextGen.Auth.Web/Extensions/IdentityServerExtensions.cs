@@ -65,7 +65,8 @@ namespace O2NextGen.Auth.Web.Extensions
         public static IEnumerable<ApiResource> GetApis() =>
             new List<ApiResource>
             {
-                new ApiResource("smalltalkapi", "smalltalkapi")
+                new ApiResource("smalltalkapi", "smalltalkapi"),
+                new ApiResource("smalltalkapisignalr","smalltalkapisignalr")
             };
         
         private static IEnumerable<Client> GetClients()
@@ -75,28 +76,35 @@ namespace O2NextGen.Auth.Web.Extensions
                 new Client
                 {
                     ClientId = "smalltalk_client_reactjs",
-                    // AllowedGrantTypes = GrantTypes.Code,
-
-                    //ClientSecrets = {new Secret("secret".Sha256())},
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    
+                    AllowedGrantTypes = GrantTypes.Code,
+                    //ClientSecrets = { new Secret("secret".Sha256())},
                     RequireClientSecret = false,
-                    // RequireClientSecret=false,
-                    RequireConsent = false,
-                    // RequirePkce = true, 
                     RedirectUris = new[] {"http://localhost:3003/signin-oidc"},
-                    AllowedCorsOrigins = new []{"http://localhost:3003"},
-                    PostLogoutRedirectUris = new []{"http://localhost:3003/signout-oidc"},
-                    
-                    //RefreshTokenUsage = TokenUsage.OneTimeOnly,
+                    RefreshTokenUsage = TokenUsage.OneTimeOnly,
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         "smalltalkapi",
+                        "smalltalkapisignalr",
                         //IdentityServerConstants.StandardScopes.OfflineAccess
                     },
-                    AllowAccessTokensViaBrowser = true,
+                    //AllowOfflineAccess = true,
+                    // AccessTokenLifetime = 60,
+                    // RefreshTokenExpiration = TokenExpiration.Sliding,
+                    RequireConsent = false,
+                    AllowedCorsOrigins = new []{"http://localhost:3003"},
+                    // PostLogoutRedirectUris = new []{"http://localhost:3003/signout-oidc"},
+                    RequirePkce = true,
+                    // RequireClientSecret=false,
+                    
+                    //  
+                    
+                    
+                    
+                    //,
+                    
+                    // AllowAccessTokensViaBrowser = true,
                     //AllowOfflineAccess = true,
                     //AccessTokenLifetime = 60,
                     //RefreshTokenExpiration = TokenExpiration.Sliding,

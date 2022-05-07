@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using O2NextGen.SmallTalk.SignalrHub.Hubs;
 
 namespace O2NextGen.SmallTalk.SignalrHub
@@ -21,13 +23,47 @@ namespace O2NextGen.SmallTalk.SignalrHub
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .SetIsOriginAllowed((host) => true)
-                    .AllowCredentials());
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .SetIsOriginAllowed((host) => true)
+                        .AllowCredentials());
             });
             services.AddSingleton<IChatHub,ChatHub>();
             services.AddSignalR();
+            // // adds DI services to DI and configures bearer as the default scheme
+            // services.AddAuthentication(options =>
+            // {
+            //     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //
+            // }).AddJwtBearer(options =>
+            // {
+            //         // identity server issuing token
+            //         options.Authority = "http://localhost:5001";
+            //         options.RequireHttpsMetadata = false;
+            //
+            //         // // allow self-signed SSL certs
+            //         // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
+            //
+            //         // the scope id of this api
+            //         options.Audience = "smalltalkapisignalr";
+            //     });
+            // adds DI services to DI and configures bearer as the default scheme
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    // identity server issuing token
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
+
+                    // // allow self-signed SSL certs
+                    // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
+
+                    // the scope id of this api
+                    options.Audience = "smalltalkapisignalr";
+                });
+            services.AddAuthorization();
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,14 +78,20 @@ namespace O2NextGen.SmallTalk.SignalrHub
             //    app.UseHsts();
             //}
             app.UseCors("CorsPolicy");
-          
+            // adds authentication middleware to the pipeline so authentication will be performed on every request
+            app.UseAuthentication();
+            
             //app.UseRouting();
 
             //app.UseAuthentication();
             //app.UseAuthorization();
             app.UseSignalR((routes) =>
             {
-                routes.MapHub<ChatHub>("/chathub");
+                routes.MapHub<ChatHub>("/chathub",options =>
+                {
+                    //options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransports.All;
+                });
+                
             });
             app.UseMvc();
             //app.UseEndpoints(endpoints =>

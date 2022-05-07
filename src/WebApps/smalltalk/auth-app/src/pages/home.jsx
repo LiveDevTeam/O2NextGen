@@ -1,19 +1,50 @@
-import React, { useState } from 'react'
-import { signoutRedirect } from '../services/userService'
+import React, { useState,useEffect } from 'react'
+import {loadUserFromStorage, signoutRedirect} from '../services/userService'
 import { useSelector } from 'react-redux'
 import * as apiService from '../services/apiService'
 import { prettifyJson } from '../utils/jsonUtils'
 import { useRef } from "react";
 import MessageItem from "smalltalk/MessageItem";
 import CheckApi from "./check-api";
+import store from "../store";
+import * as signalR from "@microsoft/signalr";
 
 
 function Home() {
   const user = useSelector(state => state.auth.user)
   const [doughnutData, setDoughnutData] = useState(null)
+    const [connection, setConnection] = useState(null);
+    const messageRef = useRef();
 
-  const [connection, setConnection] = useState(null);
-  const messageRef = useRef();
+    useEffect(() => {
+        // fetch current user from cookies
+        loadUserFromStorage(store).then(()=>{
+            let connect = new signalR.HubConnectionBuilder()
+                .withUrl("http://localhost:5103/chathub",
+                    {
+                        // skipNegotiation: true,
+                        // transport: signalR.HttpTransportType.LongPolling,
+                        accessTokenFactory: () => user.access_token
+                    })
+                .configureLogging(signalR.LogLevel.Information)
+                .withAutomaticReconnect()
+                .build();
+            connect.start().then(() => {
+                connect.invoke("SendStateUser","")
+                console.log('Connection started!')
+            }) 
+                .catch(err => {
+                    console.log(err);
+                });
+                console.log("invoke is called")
+          connect.on("OnUserUpdateState", (userId)=>{
+            console.log(userId)
+          })
+            setConnection(connect)
+        })
+    }, [])
+
+
 
   const [messages, setMessages] = useState([
     { id: 1, message: 'it is me', senderId: 1, recipientId: 2, },
@@ -25,6 +56,7 @@ function Home() {
 
   function signOut() {
     signoutRedirect()
+    connection.stop()
   }
 
   async function getDoughnuts() {
@@ -38,6 +70,7 @@ function Home() {
     <div>
       <h1>Home</h1>
       <p>Hello, {user.profile.given_name}.</p>
+        {/*<p>{connection}</p>*/}
       <p>I have given you a token to call your favourite doughnut based API 🍩</p>
 
       <p>💡 <strong>Tip: </strong><em>Use the Redux dev tools and network tab to inspect what user data was returned from identity and stored in the client.</em></p>
