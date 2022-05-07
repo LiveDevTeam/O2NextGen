@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -48,7 +49,6 @@ namespace O2NextGen.Auth.Web
                 options.LogoutPath = "/Logout";
                 options.AccessDeniedPath = "/AccessDenied";
             })
-                
                 .AddConfiguredIdentity(_configuration);
             services.AddConfiguredLocalization();
 
@@ -58,6 +58,8 @@ namespace O2NextGen.Auth.Web
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

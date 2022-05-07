@@ -19,9 +19,10 @@ namespace O2NextGen.SmallTalk.SignalrHub.Controllers
         public async Task<IActionResult> Test()
         {
             //await chatHub.UpdateMessages();
+            
             await _hubContext.Clients
-                .Group("Denis")
-                .SendAsync("OnUpdateMessage");
+                .All
+                .SendAsync("OnUserUpdateState");
             return Ok("Ok");
         }
     }

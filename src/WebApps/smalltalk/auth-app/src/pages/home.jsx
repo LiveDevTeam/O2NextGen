@@ -30,7 +30,7 @@ function Home() {
                 .withAutomaticReconnect()
                 .build();
             connect.start().then(() => {
-                connect.invoke("SendStateUser","")
+                connect.invoke("SendStateUser")
                 console.log('Connection started!')
             }) 
                 .catch(err => {

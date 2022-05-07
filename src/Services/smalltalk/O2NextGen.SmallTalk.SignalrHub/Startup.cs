@@ -31,13 +31,27 @@ namespace O2NextGen.SmallTalk.SignalrHub
             services.AddSingleton<IChatHub,ChatHub>();
             services.AddSignalR();
             // // adds DI services to DI and configures bearer as the default scheme
-            // services.AddAuthentication(options =>
-            // {
-            //     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //
-            // }).AddJwtBearer(options =>
-            // {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            
+            }).AddJwtBearer(options =>
+            {
+                    // identity server issuing token
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
+            
+                    // // allow self-signed SSL certs
+                    // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
+            
+                    // the scope id of this api
+                    options.Audience = "smalltalkapisignalr";
+                });
+            // // adds DI services to DI and configures bearer as the default scheme
+            // services.AddAuthentication("Bearer")
+            //     .AddJwtBearer("Bearer", options =>
+            //     {
             //         // identity server issuing token
             //         options.Authority = "http://localhost:5001";
             //         options.RequireHttpsMetadata = false;
@@ -48,20 +62,6 @@ namespace O2NextGen.SmallTalk.SignalrHub
             //         // the scope id of this api
             //         options.Audience = "smalltalkapisignalr";
             //     });
-            // adds DI services to DI and configures bearer as the default scheme
-            services.AddAuthentication("Bearer")
-                .AddJwtBearer("Bearer", options =>
-                {
-                    // identity server issuing token
-                    options.Authority = "http://localhost:5001";
-                    options.RequireHttpsMetadata = false;
-
-                    // // allow self-signed SSL certs
-                    // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
-
-                    // the scope id of this api
-                    options.Audience = "smalltalkapisignalr";
-                });
             services.AddAuthorization();
             services.AddAuthorization();
         }
@@ -89,7 +89,7 @@ namespace O2NextGen.SmallTalk.SignalrHub
             {
                 routes.MapHub<ChatHub>("/chathub",options =>
                 {
-                    //options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransports.All;
+                    options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransports.All;
                 });
                 
             });

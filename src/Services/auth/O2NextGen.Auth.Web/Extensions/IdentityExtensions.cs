@@ -24,6 +24,8 @@ namespace O2NextGen.Auth.Web.Extensions
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                     options.Password.RequireNonAlphanumeric = false;
+                    options.User.RequireUniqueEmail = true;
+                    // options.SignIn.RequireConfirmedEmail = true;
                 })
                 .AddEntityFrameworkStores<AuthDbContext>()
                 .AddDefaultTokenProviders();
