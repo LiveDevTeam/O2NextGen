@@ -8,7 +8,7 @@ import MessageItem from "smalltalk/MessageItem";
 import CheckApi from "./check-api";
 import store from "../store";
 import * as signalR from "@microsoft/signalr";
-
+import soundNotification from '../assets/sound-notification.wav';
 
 function Home() {
   const user = useSelector(state => state.auth.user)
@@ -38,11 +38,15 @@ function Home() {
                 });
                 console.log("invoke is called")
           connect.on("OnUserUpdateState", (userId)=>{
-            console.log(userId)
+              //(new Audio(soundNotification)).play();
+              new Audio(soundNotification).play();
+            console.log("bell")
+                console.log(userId)
           })
             setConnection(connect)
         })
     }, [])
+
 
 
 

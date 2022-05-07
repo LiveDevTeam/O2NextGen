@@ -16,16 +16,16 @@ import PrivateRoute from './utils/protectedRoute'
 import test from "./pages/test";
 import * as signalR from '@microsoft/signalr';
 import {HttpTransportType} from "@microsoft/signalr";
-
+import soundNotification from './assets/sound-notification.wav';
 
 function App() {
     // const user = useSelector(state => state.auth.user)
     // // const user = useSelector(state => state.auth.user)
-    // useEffect(() => {
-    //
-    //
-    //
-    // }, []);
+    useEffect(() => {
+    
+        // new Audio(soundNotification).play();
+    
+    }, []);
 
 
 
