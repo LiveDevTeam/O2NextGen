@@ -17,7 +17,7 @@
 		<PackageReference Include="MassTransit.Autofac" Version="4.0.1.1381-develop" />
 		<PackageReference Include="MassTransit.RabbitMQ" Version="4.0.1.1381-develop" />
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.App" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
 		<PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />

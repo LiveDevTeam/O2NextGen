@@ -107,6 +107,22 @@ namespace O2NextGen.Auth.Web.Extensions
                     AlwaysIncludeUserClaimsInIdToken = true,
                     RequireConsent = false
                 },
+                new Client
+                {
+                    ClientId = "smalltalkapi",
+                    ClientName = "Smalltalkapi Swagger UI",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris = { $"http://localhost:5003/swagger/o2c.html" },
+                    PostLogoutRedirectUris = { $"http://localhost:5003/swagger/" },
+
+                     AllowedScopes = new List<string>
+                     {
+
+                        "order"
+                     }
+                }
                 // new Client
                 // {
                 //     ClientId = "smalltalk_client_reactjs",

@@ -21,14 +21,14 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     hostname: myrabbitmq
-    ports: 
+    ports:
       - "15672:15672"
       - "5672:5672"
       - "5671:5671"
     volumes:
-      - ~/rabbitmq:/var/lib/rabbitmq/mnesia
+      - ~/rabbitmq:/var/lib/rabbitmq/mnesia   
     networks:
-      - backend
+      - backend 
 
 
   o2nextgen.auth.web:
@@ -71,6 +71,12 @@ services:
       #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "5003:80"
+    depends_on:
+      - rabbitmq
+      - o2nextgen.smalltalk.signalr
+    networks:
+      - backend
+      - frontend
       # - "10003:443"
     #volumes:
     #  - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
@@ -82,6 +88,11 @@ services:
       #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "5103:80"
+    depends_on:
+      - rabbitmq
+    networks:
+      - backend
+      - frontend
     
   o2nextgen.esender.api:
     environment:
@@ -98,3 +109,25 @@ services:
     #volumes:
     #  - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
     #  - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  smalltalk.app: 
+    ports:
+      - "3003:80"
+    depends_on:
+      - o2nextgen.auth.web
+      - o2nextgen.smalltalk.api
+      - o2nextgen.smalltalk.signalr
+    networks:
+      - backend
+      - frontend
+  
+  smalltalk.app.chat: 
+    ports:
+      - "3002:80"
+    depends_on:
+      - o2nextgen.auth.web
+      - o2nextgen.smalltalk.api
+      - o2nextgen.smalltalk.signalr
+    networks:
+      - backend
+      - frontend

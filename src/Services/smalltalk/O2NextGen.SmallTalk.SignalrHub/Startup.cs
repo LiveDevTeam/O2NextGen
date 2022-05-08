@@ -109,9 +109,10 @@ namespace O2NextGen.SmallTalk.SignalrHub
             });
             app.UseMvc();
             var bus = ApplicationContainer.Resolve<IBusControl>();
+            //bus.Start();
             var bushandle = TaskUtil.Await(() => bus.StartAsync());
             applicationLifetime.ApplicationStopped.Register(() => bushandle.Stop());
-            
+
             //    app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");

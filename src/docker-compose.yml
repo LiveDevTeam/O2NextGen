@@ -33,3 +33,14 @@ services:
       context: .
       dockerfile: Services/e-sender/O2NextGen.ESender.Api/Dockerfile
 
+  smalltalk.app: 
+    image: ${DOCKER_REGISTRY-}smalltalk-app
+    build:
+      context: ./WebApps/smalltalk/auth-app/
+      dockerfile: Dockerfile
+
+  smalltalk.app.chat: 
+    image: ${DOCKER_REGISTRY-}smalltalk-mf-chat
+    build:
+      context: ./WebApps/smalltalk/chat/
+      dockerfile: Dockerfile

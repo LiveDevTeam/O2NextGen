@@ -7,11 +7,13 @@ using O2NextGen.SmallTalk.Api.Helpers;
 using O2NextGen.SmallTalk.Api.Services;
 using Polly;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using MassTransit;
 using MassTransit.Util;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using RabbitMQ.Client;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -41,6 +43,18 @@ namespace O2NextGen.SmallTalk.Api
                     Description = "SmallTalk API Service. The service allows you to create chats",
                     TermsOfService = "Terms of Service"
                 });
+                options.AddSecurityDefinition("oauth2", new OAuth2Scheme
+                {
+                    Type = "oauth2",
+                    Flow = "implicit",
+                    AuthorizationUrl = $"{Configuration.GetValue<string>("IdentityUrl")}/connect/authorize",
+                    TokenUrl = $"{Configuration.GetValue<string>("IdentityUrl")}/connect/token",
+                    Scopes = new Dictionary<string, string>()
+                    {
+                        { "smalltalkapi", "SmallTalk Api" }
+                    }
+
+                });
             });
             services.AddCors(options =>
             {
@@ -52,19 +66,24 @@ namespace O2NextGen.SmallTalk.Api
                         .AllowCredentials());
             });
             // adds DI services to DI and configures bearer as the default scheme
-            services.AddAuthentication("Bearer")
-                .AddJwtBearer("Bearer", options =>
-                {
-                    // identity server issuing token
-                    options.Authority = "http://localhost:5001";
-                    options.RequireHttpsMetadata = false;
-
-                    // // allow self-signed SSL certs
-                    // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
-
-                    // the scope id of this api
-                    options.Audience = "smalltalkapi";
-                });
+            // // adds DI services to DI and configures bearer as the default scheme
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            
+            }).AddJwtBearer(options =>
+            {
+                // identity server issuing token
+                options.Authority = "http://localhost:5001";
+                options.RequireHttpsMetadata = false;
+            
+                // // allow self-signed SSL certs
+                // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
+            
+                // the scope id of this api
+                options.Audience = "smalltalkapi";
+            });
             services.AddAuthorization();
             services.AddApplicationServices(Configuration);
             
@@ -122,6 +141,7 @@ namespace O2NextGen.SmallTalk.Api
             app.UseMvc();
             
             var bus = ApplicationContainer.Resolve<IBusControl>();
+            //bus.Start();
             var bushandle = TaskUtil.Await(() => bus.StartAsync());
             applicationLifetime.ApplicationStopped.Register(() => bushandle.Stop());
         }
