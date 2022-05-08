@@ -1,18 +1,24 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using MassTransit;
+using MassTransit.Util;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using O2NextGen.SmallTalk.SignalrHub.Hubs;
-
+using RabbitMQ.Client;
 namespace O2NextGen.SmallTalk.SignalrHub
 {
     public class Startup
     {
+        private IContainer  ApplicationContainer { get; set; }
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var mvcBuilder = services.AddMvcCore(options => {
                 //options.Filters.Add<ApiExceptionFilter>();
@@ -48,26 +54,34 @@ namespace O2NextGen.SmallTalk.SignalrHub
                     // the scope id of this api
                     options.Audience = "smalltalkapisignalr";
                 });
-            // // adds DI services to DI and configures bearer as the default scheme
-            // services.AddAuthentication("Bearer")
-            //     .AddJwtBearer("Bearer", options =>
-            //     {
-            //         // identity server issuing token
-            //         options.Authority = "http://localhost:5001";
-            //         options.RequireHttpsMetadata = false;
-            //
-            //         // // allow self-signed SSL certs
-            //         // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
-            //
-            //         // the scope id of this api
-            //         options.Audience = "smalltalkapisignalr";
-            //     });
             services.AddAuthorization();
-            services.AddAuthorization();
+
+            var builderAf = new ContainerBuilder();
+            builderAf.Register(c =>
+                {
+                    return Bus.Factory.CreateUsingRabbitMq(rmq =>
+                    {
+                        rmq.Host(new Uri("rabbitmq://rabbitmq"), "/", h =>
+                        {
+                            h.Username("guest");
+                            h.Password("guest");
+                        });
+                        rmq.ExchangeType = ExchangeType.Fanout;
+                    });
+
+                }).
+                As<IBusControl>()
+                .As<IBus>()
+                .As<IPublishEndpoint>()
+                .SingleInstance();
+
+            builderAf.Populate(services);
+            ApplicationContainer = builderAf.Build();
+            return new AutofacServiceProvider(ApplicationContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime applicationLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -94,17 +108,10 @@ namespace O2NextGen.SmallTalk.SignalrHub
                 
             });
             app.UseMvc();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //    endpoints.MapHub<SignalRtcHub>("/signalrtc");
-            //    endpoints.MapHub<O2Hub>("/o2hub");
-            //});
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapHub<NotificationsHub>("/hub/chathub", 
-            //        options => options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransports.All);
-            //};
+            var bus = ApplicationContainer.Resolve<IBusControl>();
+            var bushandle = TaskUtil.Await(() => bus.StartAsync());
+            applicationLifetime.ApplicationStopped.Register(() => bushandle.Stop());
+            
             //    app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");

@@ -8,6 +8,11 @@ using O2NextGen.SmallTalk.Api.Services;
 using Polly;
 using System;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using MassTransit;
+using MassTransit.Util;
+using RabbitMQ.Client;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace O2NextGen.SmallTalk.Api
@@ -20,8 +25,9 @@ namespace O2NextGen.SmallTalk.Api
         }
 
         public IConfiguration Configuration { get; }
-
-        public void ConfigureServices(IServiceCollection services)
+        private IContainer  ApplicationContainer { get; set; }
+        
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddRequiredMvcComponents();
             services.AddBusiness();
@@ -61,9 +67,32 @@ namespace O2NextGen.SmallTalk.Api
                 });
             services.AddAuthorization();
             services.AddApplicationServices(Configuration);
+            
+            var builderAf = new ContainerBuilder();
+            builderAf.Register(c =>
+                {
+                    return Bus.Factory.CreateUsingRabbitMq(rmq =>
+                    {
+                        rmq.Host(new Uri("rabbitmq://rabbitmq"), "/", h =>
+                        {
+                            h.Username("guest");
+                            h.Password("guest");
+                        });
+                        rmq.ExchangeType = ExchangeType.Fanout;
+                    });
+
+                }).
+                As<IBusControl>()
+                .As<IBus>()
+                .As<IPublishEndpoint>()
+                .SingleInstance();
+
+            builderAf.Populate(services);
+            ApplicationContainer = builderAf.Build();
+            return new AutofacServiceProvider(ApplicationContainer);
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime applicationLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -91,6 +120,10 @@ namespace O2NextGen.SmallTalk.Api
             // adds authentication middleware to the pipeline so authentication will be performed on every request
             app.UseAuthentication();
             app.UseMvc();
+            
+            var bus = ApplicationContainer.Resolve<IBusControl>();
+            var bushandle = TaskUtil.Await(() => bus.StartAsync());
+            applicationLifetime.ApplicationStopped.Register(() => bushandle.Stop());
         }
     }
 

@@ -21,6 +21,11 @@ services:
       context: .
       dockerfile: Services/smalltalk/O2NextGen.SmallTalk.Api/Dockerfile
 
+  o2nextgen.smalltalk.signalr:
+    image: ${DOCKER_REGISTRY-}o2ng-smalltalk-signalr
+    build:
+      context: .
+      dockerfile: Services/smalltalk/O2NextGen.SmallTalk.SignalrHub/Dockerfile
 
   o2nextgen.esender.api:
     image: ${DOCKER_REGISTRY-}o2ng-esender-api

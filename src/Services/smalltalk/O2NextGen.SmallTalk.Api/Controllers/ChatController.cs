@@ -8,7 +8,9 @@ using O2NextGen.SmallTalk.Business.Models;
 using O2NextGen.SmallTalk.Business.Services;
 using System.Threading;
 using System.Threading.Tasks;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
+using O2NextGen.SmallTalk.Api.Messaging;
 
 namespace O2NextGen.SmallTalk.Api.Controllers
 {
@@ -23,6 +25,7 @@ namespace O2NextGen.SmallTalk.Api.Controllers
         private readonly ILogger<VersionController> _logger;
         private readonly ISignalRService _signalRService;
         private readonly IChatManager _chatManager;
+        private readonly IBus _bus;
 
         #endregion
 
@@ -30,12 +33,13 @@ namespace O2NextGen.SmallTalk.Api.Controllers
         #region Ctors
 
         public ChatController(IHostingEnvironment environment, ILogger<VersionController> logger, ISignalRService signalRService,
-            IChatManager chatManager)
+            IChatManager chatManager, IBus bus)
         {
             _environment = environment;
             _logger = logger;
             _signalRService = signalRService;
             _chatManager = chatManager;
+            _bus = bus;
         }
 
         #endregion
@@ -72,11 +76,13 @@ namespace O2NextGen.SmallTalk.Api.Controllers
         [Route("session/{sessionId}/messages")]
         public async Task<IActionResult> AddAsync(long sessionId, ChatMessage chatMessage, CancellationToken ct)
         {
+            var userId = HttpContext.User.FindFirst("sub").Value;
             if (chatMessage == null)
                 throw new System.ArgumentNullException(nameof(chatMessage));
 
             ChatMessageModel resultSession = await _chatManager.AddMessage(sessionId, chatMessage.ToModel(), ct);
             await _signalRService.GetAsync(ct);
+            _bus.Publish<SendMessageCompletedEvent>(new { userId , chatMessage.RecipientId }).Wait();
             return Ok(resultSession.ToViewModel());
         }
 
