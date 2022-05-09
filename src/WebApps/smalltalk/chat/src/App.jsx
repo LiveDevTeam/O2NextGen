@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import ReactDOM from "react-dom";
 import MessageItem from "./components/MessageItem";
 import SessionItem from "./components/SessionItem";
@@ -14,9 +14,17 @@ import iconSearch from './assets/search_black_24dp.svg';
 import iconAttach from './assets/attachment_black_24dp.svg';
 import iconSend from './assets/send_black_24dp.svg';
 import iconEmo from './assets/insert_emoticon_black_24dp.svg';
-import iconAvatar from './assets/avatar-1.jpeg';
 import iconDenisAvatar from './assets/Denis_prox.jpg';
 import logo from './assets/SmallTalk-Logo_no_signature.png'
+import MessageBoard from "./components/MessageBoard/MessageBoard";
+import AvatarWithStatus from "./components/Avatar/AvatarWithStatus";
+import AvatarWithUsername from "./components/Avatar/AvatarWithUsername";
+import MessageBoardHeader from "./components/MessageBoard/Parts/MessageBoardHeader";
+import MessageBoardPlace from "./components/MessageBoard/Parts/MessageBoardPlace";
+import MessageBoardToolBar from "./components/MessageBoard/Parts/MessageBoardToolBar";
+import MessageBoardMenu from "./components/Menu/MessageBoardMenu";
+
+
 function App() {
   const [connection, setConnection] = useState(null);
   const messageRef = useRef();
@@ -27,8 +35,9 @@ function App() {
     { id: 3, message: 'denis prokhorchik2', senderId: 1, recipientId: 2, },
   ])
 
-  const [message, setMessage] = useState('')
-
+  const [message, setMessage] = useState('');
+  const [userName,setUserName] = useState('Denis Prokharchyk');
+  const [userStatus,setUserStatus] = useState(true);
   useEffect(() => {
     let connect = new signalR.HubConnectionBuilder()
       .withUrl("https://signalr.o2bus.com/chathub")
@@ -71,6 +80,9 @@ function App() {
       console.log(e)
     }
   }
+  function logOut(){
+    console.log('logOut')
+  }
   async function fetchData() {
     const response =
       await axios.get('https://api-smalltalk.o2bus.com/api/chat/session/1/messages');
@@ -80,47 +92,48 @@ function App() {
 
   return (
     <div className="flex">
-      <div className="w-14 h-screen flex flex-col items-center justify-between">
-        <div className="w-10 m-2">
-          <img src={logo} alt="" />
-        </div>
+      {/*<div className="w-14 h-screen flex flex-col items-center justify-between">*/}
+      {/*  <div className="w-10 m-2">*/}
+      {/*    <img src={logo} alt="" />*/}
+      {/*  </div>*/}
 
-        <div className="flex flex-col">
-          <div className="py-3 w-5 flex flex-col justify-center items-center">
-            <img src={iconBookmarks} alt="bookmarks" />
-            <div className="w-1 h-1 bg-blue-500 rounded-full">
-            </div>
-          </div>
-          <div className="py-3 w-5 flex flex-col justify-center items-center">
-            <img src={iconSms} alt="sms" />
-            <div className="w-1 h-1 bg-blue-500 rounded-full">
-            </div>
-          </div>
-          <div className="py-3 w-5 flex flex-col justify-center items-center">
-            <img src={iconBookmarks} alt="bookmarks" />
-            <div className="w-1 h-1 bg-blue-500 rounded-full">
-            </div>
-          </div>
-          <div className="py-3 w-5 flex flex-col justify-center items-center">
-            <img src={iconAccoutSettings} alt="account settings" />
-            <div className="w-1 h-1 bg-blue-500 rounded-full">
-            </div>
-          </div>
+      {/*  <div className="flex flex-col">*/}
+      {/*    <div className="py-3 w-5 flex flex-col justify-center items-center">*/}
+      {/*      <img src={iconBookmarks} alt="bookmarks" />*/}
+      {/*      <div className="w-1 h-1 bg-blue-500 rounded-full">*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*    <div className="py-3 w-5 flex flex-col justify-center items-center">*/}
+      {/*      <img src={iconSms} alt="sms" />*/}
+      {/*      <div className="w-1 h-1 bg-blue-500 rounded-full">*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*    <div className="py-3 w-5 flex flex-col justify-center items-center">*/}
+      {/*      <img src={iconBookmarks} alt="bookmarks" />*/}
+      {/*      <div className="w-1 h-1 bg-blue-500 rounded-full">*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*    <div className="py-3 w-5 flex flex-col justify-center items-center">*/}
+      {/*      <img src={iconAccoutSettings} alt="account settings" />*/}
+      {/*      <div className="w-1 h-1 bg-blue-500 rounded-full">*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
 
-          <div className="py-3 w-5 flex flex-col justify-center items-center">
-            <img src={iconLogout} alt="logout" />
-            <div className="w-1 h-1 bg-blue-500 rounded-full">
-            </div>
-          </div>
-        </div>
-        <div>
-        </div>
-        <div className="flex flex-col">
-          <div className="py-3 w-5 flex flex-col justify-center items-center">
-            <img src={iconSettings} alt="settings" />
-          </div>
-        </div>
-      </div>
+      {/*    <div className="py-3 w-5 flex flex-col justify-center items-center">*/}
+      {/*      <img src={iconLogout} alt="logout" />*/}
+      {/*      <div className="w-1 h-1 bg-blue-500 rounded-full">*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*  <div>*/}
+      {/*  </div>*/}
+      {/*  <div className="flex flex-col">*/}
+      {/*    <div className="py-3 w-5 flex flex-col justify-center items-center">*/}
+      {/*      <img src={iconSettings} alt="settings" />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
+        <MessageBoardMenu logout={logOut}/>
       <div className="w-74 h-screen bg-gray-100 border-b-2 border-gray-500">
         <div className="text-xl p-3">
           Chats
@@ -155,77 +168,24 @@ function App() {
         </div>
 
       </div>
-      <div className="flex-grow h-screen bg-white flex flex-col">
-        <div className="w-full h-14 bg-white">
-          <div>
-            <div className="p-2 flex">
-              <div className="pl-2">
-                <img className="w-9 h-9 rounded-full" src={iconDenisAvatar} alt="Denis" />
-                <div className="w-4 h-4 relative left-5 bottom-3 bg-white rounded-full"></div>
-                <div className="w-2 h-2 relative left-6 bottom-6 bg-green-500 rounded-full"></div>
-              </div>
-              <div className="pl-2">
-                <div className="text-gray-800 text-xm pt-1 ml-2 font-bold">Denis Prokharchyk</div>
-                <div className="text-gray-700 text-xs ml-2">online</div>
-              </div>
 
-            </div>
-          </div>
+      <MessageBoard
+          // icons={{
+          //   icon_send: iconSend,
+          //   icon_emo: iconEmo,
+          //   icon_attach: iconAttach
+          // }}
+          messages = {messages}
+          messageRef={messageRef}
+
+          iconDenisAvatar={iconDenisAvatar}
+          userStatus={userStatus}
+          userName={userName}
+          sendMessage={sendMessage}
+          setMessage={message}
+      />
 
 
-        </div>
-        <div className="w-full flex-grow" >
-          <div ref={messageRef}>
-            <div className="flex overflow-y-auto flex-col-reverse p-4" style={{
-
-              minHeight: '10%',
-              maxHeight: '85vh',
-            }}>
-              <div >
-                {messages.map((item) =>
-                  <MessageItem message={item} key={item.id}></MessageItem>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="w-full h-16 flex px-3">
-
-          <input className="flex-grow focus:outline-none" type="text" placeholder="Type your message..." value={message} onChange={(e) => {
-            setMessage(e.target.value)
-          }} />
-
-          <div className="flex">
-            <button className="btn bg-blue-500 m-2 py-2 px-4 rounded-full" onClick={(e) => {
-              e.preventDefault()
-              sendMessage()
-            }}>  <img className="w-5" src={iconAttach} alt="" />
-            </button>
-          </div>
-
-          <div className="flex">
-            <button className="btn bg-blue-500 m-2 py-2 px-4 rounded-full" onClick={(e) => {
-              e.preventDefault()
-              sendMessage()
-            }}>
-              <img className="w-5" src={iconEmo} alt="" />
-            </button>
-          </div>
-
-          <div className="flex">
-            <button className="btn bg-blue-500 m-2 py-2 px-4 rounded-full" onClick={(e) => {
-              e.preventDefault()
-              sendMessage()
-            }}>
-              <img className="w-5" src={iconSend} alt="" />
-            </button>
-          </div>
-
-        </div>
-        {/* <div className="flex flex-col">
-          <button className="btn bg-red-300 m-1 py-2 px-4" onClick={fetchData}> Get Messages</button>
-        </div> */}
-      </div >
 
 
 

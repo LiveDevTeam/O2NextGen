@@ -5,6 +5,14 @@ async function getDoughnutsFromApi() {
   return response.data;
 }
 
+async function sendMessageApi(message) {
+  const newMessage = { id: 1, senderId: 1, recipientId: 2, message: message };
+  await axios.post("https://api-smalltalk.o2bus.com/api/chat/session/1/messages",
+      newMessage
+  )
+}
+
 export {
-  getDoughnutsFromApi
+  getDoughnutsFromApi,
+  sendMessageApi
 }

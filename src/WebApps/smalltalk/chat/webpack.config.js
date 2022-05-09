@@ -54,7 +54,13 @@ module.exports = {
       },
       exposes: {
         './SessionItem':"./src/components/SessionItem.jsx",
-        './MessageItem': "./src/components/MessageItem.jsx"
+        './MessageItem': "./src/components/MessageItem.jsx",
+        './MessageBoard': "./src/components/MessageBoard/MessageBoard.jsx",
+        './MessageBoardHeader': "./src/components/MessageBoard/Parts/MessageBoardHeader.jsx",
+        './MessageBoardPlace': "./src/components/MessageBoard/Parts/MessageBoardPlace.jsx",
+        './MessageBoardToolBar': "./src/components/MessageBoard/Parts/MessageBoardToolBar.jsx",
+        './MessageBoardMenu': "./src/components/Menu/MessageBoardMenu.jsx",
+        './STChat': "./src/components/STChat"
       },
       shared: {
         ...deps,

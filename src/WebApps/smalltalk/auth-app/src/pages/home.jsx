@@ -5,6 +5,10 @@ import * as apiService from '../services/apiService'
 import { prettifyJson } from '../utils/jsonUtils'
 import { useRef } from "react";
 import MessageItem from "smalltalk/MessageItem";
+import MessageBoard from "smalltalk/MessageBoard";
+import MessageBoardMenu from "smalltalk/MessageBoardMenu";
+import STChat from "smalltalk/STChat";
+import iconDenisAvatar from '../assets/Denis_prox.jpg';
 import CheckApi from "./check-api";
 import store from "../store";
 import * as signalR from "@microsoft/signalr";
@@ -16,6 +20,9 @@ function Home() {
   const [doughnutData, setDoughnutData] = useState(null)
     const [connection, setConnection] = useState(null);
     const messageRef = useRef();
+
+    const [userName,setUserName] = useState('Denis Prokharchyk');
+    const [userStatus,setUserStatus] = useState(true);
 
     useEffect(() => {
         // fetch current user from cookies
@@ -69,14 +76,21 @@ function Home() {
   }
 
   async function getDoughnuts() {
-    const doughnuts = await apiService.getDoughnutsFromApi()
-    setDoughnutData(doughnuts)
+    const messages = await apiService.getDoughnutsFromApi()
+    setDoughnutData(messages)
+      setMessages(messages);
   }
+
+    async function sendMessage() {
+        await apiService.sendMessageApi(message)
+        new Audio(soundNotification).play();
+    }
 
 
 
   return (
     <div>
+        <STChat/>
       <h1>Home</h1>
       <p>Hello, {user.profile.given_name}.</p>
         {/*<p>{connection}</p>*/}
@@ -90,18 +104,29 @@ function Home() {
         <button className="btn bg-green-500 text-white p-2 rounded-lg" onClick={() => signOut()}>Sign Out</button>
       </div>
 
-      <pre>
-        <code>
-          {prettifyJson(doughnutData ? doughnutData : 'No doughnuts yet :(')}
-        </code>
-      </pre>
-      <div >
-        {messages.map((item) =>
-          <MessageItem message={item} key={item.id}></MessageItem>
-        )}
-      </div>
-      <p><a target='_blank' rel='noopener noreferrer' href='https://github.com/tappyy/react-IS4-auth-demo'>Github Repo</a></p>
+      {/*<pre>*/}
+      {/*  <code>*/}
+      {/*    {prettifyJson(doughnutData ? doughnutData : 'No doughnuts yet :(')}*/}
+      {/*  </code>*/}
+      {/*</pre>*/}
+      {/*/!*<div >*!/*/}
+      {/*/!*  {messages.map((item) =>*!/*/}
+      {/*/!*    <MessageItem message={item} key={item.id}></MessageItem>*!/*/}
+      {/*/!*  )}*!/*/}
+      {/*/!*</div>*!/*/}
+      {/*<p><a target='_blank' rel='noopener noreferrer' href='https://github.com/tappyy/react-IS4-auth-demo'>Github Repo</a></p>*/}
       <CheckApi />
+        <MessageBoardMenu logout={signOut}/>
+        <MessageBoard
+            messages = {messages}
+            messageRef={messageRef}
+
+            iconDenisAvatar={iconDenisAvatar}
+            userStatus={userStatus}
+            userName={userName}
+            sendMessage={sendMessage}
+            setMessage={message}
+        />
     </div>
   )
 }
