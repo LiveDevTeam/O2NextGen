@@ -6,8 +6,6 @@ networks:
 
 services:
   sql.data:
-    image: mcr.microsoft.com/mssql/server:2017-latest
-    container_name: sqldatacontainer
     environment:
       - SA_PASSWORD=your@Password
       - ACCEPT_EULA=Y
@@ -18,8 +16,6 @@ services:
       - backend
 
   rabbitmq:
-    image: rabbitmq:3-management
-    container_name: rabbitmq
     hostname: myrabbitmq
     ports:
       - "15672:15672"
@@ -68,15 +64,19 @@ services:
   o2nextgen.smalltalk.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - Urls__IdentityUrl=http://o2nextgen.auth.web
+      - Urls__SmallTalkSignalRUrl=http://o2nextgen.smalltalk.signalr
+      - Urls__Rabbitmq=rabbitmq://rabbitmq
       #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "5003:80"
     depends_on:
       - rabbitmq
       - o2nextgen.smalltalk.signalr
+      - o2nextgen.auth.web
     networks:
       - backend
-      - frontend
+      - frontend 
       # - "10003:443"
     #volumes:
     #  - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
@@ -85,11 +85,16 @@ services:
   o2nextgen.smalltalk.signalr:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80l
+      - Urls__IdentityUrl=http://o2nextgen.auth.web
+      - Urls__Rabbitmq=rabbitmq://rabbitmq
+      - Urls__SmallTalkUrl=http://o2nextgen.smalltalk.api 
       #- ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "5103:80"
     depends_on:
       - rabbitmq
+      - o2nextgen.auth.web
     networks:
       - backend
       - frontend
@@ -111,6 +116,10 @@ services:
     #  - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   smalltalk.app: 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # - Urls__IdentityUrl=http://docker.for.mac.localhost:5001
+      # - Urls__SignalRUrl=http://docker.for.mac.localhost:5103
     ports:
       - "3003:80"
     depends_on:

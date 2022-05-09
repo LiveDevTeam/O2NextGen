@@ -9,6 +9,7 @@ import CheckApi from "./check-api";
 import store from "../store";
 import * as signalR from "@microsoft/signalr";
 import soundNotification from '../assets/sound-notification.wav';
+import {SignalRHub_URl} from "../configuration";
 
 function Home() {
   const user = useSelector(state => state.auth.user)
@@ -20,7 +21,7 @@ function Home() {
         // fetch current user from cookies
         loadUserFromStorage(store).then(()=>{
             let connect = new signalR.HubConnectionBuilder()
-                .withUrl("http://localhost:5103/chathub",
+                .withUrl(SignalRHub_URl,
                     {
                         // skipNegotiation: true,
                         // transport: signalR.HttpTransportType.LongPolling,
@@ -37,7 +38,11 @@ function Home() {
                     console.log(err);
                 });
                 console.log("invoke is called")
-          connect.on("OnUserUpdateState", (userId)=>{
+            connect.on("OnUserUpdateState",()=>{
+                new Audio(soundNotification).play();
+                console.log("call >> OnUserUpdateState")
+            })
+            connect.on("OnGetNewMessage", (userId)=>{
               //(new Audio(soundNotification)).play();
               new Audio(soundNotification).play();
             console.log("bell")

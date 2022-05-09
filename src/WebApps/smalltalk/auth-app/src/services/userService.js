@@ -1,5 +1,6 @@
 import { UserManager } from 'oidc-client';
 import { storeUserError, storeUser } from '../actions/authActions'
+import {Client_URL, Identity_URL} from "../configuration";
 
 // const config = {
 //   authority: "https://localhost:10001",
@@ -9,12 +10,12 @@ import { storeUserError, storeUser } from '../actions/authActions'
 //   redirect_uri: "http://localhost:3003/signin-oidc"
 // };
 const config = {
-    authority: "http://localhost:5001/",
+    authority: Identity_URL,
     client_id: "smalltalk_client_reactjs",
-    redirect_uri: "http://localhost:3003/signin-oidc",
+    redirect_uri: Client_URL+"/signin-oidc",
     response_type: "id_token token",
     //client_secret: "secret",
-    scope: "openid profile smalltalkapi smalltalkapisignalr",
+    scope: "openid profile smalltalkapi smalltalksignalr",
     // monitorSession: false,
     // loadUserInfo: true,
     // post_logout_redirect_uri: "http://localhost:3003/signout-oidc"

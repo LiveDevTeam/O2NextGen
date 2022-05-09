@@ -23,7 +23,7 @@ namespace O2NextGen.SmallTalk.SignalrHub.Controllers
         public async Task<IActionResult> Test()
         {
             //await chatHub.UpdateMessages();
-            _bus.Publish<SendMessageCompletedEvent>(new { userId = "1" , recipientId="2"}).Wait();
+            // _bus.Publish<SendMessageCompletedEvent>(new { userId = "1" , recipientId="2"}).Wait();
             await _hubContext.Clients
                 .All
                 .SendAsync("OnUserUpdateState");

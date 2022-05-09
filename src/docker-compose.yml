@@ -1,7 +1,14 @@
 version: '3.4'
 
 services:
-
+  sql.data:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: sqldatacontainer
+    
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    
   o2nextgen.auth.web:
     image: ${DOCKER_REGISTRY-}o2ng-auth-web
     build:
@@ -13,7 +20,6 @@ services:
     build:
       context: .
       dockerfile: Services/c-gen/O2NextGen.CertificateManagement.Api/Dockerfile
-
 
   o2nextgen.smalltalk.api:
     image: ${DOCKER_REGISTRY-}o2ng-smalltalk-api

@@ -40,11 +40,11 @@ namespace O2NextGen.Auth.Web.Extensions
             // more about EF integration:
             // - http://docs.identityserver.io/en/latest/quickstarts/7_entity_framework.html
             // - http://docs.identityserver.io/en/latest/reference/ef.html?highlight=dbcontext
-            
+
             .Services.AddTransient<IProfileService, ProfileService>();
             return services;
         }
-        
+
         private static IEnumerable<IdentityResource> GetIdentityResources()
         {
             var profile = new IdentityResources.Profile();
@@ -55,7 +55,7 @@ namespace O2NextGen.Auth.Web.Extensions
                 profile
             };
         }
-        
+
         // private static IEnumerable<ApiResource> GetApis()
         // {
         //     var apiResource = new ApiResource("smalltalkapi", "smalltalkapi");
@@ -68,10 +68,10 @@ namespace O2NextGen.Auth.Web.Extensions
         public static IEnumerable<ApiResource> GetApis() =>
             new List<ApiResource>
             {
-                new ApiResource("smalltalkapi", "smalltalkapi"),
-                new ApiResource("smalltalkapisignalr","smalltalkapisignalr")
+                new ApiResource("smalltalkapi", "SmallTalk API"),
+                new ApiResource("smalltalksignalr","SmallTalk SignalR")
             };
-        
+
         private static IEnumerable<Client> GetClients()
         {
             return new[]
@@ -81,26 +81,22 @@ namespace O2NextGen.Auth.Web.Extensions
                 {
                     ClientId = "smalltalk_client_reactjs",
                     ClientName = "SmallTalk React App",
-                    ClientUri = "http://localhost:3003",
 
                     AllowedGrantTypes = GrantTypes.Implicit,
-                    
+
                     RequireClientSecret = false,
 
-                    RedirectUris =
-                    {                        
-                        "http://localhost:3003/signin-oidc",                        
+                    RedirectUris =                 
+                    {"http://localhost:3003/signin-oidc",
                     },
 
-                    PostLogoutRedirectUris = { "http://localhost:3003/signout-oidc" },
-                    AllowedCorsOrigins = { "http://localhost:3003" },
 
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         "smalltalkapi",
-                        "smalltalkapisignalr",
+                        "smalltalksignalr",
                     },
 
                     AllowAccessTokensViaBrowser = true,
@@ -119,47 +115,45 @@ namespace O2NextGen.Auth.Web.Extensions
 
                      AllowedScopes = new List<string>
                      {
-
-                        "order"
+                        "smalltalkapi"
                      }
-                }
-                // new Client
-                // {
-                //     ClientId = "smalltalk_client_reactjs",
-                //     AllowedGrantTypes = GrantTypes.Implicit,
-                //     //ClientSecrets = { new Secret("secret".Sha256())},
-                //     RequireClientSecret = false,
-                //     RedirectUris = new[] {"http://localhost:3003/signin-oidc"},
-                //     //RefreshTokenUsage = TokenUsage.OneTimeOnly,
-                //     AllowedScopes =
-                //     {
-                //         IdentityServerConstants.StandardScopes.OpenId,
-                //         IdentityServerConstants.StandardScopes.Profile,
-                //         "smalltalkapi",
-                //         "smalltalkapisignalr",
-                //         //IdentityServerConstants.StandardScopes.OfflineAccess
-                //     },
-                //     //AllowOfflineAccess = true,
-                //     //AccessTokenLifetime = 60,
-                //     //RefreshTokenExpiration = TokenExpiration.Sliding,
-                //     RequireConsent = false,
-                //     AllowedCorsOrigins = new []{"http://localhost:3003"},
-                //     // PostLogoutRedirectUris = new []{"http://localhost:3003/signout-oidc"},
-                //     //RequirePkce = true,
-                //     // RequireClientSecret=false,
-                //     
-                //     //  
-                //     
-                //     
-                //     
-                //     //,
-                //     
-                //     // AllowAccessTokensViaBrowser = true,
-                //     //AllowOfflineAccess = true,
-                //     //AccessTokenLifetime = 60,
-                //     //RefreshTokenExpiration = TokenExpiration.Sliding,
-                //     //RequireConsent = false
-                // }
+                },
+                new Client {
+                    ClientId = "o2business-wpf",
+
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+
+                    RedirectUris = { "http://localhost/sample-wpf-app" },
+                    AllowedCorsOrigins = { "http://localhost" },
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                    },
+
+                    AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
+                },
+                new Client {
+                    ClientId = "xamarin",
+
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+
+                    RedirectUris = { "xamarinformsclients://callback" },
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                    },
+
+                    AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
+                },
+
             };
         }
     }

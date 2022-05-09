@@ -8,6 +8,7 @@ using O2NextGen.SmallTalk.Api.Services;
 using Polly;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -29,8 +30,22 @@ namespace O2NextGen.SmallTalk.Api
         public IConfiguration Configuration { get; }
         private IContainer  ApplicationContainer { get; set; }
         
+        private void CheckConfiguration()
+        {
+            var urlsRabbitmq = Configuration.GetValue<string>("Urls:Rabbitmq");
+            var urlsIdentityUrl = Configuration.GetValue<string>("Urls:IdentityUrl");
+            var urlSmallTalkSignalRUrl = Configuration.GetValue<string>("Urls:SmallTalkSignalRUrl");
+            var brokerRabbitState = Configuration.GetValue<string>("BrokersMessage:Rabbitmq");
+            Console.WriteLine(" =============  Configuration ===============");
+            Console.WriteLine($" Urls:IdentityUrl = {urlsIdentityUrl}");
+            Console.WriteLine($" Urls:Rabbitmq = {urlsRabbitmq}");
+            Console.WriteLine($" Urls:SmallTalkSignalRUrl = {urlSmallTalkSignalRUrl}");
+            Console.WriteLine($" BrokersMessage:Rabbitmq = {brokerRabbitState}");
+            Console.WriteLine(" ===========  End Configuration =============");
+        }
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            CheckConfiguration();
             services.AddRequiredMvcComponents();
             services.AddBusiness();
             services.AddSwaggerGen(options =>
@@ -47,8 +62,8 @@ namespace O2NextGen.SmallTalk.Api
                 {
                     Type = "oauth2",
                     Flow = "implicit",
-                    AuthorizationUrl = $"{Configuration.GetValue<string>("IdentityUrl")}/connect/authorize",
-                    TokenUrl = $"{Configuration.GetValue<string>("IdentityUrl")}/connect/token",
+                    AuthorizationUrl = $"{Configuration.GetValue<string>("Urls:IdentityUrl")}/connect/authorize",
+                    TokenUrl = $"{Configuration.GetValue<string>("Urls:IdentityUrl")}/connect/token",
                     Scopes = new Dictionary<string, string>()
                     {
                         { "smalltalkapi", "SmallTalk Api" }
@@ -75,11 +90,11 @@ namespace O2NextGen.SmallTalk.Api
             }).AddJwtBearer(options =>
             {
                 // identity server issuing token
-                options.Authority = "http://localhost:5001";
+                options.Authority = Configuration.GetValue<string>("Urls:IdentityUrl");
                 options.RequireHttpsMetadata = false;
             
-                // // allow self-signed SSL certs
-                // options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
+                // allow self-signed SSL certs
+                options.BackchannelHttpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = delegate { return true; } };
             
                 // the scope id of this api
                 options.Audience = "smalltalkapi";
@@ -88,16 +103,21 @@ namespace O2NextGen.SmallTalk.Api
             services.AddApplicationServices(Configuration);
             
             var builderAf = new ContainerBuilder();
-            builderAf.Register(c =>
+            builderAf.Register(context =>
                 {
                     return Bus.Factory.CreateUsingRabbitMq(rmq =>
                     {
-                        rmq.Host(new Uri("rabbitmq://rabbitmq"), "/", h =>
+                        var host = rmq.Host(new Uri(Configuration.GetValue<string>("Urls:RabbitmqUrl")), "/", h =>
                         {
                             h.Username("guest");
                             h.Password("guest");
                         });
-                        rmq.ExchangeType = ExchangeType.Fanout;
+                        
+                        //rmq.ExchangeType = ExchangeType.Fanout;
+                         rmq.ReceiveEndpoint(host,"O2NextGen" +Guid.NewGuid().ToString(), e =>
+                                                {
+                                                    e.LoadFrom(context);
+                                                });
                     });
 
                 }).
@@ -140,6 +160,8 @@ namespace O2NextGen.SmallTalk.Api
             app.UseAuthentication();
             app.UseMvc();
             
+            if (!ConfigFunctionStateConverter.GetStateFunction(Configuration.GetValue<string>("BrokersMessage:Rabbitmq")
+                    .ToString())) return;
             var bus = ApplicationContainer.Resolve<IBusControl>();
             //bus.Start();
             var bushandle = TaskUtil.Await(() => bus.StartAsync());
@@ -159,7 +181,7 @@ namespace O2NextGen.SmallTalk.Api
             //register http services
             services
                 .AddHttpClient<ISignalRService, SignalRService>("Signal-R",
-                    client => { client.BaseAddress = new Uri(configuration.GetValue<string>("urls:SignalRUrl")); })
+                    client => { client.BaseAddress = new Uri(configuration.GetValue<string>("Urls:SmallTalkSignalRUrl")); })
                 .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(5,
                     arrempt => TimeSpan.FromSeconds(arrempt * 2)
                 ));
