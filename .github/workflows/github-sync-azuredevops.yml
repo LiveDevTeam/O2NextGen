@@ -14,7 +14,7 @@ jobs:
           ado_token: "${{ secrets.ADO_PERSONAL_ACCESS_TOKEN }}"
           github_token: "${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}"
           ado_organization: "o2-bionics-llc"
-          ado_project: "O2NextGen"
+          ado_project: "O2NextGen Platform"
           ado_area_path: "O2NextGen Platform"
           ado_iteration_path: "O2NextGen Platform"
           ado_wit: "Product Backlog Item"
