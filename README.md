@@ -2,8 +2,7 @@
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FLiveDevTeam%2FO2NextGen?ref=badge_shield)
 
-[![Board Status](https://dev.azure.com/o2-bionics-llc/cda9516b-08ff-4491-bc59-836494579e0d/dc5ba471-be2b-4b34-a44a-1c6f9cb89743/_apis/work/boardbadge/a2e92cec-c1c4-4cba-a74d-360fbd764d20)](https://dev.azure.com/o2-bionics-llc/cda9516b-08ff-4491-bc59-836494579e0d/_boards/board/t/dc5ba471-be2b-4b34-a44a-1c6f9cb89743/Microsoft.RequirementCategory/)
-
+[![Board Status](https://dev.azure.com/o2-bionics-llc/cda9516b-08ff-4491-bc59-836494579e0d/dc5ba471-be2b-4b34-a44a-1c6f9cb89743/_apis/work/boardbadge/a2e92cec-c1c4-4cba-a74d-360fbd764d20?columnOptions=1)](https://dev.azure.com/o2-bionics-llc/cda9516b-08ff-4491-bc59-836494579e0d/_boards/board/t/dc5ba471-be2b-4b34-a44a-1c6f9cb89743/Microsoft.RequirementCategory/)
 #### Build & Coverage
 
 | master coverage status | dev coverage status |
