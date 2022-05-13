@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using O2NetGen.OnTracker.Api.IoC;
 using O2NetGen.OnTracker.Api.Setup;
 using O2NextGen.Tracker.DbUtility;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace O2NetGen.OnTracker.Api
 {
@@ -22,6 +23,17 @@ namespace O2NetGen.OnTracker.Api
         {
             services.AddRequiredMvcComponents();
             // services.AddSingleton<IGeoDbSetting, GeoDbSetting>();
+            services.AddSwaggerGen(options =>
+            {
+                options.DescribeAllEnumsAsStrings();
+                options.SwaggerDoc("v1",new Info()
+                {
+                    Title = "O2NextGen Platform. On-Tracker HTTP API",
+                    Version = "v1",
+                    Description = "On-Tracker API Service. The service allows you to create certificates",
+                    TermsOfService = "Terms of Service"
+                });
+            });
             services.ConfigurePOCO<GeoDatabase>(AppConfiguration.GetSection("GeoDatabase"));
             services.AddScoped<IGeoIpAddressResolver, MaxMindLocalGeoIpAddressResolver>();
         }
@@ -37,10 +49,10 @@ namespace O2NetGen.OnTracker.Api
             {
                 app.UseHsts();
             }
-
+            app.UseSwagger()
+                .UseSwaggerUI(c => { c.SwaggerEndpoint($"/swagger/v1/swagger.json", "On-Tracker API V1"); });
             app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
 }
-

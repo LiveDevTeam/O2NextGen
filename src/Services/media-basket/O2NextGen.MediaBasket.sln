@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.MediaBasket.Business", "O2NextGen.MediaBasket.Business\O2NextGen.MediaBasket.Business.csproj", "{3727C1D6-F1F9-4962-A64B-0872A7A3B676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.MediaBasket.Data", "O2NextGen.MediaBasket.Data\O2NextGen.MediaBasket.Data.csproj", "{3A00AD20-30FF-4D54-A25E-E9A16EB78E23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.MediaBasket.Impl", "O2NextGen.MediaBasket.Impl\O2NextGen.MediaBasket.Impl.csproj", "{6BAA3FD6-0238-4304-ADED-FF740259CDC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5A1D96AD-2969-4FAB-84E5-6AE8DB9A6EE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.MediaBasket.Api", "Tests\IntegrationTests.O2NextGen.MediaBasket.Api\IntegrationTests.O2NextGen.MediaBasket.Api.csproj", "{C4D95994-E49E-4A29-B70C-E7A39944567F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.MediaBasket.Api", "Tests\Tests.O2NextGen.MediaBasket.Api\Tests.O2NextGen.MediaBasket.Api.csproj", "{663A3ECF-F27B-4042-AF25-53A6325627DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.MediaBasket.Business", "Tests\Tests.O2NextGen.MediaBasket.Business\Tests.O2NextGen.MediaBasket.Business.csproj", "{4D1B161E-A330-48D2-8E5E-5BEE5364F763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.MediaBasket.Impl", "Tests\Tests.O2NextGen.MediaBasket.Impl\Tests.O2NextGen.MediaBasket.Impl.csproj", "{1E7EF124-6FA0-43C4-9E65-334A260F1FC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.MediaBasket.Data", "Tests\Tests.O2NextGen.MediaBasket.Data\Tests.O2NextGen.MediaBasket.Data.csproj", "{F3575828-D497-4253-9D1E-1AEC59337374}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.MediaBasket.Api", "O2NextGen.MediaBasket.Api\O2NextGen.MediaBasket.Api.csproj", "{C7D33544-5C61-4A40-9195-27703CD33049}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3727C1D6-F1F9-4962-A64B-0872A7A3B676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3727C1D6-F1F9-4962-A64B-0872A7A3B676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3727C1D6-F1F9-4962-A64B-0872A7A3B676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3727C1D6-F1F9-4962-A64B-0872A7A3B676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A00AD20-30FF-4D54-A25E-E9A16EB78E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A00AD20-30FF-4D54-A25E-E9A16EB78E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A00AD20-30FF-4D54-A25E-E9A16EB78E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A00AD20-30FF-4D54-A25E-E9A16EB78E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BAA3FD6-0238-4304-ADED-FF740259CDC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BAA3FD6-0238-4304-ADED-FF740259CDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BAA3FD6-0238-4304-ADED-FF740259CDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BAA3FD6-0238-4304-ADED-FF740259CDC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D95994-E49E-4A29-B70C-E7A39944567F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D95994-E49E-4A29-B70C-E7A39944567F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D95994-E49E-4A29-B70C-E7A39944567F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D95994-E49E-4A29-B70C-E7A39944567F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663A3ECF-F27B-4042-AF25-53A6325627DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663A3ECF-F27B-4042-AF25-53A6325627DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663A3ECF-F27B-4042-AF25-53A6325627DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663A3ECF-F27B-4042-AF25-53A6325627DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1B161E-A330-48D2-8E5E-5BEE5364F763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1B161E-A330-48D2-8E5E-5BEE5364F763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1B161E-A330-48D2-8E5E-5BEE5364F763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1B161E-A330-48D2-8E5E-5BEE5364F763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E7EF124-6FA0-43C4-9E65-334A260F1FC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E7EF124-6FA0-43C4-9E65-334A260F1FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E7EF124-6FA0-43C4-9E65-334A260F1FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E7EF124-6FA0-43C4-9E65-334A260F1FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3575828-D497-4253-9D1E-1AEC59337374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3575828-D497-4253-9D1E-1AEC59337374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3575828-D497-4253-9D1E-1AEC59337374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3575828-D497-4253-9D1E-1AEC59337374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D33544-5C61-4A40-9195-27703CD33049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D33544-5C61-4A40-9195-27703CD33049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D33544-5C61-4A40-9195-27703CD33049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D33544-5C61-4A40-9195-27703CD33049}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5DE36A5-6E5E-4E49-9F59-BD35AF1461BE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4D95994-E49E-4A29-B70C-E7A39944567F} = {5A1D96AD-2969-4FAB-84E5-6AE8DB9A6EE9}
+		{663A3ECF-F27B-4042-AF25-53A6325627DC} = {5A1D96AD-2969-4FAB-84E5-6AE8DB9A6EE9}
+		{4D1B161E-A330-48D2-8E5E-5BEE5364F763} = {5A1D96AD-2969-4FAB-84E5-6AE8DB9A6EE9}
+		{1E7EF124-6FA0-43C4-9E65-334A260F1FC2} = {5A1D96AD-2969-4FAB-84E5-6AE8DB9A6EE9}
+		{F3575828-D497-4253-9D1E-1AEC59337374} = {5A1D96AD-2969-4FAB-84E5-6AE8DB9A6EE9}
+	EndGlobalSection
+EndGlobal

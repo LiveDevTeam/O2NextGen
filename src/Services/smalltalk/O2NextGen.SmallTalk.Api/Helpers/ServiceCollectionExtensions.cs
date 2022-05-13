@@ -45,6 +45,7 @@ namespace O2NextGen.SmallTalk.Api.Helpers
             var mvcBuilder = services.AddMvcCore(options => { 
                 //options.Filters.Add<ApiExceptionFilter>();
             });
+            mvcBuilder.AddApiExplorer(); //for swagger
             mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             mvcBuilder.AddJsonFormatters();
             return services;

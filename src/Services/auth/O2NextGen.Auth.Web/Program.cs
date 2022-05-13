@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using O2NextGen.Auth.Web.StartupHelpers;
 using Serilog;
 
 namespace O2NextGen.Auth.Web
@@ -20,6 +21,7 @@ namespace O2NextGen.Auth.Web
                 var host = CreateWebHostBuilder(args).Build();
                 Log.Information($"############### {AppName} ##############");
                 Log.Information("################# Starting Application #################");
+                await host.EnsureDbUpToDateAsync();
                 await host.RunAsync();
                 Log.Information($"============== {AppName} - state is started =====================");
                 return 0;
