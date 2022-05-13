@@ -1,7 +1,14 @@
 version: '3.4'
 
 services:
-
+  sql.data:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: sqldatacontainer
+    
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    
   o2nextgen.auth.web:
     image: ${DOCKER_REGISTRY-}o2ng-auth-web
     build:
@@ -14,13 +21,17 @@ services:
       context: .
       dockerfile: Services/c-gen/O2NextGen.CertificateManagement.Api/Dockerfile
 
-
   o2nextgen.smalltalk.api:
     image: ${DOCKER_REGISTRY-}o2ng-smalltalk-api
     build:
       context: .
       dockerfile: Services/smalltalk/O2NextGen.SmallTalk.Api/Dockerfile
 
+  o2nextgen.smalltalk.signalr:
+    image: ${DOCKER_REGISTRY-}o2ng-smalltalk-signalr
+    build:
+      context: .
+      dockerfile: Services/smalltalk/O2NextGen.SmallTalk.SignalrHub/Dockerfile
 
   o2nextgen.esender.api:
     image: ${DOCKER_REGISTRY-}o2ng-esender-api
@@ -28,3 +39,14 @@ services:
       context: .
       dockerfile: Services/e-sender/O2NextGen.ESender.Api/Dockerfile
 
+  smalltalk.app: 
+    image: ${DOCKER_REGISTRY-}smalltalk-app
+    build:
+      context: ./WebApps/smalltalk/auth-app/
+      dockerfile: Dockerfile
+
+  smalltalk.app.chat: 
+    image: ${DOCKER_REGISTRY-}smalltalk-mf-chat
+    build:
+      context: ./WebApps/smalltalk/chat/
+      dockerfile: Dockerfile
