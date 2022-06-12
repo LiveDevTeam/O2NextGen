@@ -11,8 +11,7 @@ using O2NextGen.MediaBasket.Api.Helpers;
 using O2NextGen.MediaBasket.Business.Models;
 using O2NextGen.MediaBasket.Business.Services;
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Jpeg;
-using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Formats;
 
 namespace O2NextGen.MediaBasket.Api.Services
 {
@@ -49,24 +48,29 @@ namespace O2NextGen.MediaBasket.Api.Services
             {
                 var filePath = Path.GetTempFileName();
                 _logger.LogInformation($"string filePath={filePath}");
-                using (var stream = File.Create(filename))
+                using (var stream = formFile.OpenReadStream())
                 {
-                    using (Image image = Image.Load(stream))
+                    using (Image image = Image.Load(stream, out IImageFormat format))
                     {
-                        await formFile.CopyToAsync(stream, ct);
-                        var uploadParams = new ImageUploadParams()
+                        using (var stream2 = formFile.OpenReadStream())
                         {
-                            Folder = "/Media-Basket/Dev",
-                            File = new FileDescription(media.Name, stream),
-                        };
-                        var uploadResult = _cloudinary.Upload(uploadParams);
-                        media.PublicId = uploadResult.PublicId;
-                        media.Width = image.Width;
-                        media.Height = image.Height;
-                        media.ExtType = filename.GetFileExtension();
-                        media.Url = uploadResult.Uri.ToString();
-                        media.MediaType = "image";
-                        media.ContentType = contentType;
+                            // await formFile.CopyToAsync(stream, ct);
+                            var uploadParams = new ImageUploadParams()
+                            {
+                                Folder = "Media-Basket/Dev",
+                                File = new FileDescription(media.OriginalName, stream2),
+                            };
+                            
+                            var uploadResult = _cloudinary.Upload(uploadParams);
+                            media.Name = filename;
+                            media.PublicId = uploadResult.PublicId;
+                            media.Width = image.Width;
+                            media.Height = image.Height;
+                            media.ExtType = filename.GetFileExtension();
+                            media.Url = uploadResult.Uri.ToString();
+                            media.MediaType = "image";
+                            media.ContentType = contentType;
+                        }
                     }
                 }
             }

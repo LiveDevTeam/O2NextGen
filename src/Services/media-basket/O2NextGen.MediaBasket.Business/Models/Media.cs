@@ -10,7 +10,7 @@ namespace O2NextGen.MediaBasket.Business.Models
         public string PublicId { get; set; }
         public string AccountId { get; set; }
         public string ContentType { get; set; }
-        public DateTime? DateAdded { get; set; }
+        public DateTime DateAdded { get; set; }
         public string Description { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }

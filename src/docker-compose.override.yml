@@ -120,6 +120,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionString=Server=sql.data;Initial Catalog=O2NextGen.MediaBasketDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;
       #- ASPNETCORE_URLS=https://+:443;http://+:80
+      - CloudinarySettings__CloudName=cloudName
+      - CloudinarySettings__ApiKey=api_key
+      - CloudinarySettings__ApiSecret=api_secret
     ports:
       - "5005:80"
     depends_on:

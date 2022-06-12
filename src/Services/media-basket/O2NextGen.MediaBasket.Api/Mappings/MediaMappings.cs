@@ -48,7 +48,7 @@ namespace O2NextGen.MediaBasket.Api.Mappings
             model.PublicId = viewModel.PublicId;
             model.AccountId = viewModel.AccountId;
             model.ContentType = viewModel.ContentType;
-            model.DateAdded = viewModel.DateAdded;
+            model.DateAdded = viewModel.DateAdded ?? DateTime.Now;
             model.Description = viewModel.Description;
             model.Width = viewModel.Width ?? 0;
             model.Height = viewModel.Height ?? 0;
