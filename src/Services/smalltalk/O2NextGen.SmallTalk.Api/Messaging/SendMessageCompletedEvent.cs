@@ -1,4 +1,4 @@
-namespace O2NextGen.Common
+namespace O2NextGen.SmallTalk.Api.Messaging
 {
     public class SendMessageCompletedEvent
     {

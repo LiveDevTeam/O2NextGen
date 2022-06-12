@@ -1,7 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.2</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\O2NextGen.MediaBasket.Business\O2NextGen.MediaBasket.Business.csproj" />
+		<ProjectReference Include="..\O2NextGen.MediaBasket.Data\O2NextGen.MediaBasket.Data.csproj" />
+	</ItemGroup>
 
 </Project>

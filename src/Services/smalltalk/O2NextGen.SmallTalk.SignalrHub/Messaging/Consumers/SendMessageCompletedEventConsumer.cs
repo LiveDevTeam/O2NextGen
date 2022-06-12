@@ -3,7 +3,7 @@ using MassTransit;
 using Microsoft.AspNetCore.SignalR;
 using O2NextGen.SmallTalk.SignalrHub.Hubs;
 
-namespace O2NextGen.Common.Consumers
+namespace O2NextGen.SmallTalk.SignalrHub.Messaging.Consumers
 {
     
     public class SendMessageCompletedEventConsumer: IConsumer<SendMessageCompletedEvent>

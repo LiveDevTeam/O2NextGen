@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.SmallTalk.SignalrHub.Helpers;
 using O2NextGen.SmallTalk.SignalrHub.Hubs;
-using RabbitMQ.Client;
+
 namespace O2NextGen.SmallTalk.SignalrHub
 {
     public class Startup

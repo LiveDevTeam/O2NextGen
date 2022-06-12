@@ -1,4 +1,4 @@
-namespace O2NextGen.Common
+namespace O2NextGen.SmallTalk.SignalrHub.Messaging
 {
     public class SendMessageCompletedEvent
     {
