@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -10,17 +11,19 @@ using Microsoft.Extensions.Options;
 using O2NextGen.Auth.Web.Data;
 using O2NextGen.Auth.Web.Extensions;
 using O2NextGen.Auth.Web.Helpers;
+using O2NextGen.Auth.Web.Utilities;
 
 namespace O2NextGen.Auth.Web
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc()
@@ -30,48 +33,48 @@ namespace O2NextGen.Auth.Web
                     options.Conventions.AuthorizeFolder("/Account");
                 } );
 
-            services.AddDbContext<AuthDbContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionString"]));
-            
-            //Todo: will change vars to Auth-Config envs 
-            services
-                .AddIdentity<O2User,IdentityRole>(options =>
-                {
-                    options.Password.RequireDigit = true;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = true;
-                    options.Password.RequiredLength = 6;
-                })
-                .AddEntityFrameworkStores<AuthDbContext>()
-                .AddDefaultTokenProviders();
-            
-            services.AddApplicationServices(Configuration);
-            
+            services.AddApplicationServices(_configuration);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed((host) => true)
+                    .AllowCredentials());
+            });
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Login";
                 options.LogoutPath = "/Logout";
                 options.AccessDeniedPath = "/AccessDenied";
-            });
+            })
+                .AddConfiguredIdentity(_configuration);
             services.AddConfiguredLocalization();
+
+            services.AddSingleton<IBase64QrCodeGenerator, Base64QrCodeGenerator>();
             services.AddSingleton<IEmailSender, DummyEmailSender>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+            app.UseHsts();
+            app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
             app.UseStaticFiles();
+            app.UseIdentityServer();
             var v = app.ApplicationServices
                 .GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
             app.UseRequestLocalization(v);
             app.UseCookiePolicy();
-            
             app.UseAuthentication();
+            
             app.UseMvcWithDefaultRoute();
         }
     }

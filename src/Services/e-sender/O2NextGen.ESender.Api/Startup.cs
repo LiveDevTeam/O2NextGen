@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.ESender.Api.IoC;
 using O2NextGen.ESender.Api.Setup;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace O2NextGen.ESender.Api
 {
@@ -21,6 +22,17 @@ namespace O2NextGen.ESender.Api
         {
             services.AddRequiredMvcComponents();
             services.AddBusiness();
+            services.AddSwaggerGen(options =>
+                        {
+                            options.DescribeAllEnumsAsStrings();
+                            options.SwaggerDoc("v1",new Info()
+                            {
+                                Title = "O2NextGen Platform. E-Sender HTTP API",
+                                Version = "v1",
+                                Description = "E-Sender API Service. The service allows you to send e-mail",
+                                TermsOfService = "Terms of Service"
+                            });
+                        });
             services.AddConfigEf(AppConfiguration);
             services.ConfigurePOCO<SenderConfig>(AppConfiguration.GetSection("Sender"));
         }
@@ -45,6 +57,11 @@ namespace O2NextGen.ESender.Api
 
                 await next.Invoke();
             });
+            app.UseSwagger()
+                            .UseSwaggerUI(c =>
+                            {
+                                c.SwaggerEndpoint($"/swagger/v1/swagger.json", "E-Sender API V1");
+                            });
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();
