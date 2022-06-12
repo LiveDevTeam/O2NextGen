@@ -8,12 +8,22 @@ namespace O2NextGen.MediaBasket.Impl.Mappings
     {
         public static Media ToService(this MediaEntity entity)
         {
-            return entity != null ? new Media() {Id = entity.Id, Name = entity.Name} : null;
+            return entity != null ? new Media()
+            {
+                Id = entity.Id, 
+                Name = entity.Name,
+                OriginalName = entity.OriginalName
+            } : null;
         }
 
         public static MediaEntity ToEntity(this Media model)
         {
-            return model != null ? new MediaEntity() {Id = model.Id, Name = model.Name} : null;
+            return model != null ? new MediaEntity()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                OriginalName = model.OriginalName
+            } : null;
         }
 
         public static IReadOnlyCollection<Media>

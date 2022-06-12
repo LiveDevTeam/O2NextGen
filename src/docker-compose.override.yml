@@ -115,6 +115,18 @@ services:
     #  - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
     #  - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
+  o2nextgen.mediabasket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=Server=sql.data;Initial Catalog=O2NextGen.MediaBasketDb;Persist Security Info=False;User ID=sa;Password=your@Password;Connection Timeout=30;
+      #- ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "5005:80"
+    depends_on:
+      - sql.data
+    networks:
+      - backend
+
   smalltalk.app: 
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

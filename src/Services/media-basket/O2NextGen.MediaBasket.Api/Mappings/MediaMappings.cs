@@ -19,6 +19,17 @@ namespace O2NextGen.MediaBasket.Api.Mappings
             //Bindings
             viewModel.Id = model.Id;
             viewModel.Name = model.Name;
+            viewModel.OriginalName = model.OriginalName;
+            viewModel.PublicId = model.PublicId;
+            viewModel.AccountId = model.AccountId;
+            viewModel.ContentType = model.ContentType;
+            viewModel.DateAdded = model.DateAdded;
+            viewModel.Description = model.Description;
+            viewModel.Width = model.Width;
+            viewModel.Height = model.Height;
+            viewModel.ExtType = model.ExtType;
+            viewModel.MediaType = model.MediaType;
+            viewModel.Url = model.Url;
 
             return viewModel;
         }
@@ -33,6 +44,17 @@ namespace O2NextGen.MediaBasket.Api.Mappings
             //Bindings
             model.Id = viewModel.Id;
             model.Name = viewModel.Name;
+            model.OriginalName = viewModel.OriginalName;
+            model.PublicId = viewModel.PublicId;
+            model.AccountId = viewModel.AccountId;
+            model.ContentType = viewModel.ContentType;
+            model.DateAdded = viewModel.DateAdded;
+            model.Description = viewModel.Description;
+            model.Width = viewModel.Width ?? 0;
+            model.Height = viewModel.Height ?? 0;
+            model.ExtType = viewModel.ExtType;
+            model.MediaType = viewModel.MediaType;
+            model.Url = viewModel.Url;
 
             return model;
         }

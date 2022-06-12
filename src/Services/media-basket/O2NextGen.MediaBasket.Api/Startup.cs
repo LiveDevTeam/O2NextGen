@@ -8,7 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.MediaBasket.Api.Helpers;
 using O2NextGen.MediaBasket.Api.IoC;
+using O2NextGen.MediaBasket.Api.Services;
 using O2NextGen.MediaBasket.Api.Setup;
+using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace O2NextGen.MediaBasket.Api
@@ -23,8 +25,33 @@ namespace O2NextGen.MediaBasket.Api
             this.HostingEnvironment = env;
             this.AppConfiguration = appConfiguration;
         }
+
+
+        //private void ConfigureCloudStorageProfile()
+        //{
+
+        //    CloudStorage.Instance.AccountCloudStorages.Add(
+        //        new AccountCloudStorage()
+        //        {
+        //            StorageType = StorageType.Cloudinary,
+        //            AccountName = AppConfiguration.GetSection("CloudStorage:Videos:AccountName").Value,
+        //            Container = AppConfiguration.GetSection("CloudStorage:Videos:Container").Value,
+        //            AccountKey = AppConfiguration.GetSection("CloudStorage:Videos:AccountKey").Value,
+        //            TypeTable = TypeTable.Videos
+        //        });
+
+        //    Log.Information(
+        //        $"CloudStorage:Events:AccountName={AppConfiguration.GetSection("CloudStorage:Videos:AccountName").Value}");
+        //    Log.Information(
+        //        $"CloudStorage:Events:Container={AppConfiguration.GetSection("CloudStorage:Videos:Container").Value}");
+        //    Log.Information(
+        //        $"CloudStorage:Events:AccountKey={AppConfiguration.GetSection("CloudStorage:Videos:AccountKey").Value}");
+        //}
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CloudinarySettings>(AppConfiguration.GetSection("CloudinarySettings"));
+            //ConfigureCloudStorageProfile();
             services.AddRequiredMvcComponents();
             services.AddBusiness();
             services.AddSwaggerGen(options =>
