@@ -1,4 +1,4 @@
-﻿namespace O2NextGen.SmallTalk.Api.Services
+﻿namespace O2NextGen.SmallTalk.Business.Services
 {
     public interface IAccessManager
     {

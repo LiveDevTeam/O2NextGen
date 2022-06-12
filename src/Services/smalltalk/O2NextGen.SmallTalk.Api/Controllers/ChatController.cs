@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
-using O2NextGen.Common;
+using O2NextGen.SmallTalk.Api.Messaging;
 
 namespace O2NextGen.SmallTalk.Api.Controllers
 {

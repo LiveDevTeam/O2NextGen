@@ -15,7 +15,6 @@ using Autofac.Extensions.DependencyInjection;
 using MassTransit;
 using MassTransit.Util;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using RabbitMQ.Client;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace O2NextGen.SmallTalk.Api

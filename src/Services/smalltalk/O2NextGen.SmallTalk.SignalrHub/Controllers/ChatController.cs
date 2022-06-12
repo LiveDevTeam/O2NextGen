@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.SignalR;
 using O2NextGen.SmallTalk.SignalrHub.Hubs;
 using System.Threading.Tasks;
 using MassTransit;
-using O2NextGen.Common;
 
 namespace O2NextGen.SmallTalk.SignalrHub.Controllers
 {

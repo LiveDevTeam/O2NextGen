@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using O2NextGen.CertificateManagement.Api.Models.ESender;
 using O2NextGen.ESender.Business.Models;
+using O2NextGen.Sdk.NetCore.Models.e_sender;
 
 namespace O2NextGen.ESender.Api.Mappings
 {
