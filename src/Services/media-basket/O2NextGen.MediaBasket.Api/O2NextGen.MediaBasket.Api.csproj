@@ -32,7 +32,8 @@
 		</PackageReference>
 		<PackageReference Include="Serilog.Sinks.File" Version="2.2.0">
 		</PackageReference>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.0" />
+		<PackageReference Include="CloudinaryDotNet" Version="1.3.1" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj" />

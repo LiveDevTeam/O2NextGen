@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.MediaBasket.Api.Filters;
+using O2NextGen.MediaBasket.Api.Services;
 using O2NextGen.MediaBasket.Business.Services;
 using O2NextGen.MediaBasket.Data;
 using O2NextGen.MediaBasket.Impl.Services;
@@ -49,7 +50,8 @@ namespace O2NextGen.MediaBasket.Api.IoC
 
         public static IServiceCollection AddBusiness(this IServiceCollection services)
         {
-            // services.AddSingleton<IMediaService, InMemoryMediaService>();
+            //services.AddSingleton<IMediaService, InMemoryMediaService>();
+            services.AddSingleton<Business.Services.ICloudStorageManager, CloudinaryStorageService>();
             // Include DataLayer
             services.AddScoped<IMediaService, MediaService>();
             //more business services...

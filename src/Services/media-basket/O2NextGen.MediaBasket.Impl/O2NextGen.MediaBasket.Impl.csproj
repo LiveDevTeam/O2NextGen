@@ -8,5 +8,8 @@
 		<ProjectReference Include="..\O2NextGen.MediaBasket.Business\O2NextGen.MediaBasket.Business.csproj" />
 		<ProjectReference Include="..\O2NextGen.MediaBasket.Data\O2NextGen.MediaBasket.Data.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="SixLabors.ImageSharp" Version="1.0.2" />
+	</ItemGroup>
 
 </Project>

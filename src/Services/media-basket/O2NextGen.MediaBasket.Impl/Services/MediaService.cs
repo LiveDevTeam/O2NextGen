@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using O2NextGen.MediaBasket.Business.Models;
 using O2NextGen.MediaBasket.Business.Services;
@@ -15,15 +18,17 @@ namespace O2NextGen.MediaBasket.Impl.Services
         #region Fields
 
         private readonly MadiaManagementDbContext _context;
+        private readonly ICloudStorageManager _cloudStorage;
 
         #endregion
 
 
         #region Ctors
 
-        public MediaService(MadiaManagementDbContext context)
+        public MediaService(MadiaManagementDbContext context,ICloudStorageManager cloudStorage)
         {
             _context = context;
+            _cloudStorage = cloudStorage;
         }
 
         #endregion
@@ -47,8 +52,9 @@ namespace O2NextGen.MediaBasket.Impl.Services
             return updatedCertificateEntity.Entity.ToService();
         }
         
-        public async Task<Media> AddAsync(Media media, CancellationToken ct)
+        public async Task<Media> AddAsync(Media media, IFormFile formFile, CancellationToken ct)
         {
+            await _cloudStorage.UploadFileAsync(media, formFile, ct);
             var addedCertificateEntity = await _context.Certificates.AddAsync(media.ToEntity(), ct);
             await _context.SaveChangesAsync(ct);
             return addedCertificateEntity.Entity.ToService();

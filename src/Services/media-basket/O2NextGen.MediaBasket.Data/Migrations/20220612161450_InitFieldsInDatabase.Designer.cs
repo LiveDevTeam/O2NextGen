@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using O2NextGen.MediaBasket.Data;
 
 namespace O2NextGen.MediaBasket.Data.Migrations
 {
     [DbContext(typeof(MadiaManagementDbContext))]
-    partial class MadiaManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220612161450_InitFieldsInDatabase")]
+    partial class InitFieldsInDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
