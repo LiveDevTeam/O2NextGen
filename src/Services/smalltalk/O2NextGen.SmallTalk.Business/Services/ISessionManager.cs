@@ -1,9 +1,9 @@
-﻿using O2NextGen.SmallTalk.Business.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using O2NextGen.SmallTalk.Business.Models;
 
-namespace O2NextGen.SmallTalk.Api.Services
+namespace O2NextGen.SmallTalk.Business.Services
 {
     public interface ISessionManager
     {

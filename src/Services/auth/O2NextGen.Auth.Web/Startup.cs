@@ -1,14 +1,11 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using O2NextGen.Auth.Web.Data;
 using O2NextGen.Auth.Web.Extensions;
 using O2NextGen.Auth.Web.Helpers;
 using O2NextGen.Auth.Web.Utilities;

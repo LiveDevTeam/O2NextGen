@@ -1,4 +1,4 @@
-﻿namespace O2NextGen.CertificateManagement.Api.Models.ESender
+﻿namespace O2NextGen.Sdk.NetCore.Models.e_sender
 {
     public interface IViewModel
     {

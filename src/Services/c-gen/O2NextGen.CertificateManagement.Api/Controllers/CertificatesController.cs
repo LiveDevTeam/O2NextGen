@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using O2NextGen.CertificateManagement.Api.Setup;
 using O2NextGen.CertificateManagement.Business.Services;
 using O2NextGen.CertificateManagement.Api.Mappings;
-using O2NextGen.CertificateManagement.Api.Models.CGen;
+using O2NextGen.Sdk.NetCore.Models.c_gen;
 
 namespace O2NextGen.CertificateManagement.Api.Controllers
 {

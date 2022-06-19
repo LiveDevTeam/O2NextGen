@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using O2NextGen.CertificateManagement.Api.Models.ESender;
 using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Api.Mappings;
 using O2NextGen.ESender.Business.Services;
+using O2NextGen.Sdk.NetCore.Models.e_sender;
 
 namespace O2NextGen.ESender.Api.Controllers
 {

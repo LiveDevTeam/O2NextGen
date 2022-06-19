@@ -1,5 +1,4 @@
-﻿using O2NextGen.SmallTalk.Api.Services;
-using O2NextGen.SmallTalk.Business.Models;
+﻿using O2NextGen.SmallTalk.Business.Models;
 using O2NextGen.SmallTalk.Business.Services;
 using System.Collections.Generic;
 using System.Threading;

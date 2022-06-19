@@ -1,4 +1,4 @@
-namespace O2NetGen.OnTracker.Api.Setup
+namespace O2NextGen.OnTracker.Api.Setup
 {
     public class GeoDatabase
     {

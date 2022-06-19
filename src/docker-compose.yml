@@ -39,6 +39,12 @@ services:
       context: .
       dockerfile: Services/e-sender/O2NextGen.ESender.Api/Dockerfile
 
+  o2nextgen.mediabasket.api:
+    image: ${DOCKER_REGISTRY-}o2ng-media-basket-api
+    build:
+      context: .
+      dockerfile: Services/media-basket/O2NextGen.MediaBasket.Api/Dockerfile
+
   smalltalk.app: 
     image: ${DOCKER_REGISTRY-}smalltalk-app
     build:

@@ -1,4 +1,4 @@
-﻿namespace O2NextGen.SmallTalk.Api.Models
+﻿namespace O2NextGen.SmallTalk.Business.Models
 {
     public class SessionModel
     {

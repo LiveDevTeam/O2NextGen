@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using O2NextGen.SmallTalk.Api.Services;
 using O2NextGen.SmallTalk.Business.Services;
 using O2NextGen.SmallTalk.Impl.Services;
 using System;
