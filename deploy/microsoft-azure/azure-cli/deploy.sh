@@ -71,7 +71,73 @@ do
             sh dns/delete-dns-primary.sh
             sh rc/delete-rc.sh
             ;;
-
+            "Install analize tools in AKS cluster")
+            echo "you chose choice $REPLY which is $opt"
+            sh tools/install-prometheus.sh
+            # sh tools/install.sh
+            ;;
+            "Uninstall analize tools in AKS cluster")
+            echo "you chose choice $REPLY which is $opt"
+            # sh tools/uninstall-prometheus.sh
+            # sh tools/uninstall.sh
+            ;;
+            "Create main DNS")
+            echo "you chose choice $REPLY which is $opt"
+            sh dns/create-dns.sh
+            sh dns/create-dns-primary.sh
+            # sh tools/install.sh
+            ;;
+            "Delete main DNS")
+            echo "you chose choice $REPLY which is $opt"
+            sh dns/delete-dns.sh
+            sh dns/delete-dns-primary.sh
+            # sh tools/install.sh
+            ;;
+            "Configure main DNS")
+            echo "you chose choice $REPLY which is $opt"
+            sh dns/set-config-dns.sh
+            sh dns/set-config-dns-primary.sh
+            # sh tools/install.sh
+            ;;
+            "Install cert-manager AKS cluster")
+            echo "you chose choice $REPLY which is $opt"
+            sh cert-manager/install-tls.sh
+            # sh tools/install.sh
+            ;;
+            "Uninstall cert-manager AKS cluster")
+            echo "you chose choice $REPLY which is $opt"
+            sh cert-manager/uninstall-tls.sh
+            # sh tools/uninstall-prometheus.sh
+            # sh tools/uninstall.sh
+            ;;
+            "Create namespaces for Deployment")
+            echo "you chose choice $REPLY which is $opt"
+            sh ns/create-ns.sh
+            # sh tools/install.sh
+            ;;
+            "Delete namespaces for Deployment")
+            echo "you chose choice $REPLY which is $opt"
+            sh ns/delete-ns.sh
+            # sh tools/install.sh
+            ;;
+            "Create external-dns for AKS")
+            echo "you chose choice $REPLY which is $opt"
+            sh dns/install-external-dns-in-aks.sh
+            # sh tools/install.sh
+            ;;
+            "Install nginx controller with Public IP")
+            sh nginx/install-nginx.sh
+            ;;
+            "Uninstall nginx controller with Public IP")
+            sh nginx/uninstall-aks-nginx.sh
+            kubectl apply -f nginx/nginx.yaml --namespace=production 
+            ;;
+            "Install test-app")
+            helm upgrade --namespace production --install --values helm/test-app/values.yaml --set image.tag=latest --wait test-app helm/test-app
+            ;;
+            "Uninstall test-app")
+            helm uninstall  test-app --namespace production
+            ;;
             "Quit")
             break
             ;;
