@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 using O2NextGen.Auth.Web.Data;
 using O2NextGen.Auth.Web.Resources;
 
-namespace O2NextGen.Auth.Web.Pages.Account
+namespace O2NextGen.Auth.Web.Pages
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel

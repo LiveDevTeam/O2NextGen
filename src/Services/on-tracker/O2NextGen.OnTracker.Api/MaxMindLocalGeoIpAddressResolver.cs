@@ -4,10 +4,10 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using MaxMind.Db;
-using O2NetGen.OnTracker.Api.Setup;
+using O2NextGen.OnTracker.Api.Setup;
 using O2NextGen.Tracker.DbUtility;
 
-namespace O2NetGen.OnTracker.Api
+namespace O2NextGen.OnTracker.Api
 {
     public sealed class MaxMindLocalGeoIpAddressResolver : IGeoIpAddressResolver
     {
