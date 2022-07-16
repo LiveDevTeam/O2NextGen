@@ -1,21 +1,19 @@
-name: auth-api
 
-variables:
-  solution: 'src/Services/auth/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- dev
 
 pool:
   vmImage: 'windows-latest'
 
-trigger:
-  branches:
-    include:
-    - master
-    - dev
-  paths:
-    include:
-    - src/Services/auth
+variables:
+  solution: 'src/Services/auth/**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
