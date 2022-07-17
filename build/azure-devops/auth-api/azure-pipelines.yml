@@ -2,7 +2,8 @@
 trigger:
 - dev
 
-pool:
+pool: 
+  name: 'Azure Pipelines'
   vmImage: ubuntu-latest # This is the default if you don't specify a pool or vmImage.
 
 variables:
