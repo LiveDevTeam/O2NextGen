@@ -2,6 +2,8 @@
 trigger:
 - dev
 
+pool: Default
+
 variables:
   solution: 'src/Services/auth/**/*.sln'
   buildPlatform: 'Any CPU'
