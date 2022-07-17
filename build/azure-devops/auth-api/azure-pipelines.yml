@@ -2,12 +2,6 @@
 trigger:
 - dev
 
-pool:
-  name: Azure Pipelines
-  demands:
-  - msbuild
-  - visualstudio
-
 variables:
   solution: 'src/Services/auth/**/*.sln'
   buildPlatform: 'Any CPU'
