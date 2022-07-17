@@ -2,9 +2,11 @@
 trigger:
 - dev
 
-pool: 
-  name: 'Azure Pipelines'
-  vmImage: ubuntu-latest # This is the default if you don't specify a pool or vmImage.
+pool:
+  name: Azure Pipelines
+  demands:
+  - msbuild
+  - visualstudio
 
 variables:
   solution: 'src/Services/auth/**/*.sln'
