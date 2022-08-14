@@ -2,10 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <PublishReadyToRun>true</PublishReadyToRun>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
     <UserSecretsId>adca6dac-ab6b-4a1a-b8c4-03f600c16f45</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
