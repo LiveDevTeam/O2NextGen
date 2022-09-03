@@ -51,7 +51,7 @@ namespace O2NextGen.Auth.Web.Extensions
             return new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
-                profile
+                profile,
             };
         }
 
@@ -75,8 +75,30 @@ namespace O2NextGen.Auth.Web.Extensions
         {
             return new[]
             {
-                // React client
-                new Client
+                //blazor pfr-center
+                new Client()
+                {
+                    ClientName = "client.pfrcenter.blazor",
+                    RequireClientSecret = false,
+                    RequireConsent = false,
+                    RequirePkce = true,
+                    AllowedScopes = {
+                    //IdentityServerConstants.StandardScopes.Address,
+                    //IdentityServerConstants.StandardScopes.Email,
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                },
+                    RedirectUris =
+                {
+                     "https://localhost:7001/authentication/login-callback "
+                },
+                    PostLogoutRedirectUris =
+                {
+                    "https://localhost:7001/authentication/logout-callback "
+                }
+                },
+            // React client
+            new Client
                 {
                     ClientId = "smalltalk_client_reactjs",
                     ClientName = "SmallTalk React App",

@@ -1,32 +1,25 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using O2NextGen.PFRCenterApp.Data;
+﻿using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using O2NextGen.PFRCenterApp;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
+builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+builder.Services.AddOidcAuthentication(options =>
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+    // Configure your authentication provider options here.
+    // For more information, see https://aka.ms/blazor-standalone-auth
+    options.ProviderOptions.DefaultScopes.Add("openid");
+    options.ProviderOptions.DefaultScopes.Add("profile");
+    options.ProviderOptions.DefaultScopes.Add("email");
+    options.ProviderOptions.DefaultScopes.Add("api");
+    options.ProviderOptions.DefaultScopes.Add("offline_access");
+    options.ProviderOptions.ResponseType = "code";
+    builder.Configuration.Bind("Local", options.ProviderOptions);
+});
 
-app.UseHttpsRedirection();
-
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.MapBlazorHub();
-app.MapFallbackToPage("/_Host");
-
-app.Run();
+await builder.Build().RunAsync();
 
