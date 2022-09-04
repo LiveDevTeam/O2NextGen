@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.7'
 
 networks:
   frontend:
@@ -155,3 +155,15 @@ services:
     networks:
       - backend
       - frontend
+
+  o2nextgen.pfrcenterapp:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    depends_on:
+      - o2nextgen.auth.web
+    networks:
+      - backend
+      - frontend
+
