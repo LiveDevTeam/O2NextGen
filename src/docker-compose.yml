@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.7'
 
 services:
   sql.data:
@@ -56,3 +56,10 @@ services:
     build:
       context: ./WebApps/smalltalk/chat/
       dockerfile: Dockerfile
+
+  o2nextgen.pfrcenterapp:
+    image: ${DOCKER_REGISTRY-}prfcenter-webapp
+    build:
+      context: .
+      dockerfile: WebApps/O2NextGen.PFRCenterApp/Dockerfile
+
