@@ -82,20 +82,23 @@ namespace O2NextGen.Auth.Web.Extensions
                     RequireClientSecret = false,
                     RequireConsent = false,
                     RequirePkce = true,
+                    AllowedGrantTypes = GrantTypes.Code,
                     AllowedScopes = {
                     //IdentityServerConstants.StandardScopes.Address,
                     //IdentityServerConstants.StandardScopes.Email,
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
-                },
+                    },
                     RedirectUris =
-                {
-                     "https://localhost:7001/authentication/login-callback "
-                },
+                    {
+                        "https://localhost:7001/authentication/login-callback "
+                    },
                     PostLogoutRedirectUris =
-                {
-                    "https://localhost:7001/authentication/logout-callback "
-                }
+                    {
+                        "https://localhost:7001/authentication/logout-callback "
+                    },
+                    AllowedCorsOrigins = { "https://localhost:7001" },
+                    AllowAccessTokensViaBrowser = true,
                 },
             // React client
             new Client
@@ -107,8 +110,9 @@ namespace O2NextGen.Auth.Web.Extensions
 
                     RequireClientSecret = false,
 
-                    RedirectUris =                 
-                    {"http://localhost:3003/signin-oidc",
+                    RedirectUris =
+                    {
+                        "http://localhost:3003/signin-oidc",
                     },
 
 
