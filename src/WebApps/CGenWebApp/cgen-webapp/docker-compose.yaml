@@ -6,7 +6,9 @@ services:
     # tty: true
     container_name: cgen-webapp
     image: denisprokhorchik/cgen-webapp
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev 
     ports:
       - "3300:3300"
     volumes:

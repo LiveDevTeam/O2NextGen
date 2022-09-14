@@ -5,7 +5,7 @@ const webpack = require('webpack'); // remember to require this, because we Defi
 
 module.exports = {
   output: {
-    publicPath: "http://localhost:3300/",
+    publicPath: "./",
   },
 
   resolve: {
