@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import "./index.scss";
 
-exconst App = () => (
+const App = () => (
   <div className="mt-10 text-3xl mx-auto max-w-6xl">
     <div>Name: cgen-builder-webapp</div>
     <div>Framework: react</div>
