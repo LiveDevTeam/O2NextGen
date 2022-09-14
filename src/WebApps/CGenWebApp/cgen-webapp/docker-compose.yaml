@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  cgen-webapp:
+    # stdin_open: true
+    # tty: true
+    container_name: cgen-webapp
+    image: denisprokhorchik/cgen-webapp
+    build: .
+    ports:
+      - "3300:3300"
+    volumes:
+      - ./src:/app/src
+    environment:
+      - REACT_APP_NAME=dprokharchyk
+      - CHOKIDAR_USEPOLLING=true
+    # env_file:
+    #   - ./.env
+
