@@ -16,10 +16,10 @@ echo "================================"
 storageAccount="o2nextgen"
 
 # create our resource group
-az group create -n $RG -l $LOCATION
+az group create -n $RG -l $LOCATION --yes
 
 # create a storage account
-az storage account create -n $storageAccount -g $RG -l $LOCATION --sku Standard_LRS
+az storage account create -n $storageAccount -g $RG -l $LOCATION --sku Standard_LRS --yes
 
 # az storage container create -n o2-storage --resource-group $RG --public-access blob
 # az storage container delete --name  o2-storage
