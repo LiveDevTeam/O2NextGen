@@ -58,12 +58,36 @@ do
             ;;
             "Full install application in AKS cluster")
             echo "you chose choice $REPLY which is $opt"
+            sh echo "1 > Create new Resource GROUP in Azure"
             sh rc/create-rc.sh
+            sh sleep 1m # Waits 1 minutes.
+            sh echo "2 > Create AKS cluster"
+            sh aks/create-aks.sh
+            sh sleep 1m # Waits 1 minutes.
+            sh echo "3 > Create main DNS"
             sh dns/create-dns.sh
             sh dns/create-dns-primary.sh
-            sh aks/create-aks.sh
-            sh tools/install.sh
-            ;; 
+            sh sleep 1m # Waits 1 minutes.
+            sh echo "4 > Configure main DNS"
+            sh dns/set-config-dns.sh
+            sh dns/set-config-dns-primary.sh
+            sh sleep 1m # Waits 1 minutes.
+            sh echo "5 > Install cert-manager AKS cluster"
+            sh cert-manager/install-tls.sh
+            sh sleep 1m # Waits 1 minutes.
+            sh echo "Create namespaces for Deployment"
+            sh ns/create-ns.sh
+            sh sleep 1m # Waits 1 minutes.
+            sh echo "Create external-dns for AKS"
+            sh dns/install-external-dns-in-aks.sh
+            sh sleep 1m # Waits 1 minutes.
+            sh echo "Install nginx controller with Public IP"
+            sh nginx/install-nginx.sh
+            sh sleep 1m # Waits 1 minutes.
+            sh echo "Install test-app"
+            helm upgrade --namespace production --install --values helm/test-app/values.yaml --set image.tag=latest --wait test-app helm/test-app
+            # sh tools/install.sh
+            ;;
             "Full uninstall application in AKS cluster")
             echo "you chose choice $REPLY which is $opt"
             sh aks/delete-aks.sh

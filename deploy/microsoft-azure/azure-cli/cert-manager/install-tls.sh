@@ -26,7 +26,7 @@ set -e
 #   jetstack/c
 
 # Install the CustomResourceDefinition resources using kubectl:
-kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.4.0/cert-manager.yaml
+kubectl apply -f cert-manager.yaml # https://github.com/jetstack/cert-manager/releases/download/v1.4.0/cert-manager.yaml 
 # Create the namespace for cert-manager:
 kubectl create namespace cert-manager
 

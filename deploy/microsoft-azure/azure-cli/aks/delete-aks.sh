@@ -25,5 +25,6 @@ fi
 az aks delete \
     --resource-group $RG \
     --name $AKS_NAME
+    --yes
     
 echo "AKS is deleted: COMPLETED \r\n"

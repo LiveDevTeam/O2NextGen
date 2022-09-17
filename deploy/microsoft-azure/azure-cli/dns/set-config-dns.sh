@@ -64,6 +64,7 @@ createDNSForRecordProductionAndStage "chat-api"
 createDNSForRecordProductionAndStage "notification-api"
 createDNSForRecordProductionAndStage "subscribe-api"
 createDNSForRecordProductionAndStage "timeline-api"
+createDNSForRecordProductionAndStage "cgen" # cgen-web-app 
 
 # # Get-AzDnsRecordSet -ZoneName $DOMAIN_NAME -ResourceGroupName $RG
 

@@ -55,7 +55,7 @@ PUBLIC_IP=$(
 )
 # Add stable chart repo
 # helm repo add stable https://kubernetes-charts.storage.googleapis.com (old repo)
-helm repo add stable https://charts.helm.sh/stable
+helm repo add stable index.yaml # https://charts.helm.sh/stable
 # Create namespace for Ingress
 kubectl create namespace ingress
 

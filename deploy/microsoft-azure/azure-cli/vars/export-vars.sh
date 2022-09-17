@@ -9,10 +9,10 @@ export DOMAIN_NAME_PRIMARY=pfr-centr.com
 
 export AKS_NAME=o2nextgen-aks #new version o2nextgen-aks | old version o2-aks
 export NODECOUNT=1
-export NODESIZE=Standard_D4as_v5  # Standard_F2s | Standard_D4s_v4 | Standard_DS2_v2 | Standard_B2s
+export NODESIZE=Standard_B2s # Standard_D4as_v5  # Standard_F2s | Standard_D4s_v4 | Standard_DS2_v2 | Standard_B2s
 
-export LETS_ENCRYPT_EMAIL=live-dev@hotmail.com
-
+export LETS_ENCRYPT_EMAIL=o2bionics@hotmail.com
+export AKS_ZONES="1 2 3"
 
 echo "\$LOCATION | $LOCATION"
 echo "\$RG | $RG"
@@ -22,7 +22,7 @@ echo "\$DOMAIN_NAME | $DOMAIN_NAME"
 echo "\$AKS_NAME:      $AKS_NAME"
 echo "\$NODECOUNT:      $NODECOUNT"
 echo "\$NODESIZE:      $NODESIZE"
-
+echo "\$AKS_ZONES:      $AKS_ZONES"
 echo "\$LETS_ENCRYPT_EMAIL:      $LETS_ENCRYPT_EMAIL"
 
 echo "================================================"
