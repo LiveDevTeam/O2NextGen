@@ -1,15 +1,4 @@
-provider "azurerm" {
-  features {}
-}
 
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "2.40.0"
-    }
-  }
-}
 
 resource "azurerm_role_assignment" "role_acrpull" {
   scope                            = azurerm_container_registry.acr.id
@@ -27,8 +16,8 @@ resource "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "products-group"
-  location = "WestUS3" #centralus
+  name     = var.resource_group_name
+  location = var.resource_location_name #centralus
 }
 
 resource "azurerm_dns_zone" "o2bus-public-zone" {
@@ -41,10 +30,10 @@ resource "azurerm_dns_zone" "pfrcenter-public-zone" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
-    name = "o2ng-aks"
+    name =  var.aks_cluster_name
     location = azurerm_resource_group.rg.location
     resource_group_name = azurerm_resource_group.rg.name
-    dns_prefix = "o2ngaks"
+    dns_prefix = var.aks_cluster_dns_prefix
 
     default_node_pool { 
       name = "system"
