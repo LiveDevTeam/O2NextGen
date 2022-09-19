@@ -15,3 +15,7 @@ variable "aks_cluster_dns_prefix" {
   type        = string
   description = "dns prefix for cluster aks"
 }
+variable "azure_acr_name" {
+  type = string
+  description = "name for ACR"
+}
