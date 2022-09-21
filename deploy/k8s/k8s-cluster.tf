@@ -13,9 +13,14 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   identity {
     type = "SystemAssigned"
   }
+#   network_profile {
+#     load_balancer_sku = "Standard"
+#     network_plugin    = "kubenet" # azure (CNI)
+#   }
 
   tags = {
     Environment = "Production"
     Product     = "O2NextGen Platform"
   }
 }
+
