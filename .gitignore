@@ -358,3 +358,5 @@ deploy/clouds/digital-ocean/.terraform.lock.hcl
 .terraform.lock.hcl
 .terraform
 deploy/k8s/.terraform.tfstate.lock.info
+deploy/k8s/terraform.tfstate.backup
+deploy/k8s/terraform.tfstate
