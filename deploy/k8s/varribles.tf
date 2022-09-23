@@ -18,6 +18,7 @@ variable "aks_vm_size" {
   description = "Name VM for AKS Cluster"
 }
 
+
 variable "aks_node_count" {
   type        = number
   description = "Node count for AKS Cluster"
@@ -25,4 +26,14 @@ variable "aks_node_count" {
 variable "aks_cluster_name" {
   type        = string
   description = "AKS Cluster Name"
+}
+
+variable "grafana_admin_user" {
+  type        = string
+  description = "Admin user to access Grafana dashboard"
+}
+
+variable "grafana_admin_password" {
+  type        = string
+  description = "Admin password to access Grafana dashboard"
 }
