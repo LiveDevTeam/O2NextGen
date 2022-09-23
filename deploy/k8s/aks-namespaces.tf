@@ -38,6 +38,19 @@ resource "kubernetes_namespace" "tst" {
   }
 }
 
+resource "kubernetes_namespace" "staging" {
+  metadata {
+    annotations = {
+      name = "staging"
+    }
+
+    labels = {
+      Environment = "Staging"
+    }
+    name = "staging"
+  }
+}
+
 resource "kubernetes_namespace" "devops" {
   metadata {
     annotations = {
