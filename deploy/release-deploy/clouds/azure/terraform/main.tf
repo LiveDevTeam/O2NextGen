@@ -98,7 +98,8 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
   identity {
     type = "SystemAssigned"
   }
-  # network_profile {
+  azure_policy_enabled = true
+  # # network_profile {
   #   load_balancer_sku = "Standard"
   #   network_plugin    = "kubenet" # azure (CNI)
   # }
@@ -191,7 +192,7 @@ resource "azuread_application" "example" {
   depends_on = [
     azurerm_dns_zone.primary-dns-zone
   ]
-  display_name = "External-DNS-SP"
+  display_name = "external-dns"
   owners       = [data.azuread_client_config.current.object_id]
 }
 
@@ -221,6 +222,7 @@ resource "azuread_service_principal" "current" {
 #   special = true
 # }
 resource "azuread_application_password" "current" {
+  display_name          = "rbac"
   application_object_id = azuread_application.example.object_id
 }
 # resource "time_rotating" "example" {
@@ -376,7 +378,7 @@ resource "helm_release" "nginx-ingress-controller" {
   }
   set {
     name  = "controller.autoscaling.maxReplicas"
-    value = "2"
+    value = "1"
   }
 }
 
@@ -430,20 +432,42 @@ resource "helm_release" "prometheus-stack" {
     value = var.grafana_admin_password
   }
 }
+locals {
+  dnsValues = <<EOF
+  args:
+    - --txtOwnerId=${azurerm_kubernetes_cluster.o2nextgen-aks.name}
+    - --provider=azure
+    - --azure.resourceGroup=${azurerm_kubernetes_cluster.o2nextgen-aks.resource_group_name}
+    - --azure.tenantId=${data.azuread_client_config.current.tenant_id}
+    - --azure.subscriptionId=${data.azurerm_subscription.current.id}
+    - --azure.aadClientId=${azuread_application.example.application_id}
+    - --azure.aadClientSecret="${azuread_application_password.current.value}"
+    - --azure.cloud=AzurePublicCloud
+    - --policy=sync
+    - --domainFilters={${azurerm_dns_zone.primary-dns-zone.name}}
+EOF
+}
 
 resource "helm_release" "external-dns" {
   depends_on = [
     azurerm_dns_zone.primary-dns-zone
   ]
-  name             = "external-dns"
-  repository       = "https://charts.bitnami.com/bitnami"
-  chart            = "external-dns"
-  namespace        = "external-dns"
-  create_namespace = true
-
+  dependency_update = "true"
+  name              = "external-dns"
+  repository        = "https://charts.bitnami.com/bitnami"
+  chart             = "external-dns"
+  namespace         = "external-dns"
+  create_namespace  = true
+  # values = [
+  #   local.dnsValues
+  # ]
+  set {
+    name  = "azure.cloud"
+    value = "AzurePublicCloud"
+  }
   set {
     name  = "txtOwnerId"
-    value = var.k8s_cluster_name
+    value = azurerm_kubernetes_cluster.o2nextgen-aks.name
   }
   set {
     name  = "provider"
@@ -457,13 +481,13 @@ resource "helm_release" "external-dns" {
     name  = "policy"
     value = "sync"
   }
-  # set {
-  #   name  = "domainFilters"
-  #   value = "{$azurerm_dns_zone.primary-dns-zone.name}"
-  # }
+  set {
+    name  = "domainFilters"
+    value = "{${azurerm_dns_zone.primary-dns-zone.name}}"
+  }
   set {
     name  = "azure.resourceGroup"
-    value = var.k8s_resource_group //"AzureDNS" //var.k8s_resource_group //"AzureDNS" //
+    value = azurerm_kubernetes_cluster.o2nextgen-aks.resource_group_name //var.k8s_resource_group //"AzureDNS" //var.k8s_resource_group //"AzureDNS" //
   }
   set {
     name  = "azure.tenantId"
@@ -471,7 +495,7 @@ resource "helm_release" "external-dns" {
   }
   set {
     name  = "azure.subscriptionId"
-    value = data.azurerm_subscription.current.id
+    value = data.azurerm_subscription.current.subscription_id
   }
   set {
     name  = "azure.aadClientId"
@@ -481,10 +505,18 @@ resource "helm_release" "external-dns" {
     name  = "azure.aadClientSecret"
     value = azuread_application_password.current.value
   }
+  # # set {
+  # #   name  = "azure.useManagedIdentityExtension"
+  # #   value = "true"
+  # # }
+  # # set {
+  # #   name  = "azure.userAssignedIdentityID"
+  # #   value = azuread_service_principal.current.id
+  # # }
+
   # --set txtOwnerId=$AZ_AKS_NAME \
   #   --set provider=azure \
   #   --set azure.resourceGroup=$AZ_DNS_GROUP \
-  #   --set txtOwnerId=$AZ_AKS_NAME \
   #   --set azure.tenantId=$AZ_TENANT_ID \
   #   --set azure.subscriptionId=$AZ_SUBSCRIPTION_ID \
   #   --set azure.aadClientId=$SP_CLIENT_ID \
