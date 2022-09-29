@@ -627,4 +627,9 @@ resource "helm_release" "o2bus-webapp" {
   chart      = "o2bus-webapp"
 }
 
-
+resource "helm_release" "cgen-webapp" {
+  name       = "cgen-webapp"
+  namespace  = "apps-prod"
+  repository = "../../../helm_charts"
+  chart      = "cgen-webapp"
+}
