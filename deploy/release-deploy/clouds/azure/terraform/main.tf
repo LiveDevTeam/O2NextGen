@@ -619,6 +619,7 @@ resource "helm_release" "o2nextgen-auth" {
   repository = "../../../helm_charts"
   chart      = "o2nextgen-auth"
 }
+
 resource "helm_release" "o2bus-webapp" {
   name       = "o2bus-webapp"
   namespace  = "apps-prod"
