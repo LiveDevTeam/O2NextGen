@@ -613,23 +613,23 @@ resource "kubernetes_namespace" "devops" {
 
 # ============================= INSTALL APPLICATION =======================================  
 # =========================================================================================
-resource "helm_release" "o2nextgen-auth" {
-  name       = "o2nextgen-auth"
-  namespace  = "apps-prod"
-  repository = "../../../helm_charts"
-  chart      = "o2nextgen-auth"
-}
+# resource "helm_release" "o2nextgen-auth" {
+#   name       = "o2nextgen-auth"
+#   namespace  = "apps-prod"
+#   repository = "../../../helm_charts"
+#   chart      = "o2nextgen-auth"
+# }
 
-resource "helm_release" "o2bus-webapp" {
-  name       = "o2bus-webapp"
-  namespace  = "apps-prod"
-  repository = "../../../helm_charts"
-  chart      = "o2bus-webapp"
-}
+# resource "helm_release" "o2bus-webapp" {
+#   name       = "o2bus-webapp"
+#   namespace  = "apps-prod"
+#   repository = "../../../helm_charts"
+#   chart      = "o2bus-webapp"
+# }
 
-resource "helm_release" "cgen-webapp" {
-  name       = "cgen-webapp"
-  namespace  = "apps-prod"
-  repository = "../../../helm_charts"
-  chart      = "cgen-webapp"
-}
+# resource "helm_release" "cgen-webapp" {
+#   name       = "cgen-webapp"
+#   namespace  = "apps-prod"
+#   repository = "../../../helm_charts"
+#   chart      = "cgen-webapp"
+# }

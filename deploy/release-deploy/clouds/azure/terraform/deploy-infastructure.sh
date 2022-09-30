@@ -53,3 +53,4 @@ kubectl get ns
 
 kubectl get deploy -A
 kubectl get all --all-namespaces
+sh ./tls-issuer.sh
