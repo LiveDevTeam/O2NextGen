@@ -401,6 +401,10 @@ resource "helm_release" "prometheus-stack" {
     name  = "grafana.ingress.ingressClassName"
     value = "nginx"
   }
+  # set {
+  #   name  = "server.ingress.pathType"
+  #   value = "Prefix"
+  # }
   set {
     name  = "grafana.ingress.path"
     value = "/(.*)" # "/grafana2/?(.*)"
