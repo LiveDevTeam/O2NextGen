@@ -8,6 +8,7 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'O2.OnTracker.Api' " />
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="geoip\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,22 +25,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="geoip\GeoLite2-City.mmdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <None Update="geoip\GeoLite2-City.mmdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Remove="geoip\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="geoip\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="geoip\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="geoip\**" />
   </ItemGroup>
 
 </Project>
