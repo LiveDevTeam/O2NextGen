@@ -167,3 +167,10 @@ services:
       - backend
       - frontend
 
+
+  o2nextgen.ontracker.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
