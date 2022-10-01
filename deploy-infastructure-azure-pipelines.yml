@@ -43,6 +43,7 @@ steps:
         # backendAzureRmStorageAccountName: '$(storage-account)'
         # backendAzureRmContainerName: '$(container)'
         # backendAzureRmKey: '$(tfstate-file)' 
+    
     - task: PowerShell@2
       displayName: detect any terraform change
       inputs:
@@ -62,7 +63,8 @@ steps:
           {
             Write-Host "There is no change detected in Terraform tfplan file"
           }
-    - task: TerraformTaskV1@0
+    
+    - task: TerraformTaskV3@3
       displayName: terraform apply tfplan
       condition: eq(variables.anyTfChanges, true)
       inputs:
