@@ -7,7 +7,7 @@ pool:
   vmImage: ubuntu-latest
 variables:
   source-path: deploy/release-deploy/clouds/azure/terraform
-  subscription: paid-subscription (f1404c6e-2728-40ae-9cd2-fee75bde4c04)
+  subscription: o2bionics-products
   resource-group: devops-tfstate
   storage-account: terraform-state
   tfstate-file: terraform.tfstate
