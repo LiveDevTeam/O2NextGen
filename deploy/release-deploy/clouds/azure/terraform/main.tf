@@ -122,7 +122,8 @@ resource "azurerm_role_assignment" "role-acrpull" {
   role_definition_name = "AcrPull"
   principal_id         = azurerm_kubernetes_cluster.o2nextgen-aks.kubelet_identity.0.object_id
   depends_on = [
-    azurerm_container_registry.o2nextgen-aks-acr
+    azurerm_container_registry.o2nextgen-aks-acr,
+    azurerm_kubernetes_cluster.o2nextgen-aks
   ]
 }
 resource "azurerm_container_registry" "o2nextgen-aks-acr" {

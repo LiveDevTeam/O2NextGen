@@ -8,4 +8,4 @@ k8s_node_count     = 1
 
 grafana_admin_user     = "grafana"
 grafana_admin_password = "grafana-pass"
-harbor_admin_password  = "Harbor12345" # "harbor-pass"
+# harbor_admin_password  = "Harbor12345" # "harbor-pass"
