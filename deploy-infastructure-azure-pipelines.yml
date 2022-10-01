@@ -9,7 +9,7 @@ variables:
   source-path: deploy/release-deploy/clouds/azure/terraform
   subscription: paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)
   resource-group: devops-tfstate
-  storage-account: terraform-state
+  storage-account: terraformstate999
   tfstate-file: terraform.tfstate
   container: tfstate
   any-if-changes: false
