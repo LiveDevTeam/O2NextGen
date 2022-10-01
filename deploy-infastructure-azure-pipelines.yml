@@ -17,7 +17,7 @@ variables:
 steps:
     - task: TerraformInstaller@0
       inputs:
-        terraformVersion: '1.2.9'
+        terraformVersion: 'latest'
 
     - task: TerraformTaskV3@3
       displayName: "terraform init"
