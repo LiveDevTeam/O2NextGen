@@ -34,13 +34,20 @@ steps:
         backendAzureRmKey: '$(tfstate-file)' 
 
     - task: TerraformTaskV3@3
-      displayName: "terraform plan -out tfplan"
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        commandOptions: '-out tfplan'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
-        environmentServiceNameAzureRM: '$(subscription)'
+        commandOptions: '-out tfplan'
+        environmentServiceNameAzureRM: 'paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)'
+    # - task: TerraformTaskV3@3
+    #   displayName: "terraform plan -out tfplan"
+    #   inputs:
+    #     provider: 'azurerm'
+    #     command: 'plan'
+    #     commandOptions: '-out tfplan'
+    #     workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
+    #     environmentServiceNameAzureRM: '$(subscription)'
         # backendServiceArm: '$(subscription)'
         # backendAzureRmResourceGroupName: '$(resource-group)'
         # backendAzureRmStorageAccountName: '$(storage-account)'
