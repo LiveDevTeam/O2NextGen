@@ -33,7 +33,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
     commandOptions: '-out=tfplan'
     # commandOptions: '-detailed-exitcode -out=tfplan'
     environmentServiceNameAzureRM: '$(subscription)'
@@ -41,7 +41,7 @@ steps:
 - task: PowerShell@2
   displayName: detect any terraform change
   inputs:
-    workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
     targetType: 'inline'
     script: |
       # Write-Host "LASTEXITCODE : $LASTEXITCODE"
@@ -63,6 +63,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
     commandOptions: 'tfplan'
     environmentServiceNameAzureRM: '$(subscription)'
