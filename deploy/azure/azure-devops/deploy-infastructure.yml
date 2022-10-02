@@ -1,0 +1,29 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  subscription: paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)
+  resourceGroup: devops-tfstate
+  storageAccount: terraformstate999
+  container: tfstate
+  tfstateFile: terraform.tfstate
+  anyTfChanges: false
+
+steps:
+
+- task: TerraformInstaller@0
+  displayName: install Terraform v0.12.28
+  inputs:
+    terraformVersion: '0.12.28'
+
+- task: TerraformTaskV1@0
+  displayName: terraform init
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
+    backendServiceArm: '$(subscription)'
+    backendAzureRmResourceGroupName: '$(resourceGroup)'
+    backendAzureRmStorageAccountName: '$(storageAccount)'
+    backendAzureRmContainerName: '$(container)'
+    backendAzureRmKey: '$(tfstateFile)'
