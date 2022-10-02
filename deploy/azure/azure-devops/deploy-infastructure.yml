@@ -27,3 +27,13 @@ steps:
     backendAzureRmStorageAccountName: '$(storageAccount)'
     backendAzureRmContainerName: '$(container)'
     backendAzureRmKey: '$(tfstateFile)'
+
+- task: TerraformTaskV1@0
+  displayName: terraform plan -out=tfplan
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
+    commandOptions: '-out=tfplan'
+    # commandOptions: '-detailed-exitcode -out=tfplan'
+    environmentServiceNameAzureRM: '$(subscription)'
