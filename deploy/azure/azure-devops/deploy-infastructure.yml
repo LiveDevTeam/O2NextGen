@@ -7,7 +7,7 @@ variables:
   storageAccount: terraformstate999
   container: tfstate
   tfstateFile: terraform.tfstate
-  anyTfChanges: true
+  anyTfChanges: false
 
 steps:
 
