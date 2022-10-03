@@ -27,10 +27,11 @@ steps:
     # - task: qetza.replacetokens.replacetokens-task.replacetokens@5
     #   displayName: 'Replace tokens in **/*.tf'
     #   inputs:
-    #   targetFiles: '**/*.tf'
+    #   targetFiles: '**/*.tf' 
+
     - task: AzureCLI@2
       inputs:
-        azureSubscription: 'paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)'
+        azureSubscription: '$(subscription)'
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
