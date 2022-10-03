@@ -76,3 +76,8 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
     commandOptions: 'tfplan'
     environmentServiceNameAzureRM: '$(subscription)'
+- task: TerraformTaskV3@3
+  inputs:
+    provider: 'azurerm'
+    command: 'destroy'
+    environmentServiceNameAzureRM: '$(subscription)'
