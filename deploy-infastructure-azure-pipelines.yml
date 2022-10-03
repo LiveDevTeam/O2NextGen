@@ -34,9 +34,9 @@ steps:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az group create —location $(location) —name $(resource-group)
-          az storage account create --name $(storage-account) — resource-group $(resource-group) —location $(location) —ski Standard_LRS
-          az storage container create —name $(container)  —account-name $(storage-account)
+          az group create --location $(location) --name $(resource-group)
+          az storage account create --name $(storage-account) --resource-group $(resource-group) --location $(location) —-ski Standard_LRS
+          az storage container create --name $(container)  --account-name $(storage-account)
           az storage account key list -g $(resource-group) -n $(storage-account)
     
     - task: TerraformInstaller@0
