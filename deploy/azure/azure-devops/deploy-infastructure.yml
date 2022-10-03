@@ -38,44 +38,45 @@ steps:
     backendAzureRmStorageAccountName: '$(storageAccount)'
     backendAzureRmContainerName: '$(container)'
     backendAzureRmKey: '$(tfstateFile)'
-- task: TerraformTaskV3@3
-  displayName: terraform plan -out=tfplan
-  inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
-    commandOptions: '-out=tfplan'
-    # commandOptions: '-detailed-exitcode -out=tfplan'
-    environmentServiceNameAzureRM: '$(subscription)'
+    # fileName: terraform.tfstate
+# - task: TerraformTaskV3@3
+#   displayName: terraform plan -out=tfplan
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'plan'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
+#     commandOptions: '-out=tfplan'
+#     # commandOptions: '-detailed-exitcode -out=tfplan'
+#     environmentServiceNameAzureRM: '$(subscription)'
     
-- task: PowerShell@2
-  displayName: detect any terraform change
-  inputs:
-    workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
-    targetType: 'inline'
-    script: |
-      # Write-Host "LASTEXITCODE : $LASTEXITCODE"
-      $plan = $(terraform show -json tfplan | ConvertFrom-Json)
-      $actions = $plan.resource_changes.change.actions
-      Write-Host "Terraform actions : $actions"
-      if (($actions -contains 'create') -or ($actions -contains 'delete') -or ($actions -contains 'update'))
-      {
-        Write-Host "Terraform will perform the following actions : $actions"
-        Write-Host "##vso[task.setvariable variable=anyTfChanges;]true"
-      }
-      else
-      {
-        Write-Host "There is no change detected in Terraform tfplan file"
-      }
-- task: TerraformTaskV3@3
-  displayName: terraform apply tfplan
-  condition: eq(variables.anyTfChanges, true)
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
-    commandOptions: 'tfplan'
-    environmentServiceNameAzureRM: '$(subscription)'
+# - task: PowerShell@2
+#   displayName: detect any terraform change
+#   inputs:
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
+#     targetType: 'inline'
+#     script: |
+#       # Write-Host "LASTEXITCODE : $LASTEXITCODE"
+#       $plan = $(terraform show -json tfplan | ConvertFrom-Json)
+#       $actions = $plan.resource_changes.change.actions
+#       Write-Host "Terraform actions : $actions"
+#       if (($actions -contains 'create') -or ($actions -contains 'delete') -or ($actions -contains 'update'))
+#       {
+#         Write-Host "Terraform will perform the following actions : $actions"
+#         Write-Host "##vso[task.setvariable variable=anyTfChanges;]true"
+#       }
+#       else
+#       {
+#         Write-Host "There is no change detected in Terraform tfplan file"
+#       }
+# - task: TerraformTaskV3@3
+#   displayName: terraform apply tfplan
+#   condition: eq(variables.anyTfChanges, true)
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'apply'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
+#     commandOptions: 'tfplan'
+#     environmentServiceNameAzureRM: '$(subscription)'
 # - task: TerraformTaskV3@3
 #   inputs:
 #     provider: 'azurerm'
