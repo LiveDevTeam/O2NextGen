@@ -32,7 +32,7 @@ steps:
     - task: AzureCLI@2
       inputs:
         azureSubscription: '$(subscription)'
-        scriptType: 'bash'
+        scriptType: 'batch'
         scriptLocation: 'inlineScript'
         inlineScript: |
           call az group create —location $(location) —name $(resource-group)
