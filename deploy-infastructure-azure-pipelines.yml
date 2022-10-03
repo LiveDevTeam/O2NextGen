@@ -35,7 +35,7 @@ steps:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          Call az group create —location $(location) —name $(resource-group)
+          call az group create —location $(location) —name $(resource-group)
           call az storage account create --name $(storage-account) — resource-group $(resource-group) —location $(location) —ski Standard_LRS
           call az storage container create —name $(container)  —account-name $(storage-account)
           call az storage account key list -g $(resource-group) -n $(storage-account)
