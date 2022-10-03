@@ -69,10 +69,10 @@ terraform {
 }
 
 
-# Retrieve domain information
-data "azuread_domains" "example" {
-  only_initial = true
-}
+# # Retrieve domain information
+# data "azuread_domains" "example" {
+#   only_initial = true
+# }
 
 # ========================================== RESOURCE ==========================================  
 resource "azurerm_resource_group" "aks-resource-group" {
