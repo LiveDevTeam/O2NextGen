@@ -16,7 +16,18 @@ steps:
   inputs:
     terraformVersion: '1.2.9'
 
-- task: TerraformTaskV1@0
+# - task: TerraformTaskV3@3
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'init'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/deploy/azure/azure-terraform'
+#     backendServiceArm: 'paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)'
+#     backendAzureRmResourceGroupName: 'devops-tfstate'
+#     backendAzureRmStorageAccountName: 'terraformstate999'
+#     backendAzureRmContainerName: 'tfstate'
+#     backendAzureRmKey: 'terraform.tfstate'
+
+- task: TerraformTaskV3@3
   displayName: terraform init
   inputs:
     provider: 'azurerm'
@@ -27,8 +38,7 @@ steps:
     backendAzureRmStorageAccountName: '$(storageAccount)'
     backendAzureRmContainerName: '$(container)'
     backendAzureRmKey: '$(tfstateFile)'
-
-- task: TerraformTaskV1@0
+- task: TerraformTaskV3@3
   displayName: terraform plan -out=tfplan
   inputs:
     provider: 'azurerm'
@@ -57,7 +67,7 @@ steps:
       {
         Write-Host "There is no change detected in Terraform tfplan file"
       }
-- task: TerraformTaskV1@0
+- task: TerraformTaskV3@3
   displayName: terraform apply tfplan
   condition: eq(variables.anyTfChanges, true)
   inputs:
