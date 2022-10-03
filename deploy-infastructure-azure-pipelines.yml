@@ -28,11 +28,10 @@ steps:
     #   displayName: 'Replace tokens in **/*.tf'
     #   inputs:
     #   targetFiles: '**/*.tf' 
-
     - task: AzureCLI@2
       inputs:
         azureSubscription: '$(subscription)'
-        scriptType: 'batch'
+        scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
           call az group create —location $(location) —name $(resource-group)
