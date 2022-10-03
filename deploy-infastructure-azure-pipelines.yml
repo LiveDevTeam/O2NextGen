@@ -6,7 +6,8 @@
 pool:
   vmImage: ubuntu-latest
 variables:
-  source-path: deploy/release-deploy/clouds/azure/terraform
+  location: westus3
+  source-path: deploy/azure/azure-terraform
   subscription: paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)
   resource-group: devops-tfstate
   storage-account: terraformstate999
@@ -15,6 +16,29 @@ variables:
   any-if-changes: false
 
 steps:
+
+    # - task: AzurePowerShell@5
+    #   displayName: 'Azure PowerShell script: InlineScript'
+    #   inputs:
+    #     azureSubscription: 'paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)'
+    #     ScriptType: InlineScript
+    #     Inline: '$key=(Get-AzureRmStorageAccountKey -ResourceGroupName $(resource-group) -AccountName $(storage-account)).Value[0]'
+    #     azurePowerShellVersion: LatestVersion
+    # - task: qetza.replacetokens.replacetokens-task.replacetokens@5
+    #   displayName: 'Replace tokens in **/*.tf'
+    #   inputs:
+    #   targetFiles: '**/*.tf' 
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: '$(subscription)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az group create --location $(location) --name $(resource-group)
+          az storage account create --name $(storage-account) --resource-group $(resource-group) --location $(location) --sku Standard_LRS
+          az storage container create --name $(container)  --account-name $(storage-account)
+          az storage account keys list  -g $(resource-group) -n $(storage-account)
+    
     - task: TerraformInstaller@0
       displayName: install Terraform v1.2.9
       inputs:
