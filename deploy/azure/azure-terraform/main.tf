@@ -59,5 +59,19 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
 #   ]
 # }
 
+# ============================= AKS PREP - DNS ZONE in AKS ================================  
+# =========================================================================================
+resource "azurerm_dns_zone" "primary-dns-zone" {
+  depends_on = [
+    azurerm_kubernetes_cluster.o2nextgen-aks
+  ]
+  name                = var.k8s_dns_zone
+  resource_group_name = var.k8s_resource_group
+
+  tags = {
+    "type_product" = "Saas"
+    "product"      = "O2NextGen Platform"
+  }
+}
 
 

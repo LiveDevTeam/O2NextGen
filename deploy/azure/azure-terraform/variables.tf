@@ -32,3 +32,7 @@ variable "k8s_acr_name"{
   type        = string
   description = "ACR Name for AKS Cluster"
 }
+variable "k8s_dns_zone" {
+  type        = string
+  description = "Primary DNS Zone for AKS Cluster"
+}
