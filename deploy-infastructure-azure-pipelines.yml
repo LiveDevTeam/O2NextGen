@@ -21,8 +21,8 @@ steps:
       displayName: Azure CLI - login in azure
       inputs:
         azureSubscription: '$(subscription)'
-        scriptType: ps
-        scriptLocation: inlineScript
+        scriptType: bash
+        scriptLocation: 'inlineScript'
         inlineScript: |
           az --version
           az account show
