@@ -20,7 +20,28 @@ provider "helm" {
 terraform {
   backend "azurerm" {
   }
-  required_providers {
-
+ required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 3.0.0"
+    }
+    kubernetes = {
+      source  = "kubernetes"
+      version = "=2.8.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = ">= 2.5.1"
+    }
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "~> 2.15.0"
+    }
+    random = {
+      source = "hashicorp/random"
+    }
+    time = {
+      source = "hashicorp/time"
+    }
   }
 }
