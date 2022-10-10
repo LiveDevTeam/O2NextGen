@@ -13,7 +13,7 @@ variables:
   storage-account: terraformstate999
   tfstate-file: terraform.tfstate
   container: tfstate
-  any-if-changes: false
+  any-if-changes: true
 
 steps:
 
