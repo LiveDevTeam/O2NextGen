@@ -39,25 +39,25 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
 
 # ========================================== ACR ==========================================  
 # =========================================================================================
-resource "azurerm_container_registry" "o2nextgen-aks-acr" {
-  name                = var.k8s_acr_name
-  resource_group_name = var.k8s_resource_group
-  location            = var.k8s_location
-  sku                 = "Standard"
-  admin_enabled       = false
-  depends_on = [
-    azurerm_kubernetes_cluster.o2nextgen-aks
-  ]
-}
-resource "azurerm_role_assignment" "role-acrpull" {
-  scope                = azurerm_container_registry.o2nextgen-aks-acr.id
-  role_definition_name = "AcrPull"
-  principal_id         = azurerm_kubernetes_cluster.o2nextgen-aks.kubelet_identity.0.object_id
-  depends_on = [
-    azurerm_container_registry.o2nextgen-aks-acr,
-    azurerm_kubernetes_cluster.o2nextgen-aks
-  ]
-}
+# resource "azurerm_container_registry" "o2nextgen-aks-acr" {
+#   name                = var.k8s_acr_name
+#   resource_group_name = var.k8s_resource_group
+#   location            = var.k8s_location
+#   sku                 = "Standard"
+#   admin_enabled       = false
+#   depends_on = [
+#     azurerm_kubernetes_cluster.o2nextgen-aks
+#   ]
+# }
+# resource "azurerm_role_assignment" "role-acrpull" {
+#   scope                = azurerm_container_registry.o2nextgen-aks-acr.id
+#   role_definition_name = "AcrPull"
+#   principal_id         = azurerm_kubernetes_cluster.o2nextgen-aks.kubelet_identity.0.object_id
+#   depends_on = [
+#     azurerm_container_registry.o2nextgen-aks-acr,
+#     azurerm_kubernetes_cluster.o2nextgen-aks
+#   ]
+# }
 
 
 
