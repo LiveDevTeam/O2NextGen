@@ -1,4 +1,4 @@
-k8s_cluster_name   = "o2ng-aks"
+k8s_cluster_name   = "o2nextgen-aks"
 k8s_resource_group = "o2b-products"
 k8s_location       = "WestUS3"
 # k8s_dns_prefix     = "aks"
