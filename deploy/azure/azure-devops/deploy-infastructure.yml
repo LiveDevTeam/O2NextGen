@@ -17,17 +17,6 @@ variables:
 
 steps:
 
-    # - task: AzurePowerShell@5
-    #   displayName: 'Azure PowerShell script: InlineScript'
-    #   inputs:
-    #     azureSubscription: 'paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)'
-    #     ScriptType: InlineScript
-    #     Inline: '$key=(Get-AzureRmStorageAccountKey -ResourceGroupName $(resource-group) -AccountName $(storage-account)).Value[0]'
-    #     azurePowerShellVersion: LatestVersion
-    # - task: qetza.replacetokens.replacetokens-task.replacetokens@5
-    #   displayName: 'Replace tokens in **/*.tf'
-    #   inputs:
-    #   targetFiles: '**/*.tf' 
     - task: AzureCLI@2
       displayName: Azure CLI - login in azure
       inputs:
@@ -77,21 +66,7 @@ steps:
         commandOptions: '-out tfplan'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
         environmentServiceNameAzureRM: '$(subscription)'
-        # backendServiceArm: '$(subscription)'
-        # backendAzureRmResourceGroupName: '$(resource-group)'
-        # backendAzureRmStorageAccountName: '$(storage-account)'
-        # backendAzureRmContainerName: '$(container)'
-        # backendAzureRmKey: '$(tfstate-file)' 
-        # backendAzureRmResourceGroupName: '$(resource-group)'
-        # backendAzureRmStorageAccountName: '$(storage-account)'
-        # backendAzureRmContainerName: '$(container)'
-        # backendAzureRmKey: '$(tfstate-file)' 
-    # - task: TerraformTaskV3@3
-    #   inputs:
-    #     provider: 'azurerm'
-    #     command: 'plan'
-    #     commandOptions: '-out replan'
-    #     environmentServiceNameAzureRM: 'paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)'
+
     - task: PowerShell@2
       displayName: detect any terraform change
       inputs:
