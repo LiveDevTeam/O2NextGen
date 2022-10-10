@@ -11,9 +11,6 @@ provider "kubernetes" {
 terraform {
   backend "azurerm" {
   }
-  backend "kubernetes" {
-    
-  }
   required_providers {
 
   }
