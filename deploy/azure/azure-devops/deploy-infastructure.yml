@@ -29,7 +29,7 @@ steps:
     #   inputs:
     #   targetFiles: '**/*.tf' 
     - task: AzureCLI@2
-      displayName: Azure CLI
+      displayName: Azure CLI - login in azure
       inputs:
         azureSubscription: '$(subscription)'
         scriptType: ps
@@ -39,6 +39,7 @@ steps:
           az account show
 
     - task: AzureCLI@2
+      displayName: Azure CLI - create storage for dev
       inputs:
         azureSubscription: '$(subscription)'
         scriptType: 'bash'
