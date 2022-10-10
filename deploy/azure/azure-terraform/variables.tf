@@ -28,3 +28,7 @@ variable "k8s_node_count" {
   description = "Node count for AKS Cluster"
 }
 
+variable "k8s_acr_name"{
+  type        = string
+  description = "ACR Name for AKS Cluster"
+}
