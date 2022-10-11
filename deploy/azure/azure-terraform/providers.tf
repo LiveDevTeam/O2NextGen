@@ -25,9 +25,6 @@ provider "azuread" {
 provider "tls" {}
 
 terraform {
-  # backend "azurerm" {
-  #   tenant_id = "f3a52f65-e3a4-4386-8bc9-a42f32fc1cd6"
-  # }
   required_version = ">=0.14.0"
  required_providers {
     azurerm = {
