@@ -16,6 +16,11 @@ provider "helm" {
     cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.o2nextgen-aks.kube_config.0.cluster_ca_certificate)
   }
 }
+# Retrieve domain information
+data "azuread_domains" "example" {
+  only_initial = true
+}
+
 # Configure the Azure Active Directory Provider
 provider "azuread" {
   # subscription_id="f1404c6e-2728-40ae-9cd2-fee75bde4c04"
@@ -41,7 +46,7 @@ terraform {
     }
     azuread = {
       source  = "hashicorp/azuread"
-      version = "~> 1.5.0"
+      version = "~> 2.15.0"
     }
     random = {
       source = "hashicorp/random"
