@@ -40,9 +40,9 @@ steps:
     #       az storage account keys list  -g $(resource-group) -n $(storage-account)
     
     - task: TerraformInstaller@0
-      displayName: install Terraform v1.2.9
+      displayName: install Terraform latest
       inputs:
-        terraformVersion: '1.2.9'
+        terraformVersion: 'latest'
 
     - task: TerraformTaskV3@3
       displayName: "terraform init"
