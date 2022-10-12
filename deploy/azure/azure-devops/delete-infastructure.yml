@@ -13,7 +13,7 @@ variables:
   storage-account: terraformstate999
   tfstate-file: terraform.tfstate
   container: tfstate
-  any-if-changes: true
+  any-if-changes: false
 
 steps:
 
@@ -27,17 +27,17 @@ steps:
           az --version
           az account show
 
-    # - task: AzureCLI@2
-    #   displayName: Azure CLI - create storage for dev
-    #   inputs:
-    #     azureSubscription: '$(subscription)'
-    #     scriptType: 'bash'
-    #     scriptLocation: 'inlineScript'
-    #     inlineScript: |
-    #       az group create --location $(location) --name $(resource-group)
-    #       az storage account create --name $(storage-account) --resource-group $(resource-group) --location $(location) --sku Standard_LRS
-    #       az storage container create --name $(container)  --account-name $(storage-account)
-    #       az storage account keys list  -g $(resource-group) -n $(storage-account)
+    - task: AzureCLI@2
+      displayName: Azure CLI - create storage for dev
+      inputs:
+        azureSubscription: '$(subscription)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az group create --location $(location) --name $(resource-group)
+          az storage account create --name $(storage-account) --resource-group $(resource-group) --location $(location) --sku Standard_LRS
+          az storage container create --name $(container)  --account-name $(storage-account)
+          az storage account keys list  -g $(resource-group) -n $(storage-account)
     
     - task: TerraformInstaller@0
       displayName: install Terraform latest
