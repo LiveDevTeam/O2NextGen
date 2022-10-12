@@ -7,13 +7,13 @@ pool:
   vmImage: ubuntu-latest
 variables:
   location: westus3
-  source-path: deploy/azure/azure-terraform
+  source-path: ddeploy/azure/azure-terraform
   subscription: paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)
   resource-group: devops-tfstate
   storage-account: terraformstate999
   tfstate-file: terraform.tfstate
   container: tfstate
-  any-if-changes: false
+  any-if-changes: true
 
 steps:
 
@@ -21,13 +21,14 @@ steps:
       displayName: Azure CLI - login in azure
       inputs:
         azureSubscription: '$(subscription)'
-        scriptType: bash
-        scriptLocation: 'inlineScript'
+        scriptType: ps
+        scriptLocation: inlineScript
         inlineScript: |
           az --version
           az account show
-    
+
     - task: AzureCLI@2
+      displayName: Azure CLI - create storage for dev
       inputs:
         azureSubscription: '$(subscription)'
         scriptType: 'bash'
@@ -65,21 +66,7 @@ steps:
         commandOptions: '-out tfplan'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
         environmentServiceNameAzureRM: '$(subscription)'
-        # backendServiceArm: '$(subscription)'
-        # backendAzureRmResourceGroupName: '$(resource-group)'
-        # backendAzureRmStorageAccountName: '$(storage-account)'
-        # backendAzureRmContainerName: '$(container)'
-        # backendAzureRmKey: '$(tfstate-file)' 
-        # backendAzureRmResourceGroupName: '$(resource-group)'
-        # backendAzureRmStorageAccountName: '$(storage-account)'
-        # backendAzureRmContainerName: '$(container)'
-        # backendAzureRmKey: '$(tfstate-file)' 
-    # - task: TerraformTaskV3@3
-    #   inputs:
-    #     provider: 'azurerm'
-    #     command: 'plan'
-    #     commandOptions: '-out replan'
-    #     environmentServiceNameAzureRM: 'paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)'
+
     - task: PowerShell@2
       displayName: detect any terraform change
       inputs:

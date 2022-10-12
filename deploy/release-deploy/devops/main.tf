@@ -43,8 +43,8 @@ provider "tls" {}
 # We strongly recommend using the required_providers block to set the
 # Azure Provider source and version being used
 terraform {
-#     backend "azurerm" {
-#   }
+      backend "azurerm" {
+    }
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -72,10 +72,10 @@ terraform {
 }
 
 
-# Retrieve domain information
-data "azuread_domains" "example" {
-  only_initial = true
-}
+# # Retrieve domain information
+# data "azuread_domains" "example" {
+#   only_initial = true
+# }
 
 
 # ========================================== RESOURCE ==========================================  
@@ -85,16 +85,16 @@ resource "azurerm_resource_group" "tfstate-resource-group" {
 }
 
 resource "azurerm_storage_account" "storage" {
-  name                     = var.tfstate_storage_account_name
-  resource_group_name      = azurerm_resource_group.tfstate-resource-group.name
-  location                 = var.tfstate_resource_group_location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+  name                            = var.tfstate_storage_account_name
+  resource_group_name             = azurerm_resource_group.tfstate-resource-group.name
+  location                        = var.tfstate_resource_group_location
+  account_tier                    = "Standard"
+  account_replication_type        = "LRS"
   allow_nested_items_to_be_public = true
 }
 
 resource "azurerm_storage_container" "container" {
   name                  = var.tfstate_storage_container_name
   storage_account_name  = azurerm_storage_account.storage.name
-  container_access_type = "container" # "blob" "private"
+  container_access_type = "container" #"container" # "blob" "private"
 }
