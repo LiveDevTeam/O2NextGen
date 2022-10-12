@@ -1,0 +1,106 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+pool:
+  vmImage: ubuntu-latest
+variables:
+  location: westus3
+  source-path: ddeploy/azure/azure-terraform
+  subscription: paid-subscription(f1404c6e-2728-40ae-9cd2-fee75bde4c04)
+  resource-group: devops-tfstate
+  storage-account: terraformstate999
+  tfstate-file: terraform.tfstate
+  container: tfstate
+  any-if-changes: true
+
+steps:
+
+    - task: AzureCLI@2
+      displayName: Azure CLI - login in azure
+      inputs:
+        azureSubscription: '$(subscription)'
+        scriptType: ps
+        scriptLocation: inlineScript
+        inlineScript: |
+          az --version
+          az account show
+
+    - task: AzureCLI@2
+      displayName: Azure CLI - create storage for dev
+      inputs:
+        azureSubscription: '$(subscription)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az group create --location $(location) --name $(resource-group)
+          az storage account create --name $(storage-account) --resource-group $(resource-group) --location $(location) --sku Standard_LRS
+          az storage container create --name $(container)  --account-name $(storage-account)
+          az storage account keys list  -g $(resource-group) -n $(storage-account)
+    
+    - task: TerraformInstaller@0
+      displayName: install Terraform v1.2.9
+      inputs:
+        terraformVersion: '1.2.9'
+
+    - task: TerraformTaskV3@3
+      displayName: "terraform init"
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
+        backendServiceArm: '$(subscription)'
+        environmentServiceNameAzureRM: '$(subscription)'
+        backendAzureRmResourceGroupName: '$(resource-group)'
+        backendAzureRmStorageAccountName: '$(storage-account)'
+        backendAzureRmContainerName: '$(container)'
+        backendAzureRmKey: '$(tfstate-file)' 
+
+
+    # - task: TerraformTaskV3@3
+    #   displayName: "terraform plan -out tfplan"
+    #   inputs:
+    #     provider: 'azurerm'
+    #     command: 'plan'
+    #     commandOptions: '-out tfplan'
+    #     workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
+    #     environmentServiceNameAzureRM: '$(subscription)'
+
+    # - task: PowerShell@2
+      displayName: detect any terraform change
+      inputs:
+        workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
+        targetType: 'inline'
+        script: |
+          # Write-Host "LASTEXITCODE : $LASTEXITCODE"
+          $plan = $(terraform show -json tfplan | ConvertFrom-Json)
+          $actions = $plan.resource_changes.change.actions
+          Write-Host "Terraform actions : $actions"
+          if (($actions -contains 'create') -or ($actions -contains 'delete') -or ($actions -contains 'update'))
+          {
+            Write-Host "Terraform will perform the following actions : $actions"
+            Write-Host "##vso[task.setvariable variable=anyTfChanges;]true"
+          }
+          else
+          {
+            Write-Host "There is no change detected in Terraform tfplan file"
+          }
+    
+    - task: TerraformTaskV3@3
+      displayName: terraform destroy -auto-approve
+      condition: eq(variables.anyTfChanges, true)
+      inputs:
+        provider: 'azurerm'
+        command: 'destroy'
+        commandOptions: '-auto-approve'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
+        environmentServiceNameAzureRM: '$(subscription)'
+        backendServiceArm: '$(subscription)'
+        backendAzureRmResourceGroupName: '$(resource-group)'
+        backendAzureRmStorageAccountName: '$(storage-account)'
+        backendAzureRmContainerName: '$(container)'
+        backendAzureRmKey: '$(tfstate-file)' 
+
+
+
