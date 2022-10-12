@@ -67,7 +67,7 @@ steps:
     #     workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
     #     environmentServiceNameAzureRM: '$(subscription)'
 
-    # - task: PowerShell@2
+    - task: PowerShell@2
       displayName: detect any terraform change
       inputs:
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
