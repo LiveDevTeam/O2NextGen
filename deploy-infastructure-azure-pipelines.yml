@@ -8,7 +8,7 @@ pool:
 variables:
   location: westus3
   source-path: deploy/azure/azure-terraform
-  subscription: paid-subscription
+  subscription: o2bionics-paid-subscription
   resource-group: devops-tfstate
   storage-account: terraformstate999
   tfstate-file: terraform.tfstate
