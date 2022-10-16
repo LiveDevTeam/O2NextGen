@@ -6,7 +6,7 @@ using O2NextGen.Tracker.DbUtility;
 
 namespace O2NextGen.OnTracker.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/geo")]
     [ApiController]
     public class GeoController : ControllerBase
     {
