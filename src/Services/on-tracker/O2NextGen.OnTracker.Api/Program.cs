@@ -7,12 +7,14 @@ namespace O2NextGen.OnTracker.Api
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args);
+            host.Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHost CreateHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .Build();
     }
 }
 
