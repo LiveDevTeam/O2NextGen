@@ -27,7 +27,7 @@ namespace O2NextGen.OnTracker.Api
             {
                 options.DescribeAllEnumsAsStrings();
                 options.SwaggerDoc("v1",new Info()
-                {
+                { 
                     Title = "O2NextGen Platform. On-Tracker HTTP API",
                     Version = "v1",
                     Description = "On-Tracker API Service. The service allows you to create certificates",
@@ -52,7 +52,12 @@ namespace O2NextGen.OnTracker.Api
             app.UseSwagger()
                 .UseSwaggerUI(c => { c.SwaggerEndpoint($"/swagger/v1/swagger.json", "On-Tracker API V1"); });
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes => {
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+            });
+            //app.UseEndpoints(endpoints => {
+            //    endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
         }
     }
 }
