@@ -1,10 +1,10 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
 COPY ["O2NextGen.OnTracker.Api/O2NextGen.OnTracker.Api.csproj", "O2NextGen.OnTracker.Api/"]
 COPY ["O2NextGen.OnTracker.Business/O2NextGen.OnTracker.Business.csproj", "O2NextGen.OnTracker.Business/"]
@@ -17,7 +17,7 @@ WORKDIR "/src/O2NextGen.OnTracker.Api"
 RUN dotnet build "O2NextGen.OnTracker.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "O2NextGen.OnTracker.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "O2NextGen.OnTracker.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
