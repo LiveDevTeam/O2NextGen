@@ -22,7 +22,8 @@ namespace O2NextGen.OnTracker.Api.Controllers
         {
             // var ip = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;//Request.HttpContext.Connection.RemoteIpAddress;
-            IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
+            //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
+            IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             string result = "";
             if (remoteIpAddress != null)
             {
@@ -42,30 +43,6 @@ namespace O2NextGen.OnTracker.Api.Controllers
             // return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
 
