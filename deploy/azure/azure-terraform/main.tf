@@ -157,7 +157,7 @@ resource "azurerm_dns_zone" "second-dns-zone" {
 depends_on = [
   azurerm_kubernetes_cluster.o2nextgen-aks
 ]
-  name                = "pfr-cent.com"
+  name                = "pfr-centr.com"
   resource_group_name = var.k8s_resource_group
 
   tags = {
