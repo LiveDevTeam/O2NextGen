@@ -157,7 +157,7 @@ resource "azurerm_dns_zone" "second-dns-zone" {
 depends_on = [
   azurerm_kubernetes_cluster.o2nextgen-aks
 ]
-  name                = "prf-cent.com"
+  name                = "pfr-cent.com"
   resource_group_name = var.k8s_resource_group
 
   tags = {
@@ -474,9 +474,7 @@ locals {
     - --azure.aadClientSecret="${azuread_application_password.current.value}"
     - --azure.cloud=AzurePublicCloud
     - --policy=sync
-    - --domainFilters[0]={${azurerm_dns_zone.primary-dns-zone.name}}
-    - --domainFilters[1]={${azurerm_dns_zone.second-dns-zone.name}}
-    - --domainFilters[2]={${azurerm_dns_zone.third-dns-zone.name}}
+    - --domainFilters={${azurerm_dns_zone.primary-dns-zone.name}}
 EOF
 }
 
