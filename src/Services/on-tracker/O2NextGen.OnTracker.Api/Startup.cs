@@ -52,9 +52,10 @@ namespace O2NextGen.OnTracker.Api
             //{
             //    app.UseHsts();
             //}
+    
             app.UseSwagger()
                 .UseSwaggerUI(c => { c.SwaggerEndpoint($"/swagger/v1/swagger.json", "On-Tracker API V1"); });
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             //app.UseMvc(routes => {
             //    routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             //});
