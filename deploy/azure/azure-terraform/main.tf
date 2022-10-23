@@ -264,11 +264,7 @@ resource "azurerm_role_assignment" "current" {
 
 # Create role assignment for service principal
 resource "azurerm_role_assignment" "main" {
-  scope                = [
-    azurerm_dns_zone.primary-dns-zone.id,
-    azurerm_dns_zone.second-dns-zone.id, 
-    azurerm_dns_zone.third-dns-zone.id
-  ]
+  scope                = azurerm_dns_zone.primary-dns-zone.id
   role_definition_name = "DNS Zone Contributor"
   principal_id         = azuread_service_principal.current.object_id
 }
@@ -467,10 +463,7 @@ locals {
     - --azure.aadClientSecret="${azuread_application_password.current.value}"
     - --azure.cloud=AzurePublicCloud
     - --policy=sync
-    - --domainFilter=${azurerm_dns_zone.primary-dns-zone.name}
-    - --domainFilter=${zurerm_dns_zone.second-dns-zone.name}
-    - --domainFilter=${azurerm_dns_zone.third-dns-zone.name}
-
+    - --domainFilters={${azurerm_dns_zone.primary-dns-zone.name}}
 EOF
 }
 
