@@ -264,11 +264,18 @@ resource "azurerm_role_assignment" "current" {
 
 # Create role assignment for service principal
 resource "azurerm_role_assignment" "main" {
-  scopes               =[ 
-    azurerm_dns_zone.primary-dns-zone.id,
-    azurerm_dns_zone.second-dns-zone.id,
-    azurerm_dns_zone.third-dns-zone.id
-    ]
+  scope                = azurerm_dns_zone.primary-dns-zone.id
+  role_definition_name = "DNS Zone Contributor"
+  principal_id         = azuread_service_principal.current.object_id
+}
+# Create role assignment for service principal
+resource "azurerm_role_assignment" "main-second" {
+  scope                = azurerm_dns_zone.second-dns-zone.id
+  role_definition_name = "DNS Zone Contributor"
+  principal_id         = azuread_service_principal.current.object_id
+}
+resource "azurerm_role_assignment" "main-third" {
+  scope                = azurerm_dns_zone.third-dns-zone.id
   role_definition_name = "DNS Zone Contributor"
   principal_id         = azuread_service_principal.current.object_id
 }
