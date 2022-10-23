@@ -153,20 +153,32 @@ resource "azurerm_dns_zone" "primary-dns-zone" {
     "product"      = "O2NextGen Platform"
   }
 }
-# resource "azurerm_dns_zone" "second-dns-zone" {
-# depends_on = [
-#   azurerm_kubernetes_cluster.o2nextgen-aks
-# ]
-#   name                = "prf-cent.com"
-#   resource_group_name = var.k8s_resource_group
+resource "azurerm_dns_zone" "second-dns-zone" {
+depends_on = [
+  azurerm_kubernetes_cluster.o2nextgen-aks
+]
+  name                = "prf-cent.com"
+  resource_group_name = var.k8s_resource_group
 
-#   tags = {
-#     "type"         = "client"
-#     "type_product" = "Saas"
-#     "product"      = "O2NextGen Platform"
-#   }
-# }
+  tags = {
+    "type"         = "client"
+    "type_product" = "Saas"
+    "product"      = "O2NextGen Platform"
+  }
+}
+resource "azurerm_dns_zone" "third-dns-zone" {
+depends_on = [
+  azurerm_kubernetes_cluster.o2nextgen-aks
+]
+  name                = "o2bionics.com"
+  resource_group_name = var.k8s_resource_group
 
+  tags = {
+    "type"         = "offsite"
+    "type_product" = "Saas"
+    "product"      = "O2NextGen Platform"
+  }
+}
 
 # resource "azuread_application" "example" {
 #   display_name = "sp-external-dns"

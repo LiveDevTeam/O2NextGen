@@ -42,7 +42,7 @@ namespace O2NextGen.OnTracker.Api.IoC
                 options.EnableEndpointRouting = false;
                 // options.Filters.Add<ApiExceptionFilter>();
             });
-            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            //mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             //var mvcBuilder = services.AddMvcCore(options =>
             //{
             //    options.Filters.Add<ApiExceptionFilter>();
