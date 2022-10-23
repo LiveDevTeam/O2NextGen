@@ -48,10 +48,10 @@ namespace O2NextGen.OnTracker.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
+            //else
+            //{
+            //    app.UseHsts();
+            //}
             app.UseSwagger()
                 .UseSwaggerUI(c => { c.SwaggerEndpoint($"/swagger/v1/swagger.json", "On-Tracker API V1"); });
             app.UseHttpsRedirection();
