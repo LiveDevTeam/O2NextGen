@@ -137,7 +137,7 @@ steps:
           spec:
             acme:
               server: https://acme-v02.api.letsencrypt.org/directory
-              email: $LETS_ENCRYPT_EMAIL
+              email: $(LETS_ENCRYPT_EMAIL)
               privateKeySecretRef:
                 name: letsencrypt
               solvers:
