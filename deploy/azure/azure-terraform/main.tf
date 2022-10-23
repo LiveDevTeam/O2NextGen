@@ -514,8 +514,16 @@ resource "helm_release" "external-dns" {
     value = "sync"
   }
   set {
-    name  = "domainFilters"
+    name  = "domainFilters[0]"
     value = "{${azurerm_dns_zone.primary-dns-zone.name}}"
+  }
+  set {
+    name  = "domainFilters[1]"
+    value = "{${azurerm_dns_zone.second-dns-zone.name}}"
+  }
+   set {
+    name  = "domainFilters[1]"
+    value = "{${azurerm_dns_zone.third-dns-zone.name}}"
   }
   set {
     name  = "azure.resourceGroup"
