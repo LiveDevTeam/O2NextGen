@@ -478,84 +478,84 @@ locals {
 EOF
 }
 
-resource "helm_release" "external-dns" {
-  depends_on = [
-    azurerm_dns_zone.primary-dns-zone
-  ]
-  dependency_update = "true"
-  name              = "external-dns"
-  repository        = "https://charts.bitnami.com/bitnami"
-  chart             = "external-dns"
-  namespace         = "external-dns"
-  create_namespace  = true
-  # values = [
-  #   local.dnsValues
-  # ]
-  set {
-    name  = "azure.cloud"
-    value = "AzurePublicCloud"
-  }
-  set {
-    name  = "txtOwnerId"
-    value = azurerm_kubernetes_cluster.o2nextgen-aks.name
-  }
-  set {
-    name  = "provider"
-    value = "azure"
-  }
-  set {
-    name  = "logLevel"
-    value = "debug"
-  }
-  set {
-    name  = "policy"
-    value = "sync"
-  }
-  set {
-    name  = "domainFilters"
-    value = "{${azurerm_dns_zone.primary-dns-zone.name},${azurerm_dns_zone.second-dns-zone.name},${azurerm_dns_zone.third-dns-zone.name}}"
-  }
-  set {
-    name  = "azure.resourceGroup"
-    value = azurerm_kubernetes_cluster.o2nextgen-aks.resource_group_name //var.k8s_resource_group //"AzureDNS" //var.k8s_resource_group //"AzureDNS" //
-  }
-  set {
-    name  = "azure.tenantId"
-    value = data.azuread_client_config.current.tenant_id
-  }
-  set {
-    name  = "azure.subscriptionId"
-    value = data.azurerm_subscription.current.subscription_id
-  }
-  set {
-    name  = "azure.aadClientId"
-    value = azuread_application.example.application_id
-  }
-  set {
-    name  = "azure.aadClientSecret"
-    value = azuread_application_password.current.value
-  }
-  # # set {
-  # #   name  = "azure.useManagedIdentityExtension"
-  # #   value = "true"
-  # # }
-  # # set {
-  # #   name  = "azure.userAssignedIdentityID"
-  # #   value = azuread_service_principal.current.id
-  # # }
+# resource "helm_release" "external-dns" {
+#   depends_on = [
+#     azurerm_dns_zone.primary-dns-zone
+#   ]
+#   dependency_update = "true"
+#   name              = "external-dns"
+#   repository        = "https://charts.bitnami.com/bitnami"
+#   chart             = "external-dns"
+#   namespace         = "external-dns"
+#   create_namespace  = true
+#   # values = [
+#   #   local.dnsValues
+#   # ]
+#   set {
+#     name  = "azure.cloud"
+#     value = "AzurePublicCloud"
+#   }
+#   set {
+#     name  = "txtOwnerId"
+#     value = azurerm_kubernetes_cluster.o2nextgen-aks.name
+#   }
+#   set {
+#     name  = "provider"
+#     value = "azure"
+#   }
+#   set {
+#     name  = "logLevel"
+#     value = "debug"
+#   }
+#   set {
+#     name  = "policy"
+#     value = "sync"
+#   }
+#   set {
+#     name  = "domainFilters"
+#     value = "{${azurerm_dns_zone.primary-dns-zone.name},${azurerm_dns_zone.second-dns-zone.name},${azurerm_dns_zone.third-dns-zone.name}}"
+#   }
+#   set {
+#     name  = "azure.resourceGroup"
+#     value = azurerm_kubernetes_cluster.o2nextgen-aks.resource_group_name //var.k8s_resource_group //"AzureDNS" //var.k8s_resource_group //"AzureDNS" //
+#   }
+#   set {
+#     name  = "azure.tenantId"
+#     value = data.azuread_client_config.current.tenant_id
+#   }
+#   set {
+#     name  = "azure.subscriptionId"
+#     value = data.azurerm_subscription.current.subscription_id
+#   }
+#   set {
+#     name  = "azure.aadClientId"
+#     value = azuread_application.example.application_id
+#   }
+#   set {
+#     name  = "azure.aadClientSecret"
+#     value = azuread_application_password.current.value
+#   }
+#   # # set {
+#   # #   name  = "azure.useManagedIdentityExtension"
+#   # #   value = "true"
+#   # # }
+#   # # set {
+#   # #   name  = "azure.userAssignedIdentityID"
+#   # #   value = azuread_service_principal.current.id
+#   # # }
 
-  # --set txtOwnerId=$AZ_AKS_NAME \
-  #   --set provider=azure \
-  #   --set azure.resourceGroup=$AZ_DNS_GROUP \
-  #   --set azure.tenantId=$AZ_TENANT_ID \
-  #   --set azure.subscriptionId=$AZ_SUBSCRIPTION_ID \
-  #   --set azure.aadClientId=$SP_CLIENT_ID \
-  #   --set azure.aadClientSecret="$SP_CLIENT_SECRET" \
-  #   --set azure.cloud=AzurePublicCloud \
-  #   --set policy=sync \
-  #   --set domainFilters={$DOMAIN_NAME}
+#   # --set txtOwnerId=$AZ_AKS_NAME \
+#   #   --set provider=azure \
+#   #   --set azure.resourceGroup=$AZ_DNS_GROUP \
+#   #   --set azure.tenantId=$AZ_TENANT_ID \
+#   #   --set azure.subscriptionId=$AZ_SUBSCRIPTION_ID \
+#   #   --set azure.aadClientId=$SP_CLIENT_ID \
+#   #   --set azure.aadClientSecret="$SP_CLIENT_SECRET" \
+#   #   --set azure.cloud=AzurePublicCloud \
+#   #   --set policy=sync \
+#   #   --set domainFilters={$DOMAIN_NAME}
 
-}
+# }
 resource "helm_release" "cert-manager" {
   name             = "cert-manager"
   namespace        = "cert-manager"
