@@ -52,10 +52,15 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+    - host: o2bionics.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
   tls:
-   - secretName: tls-secret-o2bus
+   - secretName: tls-secret-o2bionics-com
      hosts:
        - o2bionics.o2bus.com
+       - o2bionics.com
 
 resources: #{}
   # We usually recommend not to specify default resources and to leave this as a conscious

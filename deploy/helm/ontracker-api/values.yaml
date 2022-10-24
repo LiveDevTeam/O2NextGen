@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: o2nextgen.azurecr.io/ontracker-api #nginx
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
