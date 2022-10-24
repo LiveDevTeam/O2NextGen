@@ -11,12 +11,20 @@ namespace O2NextGen.OnTracker.Api.Controllers
     [ApiController]
     public class GeoController : ControllerBase
     {
+        #region Fields
         private readonly IGeoIpAddressResolver _geoIpAddressResolver;
+        #endregion
 
+
+        #region Ctors
         public GeoController(IGeoIpAddressResolver geoIpAddressResolver)
         {
             _geoIpAddressResolver = geoIpAddressResolver;
         }
+        #endregion
+
+
+        #region Methods
         // GET api/values
         [HttpGet]
         public ActionResult Get()
@@ -42,9 +50,9 @@ namespace O2NextGen.OnTracker.Api.Controllers
             if (result.ToString() == "127.0.0.1")
                 return Ok("request with localhost");
             return Ok(_geoIpAddressResolver.ResolveAddress(IPAddress.Parse(result.ToString())));
-            // return new string[] { "value1", "value2" };
         }
-
+        #endregion
     }
+
 }
 

@@ -31,6 +31,9 @@ namespace O2NextGen.OnTracker.Api.Controllers
 
         #endregion
 
+
+        #region Methods
+
         [HttpGet("[controller]")]
         public object Index()
         {
@@ -42,6 +45,8 @@ namespace O2NextGen.OnTracker.Api.Controllers
                 Version = exVersion.ToString()
             };
         }
+
+        #endregion
     }
 }
 
