@@ -35,7 +35,8 @@ namespace O2NextGen.OnTracker.Api.Controllers
             //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             //Request.HttpContext.Connection.RemoteIpAddress;
             //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
-            IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+            //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+            IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
             string result = "";
             if (remoteIpAddress != null)
             {
