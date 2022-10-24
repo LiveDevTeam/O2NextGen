@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using Microsoft.AspNetCore.Http.Features;
@@ -29,9 +30,10 @@ namespace O2NextGen.OnTracker.Api.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            Debug.WriteLine("start");
+            Console.WriteLine("start");
             // var ip = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
-            //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;//Request.HttpContext.Connection.RemoteIpAddress;
+            //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+            //Request.HttpContext.Connection.RemoteIpAddress;
             //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
             IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             string result = "";
@@ -46,7 +48,7 @@ namespace O2NextGen.OnTracker.Api.Controllers
                 }
                 result = remoteIpAddress.ToString();
             }
-            Debug.WriteLine(remoteIpAddress.ToString());
+            Console.WriteLine(remoteIpAddress.ToString());
             if (result.ToString() == "127.0.0.1")
                 return Ok("request with localhost");
             return Ok(_geoIpAddressResolver.ResolveAddress(IPAddress.Parse(result.ToString())));
