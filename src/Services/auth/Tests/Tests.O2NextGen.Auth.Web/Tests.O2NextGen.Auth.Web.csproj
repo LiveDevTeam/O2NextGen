@@ -16,4 +16,7 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\O2NextGen.Auth.Web\O2NextGen.Auth.Web.csproj" />
+  </ItemGroup>
 </Project>
