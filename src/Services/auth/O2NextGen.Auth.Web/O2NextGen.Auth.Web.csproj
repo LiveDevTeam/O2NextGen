@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <DockerComposeProjectPath>../../../docker-compose.dcproj</DockerComposeProjectPath>
     <UserSecretsId>adca6dac-ab6b-4a1a-b8c4-03f600c16f45</UserSecretsId>
