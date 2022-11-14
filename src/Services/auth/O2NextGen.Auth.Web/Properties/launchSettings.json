@@ -17,7 +17,7 @@
     "O2NextGen.Auth.Web": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:59041",
+      "applicationUrl": "https://localhost:9769;http://localhost:55585",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

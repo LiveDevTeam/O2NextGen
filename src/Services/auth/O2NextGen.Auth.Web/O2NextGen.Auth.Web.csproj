@@ -28,6 +28,8 @@
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="SkiaSharp.QrCode" Version="0.6.0" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\Pages\Account\Register.en.resx">
@@ -76,6 +78,20 @@
     <Compile Remove="Logs\**" />
   </ItemGroup>
 
+   <ItemGroup>
+        <UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />
+        <UpToDateCheckBuilt Include="postcss.config.js" Set="Css" />
+        <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
+    </ItemGroup>
+
+    <Target Name="NPM install" BeforeTargets="Build">
+	    <Exec Command="npm install" />
+    </Target>
+
+    <Target Name="Tailwind" BeforeTargets="Build">
+        <Exec Command="npm run css:build" />
+    </Target>
+
   <ItemGroup>
     <None Remove="Resources\SharedResource.en" />
     <None Remove="Resources\Resources.ru" />
@@ -88,10 +104,8 @@
     <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
     <None Remove="IdentityServer4" />
     <None Remove="IdentityServer4.AspNetIdentity" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="css\core" />
+    <None Remove="SkiaSharp" />
+    <None Remove="SkiaSharp.QrCode" />
   </ItemGroup>
 
   <ItemGroup>
