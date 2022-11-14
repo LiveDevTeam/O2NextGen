@@ -72,7 +72,7 @@ az role assignment create \
     --scope $DNS_ZONE_ID 1>/dev/null
 
 # Add bitnami repo for external-dns chart
-helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add bitnami index.yaml # https://charts.bitnami.com/bitnami
 
 # Create namespace for external-dns
 kubectl create namespace external-dns

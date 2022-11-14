@@ -14,6 +14,7 @@ echo "\$RG:           $RG"
 echo "\$AKS_NAME:      $AKS_NAME"
 echo "\$NODECOUNT:      $NODECOUNT"
 echo "\$NODESIZE:      $NODESIZE"
+echo "\$AKS_ZONES:      $AKS_ZONES"
 echo "================================"
 
 az aks create \
@@ -25,9 +26,12 @@ az aks create \
     --node-vm-size $NODESIZE \
     --generate-ssh-keys \
     --location $LOCATION
+    --zones $AKS_ZONES
+    --yes
 
 az aks get-credentials \
     --name $AKS_NAME \
     --resource-group $RG
+    --yes
     
 echo "AKS is created: COMPLETED \r\n"

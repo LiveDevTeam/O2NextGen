@@ -8,6 +8,6 @@ echo "\$DOMAIN_NAME:      $DOMAIN_NAME"
 echo "\$RG:           $RG"
 echo "================================"
 
-az storage container delete --name  o2-storage
+az storage container delete --name  o2-storage --yes
 
 echo "Deleted BLOB Storage: COMPLETED \r\n"
