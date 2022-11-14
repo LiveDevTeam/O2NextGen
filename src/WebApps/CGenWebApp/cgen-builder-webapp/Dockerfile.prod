@@ -5,6 +5,7 @@ COPY  package.json .
 RUN yarn install
 COPY . .
 ENV REACT_APP_NAME=myName 
+COPY .env .
 RUN yarn build
 
 # => Run container
@@ -23,7 +24,7 @@ EXPOSE 80
 # Copy .env file and shell script to container
 WORKDIR /usr/share/nginx/html
 # COPY ./env.sh .
-COPY .env .
+
 
 # # Start Nginx server
 # CMD ["/bin/sh", "-c", "nginx -g \"daemon off;\""]
