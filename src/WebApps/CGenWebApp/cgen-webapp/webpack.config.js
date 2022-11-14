@@ -5,7 +5,7 @@ const webpack = require('webpack'); // remember to require this, because we Defi
 
 module.exports = {
   output: {
-    publicPath: "./",
+    publicPath: "/",
   },
 
   resolve: {
@@ -47,7 +47,7 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: "cgen_webapp",
-      filename: "remoteEntry.js",
+      filename: "remoteEntry. js",
       remotes: {},
       exposes: {},
       shared: {

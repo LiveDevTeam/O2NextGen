@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "./",
+    publicPath: "/",
   },
 
   resolve: {
@@ -18,6 +18,16 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.svg/,
+        use: {
+          loader: "svg-url-loader",
+          options: {
+            // make all svg images to work in IE
+            iesafe: true,
+          },
+        },
+      },
       {
         test: /\.m?js/,
         type: "javascript/auto",
