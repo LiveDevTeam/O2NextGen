@@ -24,8 +24,11 @@ namespace O2NextGen.Auth.Web
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+            })
+                //.SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizeFolder("/Account");
