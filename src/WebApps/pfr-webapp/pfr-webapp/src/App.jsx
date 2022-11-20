@@ -17,7 +17,9 @@ const App = () => (
       wind={[-0.5, 2.0]}
     />
       <BrowserRouter>
-        <NGSplashScreen logo={logo}/>
+        {/* <Route path="/" exact> */}
+          <NGSplashScreen logo={logo}/>
+        {/* </Route> */}
       </BrowserRouter>
   </div>
 );
