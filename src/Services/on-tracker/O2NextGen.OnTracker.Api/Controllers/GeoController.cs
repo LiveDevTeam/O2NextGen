@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
@@ -6,22 +8,35 @@ using O2NextGen.Tracker.DbUtility;
 
 namespace O2NextGen.OnTracker.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/geo")]
     [ApiController]
     public class GeoController : ControllerBase
     {
+        #region Fields
         private readonly IGeoIpAddressResolver _geoIpAddressResolver;
+        #endregion
 
+
+        #region Ctors
         public GeoController(IGeoIpAddressResolver geoIpAddressResolver)
         {
             _geoIpAddressResolver = geoIpAddressResolver;
         }
+        #endregion
+
+
+        #region Methods
         // GET api/values
         [HttpGet]
         public ActionResult Get()
         {
+            Console.WriteLine("start");
             // var ip = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
-            IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;//Request.HttpContext.Connection.RemoteIpAddress;
+            //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+            //Request.HttpContext.Connection.RemoteIpAddress;
+            //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
+            //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+            IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
             string result = "";
             if (remoteIpAddress != null)
             {
@@ -34,37 +49,13 @@ namespace O2NextGen.OnTracker.Api.Controllers
                 }
                 result = remoteIpAddress.ToString();
             }
-
+            Console.WriteLine(remoteIpAddress.ToString());
             if (result.ToString() == "127.0.0.1")
                 return Ok("request with localhost");
             return Ok(_geoIpAddressResolver.ResolveAddress(IPAddress.Parse(result.ToString())));
-            // return new string[] { "value1", "value2" };
         }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        #endregion
     }
+
 }
 

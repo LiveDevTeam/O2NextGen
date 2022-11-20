@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{897A7BA2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Tracker.DbUtility", "O2NextGen.Tracker.DbUtility\O2NextGen.Tracker.DbUtility.csproj", "{77D9E353-F5AE-440B-8EE8-70EBB92099AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NetGen.OnTracker.Api", "O2NextGen.OnTracker.Api\O2NextGen.OnTracker.Api.csproj", "{2288664B-04A5-4C80-8685-2AF877F5D335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.OnTracker.Api", "O2NextGen.OnTracker.Api\O2NextGen.OnTracker.Api.csproj", "{2288664B-04A5-4C80-8685-2AF877F5D335}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.OnTracker.Data", "O2NextGen.OnTracker.Data\O2NextGen.OnTracker.Data.csproj", "{23CB3AC5-E48E-4A46-B5F7-8FB1F0F00A71}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.OnTracker.Impl", "Tests\Tests.O2NextGen.OnTracker.Impl\Tests.O2NextGen.OnTracker.Impl.csproj", "{18B3EF0B-1FB1-434B-8291-BF45094C97F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.Tracker.DbUtility", "Tests\Tests.O2NextGen.Tracker.DbUtility\Tests.O2NextGen.Tracker.DbUtility.csproj", "{2B77211A-B680-4241-A73C-4C7F88CF35A8}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9DD56EB5-0DE9-43B2-9D08-2487DE6E4620}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{2B77211A-B680-4241-A73C-4C7F88CF35A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B77211A-B680-4241-A73C-4C7F88CF35A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B77211A-B680-4241-A73C-4C7F88CF35A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD56EB5-0DE9-43B2-9D08-2487DE6E4620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD56EB5-0DE9-43B2-9D08-2487DE6E4620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD56EB5-0DE9-43B2-9D08-2487DE6E4620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD56EB5-0DE9-43B2-9D08-2487DE6E4620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
