@@ -2,16 +2,16 @@
 echo "\r\n====> Exporting vars for local machine"
 echo "Running export-vars.sh script.."
 echo "================================================"
-export LOCATION=centralus
+export LOCATION=WestUS3
 export RG=products-group  #new version products-group | old version o2bionics-group
 export DOMAIN_NAME=o2bus.com
 export DOMAIN_NAME_PRIMARY=pfr-centr.com
 
-export AKS_NAME=o2nextgen-aks #new version o2nextgen-aks | old version o2-aks
+export AKS_NAME=o2ng-aks #new version o2nextgen-aks | old version o2-aks
 export NODECOUNT=1
-export NODESIZE=Standard_D4as_v5  # Standard_F2s | Standard_D4s_v4 | Standard_DS2_v2 | Standard_B2s
+export NODESIZE=Standard_D2_v2 #Standard_D4as_v5  # Standard_F2s | Standard_D4s_v4 | Standard_DS2_v2 | Standard_B2s
 
-export LETS_ENCRYPT_EMAIL=live-dev@hotmail.com
+export LETS_ENCRYPT_EMAIL=o2bionics@hotmail.com
 
 
 echo "\$LOCATION | $LOCATION"

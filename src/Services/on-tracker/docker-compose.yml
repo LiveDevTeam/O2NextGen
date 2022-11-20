@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  o2nextgen.ontracker.api:
+    image: ${DOCKER_REGISTRY-}o2nextgenontracker
+    build:
+      context: .
+      dockerfile: O2NextGen.OnTracker.Api/Dockerfile

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using O2NextGen.Auth.Web.Extensions;
 using O2NextGen.Auth.Web.Helpers;
@@ -23,8 +24,11 @@ namespace O2NextGen.Auth.Web
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+            })
+                //.SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizeFolder("/Account");
@@ -53,7 +57,7 @@ namespace O2NextGen.Auth.Web
             services.AddSingleton<IEmailSender, DummyEmailSender>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             
@@ -71,7 +75,6 @@ namespace O2NextGen.Auth.Web
             app.UseRequestLocalization(v);
             app.UseCookiePolicy();
             app.UseAuthentication();
-            
             app.UseMvcWithDefaultRoute();
         }
     }

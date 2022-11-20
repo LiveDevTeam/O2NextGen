@@ -1,12 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <PublishReadyToRun>true</PublishReadyToRun>
-    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerComposeProjectPath>../../../docker-compose.dcproj</DockerComposeProjectPath>
     <UserSecretsId>adca6dac-ab6b-4a1a-b8c4-03f600c16f45</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
@@ -14,22 +11,25 @@
   
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'O2NextGen.Auth' " />
   <ItemGroup>
-    <PackageReference Include="IdentityServer4" Version="2.3.2" />
-    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1">
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.0.1">
     </PackageReference>
-    <PackageReference Include="Serilog.Settings.Configuration" Version="2.2.0">
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0">
     </PackageReference>
     <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0">
     </PackageReference>
-    <PackageReference Include="Serilog.Sinks.Console" Version="2.1.0">
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0">
     </PackageReference>
-    <PackageReference Include="Serilog.Sinks.File" Version="2.2.0">
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0">
     </PackageReference>
-    <PackageReference Include="SkiaSharp.QrCode" Version="0.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="IdentityServer4" Version="4.1.2" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="SkiaSharp.QrCode" Version="0.6.0" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\Pages\Account\Register.en.resx">
@@ -78,14 +78,34 @@
     <Compile Remove="Logs\**" />
   </ItemGroup>
 
+   <ItemGroup>
+        <UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />
+        <UpToDateCheckBuilt Include="postcss.config.js" Set="Css" />
+        <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
+    </ItemGroup>
+
+    <Target Name="NPM install" BeforeTargets="Build">
+	    <Exec Command="npm install" />
+    </Target>
+
+    <Target Name="Tailwind" BeforeTargets="Build">
+        <Exec Command="npm run css:build" />
+    </Target>
+
   <ItemGroup>
     <None Remove="Resources\SharedResource.en" />
     <None Remove="Resources\Resources.ru" />
     <None Remove="Logs\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="css\core" />
+    <None Remove="Microsoft.AspNetCore.Identity" />
+    <None Remove="Microsoft.AspNetCore.Identity.UI" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
+    <None Remove="IdentityServer4" />
+    <None Remove="IdentityServer4.AspNetIdentity" />
+    <None Remove="SkiaSharp" />
+    <None Remove="SkiaSharp.QrCode" />
   </ItemGroup>
 
   <ItemGroup>

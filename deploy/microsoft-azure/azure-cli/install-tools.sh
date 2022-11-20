@@ -1,1 +1,1 @@
-brew update && brew install azure-cli
+brew update && brew install azure-cli && brew install jq

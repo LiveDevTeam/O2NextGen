@@ -1,10 +1,9 @@
 {
   "profiles": {
-    "O2.OnTracker.Api": {
+    "O2NextGen.OnTracker.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:57549;http://localhost:43192",
+      "applicationUrl": "https://localhost:5001;http://localhost:5011",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
