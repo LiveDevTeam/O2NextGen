@@ -360,3 +360,4 @@ deploy/clouds/digital-ocean/.terraform.lock.hcl
 deploy/k8s/.terraform.tfstate.lock.info
 deploy/k8s/terraform.tfstate.backup
 deploy/k8s/terraform.tfstate
+src/WebApps/pfr-app/pfr-app/dist

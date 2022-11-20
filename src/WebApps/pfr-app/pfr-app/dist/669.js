@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpfr_app=self.webpackChunkpfr_app||[]).push([[669],{669:(e,t,n)=>{n.r(t),n.d(t,{default:()=>l});var p=n(950),a=n.n(p);function l(){return a().createElement("div",{className:"p-5 bg-blue-500 text-white text-3xl font-bold"},"Only the best Spinner!!")}}}]);
