@@ -48,10 +48,10 @@ ingress:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    # - host: pfr-webapp.o2bus.com
-    #   paths:
-    #     - path: /
-    #       pathType: ImplementationSpecific
+    - host: pfr-webapp.o2bus.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
     - host: pfr-centr.com
       paths:
         - path: /
@@ -59,7 +59,7 @@ ingress:
   tls:
    - secretName: tls-secret-pfr-webapp-com
      hosts:
-      #  - pfr-webapp.o2bus.com
+       - pfr-webapp.o2bus.com
        - pfr-centr.com
 
 resources: {}
