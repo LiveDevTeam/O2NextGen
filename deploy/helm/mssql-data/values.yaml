@@ -75,8 +75,8 @@ env:
     #   value: '/logs'
     - name: ACCEPT_EULA
       value: "Y"
-    - name: MSSQL_PID
-      value: Developer
+    # - name: MSSQL_PID
+    #   value: Developer
     - name: MSSQL_SA_PASSWORD
       value: yourStrong(!)Password
 
