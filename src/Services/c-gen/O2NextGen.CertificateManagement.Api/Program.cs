@@ -18,7 +18,7 @@ namespace O2NextGen.CertificateManagement.Api
             
             try
             {
-                var host = CreateWebHostBuilder(args).Build();
+                var host = CreateHostBuilder(args);
                 Log.Information($"############### {AppName} ##############");
                 Log.Information("################# Starting Application #################");
                 await host.EnsureDbUpdate();
@@ -37,12 +37,13 @@ namespace O2NextGen.CertificateManagement.Api
             }
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHost CreateHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseSerilog((context, configuration) =>
                 {
                     configuration.ReadFrom.Configuration(context.Configuration);
                 })
-                .UseStartup<Startup>(); // <- Add this line
+                .UseStartup<Startup>()
+                .Build(); 
     }
 }
