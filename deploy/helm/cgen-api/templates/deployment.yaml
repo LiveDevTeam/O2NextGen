@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "auth-web.fullname" . }}
+  name: {{ include "cgen-api.fullname" . }}
   labels:
-    {{- include "auth-web.labels" . | nindent 4 }}
+    {{- include "cgen-api.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "auth-web.selectorLabels" . | nindent 6 }}
+      {{- include "cgen-api.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "auth-web.selectorLabels" . | nindent 8 }}
+        {{- include "cgen-api.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "auth-web.serviceAccountName" . }}
+      serviceAccountName: {{ include "cgen-api.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

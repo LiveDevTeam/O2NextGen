@@ -1,4 +1,4 @@
-# Default values for auth-web.
+# Default values for cgen-api.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -8,7 +8,7 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -41,25 +41,25 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: nginx
   hosts:
-    - host: auth.o2bus.com
+    - host: cgen-api.o2bus.com
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: tls-secret-auth-webapp
-      hosts:
-        - auth.o2bus.com
-
+   - secretName: tls-secret-o2bus-cgen-api
+     hosts:
+       - cgen-api.o2bus.com
 env:
   values:
     - name: ConnectionString
-      value: Server=tcp:20.186.225.92,1433;Initial Catalog=O2Bionics.O2NextGen.IdentityDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
+      value: Server=tcp:20.186.225.92,1433;Initial Catalog=O2Bionics.O2NextGen.CGenDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
