@@ -60,11 +60,11 @@ ingress:
 storage:
   name: mssql-persistent-storage
   disk_system: azure-mssql-system
-  disk_system_size: 6Gi 
-  disk_data: azure-mssql-data
-  disk_data_size: 2Gi 
-  disk_log: azure-mssql-log
-  disk_log_size: 2Gi
+  disk_system_size: 2Gi 
+  # disk_data: azure-mssql-data
+  # disk_data_size: 2Gi 
+  # disk_log: azure-mssql-log
+  # disk_log_size: 2Gi
 env:
   values:
     - name: MSSQL_AGENT_ENABLED

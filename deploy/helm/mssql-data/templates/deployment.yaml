@@ -9,25 +9,25 @@ parameters:
   kind: Managed
 ---
 
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-     name: {{ .Values.storage.disk_data }}
-provisioner: kubernetes.io/azure-disk
-parameters:
-  storageaccounttype: Standard_LRS
-  kind: Managed
+# kind: StorageClass
+# apiVersion: storage.k8s.io/v1
+# metadata:
+#      name: {{ .Values.storage.disk_data }}
+# provisioner: kubernetes.io/azure-disk
+# parameters:
+#   storageaccounttype: Standard_LRS
+#   kind: Managed
 
----
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-     name: {{ .Values.storage.disk_log}}
-provisioner: kubernetes.io/azure-disk
-parameters:
-  storageaccounttype: Standard_LRS
-  kind: Managed
----
+# ---
+# kind: StorageClass
+# apiVersion: storage.k8s.io/v1
+# metadata:
+#      name: {{ .Values.storage.disk_log}}
+# provisioner: kubernetes.io/azure-disk
+# parameters:
+#   storageaccounttype: Standard_LRS
+#   kind: Managed
+# ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -41,32 +41,32 @@ spec:
     requests:
       storage: {{ .Values.storage.disk_system_size }}
 ---
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: mssql-pv-data-claim
-  annotations:
-    volume.beta.kubernetes.io/storage-class: {{ .Values.storage.disk_data }}
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: {{ .Values.storage.disk_data_size }}
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: mssql-pv-log-claim
-  annotations:
-    volume.beta.kubernetes.io/storage-class: {{ .Values.storage.disk_log }}
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: {{ .Values.storage.disk_log_size }}
----
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: mssql-pv-data-claim
+#   annotations:
+#     volume.beta.kubernetes.io/storage-class: {{ .Values.storage.disk_data }}
+# spec:
+#   accessModes:
+#   - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: {{ .Values.storage.disk_data_size }}
+# ---
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: mssql-pv-log-claim
+#   annotations:
+#     volume.beta.kubernetes.io/storage-class: {{ .Values.storage.disk_log }}
+# spec:
+#   accessModes:
+#   - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: {{ .Values.storage.disk_log_size }}
+# ---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -127,20 +127,20 @@ spec:
           volumeMounts:
             - name: system
               mountPath: /var/opt/mssql
-            - name: data
-              mountPath: /data
-            - name: log
-              mountPath: /log
+            # - name: data
+            #   mountPath: /data
+            # - name: log
+            #   mountPath: /log
       volumes:
       - name: system
         persistentVolumeClaim:
           claimName: mssql-pv-system-claim
-      - name: data
-        persistentVolumeClaim:
-          claimName: mssql-pv-data-claim
-      - name: log
-        persistentVolumeClaim:
-          claimName: mssql-pv-log-claim
+      # - name: data
+      #   persistentVolumeClaim:
+      #     claimName: mssql-pv-data-claim
+      # - name: log
+      #   persistentVolumeClaim:
+      #     claimName: mssql-pv-log-claim
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
