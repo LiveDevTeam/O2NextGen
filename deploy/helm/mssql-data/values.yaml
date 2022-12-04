@@ -69,10 +69,10 @@ env:
   values:
     - name: MSSQL_AGENT_ENABLED
       value: 'true'
-    - name: MSSQL_DATA_DIR
-      value: '/data'
-    - name: MSSQL_LOG_DIT
-      value: '/logs'
+    # - name: MSSQL_DATA_DIR
+    #   value: '/data'
+    # - name: MSSQL_LOG_DIT
+    #   value: '/logs'
     - name: ACCEPT_EULA
       value: "Y"
     - name: MSSQL_PID
