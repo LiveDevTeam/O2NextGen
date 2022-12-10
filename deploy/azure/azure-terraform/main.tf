@@ -241,43 +241,44 @@ resource "azuread_application_password" "current" {
   application_object_id = azuread_application.example.object_id
 }
 
-resource "azurerm_key_vault" "keyvault" {
-  name                        = var.keyvault_name
-  location                    = var.k8s_location
-  resource_group_name         = var.k8s_resource_group
-  enabled_for_disk_encryption = false
-  tenant_id                   = data.azuread_client_config.current.tenant_id
-  soft_delete_retention_days  = 7
-  purge_protection_enabled    = false
+# off azurerm_key_vault
+# resource "azurerm_key_vault" "keyvault" {
+#   name                        = var.keyvault_name
+#   location                    = var.k8s_location
+#   resource_group_name         = var.k8s_resource_group
+#   enabled_for_disk_encryption = false
+#   tenant_id                   = data.azuread_client_config.current.tenant_id
+#   soft_delete_retention_days  = 7
+#   purge_protection_enabled    = false
 
-  sku_name = "standard"
+#   sku_name = "standard"
 
-  access_policy {
-    tenant_id = data.azuread_client_config.current.tenant_id
-    object_id = data.azuread_client_config.current.object_id
+#   access_policy {
+#     tenant_id = data.azuread_client_config.current.tenant_id
+#     object_id = data.azuread_client_config.current.object_id
 
-    key_permissions = [
-      "Get",
-    ]
+#     key_permissions = [
+#       "Get",
+#     ]
 
-    secret_permissions = [
-      "Get",
-      "List",
-      "Set",
-      "Delete"
-    ]
+#     secret_permissions = [
+#       "Get",
+#       "List",
+#       "Set",
+#       "Delete"
+#     ]
 
-    storage_permissions = [
-      "Get",
-    ]
-  }
+#     storage_permissions = [
+#       "Get",
+#     ]
+#   }
 
-  # network_acls {
-  #   default_action = "Deny" # "Allow" 
-  #   bypass         = "AzureServices" # "None"
-  #   ip_rules = ["50.50.50.50/24"]
-  # }
-}
+#   # network_acls {
+#   #   default_action = "Deny" # "Allow" 
+#   #   bypass         = "AzureServices" # "None"
+#   #   ip_rules = ["50.50.50.50/24"]
+#   # }
+# }
 # resource "time_rotating" "example" {
 #   rotation_days = 7
 # }
