@@ -8,4 +8,6 @@ k8s_node_count     = 1
 
 grafana_admin_user     = "grafana"
 grafana_admin_password = "grafana-pass"
+
+keyvault_name = "o2nextgen-keyvault"
 # harbor_admin_password  = "Harbor12345" # "harbor-pass"

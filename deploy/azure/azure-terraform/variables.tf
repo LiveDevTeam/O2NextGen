@@ -37,3 +37,9 @@ variable "grafana_admin_password" {
   type        = string
   description = "Admin password to access Grafana dashboard"
 }
+
+variable "keyvault_name" {
+  type        = string
+  description = "Keyvault name"
+}
+
