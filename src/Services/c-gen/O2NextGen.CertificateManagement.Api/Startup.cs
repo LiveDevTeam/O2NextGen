@@ -11,16 +11,18 @@ using O2NextGen.CertificateManagement.Api.Setup;
 using O2NextGen.CertificateManagement.Api.Helpers;
 using O2NextGen.CertificateManagement.Api.IoC;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 [assembly: ApiController]
 namespace O2NextGen.CertificateManagement.Api
 {
     public class Startup
     {
-        public IHostingEnvironment HostingEnvironment { get; private set; }
+        public IWebHostEnvironment HostingEnvironment { get; private set; }
         public IConfiguration AppConfiguration { get; private set; }
 
-        public Startup(IConfiguration appConfiguration, IHostingEnvironment env)
+        public Startup(IConfiguration appConfiguration, IWebHostEnvironment env)
         {
             this.HostingEnvironment = env;
             this.AppConfiguration = appConfiguration;
@@ -31,20 +33,20 @@ namespace O2NextGen.CertificateManagement.Api
             services.AddBusiness();
             services.AddSwaggerGen(options =>
             {
-                options.DescribeAllEnumsAsStrings();
-                options.SwaggerDoc("v1",new Info()
+                options.DescribeAllParametersInCamelCase();
+                options.SwaggerDoc("v1",new OpenApiInfo()
                 {
                     Title = "O2NextGen Platform. C-Gen HTTP API",
                     Version = "v1",
                     Description = "C-Gen API Service. The service allows you to create certificates",
-                    TermsOfService = "Terms of Service"
+                    //TermsOfService = "Terms of Service"
                 });
             });
             services.AddConfigEf(AppConfiguration);
             services.ConfigurePOCO<UrlsConfig>(AppConfiguration.GetSection("Urls"));
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

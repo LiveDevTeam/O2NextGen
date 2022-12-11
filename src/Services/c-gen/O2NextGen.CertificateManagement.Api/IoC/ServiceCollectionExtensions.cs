@@ -41,7 +41,7 @@ namespace O2NextGen.CertificateManagement.Api.IoC
                 });
 
             mvcBuilder.AddApiExplorer(); //for swagger
-            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            //mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             mvcBuilder.AddNewtonsoftJson(o =>
             {
                 o.SerializerSettings.Converters.Add(new StringEnumConverter());

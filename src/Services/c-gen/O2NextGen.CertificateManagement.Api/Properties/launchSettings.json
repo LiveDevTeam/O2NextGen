@@ -1,24 +1,10 @@
 {
   "profiles": {
-    "O2NextGen.CertificateManagement.Web": {
+    "O2NextGen.CertificateManagement.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:10002;http://localhost:5002",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "environmentVariables": {}
-    },
-    "O2NextGen.CertificateManagement.Api": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:8166;http://localhost:59600",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
