@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Http;
 
-namespace O2NextGen.Sdk.NetCore.Models.media_basket
+namespace O2NextGen.Sdk.NetCore.Models.MediaBasket
 {
     public class MediaViewModel
     {

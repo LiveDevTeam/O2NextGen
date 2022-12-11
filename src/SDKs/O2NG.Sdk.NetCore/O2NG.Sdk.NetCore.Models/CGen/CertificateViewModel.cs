@@ -1,4 +1,4 @@
-namespace O2NextGen.Sdk.NetCore.Models.c_gen
+namespace O2NextGen.Sdk.NetCore.Models.CGen
 {
     public class CertificateViewModel
     {
