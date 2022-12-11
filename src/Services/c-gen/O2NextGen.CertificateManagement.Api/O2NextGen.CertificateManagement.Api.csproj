@@ -20,10 +20,10 @@
     <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.11" />
+    <PackageReference Include="O2NextGen.Sdk.NetCore.Models" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj" />
     <ProjectReference Include="..\O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj" />
     <ProjectReference Include="..\O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj" />
     <ProjectReference Include="..\O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj">
@@ -55,6 +55,7 @@
     <None Remove="Serilog.Sinks.Async" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="O2NextGen.Sdk.NetCore.Models" />
   </ItemGroup>
 
   <ItemGroup>
