@@ -86,7 +86,8 @@ namespace O2NextGen.CertificateManagement.Api
                 await next.Invoke();
             });
 
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
