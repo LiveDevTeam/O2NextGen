@@ -3,27 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.CertificateManagement.Api", "O2NextGen.CertificateManagement.Api\O2NextGen.CertificateManagement.Api.csproj", "{EA540B06-8A73-49C7-A799-49423B316458}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Api", "O2NextGen.CertificateManagement.Api\O2NextGen.CertificateManagement.Api.csproj", "{EA540B06-8A73-49C7-A799-49423B316458}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.CertificateManagement.Business", "O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj", "{C6E0B2A5-6349-4C1D-8E14-82249AF8F58A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Business", "O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj", "{C6E0B2A5-6349-4C1D-8E14-82249AF8F58A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.CertificateManagement.Impl", "O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj", "{01805439-2954-49CE-93D2-5EB06B82146C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Impl", "O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj", "{01805439-2954-49CE-93D2-5EB06B82146C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{12E83C2A-23C7-4E71-B137-AC56CE28F9E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.CertificateManagement.Data", "O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj", "{B8C8A05D-0D30-40FF-8BDD-B2FBA2ED7AB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Data", "O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj", "{B8C8A05D-0D30-40FF-8BDD-B2FBA2ED7AB0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests.O2NextGen.CertificateManagement.Api", "Tests\IntegrationTests.O2NextGen.CertificateManagement.Api\IntegrationTests.O2NextGen.CertificateManagement.Api.csproj", "{454CB1E8-8060-49CB-9752-140F93E7829C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.CertificateManagement.Api", "Tests\IntegrationTests.O2NextGen.CertificateManagement.Api\IntegrationTests.O2NextGen.CertificateManagement.Api.csproj", "{454CB1E8-8060-49CB-9752-140F93E7829C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.O2NextGen.CertificateManagement.Api", "Tests\Tests.O2NextGen.CertificateManagement.Api\Tests.O2NextGen.CertificateManagement.Api.csproj", "{CEA7184F-87D5-4141-A4BC-A983BF257AC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.CertificateManagement.Api", "Tests\Tests.O2NextGen.CertificateManagement.Api\Tests.O2NextGen.CertificateManagement.Api.csproj", "{CEA7184F-87D5-4141-A4BC-A983BF257AC6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.O2NextGen.CertificateManagement.Impl", "Tests\Tests.O2NextGen.CertificateManagement.Impl\Tests.O2NextGen.CertificateManagement.Impl.csproj", "{6FB50F98-47E7-4960-80F0-58562914ADDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.CertificateManagement.Impl", "Tests\Tests.O2NextGen.CertificateManagement.Impl\Tests.O2NextGen.CertificateManagement.Impl.csproj", "{6FB50F98-47E7-4960-80F0-58562914ADDE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDKs", "SDKs", "{629874CA-6688-43CA-9716-48FB42D41150}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.Sdk.NetCore.Models", "..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj", "{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}"
-EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{24414F70-A58D-4802-A437-B15D9F98AC8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.Sdk.NetCore.Models", "..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj", "{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,10 +61,6 @@ Global
 		{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24414F70-A58D-4802-A437-B15D9F98AC8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24414F70-A58D-4802-A437-B15D9F98AC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24414F70-A58D-4802-A437-B15D9F98AC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24414F70-A58D-4802-A437-B15D9F98AC8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

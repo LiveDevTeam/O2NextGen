@@ -5,4 +5,4 @@ services:
     image: ${DOCKER_REGISTRY-}o2nextgencertificatemanagement
     build:
       context: .
-      dockerfile: O2NextGen.CertificateManagement.Api/Dockerfile
+      dockerfile: Dockerfile

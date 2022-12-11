@@ -12,7 +12,7 @@ namespace O2NextGen.CertificateManagement.Api.Controllers
     {
         #region Fields
 
-        private readonly IHostingEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
         private readonly ILogger<VersionController> _logger;
 
         #endregion
@@ -20,7 +20,7 @@ namespace O2NextGen.CertificateManagement.Api.Controllers
         
         #region Ctors
 
-        public VersionController(IHostingEnvironment  environment, ILogger<VersionController> logger)
+        public VersionController(IWebHostEnvironment environment, ILogger<VersionController> logger)
         {
             _environment = environment;
             _logger = logger;
