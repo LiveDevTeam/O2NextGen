@@ -58,7 +58,7 @@ ingress:
 env:
   values:
     - name: ConnectionString
-      value: Server=tcp:mssql-data;Initial Catalog=O2Bionics.O2NextGen.IdentityDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
+      value: Server=tcp:mssql-data;Initial Catalog=O2Bionics.O2NextGen.CGenDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

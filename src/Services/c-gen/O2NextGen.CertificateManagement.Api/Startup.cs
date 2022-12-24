@@ -27,6 +27,7 @@ namespace O2NextGen.CertificateManagement.Api
             this.HostingEnvironment = env;
             this.AppConfiguration = appConfiguration;
         }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRequiredMvcComponents();

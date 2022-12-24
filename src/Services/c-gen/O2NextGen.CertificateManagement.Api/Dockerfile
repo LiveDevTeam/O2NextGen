@@ -7,7 +7,6 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["O2NextGen.CertificateManagement.Api/O2NextGen.CertificateManagement.Api.csproj", "O2NextGen.CertificateManagement.Api/"]
-COPY ["../../SDKs/O2NG.Sdk.NetCore/O2NG.Sdk.NetCore.Models/O2NextGen.Sdk.NetCore.Models.csproj", "../../SDKs/O2NG.Sdk.NetCore/O2NG.Sdk.NetCore.Models/"]
 COPY ["O2NextGen.CertificateManagement.Business/O2NextGen.CertificateManagement.Business.csproj", "O2NextGen.CertificateManagement.Business/"]
 COPY ["O2NextGen.CertificateManagement.Data/O2NextGen.CertificateManagement.Data.csproj", "O2NextGen.CertificateManagement.Data/"]
 COPY ["O2NextGen.CertificateManagement.Impl/O2NextGen.CertificateManagement.Impl.csproj", "O2NextGen.CertificateManagement.Impl/"]

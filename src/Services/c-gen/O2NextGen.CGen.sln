@@ -3,25 +3,39 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Api", "O2NextGen.CertificateManagement.Api\O2NextGen.CertificateManagement.Api.csproj", "{EA540B06-8A73-49C7-A799-49423B316458}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.CertificateManagement.Api", "O2NextGen.CertificateManagement.Api\O2NextGen.CertificateManagement.Api.csproj", "{EA540B06-8A73-49C7-A799-49423B316458}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Business", "O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj", "{C6E0B2A5-6349-4C1D-8E14-82249AF8F58A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.CertificateManagement.Business", "O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj", "{C6E0B2A5-6349-4C1D-8E14-82249AF8F58A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Impl", "O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj", "{01805439-2954-49CE-93D2-5EB06B82146C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.CertificateManagement.Impl", "O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj", "{01805439-2954-49CE-93D2-5EB06B82146C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{12E83C2A-23C7-4E71-B137-AC56CE28F9E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Data", "O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj", "{B8C8A05D-0D30-40FF-8BDD-B2FBA2ED7AB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "O2NextGen.CertificateManagement.Data", "O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj", "{B8C8A05D-0D30-40FF-8BDD-B2FBA2ED7AB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.CertificateManagement.Api", "Tests\IntegrationTests.O2NextGen.CertificateManagement.Api\IntegrationTests.O2NextGen.CertificateManagement.Api.csproj", "{454CB1E8-8060-49CB-9752-140F93E7829C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.O2NextGen.CertificateManagement.Api", "Tests\Tests.O2NextGen.CertificateManagement.Api\Tests.O2NextGen.CertificateManagement.Api.csproj", "{CEA7184F-87D5-4141-A4BC-A983BF257AC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.CertificateManagement.Api", "Tests\Tests.O2NextGen.CertificateManagement.Api\Tests.O2NextGen.CertificateManagement.Api.csproj", "{CEA7184F-87D5-4141-A4BC-A983BF257AC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.O2NextGen.CertificateManagement.Impl", "Tests\Tests.O2NextGen.CertificateManagement.Impl\Tests.O2NextGen.CertificateManagement.Impl.csproj", "{6FB50F98-47E7-4960-80F0-58562914ADDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2NextGen.CertificateManagement.Impl", "Tests\Tests.O2NextGen.CertificateManagement.Impl\Tests.O2NextGen.CertificateManagement.Impl.csproj", "{6FB50F98-47E7-4960-80F0-58562914ADDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.CertificateManagement.Api", "Tests\IntegrationTests.O2NextGen.CertificateManagement.Api\IntegrationTests.O2NextGen.CertificateManagement.Api.csproj", "{094FF4EB-0351-44BF-9739-4F3A62721DFC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDKs", "SDKs", "{629874CA-6688-43CA-9716-48FB42D41150}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDKs", "SDKs", "{54AADF48-C069-49F7-B8A8-3B72F5FC3F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.Sdk.NetCore.Models", "..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj", "{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.Sdk.NetCore.Models", "..\..\SDKs\O2NG.Sdk.NetCore\O2NG.Sdk.NetCore.Models\O2NextGen.Sdk.NetCore.Models.csproj", "{AFA64E01-DA06-4432-9BEA-34D0F4AD6A54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Domain", "O2NextGen.CertificateManagement.Domain\O2NextGen.CertificateManagement.Domain.csproj", "{30072535-9AFD-45CE-8258-87BF3CAA2EC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.StartupTasks", "O2NextGen.CertificateManagement.StartupTasks\O2NextGen.CertificateManagement.StartupTasks.csproj", "{9BE85DEE-293B-4E57-BD0F-01E3B48F7A61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Infrastructure", "O2NextGen.CertificateManagement.Infrastructure\O2NextGen.CertificateManagement.Infrastructure.csproj", "{125F9B7B-1508-4F01-A9AA-2EBC01BE0C19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CQRS", "CQRS", "{716B7603-CDF7-460D-A869-20FE90F84EC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skeleton", "Skeleton", "{2561455C-AAF2-4B6F-BA84-DA8AD57EB3E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2NextGen.CertificateManagement.Application", "O2NextGen.CertificateManagement.Application\O2NextGen.CertificateManagement.Application.csproj", "{BC6D2691-1006-4B6D-B661-81157E493F3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2NextGen.CertificateManagement.Application", "Tests\IntegrationTests.O2NextGen.CertificateManagement.Application\IntegrationTests.O2NextGen.CertificateManagement.Application.csproj", "{58CC0839-863D-4708-A6D4-42F245593538}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +59,6 @@ Global
 		{B8C8A05D-0D30-40FF-8BDD-B2FBA2ED7AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8C8A05D-0D30-40FF-8BDD-B2FBA2ED7AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8C8A05D-0D30-40FF-8BDD-B2FBA2ED7AB0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{454CB1E8-8060-49CB-9752-140F93E7829C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{454CB1E8-8060-49CB-9752-140F93E7829C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{454CB1E8-8060-49CB-9752-140F93E7829C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{454CB1E8-8060-49CB-9752-140F93E7829C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CEA7184F-87D5-4141-A4BC-A983BF257AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CEA7184F-87D5-4141-A4BC-A983BF257AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEA7184F-87D5-4141-A4BC-A983BF257AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,19 +67,52 @@ Global
 		{6FB50F98-47E7-4960-80F0-58562914ADDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FB50F98-47E7-4960-80F0-58562914ADDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FB50F98-47E7-4960-80F0-58562914ADDE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C88AA87-9C8E-42D7-BAF1-28401C563FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{094FF4EB-0351-44BF-9739-4F3A62721DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{094FF4EB-0351-44BF-9739-4F3A62721DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{094FF4EB-0351-44BF-9739-4F3A62721DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{094FF4EB-0351-44BF-9739-4F3A62721DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA64E01-DA06-4432-9BEA-34D0F4AD6A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA64E01-DA06-4432-9BEA-34D0F4AD6A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA64E01-DA06-4432-9BEA-34D0F4AD6A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA64E01-DA06-4432-9BEA-34D0F4AD6A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30072535-9AFD-45CE-8258-87BF3CAA2EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30072535-9AFD-45CE-8258-87BF3CAA2EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30072535-9AFD-45CE-8258-87BF3CAA2EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30072535-9AFD-45CE-8258-87BF3CAA2EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BE85DEE-293B-4E57-BD0F-01E3B48F7A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BE85DEE-293B-4E57-BD0F-01E3B48F7A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BE85DEE-293B-4E57-BD0F-01E3B48F7A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BE85DEE-293B-4E57-BD0F-01E3B48F7A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125F9B7B-1508-4F01-A9AA-2EBC01BE0C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125F9B7B-1508-4F01-A9AA-2EBC01BE0C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125F9B7B-1508-4F01-A9AA-2EBC01BE0C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125F9B7B-1508-4F01-A9AA-2EBC01BE0C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6D2691-1006-4B6D-B661-81157E493F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6D2691-1006-4B6D-B661-81157E493F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6D2691-1006-4B6D-B661-81157E493F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6D2691-1006-4B6D-B661-81157E493F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58CC0839-863D-4708-A6D4-42F245593538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58CC0839-863D-4708-A6D4-42F245593538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58CC0839-863D-4708-A6D4-42F245593538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58CC0839-863D-4708-A6D4-42F245593538}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{454CB1E8-8060-49CB-9752-140F93E7829C} = {12E83C2A-23C7-4E71-B137-AC56CE28F9E4}
 		{CEA7184F-87D5-4141-A4BC-A983BF257AC6} = {12E83C2A-23C7-4E71-B137-AC56CE28F9E4}
 		{6FB50F98-47E7-4960-80F0-58562914ADDE} = {12E83C2A-23C7-4E71-B137-AC56CE28F9E4}
-		{8C88AA87-9C8E-42D7-BAF1-28401C563FDF} = {629874CA-6688-43CA-9716-48FB42D41150}
+		{094FF4EB-0351-44BF-9739-4F3A62721DFC} = {12E83C2A-23C7-4E71-B137-AC56CE28F9E4}
+		{AFA64E01-DA06-4432-9BEA-34D0F4AD6A54} = {54AADF48-C069-49F7-B8A8-3B72F5FC3F14}
+		{EA540B06-8A73-49C7-A799-49423B316458} = {2561455C-AAF2-4B6F-BA84-DA8AD57EB3E4}
+		{C6E0B2A5-6349-4C1D-8E14-82249AF8F58A} = {2561455C-AAF2-4B6F-BA84-DA8AD57EB3E4}
+		{B8C8A05D-0D30-40FF-8BDD-B2FBA2ED7AB0} = {2561455C-AAF2-4B6F-BA84-DA8AD57EB3E4}
+		{01805439-2954-49CE-93D2-5EB06B82146C} = {2561455C-AAF2-4B6F-BA84-DA8AD57EB3E4}
+		{30072535-9AFD-45CE-8258-87BF3CAA2EC2} = {716B7603-CDF7-460D-A869-20FE90F84EC2}
+		{125F9B7B-1508-4F01-A9AA-2EBC01BE0C19} = {716B7603-CDF7-460D-A869-20FE90F84EC2}
+		{9BE85DEE-293B-4E57-BD0F-01E3B48F7A61} = {716B7603-CDF7-460D-A869-20FE90F84EC2}
+		{BC6D2691-1006-4B6D-B661-81157E493F3B} = {716B7603-CDF7-460D-A869-20FE90F84EC2}
+		{58CC0839-863D-4708-A6D4-42F245593538} = {12E83C2A-23C7-4E71-B137-AC56CE28F9E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6DFC9F0-3FA7-492B-ACE9-3EFBF3477712}

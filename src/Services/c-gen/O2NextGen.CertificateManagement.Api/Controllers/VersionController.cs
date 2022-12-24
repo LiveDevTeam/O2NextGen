@@ -8,7 +8,7 @@ namespace O2NextGen.CertificateManagement.Api.Controllers
 {
 
     [AllowAnonymous]
-    public class VersionController:ControllerBase
+    public class VersionController : ControllerBase
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace O2NextGen.CertificateManagement.Api.Controllers
 
         #endregion
 
-        
+
         #region Ctors
 
         public VersionController(IWebHostEnvironment environment, ILogger<VersionController> logger)

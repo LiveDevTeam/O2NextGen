@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace O2NextGen.Sdk.NetCore.Models.smalltalk
+namespace O2NextGen.Sdk.NetCore.Models.SmallTalk
 {
 
     public class ChatSession

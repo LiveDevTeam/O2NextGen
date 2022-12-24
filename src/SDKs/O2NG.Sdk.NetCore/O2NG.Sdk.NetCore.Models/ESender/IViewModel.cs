@@ -1,4 +1,4 @@
-﻿namespace O2NextGen.Sdk.NetCore.Models.e_sender
+﻿namespace O2NextGen.Sdk.NetCore.Models.ESender
 {
     public interface IViewModel
     {
