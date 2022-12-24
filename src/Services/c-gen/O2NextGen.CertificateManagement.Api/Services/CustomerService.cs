@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Http;
 
-namespace O2NextGen.CertificateManagement.Business.Services
+namespace O2NextGen.CertificateManagement.Api.Services
 {
     public class CustomerService : ICustomerService
     {

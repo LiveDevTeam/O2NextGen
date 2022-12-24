@@ -21,6 +21,7 @@
   <ItemGroup>
     <None Remove="coverlet.msbuild" />
     <None Remove="Microsoft.AspNetCore.TestHost" />
+    <None Remove="TestResults\coverage.json" />
   </ItemGroup>
 
   <ItemGroup>

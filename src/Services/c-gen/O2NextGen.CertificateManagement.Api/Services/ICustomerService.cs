@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace O2NextGen.CertificateManagement.Business.Services
+namespace O2NextGen.CertificateManagement.Api.Services
 {
     public interface ICustomerService
     {
