@@ -11,25 +11,51 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.Certificate.CreateCert
     public class CreateCertificateCommandHandler
         : IRequestHandler<CreateCertificateCommand, CreateCertificateCommandResult>
     {
-        private readonly IRepository<CertificateEntity> groupsRepository;
+        private readonly IRepository<CertificateDbEntity> certificatesRepository;
 
-        public CreateCertificateCommandHandler(IRepository<CertificateEntity> groupsRepository)
+        public CreateCertificateCommandHandler(IRepository<CertificateDbEntity> groupsRepository)
         {
-            this.groupsRepository = groupsRepository;
+            this.certificatesRepository = groupsRepository;
         }
         public async Task<CreateCertificateCommandResult> Handle(
             CreateCertificateCommand request, CancellationToken cancellationToken)
         {
-            var group = new CertificateEntity
+            var certificate = new CertificateDbEntity
             {
-                Name = request.Name
+                ExternalId = request.ExternalId,
+                IsDeleted = request.IsDeleted,
+                CustomerId = request.CustomerId,
+                ExpiredDate = request.ExpiredDate,
+                PublishDate = request.PublishDate,
+                CreatorId = request.CreatorId,
+                PublishCode = request.PublishCode,
+                IsVisible = request.IsVisible,
+                CategoryId = request.CategoryId,
+                Category = request.Category,
+                Lock = request.Lock,
+                LockedDate = request.LockedDate,
+                LockInfo = request.LockInfo,
+                LanguageInfos = request.LanguageInfos
             };
 
-            var addedGroup = await groupsRepository.AddAsync(group, cancellationToken);
+            var addedCertificate = await certificatesRepository.AddAsync(certificate, cancellationToken);
 
             return new CreateCertificateCommandResult(
-                addedGroup.Id,
-                addedGroup.Name);
+                addedCertificate.ExternalId,
+                addedCertificate.IsDeleted,
+                addedCertificate.OwnerAccountId,
+                addedCertificate.CustomerId,
+                addedCertificate.ExpiredDate,
+                addedCertificate.PublishDate,
+                addedCertificate.CreatorId,
+                addedCertificate.PublishCode,
+                addedCertificate.IsVisible,
+                addedCertificate.CategoryId,
+                addedCertificate.Category,
+                addedCertificate.Lock,
+                addedCertificate.LockedDate,
+                addedCertificate.LockInfo,
+                addedCertificate.LanguageInfos);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace O2NextGen.CertificateManagement.Infrastructure.Data
 
         #region Fields
 
-        public DbSet<CertificateEntity> Certificates { get; set; }
+        public DbSet<CertificateDbEntity> Certificates { get; set; }
 
         #endregion
 

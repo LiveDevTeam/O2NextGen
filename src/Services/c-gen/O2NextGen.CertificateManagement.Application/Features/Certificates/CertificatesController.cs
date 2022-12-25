@@ -6,6 +6,7 @@ using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.CreateCertific
 using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.DeleteCertificate;
 using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.GetCertificate;
 using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.UpdateCertificate;
+using static O2NextGen.CertificateManagement.Domain.UseCases.Certificate.GetCertificate.GetCertificatesQueryResult;
 
 namespace O2NextGen.CertificateManagement.Application.Controllers
 {
@@ -60,8 +61,27 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
         public async Task<ActionResult<UpdateCertificateDetailsCommandResult>> UpdateAsync(
             long id, UpdateCertificateDetailsCommandModel model, CancellationToken ct)
         {
-            var result = await _mediator.Send(new UpdateCertificateDetailsCommand(id,
-                model.Name));
+            var result = await _mediator.Send(
+                new UpdateCertificateDetailsCommand(
+                    id,
+                model.ExternalId,
+                model.ModifiedDate,
+                model.AddedDate,
+                model.DeletedDate,
+                model.IsDeleted,
+                model.OwnerAccountId,
+                model.CustomerId,
+                model.ExpiredDate,
+                model.PublishDate,
+                model.CreatorId,
+                model.PublishCode,
+                model.IsVisible,
+                model.CategoryId,
+                model.Category,
+                model.Lock,
+                model.LockedDate,
+                model.LockInfo,
+                model.LanguageInfos));
 
             if (result is null)
             {
@@ -78,8 +98,26 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
             CreateCertificateDetailsCommandModel model,
             CancellationToken ct)
         {
-            var result = await _mediator.Send(new CreateCertificateCommand(model.Name));
-            return CreatedAtAction(GetByIdActionName, new { id = result.Id }, result);
+            var result = await _mediator.Send(
+                new CreateCertificateCommand(
+                    model.ExternalId,
+                    model.IsDeleted,
+                    model.OwnerAccountId,
+                    model.CustomerId,
+                    model.ExpiredDate,
+                    model.PublishDate,
+                    model.CreatorId,
+                    model.PublishCode,
+                    model.IsVisible,
+                    model.CategoryId,
+                    model.Category,
+                    model.Lock,
+                    model.LockedDate,
+                    model.LockInfo,
+                    model.LanguageInfos
+                ));
+            return CreatedAtAction(GetByIdActionName,
+                new { id = result.Id }, result);
         }
 
         [HttpDelete]

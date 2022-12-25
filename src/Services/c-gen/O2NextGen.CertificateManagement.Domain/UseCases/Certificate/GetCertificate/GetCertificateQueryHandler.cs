@@ -12,9 +12,9 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.Certificate.GetCertifi
     public class GetCertificateQueryHandler :
         IRequestHandler<GetCertificateQuery, GetCertificateQueryResult>
     {
-        private readonly IQueryHandler<CertificateQuery, CertificateEntity> _queryHandler;
+        private readonly IQueryHandler<CertificateQuery, CertificateDbEntity> _queryHandler;
 
-        public GetCertificateQueryHandler(IQueryHandler<CertificateQuery, CertificateEntity> queryHandler)
+        public GetCertificateQueryHandler(IQueryHandler<CertificateQuery, CertificateDbEntity> queryHandler)
         {
             _queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
 
@@ -33,7 +33,24 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.Certificate.GetCertifi
 
             return new GetCertificateQueryResult(
                 certificate.Id,
-                certificate.Name);
+                certificate.ExternalId,
+                certificate.ModifiedDate,
+                certificate.AddedDate,
+                certificate.DeletedDate,
+                certificate.IsDeleted,
+                certificate.OwnerAccountId,
+                certificate.CustomerId,
+                certificate.ExpiredDate,
+                certificate.PublishDate,
+                certificate.CreatorId,
+                certificate.PublishCode,
+                certificate.IsVisible,
+                certificate.CategoryId,
+                certificate.Category,
+                certificate.Lock,
+                certificate.LockedDate,
+                certificate.LockInfo,
+                certificate.LanguageInfos);
 
             //var result = await certificatesService.GetByIdAsync(request.Id, cancellationToken);
 

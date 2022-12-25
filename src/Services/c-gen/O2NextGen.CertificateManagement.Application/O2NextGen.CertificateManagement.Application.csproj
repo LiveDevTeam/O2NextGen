@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -12,6 +12,10 @@
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
     <PackageReference Include="Scrutor" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +26,13 @@
     <None Remove="Scrutor" />
     <None Remove="Features\" />
     <None Remove="Features\Certificates\" />
+    <None Remove="Features\Templates\" />
+    <None Remove="Features\Generator\" />
+    <None Remove="Features\QRCodes\" />
+    <None Remove="Features\Categories\" />
+    <None Remove="Features\ImportExport\" />
+    <None Remove="Features\Projects\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\O2NextGen.CertificateManagement.Domain\O2NextGen.CertificateManagement.Domain.csproj">
@@ -38,5 +49,11 @@
     <Folder Include="IoC\" />
     <Folder Include="Features\" />
     <Folder Include="Features\Certificates\" />
+    <Folder Include="Features\Templates\" />
+    <Folder Include="Features\Generator\" />
+    <Folder Include="Features\QRCodes\" />
+    <Folder Include="Features\Categories\" />
+    <Folder Include="Features\ImportExport\" />
+    <Folder Include="Features\Projects\" />
   </ItemGroup>
 </Project>
