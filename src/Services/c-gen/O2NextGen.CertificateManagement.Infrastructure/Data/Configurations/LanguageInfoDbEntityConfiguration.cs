@@ -4,9 +4,9 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Data.Configurations
 {
-    public class LanguageInfoDbEntityConfiguration : IEntityTypeConfiguration<LanguageInfoDbEntity>
+    public class LanguageInfoDbEntityConfiguration : IEntityTypeConfiguration<LanguageInfo>
     {
-        public void Configure(EntityTypeBuilder<LanguageInfoDbEntity> builder)
+        public void Configure(EntityTypeBuilder<LanguageInfo> builder)
         {
             builder.ToTable("LanguageInfos")
                 .HasOne(e => e.Certificate)

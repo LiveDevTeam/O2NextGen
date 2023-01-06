@@ -1,4 +1,5 @@
-﻿using O2NextGen.CertificateManagement.Domain.Entities;
+﻿using System.Collections.Generic;
+using O2NextGen.CertificateManagement.Domain.Entities;
 
 public class CreateCertificateDetailsCommandModel
 {
@@ -14,10 +15,10 @@ public class CreateCertificateDetailsCommandModel
     public bool IsVisible { get; set; }
 
     public long CategoryId { get; set; }
-    public CategoryDbEntity Category { get; set; }
+    public Category Category { get; set; }
     public bool Lock { get; set; }
     public long LockedDate { get; set; }
     public string LockInfo { get; set; }
-    public ICollection<LanguageInfoDbEntity> LanguageInfos { get; }
+    public ICollection<LanguageInfo> LanguageInfos { get; }
 }
 

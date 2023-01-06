@@ -1,9 +1,9 @@
-using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Json;
+using System.IO;
 
 namespace O2NextGen.CertificateManagement.Api.Logging
 {

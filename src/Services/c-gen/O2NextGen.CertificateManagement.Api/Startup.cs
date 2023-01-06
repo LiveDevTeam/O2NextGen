@@ -1,18 +1,17 @@
-﻿using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using O2NextGen.CertificateManagement.Api.Setup;
-using O2NextGen.CertificateManagement.Api.Helpers;
-using O2NextGen.CertificateManagement.Api.IoC;
-using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using O2NextGen.CertificateManagement.Api.Helpers;
+using O2NextGen.CertificateManagement.Api.IoC;
+using O2NextGen.CertificateManagement.Api.Setup;
+using System.Net;
+using System.Threading.Tasks;
 
 [assembly: ApiController]
 namespace O2NextGen.CertificateManagement.Api
@@ -35,7 +34,7 @@ namespace O2NextGen.CertificateManagement.Api
             services.AddSwaggerGen(options =>
             {
                 options.DescribeAllParametersInCamelCase();
-                options.SwaggerDoc("v1",new OpenApiInfo()
+                options.SwaggerDoc("v1", new OpenApiInfo()
                 {
                     Title = "O2NextGen Platform. C-Gen HTTP API",
                     Version = "v1",
@@ -59,7 +58,7 @@ namespace O2NextGen.CertificateManagement.Api
                 {
                     builder.Run(async context =>
                     {
-                        context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
                         var error = context.Features.Get<IExceptionHandlerFeature>();
 
@@ -71,7 +70,7 @@ namespace O2NextGen.CertificateManagement.Api
                     });
                 });
             }
-            
+
             app.UseStaticFiles();
             app.UseSwagger()
                 .UseSwaggerUI(c =>

@@ -11,7 +11,7 @@ using O2NextGen.CertificateManagement.Infrastructure.Data;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(CertificateManagementDbContext))]
+    [DbContext(typeof(CGenDbContext))]
     [Migration("20221225101744_InitDatabase")]
     partial class InitDatabase
     {

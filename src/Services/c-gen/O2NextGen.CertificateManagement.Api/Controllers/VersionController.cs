@@ -1,8 +1,8 @@
-using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace O2NextGen.CertificateManagement.Api.Controllers
 {

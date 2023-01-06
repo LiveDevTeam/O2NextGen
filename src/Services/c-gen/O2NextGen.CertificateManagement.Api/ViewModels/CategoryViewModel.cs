@@ -1,5 +1,4 @@
-﻿using System;
-namespace O2NextGen.CertificateManagement.Api.ViewModels
+﻿namespace O2NextGen.CertificateManagement.Api.ViewModels
 {
     public class CategoryViewModel
     {

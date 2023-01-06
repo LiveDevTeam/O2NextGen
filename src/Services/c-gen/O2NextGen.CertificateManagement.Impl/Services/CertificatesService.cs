@@ -1,12 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using O2NextGen.CertificateManagement.Business.Models;
 using O2NextGen.CertificateManagement.Business.Services;
 using O2NextGen.CertificateManagement.Data;
 using O2NextGen.CertificateManagement.Impl.Mappings;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace O2NextGen.CertificateManagement.Impl.Services
 {
@@ -30,7 +30,7 @@ namespace O2NextGen.CertificateManagement.Impl.Services
 
         public async Task<IReadOnlyCollection<Certificate>> GetAllAsync(CancellationToken ct)
         {
-            var certificates = await _context.Certificates.AsNoTracking().OrderBy(_=>_.Id).ToListAsync();
+            var certificates = await _context.Certificates.AsNoTracking().OrderBy(_ => _.Id).ToListAsync();
             return certificates.ToService();
         }
 
@@ -46,7 +46,7 @@ namespace O2NextGen.CertificateManagement.Impl.Services
             await _context.SaveChangesAsync(ct);
             return updatedCertificateEntity.Entity.ToService();
         }
-        
+
         public async Task<Certificate> AddAsync(Certificate certificate, CancellationToken ct)
         {
             var addedCertificateEntity = await _context.Certificates.AddAsync(certificate.ToEntity(), ct);

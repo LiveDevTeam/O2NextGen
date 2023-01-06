@@ -1,18 +1,18 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
 using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Domain.Data.Queries
 {
-    public class CertificateQuery: IQuery<CertificateDbEntity>
+    public class CertificateQuery : IQuery<Certificate>
     {
-
         public CertificateQuery(long id)
         {
             Id = id;
         }
 
-        public CertificateQuery(string externalId, bool? isDeleted, string customerId, long expiredDate, long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, CategoryDbEntity category, bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfoDbEntity> languageInfos)
+        public CertificateQuery(string externalId, bool? isDeleted, string customerId, long expiredDate, long publishDate,
+            string creatorId, string publishCode, bool isVisible, long categoryId, Category category,
+            bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos)
         {
             ExternalId = externalId;
             IsDeleted = isDeleted;
@@ -40,11 +40,11 @@ namespace O2NextGen.CertificateManagement.Domain.Data.Queries
         public string PublishCode { get; }
         public bool IsVisible { get; }
         public long CategoryId { get; }
-        public CategoryDbEntity Category { get; }
+        public Category Category { get; }
         public bool Lock { get; }
         public long LockedDate { get; }
         public string LockInfo { get; }
-        public ICollection<LanguageInfoDbEntity> LanguageInfos { get; }
+        public ICollection<LanguageInfo> LanguageInfos { get; }
     }
 }
 

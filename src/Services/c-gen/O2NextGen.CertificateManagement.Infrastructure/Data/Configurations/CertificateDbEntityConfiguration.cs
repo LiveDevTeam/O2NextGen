@@ -5,9 +5,9 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 namespace O2NextGen.CertificateManagement.Infrastructure.Data.Configurations
 {
 
-    public class CertificateDbEntityConfiguration : IEntityTypeConfiguration<CertificateDbEntity>
+    public class CertificateDbEntityConfiguration : IEntityTypeConfiguration<Certificate>
     {
-        public void Configure(EntityTypeBuilder<CertificateDbEntity> builder)
+        public void Configure(EntityTypeBuilder<Certificate> builder)
         {
             builder.ToTable("Certificate");
 

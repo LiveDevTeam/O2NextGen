@@ -1,12 +1,13 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.CreateCertificate;
-using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.DeleteCertificate;
-using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.GetCertificate;
-using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.UpdateCertificate;
-using static O2NextGen.CertificateManagement.Domain.UseCases.Certificate.GetCertificate.GetCertificatesQueryResult;
+using Microsoft.Extensions.Logging;
+using O2NextGen.CertificateManagement.Domain.Data.Queries;
+using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.CreateCertificate;
+using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.DeleteCertificate;
+using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.GetCertificates;
+using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
 
 namespace O2NextGen.CertificateManagement.Application.Controllers
 {
@@ -16,7 +17,7 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
         #region Fields
 
         private readonly IMediator _mediator;
-        private readonly ILogger<CertificatesController> logger;
+        private readonly ILogger<CertificatesController> _logger;
 
         private static readonly string GetByIdActionName
             = nameof(GetByIdAsync).Replace("Async", string.Empty);
@@ -28,7 +29,7 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
         public CertificatesController(IMediator mediator, ILogger<CertificatesController> logger)
         {
             _mediator = mediator;
-            this.logger = logger;
+            _logger = logger;
         }
 
         #endregion
@@ -40,7 +41,7 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
         {
-            var result = await _mediator.Send(new GetCertificateQuery(id));
+            var result = await _mediator.Send(new CertificateQuery(id));
 
             if (result is null)
                 return NotFound();
@@ -64,24 +65,24 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
             var result = await _mediator.Send(
                 new UpdateCertificateDetailsCommand(
                     id,
-                model.ExternalId,
-                model.ModifiedDate,
-                model.AddedDate,
-                model.DeletedDate,
-                model.IsDeleted,
-                model.OwnerAccountId,
-                model.CustomerId,
-                model.ExpiredDate,
-                model.PublishDate,
-                model.CreatorId,
-                model.PublishCode,
-                model.IsVisible,
-                model.CategoryId,
-                model.Category,
-                model.Lock,
-                model.LockedDate,
-                model.LockInfo,
-                model.LanguageInfos));
+                    model.ExternalId,
+                    model.ModifiedDate,
+                    model.AddedDate,
+                    model.DeletedDate,
+                    model.IsDeleted,
+                    model.OwnerAccountId,
+                    model.CustomerId,
+                    model.ExpiredDate,
+                    model.PublishDate,
+                    model.CreatorId,
+                    model.PublishCode,
+                    model.IsVisible,
+                    model.CategoryId,
+                    model.Category,
+                    model.Lock,
+                    model.LockedDate,
+                    model.LockInfo,
+                    model.LanguageInfos));
 
             if (result is null)
             {
@@ -127,7 +128,7 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
             await _mediator.Send(new DeleteCertificateCommand(id));
             return NoContent();
         }
-    }
 
-    #endregion
+        #endregion
+    }
 }

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using O2NextGen.CertificateManagement.Data;
 using O2NextGen.CertificateManagement.Domain.Data;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Data
@@ -10,9 +8,9 @@ namespace O2NextGen.CertificateManagement.Infrastructure.Data
 
     public class EfRepository<T> : IRepository<T> where T : class
     {
-        private readonly CertificateManagementDbContext _dbContext;
+        private readonly CGenDbContext _dbContext;
 
-        public EfRepository(CertificateManagementDbContext dbContext)
+        public EfRepository(CGenDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -5,9 +5,9 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 namespace O2NextGen.CertificateManagement.Infrastructure.Data.Configurations
 {
 
-    public class CategoryDbEntityConfiguration : IEntityTypeConfiguration<CategoryDbEntity>
+    public class CategoryDbEntityConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<CategoryDbEntity> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.ToTable("Category");
 
