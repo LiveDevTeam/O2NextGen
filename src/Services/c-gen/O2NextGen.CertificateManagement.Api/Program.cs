@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Serilog;
+using System;
+using System.Threading.Tasks;
 
 namespace O2NextGen.CertificateManagement.Api
 {
@@ -12,10 +12,10 @@ namespace O2NextGen.CertificateManagement.Api
 
         public static readonly string AppName =
             Namespace.Substring(Namespace.LastIndexOf('.', Namespace.LastIndexOf('.') - 1) + 1);
-        
+
         public static async Task<int> Main(string[] args)
         {
-            
+
             try
             {
                 var host = CreateHostBuilder(args);
@@ -44,6 +44,6 @@ namespace O2NextGen.CertificateManagement.Api
                     configuration.ReadFrom.Configuration(context.Configuration);
                 })
                 .UseStartup<Startup>()
-                .Build(); 
+                .Build();
     }
 }

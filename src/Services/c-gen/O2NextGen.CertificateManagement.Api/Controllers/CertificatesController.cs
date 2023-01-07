@@ -1,13 +1,10 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using O2NextGen.CertificateManagement.Api.Mappings;
 using O2NextGen.CertificateManagement.Api.Setup;
 using O2NextGen.CertificateManagement.Business.Services;
-using O2NextGen.CertificateManagement.Api.Mappings;
 using O2NextGen.Sdk.NetCore.Models.c_gen;
-using O2NextGen.CertificateManagement.Impl.Services;
-using MediatR;
-using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.CreateCertificate;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace O2NextGen.CertificateManagement.Api.Controllers
 {

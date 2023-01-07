@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using O2NextGen.CertificateManagement.Business.Models;
+﻿using O2NextGen.CertificateManagement.Business.Models;
 using O2NextGen.CertificateManagement.Data.Entities;
+using System.Collections.Generic;
 
 namespace O2NextGen.CertificateManagement.Impl.Mappings
 {

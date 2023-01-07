@@ -1,8 +1,8 @@
+using O2NextGen.CertificateManagement.Business.Models;
+using O2NextGen.Sdk.NetCore.Models.c_gen;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using O2NextGen.CertificateManagement.Business.Models;
-using O2NextGen.Sdk.NetCore.Models.c_gen;
 
 namespace O2NextGen.CertificateManagement.Api.Mappings
 {

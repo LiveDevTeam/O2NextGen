@@ -1,8 +1,8 @@
-﻿using System;
+﻿using O2NextGen.CertificateManagement.Api.ViewModels;
+using O2NextGen.CertificateManagement.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using O2NextGen.CertificateManagement.Api.ViewModels;
-using O2NextGen.CertificateManagement.Business.Models;
 
 namespace O2NextGen.CertificateManagement.Api.Mappings
 {

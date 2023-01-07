@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using O2NextGen.CertificateManagement.Business.Models;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using O2NextGen.CertificateManagement.Business.Models;
 
 namespace O2NextGen.CertificateManagement.Business.Services
 {

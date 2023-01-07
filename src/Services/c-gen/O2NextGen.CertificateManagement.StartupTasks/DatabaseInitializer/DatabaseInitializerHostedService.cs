@@ -10,6 +10,7 @@ namespace O2NextGen.CertificateManagement.StartupTasks.DatabaseInitializer
         where TDbContext : DbContext
     {
         private readonly IServiceScopeFactory _scopeFactory;
+
         private readonly DatabaseInitializerSettings _settings;
 
         public DatabaseInitializerHostedService(IServiceScopeFactory scopeFactory, DatabaseInitializerSettings settings)

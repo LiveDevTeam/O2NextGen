@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,49 +11,25 @@
     <None Remove="MediatR.Extensions.Microsoft.DependencyInjection" />
     <None Remove="MediatR" />
     <None Remove="UseCases\Category\" />
-    <None Remove="UseCases\Category\CreateCategory\" />
-    <None Remove="UseCases\Category\DeleteCategory\" />
-    <None Remove="UseCases\Category\GetCategory\" />
-    <None Remove="UseCases\Category\GetCategoryDetail\" />
-    <None Remove="UseCases\Category\UpdateCategory\" />
     <None Remove="UseCases\Certificate\" />
-    <None Remove="UseCases\Certificate\CreateCertificate\" />
-    <None Remove="UseCases\Certificate\DeleteCertificate\" />
-    <None Remove="UseCases\Certificate\UpdateCertificate\" />
-    <None Remove="UseCases\Certificate\GetCertificate\" />
     <None Remove=".DS_Store" />
     <None Remove="Data\" />
     <None Remove="Entities\" />
     <None Remove="Mappings\" />
     <None Remove="Data\Queries\" />
-    <None Remove="UseCases\Certificate\GetCertificates\" />
+    <None Remove="UseCases\ForCategory\GetCategories\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UseCases\" />
-    <Folder Include="UseCases\Category\" />
-    <Folder Include="UseCases\Category\CreateCategory\" />
-    <Folder Include="UseCases\Category\DeleteCategory\" />
-    <Folder Include="UseCases\Category\GetCategory\" />
-    <Folder Include="UseCases\Category\GetCategoryDetail\" />
-    <Folder Include="UseCases\Category\UpdateCategory\" />
-    <Folder Include="UseCases\Certificate\" />
-    <Folder Include="UseCases\Certificate\CreateCertificate\" />
-    <Folder Include="UseCases\Certificate\DeleteCertificate\" />
-    <Folder Include="UseCases\Certificate\UpdateCertificate\" />
-    <Folder Include="UseCases\Certificate\UpdateCertificate\" />
-    <Folder Include="UseCases\Certificate\GetCertificate\" />
-    <Folder Include="Data\" />
-    <Folder Include="Entities\" />
+    <Folder Include="UseCases\ForCategory\DeleteCategory\" />
+    <Folder Include="UseCases\ForCategory\UpdateCategory\" />
+    <Folder Include="UseCases\ForCertificate\CreateCertificate\" />
+    <Folder Include="UseCases\ForCertificate\DeleteCertificate\" />
+    <Folder Include="UseCases\ForCertificate\UpdateCertificate\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Data\Queries\" />
-    <Folder Include="UseCases\Certificate\GetCertificates\" />
+    <Folder Include="UseCases\ForCategory\GetCategories\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj" />
-    <ProjectReference Include="..\O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj" />
   </ItemGroup>
 </Project>

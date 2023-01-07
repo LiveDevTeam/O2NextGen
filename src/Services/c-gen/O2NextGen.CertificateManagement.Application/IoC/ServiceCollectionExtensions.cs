@@ -1,25 +1,22 @@
 ﻿using System;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using O2NextGen.CertificateManagement.Domain.UseCases.Certificate.GetCertificate;
-using O2NextGen.CertificateManagement.Infrastructure.Data;
 using Microsoft.Extensions.Configuration;
 using O2NextGen.CertificateManagement.Domain.Data;
-using System.Text.RegularExpressions;
-using O2NextGen.CertificateManagement.Business.Models;
 using O2NextGen.CertificateManagement.Domain.Data.Queries;
+using O2NextGen.CertificateManagement.Infrastructure.Data;
 
 namespace Microsoft.Extensions.DependencyInjection
+{
+    public static class ServiceCollectionExtensions
     {
-        public static class ServiceCollectionExtensions
+        public static IServiceCollection AddBusiness(this IServiceCollection services)
         {
-            public static IServiceCollection AddBusiness(this IServiceCollection services)
-            {
-                services.AddMediatR(
-                    typeof(GetCertificateQuery));
+            services.AddMediatR(
+                typeof(CertificateQuery));
 
-                return services;
-            }
+            return services;
+        }
 
         public static TConfig ConfigurePOCO<TConfig>(this IServiceCollection services, IConfiguration configuration)
            where TConfig : class, new()
@@ -33,10 +30,10 @@ namespace Microsoft.Extensions.DependencyInjection
             return config;
         }
 
-        public static IServiceCollection AddConfigEf(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddConfigEf(this IServiceCollection services, ConfigurationManager configuration)
         {
             var connectionString = configuration["ConnectionString"];
-            services.AddDbContext<CertificateManagementDbContext>(x =>
+            services.AddDbContext<CGenDbContext>(x =>
                 x.UseSqlServer(connectionString));
             return services;
         }
@@ -47,7 +44,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.Scan(scan =>
                 scan
-                    .FromAssembliesOf(typeof(CertificateManagementDbContext))
+                    .FromAssembliesOf(typeof(CGenDbContext))
                     .AddClasses(classes => classes.AssignableTo(typeof(IRepository<>)))
                         .AsImplementedInterfaces()
                         .WithScopedLifetime()
@@ -67,6 +64,6 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
     }
-    
+
 }
 

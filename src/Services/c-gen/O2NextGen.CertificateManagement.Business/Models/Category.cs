@@ -1,5 +1,4 @@
-﻿using System;
-namespace O2NextGen.CertificateManagement.Business.Models
+﻿namespace O2NextGen.CertificateManagement.Business.Models
 {
     public class Category
     {
