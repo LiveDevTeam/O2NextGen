@@ -97,6 +97,14 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
     type                = "VirtualMachineScaleSets"
     enable_auto_scaling = false
   }
+  additional_node_pools = {
+    pool2 = {
+       node_count          = var.k8s_node_pool2_count
+        vm_size             = var.k8s_vm_pool2_size
+        type                = "VirtualMachineScaleSets"
+        enable_auto_scaling = false
+    }
+  }
   identity {
     type = "SystemAssigned"
   }
