@@ -14,7 +14,16 @@ spec:
     solvers:
     - http01:
         ingress:
+          serviceType: ClusterIP
           class: nginx
+    # - dns01:
+    #     route53:
+    #       region: centralus
+    #       hostedZoneID: xxxxxxxx
+    #       accessKeyID: xxxxxx
+    #       secretAccessKeySecretRef:
+    #         name: aws-secret
+    #         key: secret_key
 EOF
 
 

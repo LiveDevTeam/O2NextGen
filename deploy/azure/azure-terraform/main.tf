@@ -106,6 +106,11 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
   #   load_balancer_sku = "Standard"
   #   network_plugin    = "kubenet" # azure (CNI)
   # }
+  addon_profile {
+    http_application_routing {
+      enabled = true
+    }
+  }
 
   tags = {
     Environment = "Production"
