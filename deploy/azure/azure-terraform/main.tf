@@ -97,11 +97,10 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
     type                = "VirtualMachineScaleSets"
     enable_auto_scaling = false
   }
-  
   identity {
     type = "SystemAssigned"
   }
-  azure_policy_enabled = false
+  azure_policy_enabled = true
   # # network_profile {
   #   load_balancer_sku = "Standard"
   #   network_plugin    = "kubenet" # azure (CNI)
