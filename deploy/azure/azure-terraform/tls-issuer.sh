@@ -1,4 +1,4 @@
-
+LETS_ENCRYPT_EMAIL=live-dev@hotmail.com
 cat <<-EOF | kubectl apply --namespace default -f -
 apiVersion: cert-manager.io/v1
 
@@ -8,14 +8,13 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: live-dev@hotmail.com
+    email: $LETS_ENCRYPT_EMAIL
     privateKeySecretRef:
       name: letsencrypt
     solvers:
-      - selector: {}
-        http01:
-          ingress:
-            class: nginx
+    - http01:
+        ingress:
+          class: nginx
 EOF
 
 
