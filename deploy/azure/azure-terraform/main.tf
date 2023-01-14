@@ -101,16 +101,11 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
   identity {
     type = "SystemAssigned"
   }
-  azure_policy_enabled = true
+  azure_policy_enabled = false
   # # network_profile {
   #   load_balancer_sku = "Standard"
   #   network_plugin    = "kubenet" # azure (CNI)
   # }
-  addon_profile {
-    http_application_routing {
-      enabled = true
-    }
-  }
 
   tags = {
     Environment = "Production"
