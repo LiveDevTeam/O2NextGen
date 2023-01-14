@@ -22,25 +22,20 @@ variable "k8s_vm_size" {
   description = "Name VM for AKS Cluster"
 }
 
-
 variable "k8s_node_count" {
   type        = number
   description = "Node count for AKS Cluster"
 }
-variable "k8s_vm_size" {
+variable "k8s_vm_pool2_size" {
   type        = string
-  description = "Name VM for AKS Cluster"
+  description = "Name VM for AKS Cluster for Pool2"
 }
-
 variable "k8s_node_pool2_count" {
   type        = number
   description = "Node count for AKS Cluster for Pool2"
 }
 
-variable "k8s_vm_pool2_size" {
-  type        = string
-  description = "Name VM for AKS Cluster for Pool2"
-}
+
 
 variable "grafana_admin_user" {
   type        = string
