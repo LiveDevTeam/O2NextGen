@@ -1,21 +1,23 @@
-LETS_ENCRYPT_EMAIL=live-dev@hotmail.com
+
 cat <<-EOF | kubectl apply --namespace default -f -
 apiVersion: cert-manager.io/v1
 
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt
+  name: letsencrypt-prod
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: $LETS_ENCRYPT_EMAIL
+    email: live-dev@hotmail.com
     privateKeySecretRef:
-      name: letsencrypt
+      name: letsencrypt-prod
     solvers:
-    - http01:
-        ingress:
-          class: nginx
+      - selector: {}
+        http01:
+          ingress:
+            class: nginx
 EOF
+
 
 # cat <<-EOF | kubectl apply --namespace apps-prod -f -
 # apiVersion: cert-manager.io/v1
