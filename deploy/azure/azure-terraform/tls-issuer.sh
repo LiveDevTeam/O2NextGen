@@ -1,4 +1,4 @@
-LETS_ENCRYPT_EMAIL=o2bionics@hotmail.com
+LETS_ENCRYPT_EMAIL=live-dev@hotmail.com
 cat <<-EOF | kubectl apply --namespace default -f -
 apiVersion: cert-manager.io/v1
 
