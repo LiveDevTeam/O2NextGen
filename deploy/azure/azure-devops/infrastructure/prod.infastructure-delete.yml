@@ -11,8 +11,9 @@ variables:
   subscription: o2bionics-paid-subscription
   resource-group: devops-tfstate
   storage-account: terraformstate999
-  tfstate-file: terraform.tfstate
+  tfstate-file: prod.terraform.tfstate
   container: tfstate
+  terraform-var-file: prod.terraform.tfvars
   any-if-changes: false
 
 steps:
