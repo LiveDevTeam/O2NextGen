@@ -334,8 +334,8 @@ resource "helm_release" "cert-manager" {
     name  = "installCRDs"
     value = "true"
   }
-  set {
-      name  = "domainFilters"
-      value = "{${azurerm_dns_zone.primary-dns-zone.name}}"
-  }
+  # set {
+  #     name  = "domainFilters"
+  #     value = "{${azurerm_dns_zone.primary-dns-zone.name}}"
+  # }
 }

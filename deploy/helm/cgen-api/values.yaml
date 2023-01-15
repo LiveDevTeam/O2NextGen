@@ -37,7 +37,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
 
 ingress:
@@ -72,6 +72,15 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+health:
+  livenessProbe:
+    httpGet:
+      path: /version
+      port: http
+  readinessProbe:
+    httpGet:
+      path: /version
+      port: http
 
 autoscaling:
   enabled: false
