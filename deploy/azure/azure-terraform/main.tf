@@ -244,3 +244,64 @@ resource "helm_release" "prometheus-stack" {
     value = var.grafana_admin_password
   }
 }
+
+# ============================= External DNS ==========================================  
+# =========================================================================================
+resource "helm_release" "external-dns" {
+  depends_on = [
+    azurerm_dns_zone.primary-dns-zone
+  ]
+  dependency_update = "true"
+  name              = "external-dns"
+  repository        = "https://charts.bitnami.com/bitnami"
+  chart             = "external-dns"
+  namespace         = "external-dns"
+  create_namespace  = true
+  # values = [
+  #   local.dnsValues
+  # ]
+  set {
+    name  = "azure.cloud"
+    value = "AzurePublicCloud"
+  }
+  set {
+    name  = "txtOwnerId"
+    value = azurerm_kubernetes_cluster.o2nextgen-aks.name
+  }
+  set {
+    name  = "provider"
+    value = "azure"
+  }
+  set {
+    name  = "logLevel"
+    value = "debug"
+  }
+  set {
+    name  = "policy"
+    value = "sync"
+  }
+  set {
+    name  = "domainFilters"
+    value = "{${azurerm_dns_zone.primary-dns-zone.name}}"
+  }
+  set {
+    name  = "azure.resourceGroup"
+    value = azurerm_kubernetes_cluster.o2nextgen-aks.resource_group_name //var.k8s_resource_group //"AzureDNS" //var.k8s_resource_group //"AzureDNS" //
+  }
+  set {
+    name  = "azure.tenantId"
+    value = data.azuread_client_config.current.tenant_id
+  }
+  set {
+    name  = "azure.subscriptionId"
+    value = data.azurerm_subscription.current.subscription_id
+  }
+  set {
+    name  = "azure.aadClientId"
+    value = azuread_application.example.application_id
+  }
+  set {
+    name  = "azure.aadClientSecret"
+    value = azuread_application_password.current.value
+  }
+}
