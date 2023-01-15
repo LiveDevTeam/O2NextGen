@@ -12,4 +12,4 @@ k8s_acr_name = "o2bus"
 
 #DNS zones
 k8s_primary_dns_zone_name="o2bus.com"
-k8s_external_dns_name"external-dns-dev"
+k8s_external_dns_name="external-dns-dev"
