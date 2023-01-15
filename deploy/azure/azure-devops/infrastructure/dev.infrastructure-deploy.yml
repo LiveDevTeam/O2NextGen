@@ -130,6 +130,7 @@ steps:
               - http01:
                   ingress:
                     class: nginx
+                    serviceType: ClusterIP
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
 
