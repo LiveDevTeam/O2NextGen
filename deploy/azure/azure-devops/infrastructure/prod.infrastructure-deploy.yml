@@ -109,7 +109,7 @@ steps:
         connectionType: 'Azure Resource Manager'
         azureSubscriptionEndpoint: $(subscription)
         azureResourceGroup: 'products'
-        kubernetesCluster: 'o2nextgen-aks'
+        kubernetesCluster: 'o2nextgen-prod'
         useClusterAdmin: true
         namespace: 'default'
         command: 'apply'
