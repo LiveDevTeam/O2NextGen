@@ -28,6 +28,10 @@ variable "k8s_node_count" {
   description = "Node count for AKS Cluster"
 }
 
+variable "k8s_acr_name" {
+  type        = string
+  description = "Name for ACR"
+}
 variable "k8s_primary_dns_zone_name" {
   type        = string
   description = "Name PRIMARY DNS ZONE for AKS Cluster"
