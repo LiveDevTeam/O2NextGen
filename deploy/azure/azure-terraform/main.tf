@@ -74,6 +74,33 @@ resource "azurerm_dns_zone" "primary-dns-zone" {
   }
 }
 
+resource "azurerm_dns_zone" "second-dns-zone" {
+depends_on = [
+  azurerm_kubernetes_cluster.o2nextgen-aks
+]
+  name                = var.k8s_second_dns_zone_name
+  resource_group_name = var.k8s_resource_group
+
+  tags = {
+    "type"         = "client"
+    "type_product" = "Saas"
+    "product"      = "O2NextGen Platform"
+  }
+}
+resource "azurerm_dns_zone" "third-dns-zone" {
+depends_on = [
+  azurerm_kubernetes_cluster.o2nextgen-aks
+]
+  name                = var.k8s_third_dns_zone_name
+  resource_group_name = var.k8s_resource_group
+
+  tags = {
+    "type"         = "offsite"
+    "type_product" = "Saas"
+    "product"      = "O2NextGen Platform"
+  }
+}
+
 # =========================================== DNS ========================================= 
 # =========================================================================================
 # current subscription
@@ -128,6 +155,18 @@ resource "azurerm_role_assignment" "main" {
   role_definition_name = "DNS Zone Contributor"
   principal_id         = azuread_service_principal.current.object_id
 }
+# Create role assignment for service principal
+resource "azurerm_role_assignment" "main-second" {
+  scope                = azurerm_dns_zone.second-dns-zone.id
+  role_definition_name = "DNS Zone Contributor"
+  principal_id         = azuread_service_principal.current.object_id
+}
+resource "azurerm_role_assignment" "main-third" {
+  scope                = azurerm_dns_zone.third-dns-zone.id
+  role_definition_name = "DNS Zone Contributor"
+  principal_id         = azuread_service_principal.current.object_id
+}
+
 
 # Create role assignment for service principal ???
 resource "azurerm_role_assignment" "reader" {

@@ -12,6 +12,8 @@ k8s_acr_name = "o2bus"
 
 #DNS zones
 k8s_primary_dns_zone_name="o2bus.com"
+# k8s_second_dns_zone_name  = "pfr-centr.com"
+# k8s_third_dns_zone_name   = "o2bionics.com"
 k8s_external_dns_name="external-dns-dev"
 
 # Monitoring
