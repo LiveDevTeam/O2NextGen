@@ -58,7 +58,6 @@ steps:
         backendAzureRmContainerName: '$(container)'
         backendAzureRmKey: '$(tfstate-file)' 
 
-
     - task: TerraformTaskV3@3
       displayName: "terraform plan -out tfplan -var-file=$(terraform-var-file)"
       inputs:
@@ -67,7 +66,7 @@ steps:
         commandOptions: '-out tfplan -var-file=$(terraform-var-file)'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
         environmentServiceNameAzureRM: '$(subscription)'
-    
+
     - task: PowerShell@2
       displayName: detect any terraform change
       inputs:
@@ -131,7 +130,6 @@ steps:
               - http01:
                   ingress:
                     class: nginx
+                    serviceType: ClusterIP
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
-
-
