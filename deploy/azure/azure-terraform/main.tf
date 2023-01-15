@@ -321,7 +321,7 @@ resource "helm_release" "external-dns" {
   }
   set {
     name  = "domainFilters"
-    value = "{${azurerm_dns_zone.primary-dns-zone.name}}"
+    value = "{${azurerm_dns_zone.primary-dns-zone.name},${azurerm_dns_zone.second-dns-zone.name},${azurerm_dns_zone.third-dns-zone.name}}"
   }
   set {
     name  = "azure.resourceGroup"
