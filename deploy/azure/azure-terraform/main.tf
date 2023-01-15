@@ -305,3 +305,18 @@ resource "helm_release" "external-dns" {
     value = azuread_application_password.current.value
   }
 }
+
+# ============================= AKS PREP - Namespaces in AKS ==============================  
+# =========================================================================================
+resource "kubernetes_namespace" "prod" {
+  metadata {
+    annotations = {
+      name = "apps-prod"
+    }
+
+    labels = {
+      Environment = "Production"
+    }
+    name = "apps-prod"
+  }
+}
