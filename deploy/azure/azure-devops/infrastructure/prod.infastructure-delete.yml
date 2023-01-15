@@ -62,7 +62,7 @@ steps:
       inputs:
         provider: 'azurerm'
         command: 'destroy'
-        commandOptions: '-auto-approve'
+        commandOptions: '-auto-approve -lock=false'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
         environmentServiceNameAzureRM: '$(subscription)'
         # backendServiceArm: '$(subscription)'
