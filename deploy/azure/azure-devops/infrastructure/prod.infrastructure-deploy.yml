@@ -11,9 +11,9 @@ variables:
   subscription: o2bionics-paid-subscription
   resource-group: devops-tfstate
   storage-account: terraformstate999
-  tfstate-file: dev.terraform.tfstate
+  tfstate-file: terraform.tfstate
   container: tfstate
-  terraform-var-file: terraform.dev.tfvars
+  terraform-var-file: prod.terraform.tfvars
   any-if-changes: false
   LETS_ENCRYPT_EMAIL: live-dev@hotmail.com
 
@@ -58,15 +58,16 @@ steps:
         backendAzureRmContainerName: '$(container)'
         backendAzureRmKey: '$(tfstate-file)' 
 
+
     - task: TerraformTaskV3@3
-      displayName: "terraform plan -out tfplan"
+      displayName: "terraform plan -out tfplan -var-file=$(terraform-var-file)"
       inputs:
         provider: 'azurerm'
         command: 'plan'
         commandOptions: '-out tfplan -var-file=$(terraform-var-file)'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
         environmentServiceNameAzureRM: '$(subscription)'
-
+    
     - task: PowerShell@2
       displayName: detect any terraform change
       inputs:
