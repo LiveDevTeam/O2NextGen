@@ -95,7 +95,7 @@ resource "azuread_application" "example" {
   depends_on = [
     azurerm_dns_zone.primary-dns-zone
   ]
-  display_name = var.external_dns_name"external-dns"
+  display_name = var.k8s_external_dns_name
   owners       = [data.azuread_client_config.current.object_id]
 }
 
