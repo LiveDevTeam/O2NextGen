@@ -41,3 +41,13 @@ variable "k8s_external_dns_name" {
   type        = string
   description = "Name principal for PRIMARY DNS ZONE of AKS Cluster"
 }
+
+variable "grafana_admin_user" {
+  type        = string
+  description = "Admin user to access Grafana dashboard"
+}
+
+variable "grafana_admin_password" {
+  type        = string
+  description = "Admin password to access Grafana dashboard"
+}
