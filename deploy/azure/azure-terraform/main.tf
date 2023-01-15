@@ -320,3 +320,22 @@ resource "kubernetes_namespace" "prod" {
     name = "apps-prod"
   }
 }
+
+# ==================================== SSL in AKS =========================================  
+# =========================================================================================
+resource "helm_release" "cert-manager" {
+  name             = "cert-manager"
+  namespace        = "cert-manager"
+  repository       = "https://charts.jetstack.io"
+  chart            = "cert-manager"
+  version          = "1.9.1"
+  create_namespace = true
+  set {
+    name  = "installCRDs"
+    value = "true"
+  }
+  set {
+      name  = "domainFilters"
+      value = "{${azurerm_dns_zone.primary-dns-zone.name}}"
+  }
+}
