@@ -1,4 +1,4 @@
-LETS_ENCRYPT_EMAIL=live-dev@hotmail.com
+LETS_ENCRYPT_EMAIL=o2bionics@hotmail.com
 cat <<-EOF | kubectl apply --namespace default -f -
 apiVersion: cert-manager.io/v1
 
@@ -14,31 +14,8 @@ spec:
     solvers:
     - http01:
         ingress:
-          serviceType: ClusterIP
           class: nginx
-    - dns01:
-        azuredns:
-          clientID: AZURE_CERT_MANAGER_SP_APP_ID
-          clientSecretSecretRef:
-          # The following is the secret we created in Kubernetes. Issuer will use this to present challenge to Azure DNS.
-            name: azuredns-config
-            key: client-secret
-          subscriptionID: AZURE_SUBSCRIPTION_ID
-          tenantID: AZURE_TENANT_ID
-          resourceGroupName: AZURE_DNS_ZONE_RESOURCE_GROUP
-          hostedZoneName: AZURE_DNS_ZONE
-          # Azure Cloud Environment, default to AzurePublicCloud
-          environment: AzurePublicCloud
-    # - dns01:
-    #     route53:
-    #       region: centralus
-    #       hostedZoneID: xxxxxxxx
-    #       accessKeyID: xxxxxx
-    #       secretAccessKeySecretRef:
-    #         name: aws-secret
-    #         key: secret_key
 EOF
-
 
 # cat <<-EOF | kubectl apply --namespace apps-prod -f -
 # apiVersion: cert-manager.io/v1

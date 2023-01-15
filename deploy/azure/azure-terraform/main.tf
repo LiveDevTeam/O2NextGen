@@ -607,7 +607,7 @@ resource "helm_release" "cert-manager" {
   create_namespace = true
   set {
     name  = "installCRDs"
-    value = "false"
+    value = "true"
   }
   # set {
   #   name  = "domainFilters"
