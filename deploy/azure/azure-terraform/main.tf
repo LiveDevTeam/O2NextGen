@@ -36,3 +36,40 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
     azurerm_resource_group.aks-resource-group
   ]
 }
+
+# ========================================== ACR ==========================================  
+# =========================================================================================
+resource "azurerm_role_assignment" "role-acrpull" {
+  scope                = azurerm_container_registry.o2nextgen-aks-acr.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_kubernetes_cluster.o2nextgen-aks.kubelet_identity.0.object_id
+  depends_on = [
+    azurerm_container_registry.o2nextgen-aks-acr,
+    azurerm_kubernetes_cluster.o2nextgen-aks
+  ]
+}
+resource "azurerm_container_registry" "o2nextgen-aks-acr" {
+  name                = var.k8s_acr_name
+  resource_group_name = var.k8s_resource_group
+  location            = var.k8s_location
+  sku                 = "Standard"
+  admin_enabled       = false
+  depends_on = [
+    azurerm_kubernetes_cluster.o2nextgen-aks
+  ]
+}
+
+# ============================= AKS PREP - DNS ZONE in AKS ================================  
+# =========================================================================================
+resource "azurerm_dns_zone" "primary-dns-zone" {
+  depends_on = [
+    azurerm_kubernetes_cluster.o2nextgen-aks
+  ]
+  name                = k8s_primary_dns_zone_name
+  resource_group_name = var.k8s_resource_group
+
+  tags = {
+    "type_product" = "Saas"
+    "product"      = "O2NextGen Platform"
+  }
+}
