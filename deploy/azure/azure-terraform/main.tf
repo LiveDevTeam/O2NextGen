@@ -103,20 +103,6 @@ depends_on = [
 
 # =========================================== DNS ========================================= 
 # =========================================================================================
-# current subscription
-data "azurerm_subscription" "current" {}
-
-# # current client
-data "azuread_client_config" "current" {}
-
-output "current_subscription_display_name" {
-  value = data.azurerm_subscription.current.display_name
-}
-
-output "object_id" {
-  value = data.azuread_client_config.current.object_id
-}
-
 # Create an application
 resource "azuread_application" "example" {
   depends_on = [
@@ -201,7 +187,6 @@ resource "helm_release" "aad-pod-identity" {
   chart      = "aad-pod-identity"
   namespace  = "kube-system"
 }
-
 # https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
 resource "helm_release" "nginx-ingress-controller" {
   name             = "nginx-ingress-controller"

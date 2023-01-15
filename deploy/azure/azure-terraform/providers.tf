@@ -1,4 +1,3 @@
-
 provider "helm" {
   kubernetes {
     host                   = azurerm_kubernetes_cluster.o2nextgen-aks.kube_config.0.host
@@ -15,9 +14,11 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.o2nextgen-aks.kube_config.0.cluster_ca_certificate)
 }
 
+# Configure the Azure Active Directory Provider
 provider "azuread" {
+  # subscription_id="f1404c6e-2728-40ae-9cd2-fee75bde4c04"
+  # tenant_id = "f3a52f65-e3a4-4386-8bc9-a42f32fc1cd6"
 }
-
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
@@ -52,4 +53,18 @@ terraform {
       source = "hashicorp/time"
     }
   }
+}
+
+# current subscription
+data "azurerm_subscription" "current" {}
+
+# # current client
+data "azuread_client_config" "current" {}
+
+output "current_subscription_display_name" {
+  value = data.azurerm_subscription.current.display_name
+}
+
+output "object_id" {
+  value = data.azuread_client_config.current.object_id
 }
