@@ -107,7 +107,7 @@ steps:
       inputs:
         connectionType: 'Azure Resource Manager'
         azureSubscriptionEndpoint: $(subscription)
-        azureResourceGroup: 'develop'
+        azureResourceGroup: 'development'
         kubernetesCluster: 'o2nextgen-dev'
         useClusterAdmin: true
         namespace: 'default'
