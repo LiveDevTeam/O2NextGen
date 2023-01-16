@@ -125,7 +125,7 @@ resource "azurerm_dns_zone" "primary-dns-zone" {
   depends_on = [
     azurerm_kubernetes_cluster.o2nextgen-aks
   ]
-  name                = var.k8s_second_dns_zone_name
+  name                = var.k8s_primary_dns_zone_name
   resource_group_name = var.k8s_resource_group
 
   tags = {
