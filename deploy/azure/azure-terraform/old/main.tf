@@ -16,20 +16,6 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.o2nextgen-aks.kube_config.0.cluster_ca_certificate)
 }
 
-# # Configure the Azure Active Directory Provider
-# provider "azuread" {
-#   tenant_id = "f3a52f65-e3a4-4386-8bc9-a42f32fc1cd6"
-# }
-# provider "azuread" {
-#   # NOTE: Environment Variables can also be used for Service Principal authentication
-#   # Terraform also supports authenticating via the Azure CLI too.
-#   # see here for more info: http://terraform.io/docs/providers/azuread/index.html
-
-#   # subscription_id = "..."
-#   # client_id       = "..."
-#   # client_secret   = "..."
-#   # tenant_id       = "..."
-# }
 # Configure the Azure Active Directory Provider
 provider "azuread" {
   # subscription_id="f1404c6e-2728-40ae-9cd2-fee75bde4c04"
@@ -70,12 +56,6 @@ terraform {
     }
   }
 }
-
-
-# # Retrieve domain information
-# data "azuread_domains" "example" {
-#   only_initial = true
-# }
 
 # ========================================== RESOURCE ==========================================  
 resource "azurerm_resource_group" "aks-resource-group" {

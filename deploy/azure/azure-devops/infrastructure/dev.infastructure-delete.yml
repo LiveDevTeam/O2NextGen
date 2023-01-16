@@ -13,7 +13,7 @@ variables:
   storage-account: terraformstate999
   tfstate-file: dev.terraform.tfstate
   container: tfstate
-  terraform-var-file: dev.terraform.tfvars
+  terraform-var-file: ./dev/dev.tfvars
   any-if-changes: false
   LETS_ENCRYPT_EMAIL: live-dev@hotmail.com
 
@@ -64,7 +64,7 @@ steps:
       inputs:
         provider: 'azurerm'
         command: 'destroy'
-        commandOptions: '-auto-approve -var-file=$(terraform-var-file)'
+        commandOptions: '-auto-approve -var-file=$(terraform-var-file) -lock=false'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
         environmentServiceNameAzureRM: '$(subscription)'
         # backendServiceArm: '$(subscription)'

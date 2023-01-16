@@ -1,5 +1,3 @@
-
-
 provider "helm" {
   kubernetes {
     host                   = azurerm_kubernetes_cluster.o2nextgen-aks.kube_config.0.host
@@ -57,13 +55,27 @@ terraform {
   }
 }
 
+# current subscription
+data "azurerm_subscription" "current" {}
+
+# # current client
+data "azuread_client_config" "current" {}
+
+output "current_subscription_display_name" {
+  value = data.azurerm_subscription.current.display_name
+}
+
+output "object_id" {
+  value = data.azuread_client_config.current.object_id
+}
+
 # ========================================== RESOURCE ==========================================  
 resource "azurerm_resource_group" "aks-resource-group" {
   name     = var.k8s_resource_group
   location = var.k8s_location
 }
 
-# ========================================== K8S ==========================================  
+# ========================================== K8S ========================================== 
 resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
   name                = var.k8s_cluster_name
   resource_group_name = var.k8s_resource_group
@@ -95,7 +107,6 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
     azurerm_resource_group.aks-resource-group
   ]
 }
-
 
 # ========================================== ACR ==========================================  
 # =========================================================================================
@@ -133,6 +144,7 @@ resource "azurerm_dns_zone" "primary-dns-zone" {
     "product"      = "O2NextGen Platform"
   }
 }
+
 resource "azurerm_dns_zone" "second-dns-zone" {
 depends_on = [
   azurerm_kubernetes_cluster.o2nextgen-aks
@@ -160,42 +172,16 @@ depends_on = [
   }
 }
 
-# resource "azuread_application" "example" {
-#   display_name = "sp-external-dns"
-#   owners       = [data.azuread_client_config.current.object_id]
-# }
-# resource "azuread_service_principal" "sp-external-dns" {
-#   principal_id = azuread_service_principal.sp-external-dns.template_id
-# }
-
-# current subscription
-data "azurerm_subscription" "current" {}
-
-# # current client
-data "azuread_client_config" "current" {}
-
-output "current_subscription_display_name" {
-  value = data.azurerm_subscription.current.display_name
-}
-
-output "object_id" {
-  value = data.azuread_client_config.current.object_id
-}
-
+# =========================================== DNS ========================================= 
+# =========================================================================================
 # Create an application
 resource "azuread_application" "example" {
   depends_on = [
     azurerm_dns_zone.primary-dns-zone
   ]
-  display_name = "external-dns"
+  display_name = var.k8s_external_dns_name
   owners       = [data.azuread_client_config.current.object_id]
 }
-
-# # Create a service principal
-# resource "azuread_service_principal" "example" {
-#   application_id = azuread_application.example.application_id
-#   owners         = [data.azuread_client_config.current.object_id]
-# }
 
 # Create Service Principal linked to the Application
 resource "azuread_service_principal" "current" {
@@ -204,71 +190,10 @@ resource "azuread_service_principal" "current" {
   owners                       = [data.azuread_client_config.current.object_id]
 }
 
-# # Create role assignment for Service Principal
-# resource "azurerm_role_assignment" "contributor" {
-#   scope                = data.azurerm_subscription.current.id
-#   role_definition_name = "Contributor"
-#   principal_id         = azuread_service_principal.current.id
-# }
-
-# # # Generate random string to be used for Service Principal password
-# resource "random_string" "password" {
-#   length  = 32
-#   special = true
-# }
 resource "azuread_application_password" "current" {
   display_name          = "rbac"
   application_object_id = azuread_application.example.object_id
 }
-
-# off azurerm_key_vault
-# resource "azurerm_key_vault" "keyvault" {
-#   name                        = var.keyvault_name
-#   location                    = var.k8s_location
-#   resource_group_name         = var.k8s_resource_group
-#   enabled_for_disk_encryption = false
-#   tenant_id                   = data.azuread_client_config.current.tenant_id
-#   soft_delete_retention_days  = 7
-#   purge_protection_enabled    = false
-
-#   sku_name = "standard"
-
-#   access_policy {
-#     tenant_id = data.azuread_client_config.current.tenant_id
-#     object_id = data.azuread_client_config.current.object_id
-
-#     key_permissions = [
-#       "Get",
-#     ]
-
-#     secret_permissions = [
-#       "Get",
-#       "List",
-#       "Set",
-#       "Delete"
-#     ]
-
-#     storage_permissions = [
-#       "Get",
-#     ]
-#   }
-
-#   # network_acls {
-#   #   default_action = "Deny" # "Allow" 
-#   #   bypass         = "AzureServices" # "None"
-#   #   ip_rules = ["50.50.50.50/24"]
-#   # }
-# }
-# resource "time_rotating" "example" {
-#   rotation_days = 7
-# }
-# # Create Service Principal password
-# resource "azuread_service_principal_password" "main" {
-#   service_principal_id = azuread_service_principal.current.object_id
-#   rotate_when_changed = {
-#     rotation = time_rotating.example.id
-#   }
-# }
 
 # Create role assignment for service principal
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment
@@ -299,7 +224,8 @@ resource "azurerm_role_assignment" "main-third" {
   principal_id         = azuread_service_principal.current.object_id
 }
 
-# Create role assignment for service principal
+
+# Create role assignment for service principal ???
 resource "azurerm_role_assignment" "reader" {
   scope                = azurerm_resource_group.aks-resource-group.id
   role_definition_name = "Reader"
@@ -319,73 +245,6 @@ output "client_secret" {
   sensitive = true
 }
 
-
-# # Generate a private key
-# resource "tls_private_key" "example" {
-#   algorithm = "RSA"
-#   rsa_bits  = 2048
-# }
-
-# # Generate a self signed certificate
-# resource "tls_self_signed_cert" "example" {
-#   private_key_pem = tls_private_key.example.private_key_pem
-
-#   subject {
-#     common_name  = azuread_application.example.display_name
-#     organization = "O2 Bionics LLC"
-#   }
-
-#   allowed_uses          = ["client_auth", "server_auth"]
-#   validity_period_hours = 8760
-# }
-
-# # Create Application certificate (client certificate)
-# resource "azuread_application_certificate" "example" {
-#   application_object_id = azuread_application.example.object_id
-#   type                  = "AsymmetricX509Cert"
-#   end_date_relative     = "4320h" # expire in 6 months
-#   value                 = tls_self_signed_cert.example.cert_pem
-# }
-
-# # Create Application password (client secret)
-# resource "azuread_application_password" "example" {
-#   application_object_id = azuread_application.example.object_id
-#   end_date_relative     = "4320h" # expire in 6 months
-# }
-# output "account_id" {
-#   value = data.azurerm_client_config.current.service_principal_application_id
-# }
-
-# resource "azuread_application" "example" {
-#   display_name = "External-DNS-SP"
-#   owners       = [data.azurerm_client_config.current.object_id]
-# }
-
-# resource "azuread_service_principal" "example" {
-#   application_id               = azuread_application.example.application_id
-#   app_role_assignment_required = false
-#   owners                       = [data.azurerm_client_config.current.object_id]
-# }
-
-# data "azuread_application_template" "example" {
-#   display_name = "External-DNS-SP"
-# }
-
-# resource "azuread_application" "example" {
-#   display_name = "sp-external-dns"
-#   template_id  = data.azuread_application_template.example.template_id
-# }
-
-# resource "azuread_service_principal" "example" {
-#   application_id = azuread_application.example.application_id
-#   use_existing   = true
-# }
-
-# resource "azurerm_role_assignment" "role-secret-officer" {
-#   role_definition_name = "Key Vault Secrets Officer"
-#   principal_id         = data.azurerm_client_config.current.object_id
-#   scope                = azurerm_key_vault.keyvault.id
-# }
 # ============================= MONITORING TOOLS ==========================================  
 # =========================================================================================
 resource "helm_release" "aad-pod-identity" {
@@ -399,13 +258,12 @@ resource "helm_release" "aad-pod-identity" {
   chart      = "aad-pod-identity"
   namespace  = "kube-system"
 }
-
 # https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
 resource "helm_release" "nginx-ingress-controller" {
   name             = "nginx-ingress-controller"
   repository       = "https://kubernetes.github.io/ingress-nginx"
   chart            = "ingress-nginx"
-  version          = "4.1.3"
+  version          = "4.1.3"w
   namespace        = "ingress"
   create_namespace = "true"
 
@@ -481,24 +339,9 @@ resource "helm_release" "prometheus-stack" {
     value = var.grafana_admin_password
   }
 }
-locals {
-  dnsValues = <<EOF
-  args:
-    - --txtOwnerId=${azurerm_kubernetes_cluster.o2nextgen-aks.name}
-    - --provider=azure
-    - --azure.resourceGroup=${azurerm_kubernetes_cluster.o2nextgen-aks.resource_group_name}
-    - --azure.tenantId=${data.azuread_client_config.current.tenant_id}
-    - --azure.subscriptionId=${data.azurerm_subscription.current.id}
-    - --azure.aadClientId=${azuread_application.example.application_id}
-    - --azure.aadClientSecret="${azuread_application_password.current.value}"
-    - --azure.cloud=AzurePublicCloud
-    - --policy=sync
-    - --domain-filter=${azurerm_dns_zone.primary-dns-zone.name}
-    - --domain-filter=${azurerm_dns_zone.second-dns-zone.name}
-    - --domain-filter=${azurerm_dns_zone.third-dns-zone.name}
-EOF
-}
 
+# ============================= External DNS ==========================================  
+# =========================================================================================
 resource "helm_release" "external-dns" {
   depends_on = [
     azurerm_dns_zone.primary-dns-zone
@@ -556,44 +399,8 @@ resource "helm_release" "external-dns" {
     name  = "azure.aadClientSecret"
     value = azuread_application_password.current.value
   }
-  # # set {
-  # #   name  = "azure.useManagedIdentityExtension"
-  # #   value = "true"
-  # # }
-  # # set {
-  # #   name  = "azure.userAssignedIdentityID"
-  # #   value = azuread_service_principal.current.id
-  # # }
-
-  # --set txtOwnerId=$AZ_AKS_NAME \
-  #   --set provider=azure \
-  #   --set azure.resourceGroup=$AZ_DNS_GROUP \
-  #   --set azure.tenantId=$AZ_TENANT_ID \
-  #   --set azure.subscriptionId=$AZ_SUBSCRIPTION_ID \
-  #   --set azure.aadClientId=$SP_CLIENT_ID \
-  #   --set azure.aadClientSecret="$SP_CLIENT_SECRET" \
-  #   --set azure.cloud=AzurePublicCloud \
-  #   --set policy=sync \
-  #   --set domainFilters={$DOMAIN_NAME}
-
 }
 
-resource "helm_release" "cert-manager" {
-  name             = "cert-manager"
-  namespace        = "cert-manager"
-  repository       = "https://charts.jetstack.io"
-  chart            = "cert-manager"
-  version          = "1.6.1"
-  create_namespace = true
-  set {
-    name  = "installCRDs"
-    value = "true"
-  }
-  # set {
-  #   name  = "domainFilters"
-  #   value = "o2bus.com"
-  # }
-}
 # ============================= AKS PREP - Namespaces in AKS ==============================  
 # =========================================================================================
 resource "kubernetes_namespace" "prod" {
@@ -609,79 +416,31 @@ resource "kubernetes_namespace" "prod" {
   }
 }
 
-resource "kubernetes_namespace" "dev" {
-  metadata {
-    annotations = {
-      name = "apps-dev"
-    }
-
-    labels = {
-      Environment = "Development"
-    }
-    name = "apps-dev"
-  }
-}
-
-resource "kubernetes_namespace" "tst" {
-  metadata {
-    annotations = {
-      name = "apps-tst"
-    }
-
-    labels = {
-      Environment = "Test"
-    }
-    name = "apps-tst"
-  }
-}
-
-resource "kubernetes_namespace" "staging" {
-  metadata {
-    annotations = {
-      name = "apps-staging"
-    }
-
-    labels = {
-      Environment = "Staging"
-    }
-    name = "apps-staging"
-  }
-}
-
-resource "kubernetes_namespace" "devops" {
-  metadata {
-    annotations = {
-      name = "apps-devops"
-    }
-
-    labels = {
-      Environment = "Devops"
-    }
-    name = "apps-devops"
-  }
-}
-
-
-
-# ============================= INSTALL APPLICATION =======================================  
+# ==================================== SSL in AKS =========================================  
 # =========================================================================================
-# resource "helm_release" "o2nextgen-auth" {
-#   name       = "o2nextgen-auth"
-#   namespace  = "apps-prod"
-#   repository = "../../../helm_charts"
-#   chart      = "o2nextgen-auth"
-# }
+resource "helm_release" "cert-manager" {
+  name             = "cert-manager"
+  namespace        = "cert-manager"
+  repository       = "https://charts.jetstack.io"
+  chart            = "cert-manager"
+  version          = "1.6.1"
+  create_namespace = true
+  set {
+    name  = "installCRDs"
+    value = "true"
+  }
+  # set {
+  #     name  = "domainFilters"
+  #     value = "{${azurerm_dns_zone.primary-dns-zone.name}}"
+  # }
+}
 
-# resource "helm_release" "o2bus-webapp" {
-#   name       = "o2bus-webapp"
-#   namespace  = "apps-prod"
-#   repository = "../../../helm_charts"
-#   chart      = "o2bus-webapp"
-# }
-
-# resource "helm_release" "cgen-webapp" {
-#   name       = "cgen-webapp"
-#   namespace  = "apps-prod"
-#   repository = "../../../helm_charts"
-#   chart      = "cgen-webapp"
+# ==================================== APPS in AKS ========================================  
+# =========================================================================================
+# resource "helm_release" "o2bionics-webapp" { 
+#   name             = "o2bionics-webapp"
+#   namespace        = "apps-prod"
+#   repository       = "nginx"
+#   chart            = "nginx"
+#   version          = "latest"
 # }
