@@ -13,7 +13,7 @@ variables:
   storage-account: terraformstate999
   tfstate-file: dev.terraform.tfstate
   container: tfstate
-  terraform-var-file: ./dev/dev.tfvars
+  terraform-var-file: dev/dev.tfvars
   any-if-changes: false
   LETS_ENCRYPT_EMAIL: live-dev@hotmail.com
 
