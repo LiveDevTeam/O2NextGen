@@ -54,4 +54,7 @@ variable "k8s_third_dns_zone_name" {
   type        = string
   description = "Name PRIMARY DNS ZONE for AKS Cluster"
 }
-
+variable "k8s_acr_name" {
+  type        = string
+  description = "Name for ACR"
+}
