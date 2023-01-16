@@ -37,10 +37,10 @@ variable "grafana_admin_password" {
   description = "Admin password to access Grafana dashboard"
 }
 
-variable "keyvault_name" {
-  type        = string
-  description = "Keyvault name"
-}
+# variable "keyvault_name" {
+#   type        = string
+#   description = "Keyvault name"
+# }
 
 variable "k8s_primary_dns_zone_name" {
   type        = string
