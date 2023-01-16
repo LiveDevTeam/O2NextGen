@@ -7,13 +7,13 @@ pool:
   vmImage: ubuntu-latest
 variables:
   location: westus3
-  source-path: deploy/azure/azure-terraform
+  source-path: deploy/azure/azure-terraform/prod
   subscription: o2bionics-paid-subscription
   resource-group: devops-tfstate
   storage-account: terraformstate999
   tfstate-file: prod.terraform.tfstate
   container: tfstate
-  terraform-var-file: prod.terraform.tfvars
+  terraform-var-file: terraform.tfvars
   any-if-changes: false
   LETS_ENCRYPT_EMAIL: live-dev@hotmail.com
 
