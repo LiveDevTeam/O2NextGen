@@ -60,7 +60,7 @@ steps:
 
 
     - task: TerraformTaskV3@3
-      displayName: "terraform plan -out tfplan -var-file=$(terraform-var-file)"
+      displayName: "terraform plan -out tfplan -var-file=$(terraform-var-file) -lock=false"
       inputs:
         provider: 'azurerm'
         command: 'destroy'
