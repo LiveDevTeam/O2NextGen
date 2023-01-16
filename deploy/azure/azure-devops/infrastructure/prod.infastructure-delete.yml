@@ -60,11 +60,11 @@ steps:
 
 
     - task: TerraformTaskV3@3
-      displayName: "terraform plan -out tfplan"
+      displayName: "terraform plan -out tfplan -var-file=$(terraform-var-file)"
       inputs:
         provider: 'azurerm'
         command: 'destroy'
-        commandOptions: '-auto-approve'
+        commandOptions: '-auto-approve -var-file=$(terraform-var-file)'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(source-path)'
         environmentServiceNameAzureRM: '$(subscription)'
         # backendServiceArm: '$(subscription)'
