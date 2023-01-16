@@ -7,7 +7,7 @@ pool:
   vmImage: ubuntu-latest
 variables:
   location: westus3
-  source-path: deploy/azure/azure-terraform/prod
+  source-path: deploy/azure/azure-terraform
   subscription: o2bionics-paid-subscription
   resource-group: devops-tfstate
   storage-account: terraformstate999
