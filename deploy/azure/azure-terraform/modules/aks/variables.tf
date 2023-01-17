@@ -17,6 +17,7 @@ variable "k8s_version" {
   description = "Kubernetes version"
 }
 
+
 variable "k8s_cluster_name" {
   type        = string
   description = "AKS cluster name"
@@ -35,19 +36,4 @@ variable "k8s_vm_size" {
 variable "k8s_node_count" {
   type        = number
   description = "Node count for AKS Cluster"
-}
-
-variable "dns_primary_zone_name" {
-  type        = string
-  description = "main DNS zone"
-}
-
-variable "dns_resource_group" {
-  type        = string
-  description = "DNS resource group"
-}
-
-variable "dns_location" {
-  type        = string
-  description = "DNS location"
 }

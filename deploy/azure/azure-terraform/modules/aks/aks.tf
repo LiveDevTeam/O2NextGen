@@ -11,7 +11,7 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
   resource_group_name = var.k8s_resource_group
   location            = var.k8s_location
   dns_prefix          = var.k8s_dns_prefix
-  kubernetes_version     = var.k8s_version
+  kubernetes_version  = var.k8s_version
 
   default_node_pool {
     name                = "system"
@@ -25,7 +25,7 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
   }
 
   azure_policy_enabled = true
-  
+
   tags = {
     Environment = var.k8s_env
     Product     = "O2NextGen Platform"
