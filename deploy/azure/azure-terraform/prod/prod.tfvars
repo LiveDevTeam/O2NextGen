@@ -5,7 +5,7 @@ k8s_location       = "westus3"
 # DNS
 dns_primary_zone_name = "o2nextgen.com"
 dns_resource_group = "o2nextgen-dns"
-dns_location = "westus3"
+dns_location = "centralus"
 
 k8s_env = "prod"
 # CLUSTER K8S
