@@ -1,12 +1,12 @@
-resource "helm_release" "aad-pod-identity" {
-  name       = "aad-pod-identity"
+resource "helm_release" "pod_identity" {
+  name       = "pod-identity"
   repository = "https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts"
   chart      = "aad-pod-identity"
   namespace  = "kube-system"
 }
 
 # https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
-resource "helm_release" "nginx-ingress-controller" {
+resource "helm_release" "nginx_ingress_controller" {
   name             = "nginx-ingress-controller"
   repository       = "https://kubernetes.github.io/ingress-nginx"
   chart            = "ingress-nginx"
@@ -24,19 +24,16 @@ resource "helm_release" "nginx-ingress-controller" {
   }
   set {
     name  = "controller.autoscaling.minReplicas"
-    value = "1"
+    value = "2"
   }
   set {
     name  = "controller.autoscaling.maxReplicas"
-    value = "1"
+    value = "10"
   }
 }
 
 # https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-resource "helm_release" "prometheus-stack" {
-  depends_on = [
-    helm_release.nginx-ingress-controller
-  ]
+resource "helm_release" "prometheus_stack" {
   name             = "prometheus-stack"
   repository       = "https://prometheus-community.github.io/helm-charts"
   chart            = "kube-prometheus-stack"
@@ -51,10 +48,6 @@ resource "helm_release" "prometheus-stack" {
     name  = "grafana.ingress.ingressClassName"
     value = "nginx"
   }
-  # set {
-  #   name  = "server.ingress.pathType"
-  #   value = "Prefix"
-  # }
   set {
     name  = "grafana.ingress.path"
     value = "/(.*)" # "/grafana2/?(.*)"

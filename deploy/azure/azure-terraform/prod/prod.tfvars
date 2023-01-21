@@ -15,6 +15,6 @@ k8s_dns_prefix   = "aks"
 k8s_vm_size      = "Standard_B2ms"
 k8s_node_count   = 1
 
-
+# Monitoring
 grafana_admin_user     = "grafana"
 grafana_admin_password = "grafana-pass"
