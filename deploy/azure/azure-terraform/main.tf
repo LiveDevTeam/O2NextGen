@@ -12,9 +12,6 @@ module "aks" {
 }
 
 module "dns" {
-  depends_on = [
-    module.aks
-  ]
   source             = "./modules/dns"
   dns_primary_zone   = var.dns_primary_zone_name
   dns_resource_group = var.dns_resource_group
