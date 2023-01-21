@@ -28,9 +28,21 @@ module "monitoring" {
   helm_client_certificate     = module.aks.client_certificate
   helm_client_key             = module.aks.client_key
   helm_cluster_ca_certificate = module.aks.cluster_ca_certificate
-  harbor_admin_password = var.harbor_admin_password
+  # harbor_admin_password       = var.harbor_admin_password
 }
 
-# module "tls" {
-#   so
-# }
+module "tls" {
+  source                      = "./modules/tls"
+  dns_primary_zone            = var.dns_primary_zone_name
+  dns_primary_zone_id         = module.dns.dns_primary_zone_id
+  helm_host                   = module.aks.host
+  helm_client_certificate     = module.aks.client_certificate
+  helm_client_key             = module.aks.client_key
+  helm_cluster_ca_certificate = module.aks.cluster_ca_certificate
+
+  k8s_resource_group    = var.k8s_resource_group
+  k8s_resource_group_id = module.aks.k8s_resource_group_id
+  k8s_location          = var.k8s_location
+  k8s_cluster_name      = var.k8s_cluster_name
+}
+
