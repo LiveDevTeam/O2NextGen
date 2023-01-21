@@ -89,9 +89,14 @@ resource "helm_release" "argo_cd" {
   create_namespace = true
 
   # annotations:
+  #   service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
   #   nginx.ingress.kubernetes.io/ssl-redirect: "false"
   #   nginx.ingress.kubernetes.io/use-regex: "true"
   #   nginx.ingress.kubernetes.io/rewrite-target: /$1
+  set {
+    name  = "server.ingress.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-health-probe-request-path"
+    value = "/healthz"
+  }
   set {
     name  = "server.ingress.annotations.nginx\\.ingress\\.kubernetes\\.io/ssl-redirect"
     value = "false"
