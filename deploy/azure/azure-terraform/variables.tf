@@ -62,6 +62,10 @@ variable "dns_location" {
   description = "DNS location"
 }
 
+variable "k8s_acr_name" {
+  type        = string
+  description = "Name for ACR"
+}
 
 variable "grafana_admin_user" {
   type        = string

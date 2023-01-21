@@ -17,6 +17,9 @@ k8s_dns_prefix   = "aks"
 k8s_vm_size      = "Standard_B2ms"
 k8s_node_count   = 2
 
+#ACR
+k8s_acr_name = "o2nextgen"
+
 # Monitoring
 grafana_admin_user     = "grafana"
 grafana_admin_password = "grafana-pass"
