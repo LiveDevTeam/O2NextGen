@@ -5,6 +5,20 @@ module "dns" {
   dns_location       = var.dns_location
 }
 
+module "dns2" {
+  source             = "./modules/dns"
+  dns_primary_zone   = var.dns_second_dns_zone_name
+  dns_resource_group = var.dns_resource_group
+  dns_location       = var.dns_location
+}
+
+module "dns3" {
+  source             = "./modules/dns"
+  dns_primary_zone   = var.dns_third_dns_zone_name
+  dns_resource_group = var.dns_resource_group
+  dns_location       = var.dns_location
+}
+
 module "aks" {
   depends_on = [
     module.dns

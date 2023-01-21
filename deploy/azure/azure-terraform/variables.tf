@@ -42,6 +42,16 @@ variable "dns_primary_zone_name" {
   description = "main DNS zone"
 }
 
+variable "dns_second_dns_zone_name" {
+  type        = string
+  description = "main DNS zone"
+}
+
+variable "dns_third_dns_zone_name" {
+  type        = string
+  description = "main DNS zone"
+}
+
 variable "dns_resource_group" {
   type        = string
   description = "DNS resource group"
