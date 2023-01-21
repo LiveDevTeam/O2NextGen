@@ -14,10 +14,10 @@ resource "helm_release" "nginx_ingress_controller" {
   namespace        = "ingress"
   create_namespace = "true"
 
-  set {
-    name  = "server.ingress.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-health-probe-request-path"
-    value = "/healthz"
-  }
+  # set {
+  #   name  = "server.ingress.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-health-probe-request-path"
+  #   value = "/healthz"
+  # }
 
   set {
     name  = "controller.service.type"
