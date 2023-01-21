@@ -66,7 +66,7 @@ module "acr" {
   ]
   source             = "./modules/acr"
   k8s_acr_name       = var.k8s_acr_name
-  k8s_cluster_id     = var.aks.k8s_cluster_id
+  k8s_cluster_id     = module.aks.k8s_cluster_id
   k8s_resource_group = var.k8s_resource_group
   k8s_location       = var.k8s_location
 }
