@@ -34,9 +34,6 @@ module "dns" {
 
 
 module "monitoring" {
-  depends_on = [
-    module.aks
-  ]
   source                      = "./modules/monitoring"
   grafana_admin_user          = var.grafana_admin_user
   grafana_admin_password      = var.grafana_admin_password

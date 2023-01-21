@@ -39,6 +39,9 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
 # ============================= AKS PREP - Namespaces in AKS ==============================  
 # =========================================================================================
 resource "kubernetes_namespace" "prod" {
+   depends_on = [
+    cliss.azurerm_kubernetes_cluster.o2nextgen-aks
+  ]
   metadata {
     annotations = {
       name = "apps-prod"
@@ -51,54 +54,54 @@ resource "kubernetes_namespace" "prod" {
   }
 }
 
-resource "kubernetes_namespace" "dev" {
-  metadata {
-    annotations = {
-      name = "apps-dev"
-    }
+# resource "kubernetes_namespace" "dev" {
+#   metadata {
+#     annotations = {
+#       name = "apps-dev"
+#     }
 
-    labels = {
-      Environment = "Development"
-    }
-    name = "apps-dev"
-  }
-}
+#     labels = {
+#       Environment = "Development"
+#     }
+#     name = "apps-dev"
+#   }
+# }
 
-resource "kubernetes_namespace" "tst" {
-  metadata {
-    annotations = {
-      name = "apps-tst"
-    }
+# resource "kubernetes_namespace" "tst" {
+#   metadata {
+#     annotations = {
+#       name = "apps-tst"
+#     }
 
-    labels = {
-      Environment = "Test"
-    }
-    name = "apps-tst"
-  }
-}
+#     labels = {
+#       Environment = "Test"
+#     }
+#     name = "apps-tst"
+#   }
+# }
 
-resource "kubernetes_namespace" "staging" {
-  metadata {
-    annotations = {
-      name = "apps-staging"
-    }
+# resource "kubernetes_namespace" "staging" {
+#   metadata {
+#     annotations = {
+#       name = "apps-staging"
+#     }
 
-    labels = {
-      Environment = "Staging"
-    }
-    name = "apps-staging"
-  }
-}
+#     labels = {
+#       Environment = "Staging"
+#     }
+#     name = "apps-staging"
+#   }
+# }
 
-resource "kubernetes_namespace" "devops" {
-  metadata {
-    annotations = {
-      name = "apps-devops"
-    }
+# resource "kubernetes_namespace" "devops" {
+#   metadata {
+#     annotations = {
+#       name = "apps-devops"
+#     }
 
-    labels = {
-      Environment = "Devops"
-    }
-    name = "apps-devops"
-  }
-}
+#     labels = {
+#       Environment = "Devops"
+#     }
+#     name = "apps-devops"
+#   }
+# }
