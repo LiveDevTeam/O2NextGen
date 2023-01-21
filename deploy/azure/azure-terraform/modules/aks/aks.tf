@@ -89,3 +89,16 @@ resource "kubernetes_namespace" "staging" {
     name = "apps-staging"
   }
 }
+
+resource "kubernetes_namespace" "devops" {
+  metadata {
+    annotations = {
+      name = "apps-devops"
+    }
+
+    labels = {
+      Environment = "Devops"
+    }
+    name = "apps-devops"
+  }
+}

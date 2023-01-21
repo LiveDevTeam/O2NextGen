@@ -20,9 +20,6 @@ module "dns" {
 # }
 
 module "aks" {
-  depends_on = [
-    module.dns
-  ]
   source             = "./modules/aks"
   k8s_resource_group = var.k8s_resource_group
   k8s_cluster_name   = var.k8s_cluster_name
