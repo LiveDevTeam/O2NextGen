@@ -4,8 +4,8 @@ k8s_location       = "westus3"
 
 # DNS
 dns_primary_zone_name = "o2nextgen.com"
-dns_resource_group = "o2nextgen-dns"
-dns_location = "centralus"
+dns_resource_group    = "o2nextgen-dns"
+dns_location          = "centralus"
 
 k8s_env = "prod"
 # CLUSTER K8S
@@ -18,3 +18,4 @@ k8s_node_count   = 2
 # Monitoring
 grafana_admin_user     = "grafana"
 grafana_admin_password = "grafana-pass"
+harbor_admin_password  = "#89_DangerSnake?"

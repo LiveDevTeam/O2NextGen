@@ -62,3 +62,8 @@ variable "grafana_admin_password" {
   type        = string
   description = "Admin password to access Grafana dashboard"
 }
+
+variable "harbor_admin_password" {
+  type        = string
+  description = "Admin password to access Harbor dashboard"
+}

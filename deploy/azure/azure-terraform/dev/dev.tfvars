@@ -3,8 +3,8 @@ k8s_location       = "westus3"
 
 # DNS
 dns_primary_zone_name = "o2bus.com"
-dns_resource_group = "o2bus-dns"
-dns_location = "westus3"
+dns_resource_group    = "o2bus-dns"
+dns_location          = "westus3"
 
 k8s_env = "dev"
 # CLUSTER K8S
@@ -17,3 +17,4 @@ k8s_node_count   = 1
 # Monitoring
 grafana_admin_user     = "grafana"
 grafana_admin_password = "grafana-pass"
+harbor_admin_password  = "#89_DangerSnake?"

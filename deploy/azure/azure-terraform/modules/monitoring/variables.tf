@@ -23,3 +23,7 @@ variable "helm_client_key" {
 variable "helm_cluster_ca_certificate" {
   type        = string
 }
+variable "harbor_admin_password" {
+  type        = string
+  description = "Admin password to access Harbor dashboard"
+}
