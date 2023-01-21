@@ -35,3 +35,57 @@ resource "azurerm_kubernetes_cluster" "o2nextgen-aks" {
     azurerm_resource_group.aks-resource-group
   ]
 }
+
+# ============================= AKS PREP - Namespaces in AKS ==============================  
+# =========================================================================================
+resource "kubernetes_namespace" "prod" {
+  metadata {
+    annotations = {
+      name = "apps-prod"
+    }
+
+    labels = {
+      Environment = "Production"
+    }
+    name = "apps-prod"
+  }
+}
+
+resource "kubernetes_namespace" "dev" {
+  metadata {
+    annotations = {
+      name = "apps-dev"
+    }
+
+    labels = {
+      Environment = "Development"
+    }
+    name = "apps-dev"
+  }
+}
+
+resource "kubernetes_namespace" "tst" {
+  metadata {
+    annotations = {
+      name = "apps-tst"
+    }
+
+    labels = {
+      Environment = "Test"
+    }
+    name = "apps-tst"
+  }
+}
+
+resource "kubernetes_namespace" "staging" {
+  metadata {
+    annotations = {
+      name = "apps-staging"
+    }
+
+    labels = {
+      Environment = "Staging"
+    }
+    name = "apps-staging"
+  }
+}
