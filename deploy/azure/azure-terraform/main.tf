@@ -28,6 +28,7 @@ module "monitoring" {
   helm_client_certificate     = module.aks.client_certificate
   helm_client_key             = module.aks.client_key
   helm_cluster_ca_certificate = module.aks.cluster_ca_certificate
+  harbor_admin_password = var.harbor_admin_password
 }
 
 # module "tls" {
