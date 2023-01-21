@@ -51,3 +51,14 @@ variable "dns_location" {
   type        = string
   description = "DNS location"
 }
+
+
+variable "grafana_admin_user" {
+  type        = string
+  description = "Admin user to access Grafana dashboard"
+}
+
+variable "grafana_admin_password" {
+  type        = string
+  description = "Admin password to access Grafana dashboard"
+}
