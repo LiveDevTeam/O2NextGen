@@ -5,9 +5,9 @@
 # }
 
 resource "azurerm_dns_zone" "primary-dns-zone" {
-  depends_on = [
-    azurerm_resource_group.aks-resource-group
-  ]
+  # depends_on = [
+  #   azurerm_resource_group.aks-resource-group
+  # ]
   name                = var.dns_primary_zone
   resource_group_name = var.dns_resource_group
 
