@@ -1,8 +1,8 @@
-# ========================================== RESOURCE ==========================================  
-resource "azurerm_resource_group" "aks-resource-group" {
-  name     = var.dns_resource_group
-  location = var.dns_location
-}
+# # ========================================== RESOURCE ==========================================  
+# resource "azurerm_resource_group" "aks-resource-group" {
+#   name     = var.dns_resource_group
+#   location = var.dns_location
+# }
 
 resource "azurerm_dns_zone" "primary-dns-zone" {
   depends_on = [
