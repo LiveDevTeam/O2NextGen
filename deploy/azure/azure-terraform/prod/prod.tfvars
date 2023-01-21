@@ -12,8 +12,8 @@ k8s_env = "prod"
 k8s_cluster_name = "o2nextgen-prod"
 k8s_version      = "1.24.6"
 k8s_dns_prefix   = "aks"
-k8s_vm_size      = "Standard_B2ms"
-k8s_node_count   = 1
+k8s_vm_size      = "Standard_D2s_v3"
+k8s_node_count   = 2
 
 # Monitoring
 grafana_admin_user     = "grafana"
