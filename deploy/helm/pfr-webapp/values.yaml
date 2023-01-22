@@ -51,10 +51,6 @@ ingress:
     # nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/acme-challenge-type: http01
   hosts:
-    - host: pfr-webapp.o2nextgen.com
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
     - host: pfr-centr.com
       paths:
         - path: /
@@ -62,7 +58,6 @@ ingress:
   tls: 
    - secretName: tls-secret-pfr-webapp-com
      hosts:
-       - pfr-webapp.o2nextgen.com
        - pfr-centr.com
 
 resources: {}
