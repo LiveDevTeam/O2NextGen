@@ -481,6 +481,36 @@ resource "helm_release" "prometheus-stack" {
     value = var.grafana_admin_password
   }
 }
+
+resource "helm_release" "redis" {
+  name             = "redis"
+  repository       = "https://charts.bitnami.com/bitnami"
+  chart            = "redis"
+  version          = "16.11.2"
+  namespace        = "redis-app"
+  create_namespace = true
+
+  # values = [
+  #   "${file("values.yaml")}"
+  # ]
+
+  set {
+    name  = "cluster.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "metrics.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "service.annotations.prometheus\\.io/port"
+    value = "9127"
+    type  = "string"
+  }
+}
+
 locals {
   dnsValues = <<EOF
   args:
