@@ -419,11 +419,11 @@ resource "helm_release" "nginx-ingress-controller" {
   }
   set {
     name  = "controller.autoscaling.minReplicas"
-    value = "2"
+    value = "1"
   }
   set {
     name  = "controller.autoscaling.maxReplicas"
-    value = "6"
+    value = "2"
   }
 }
 
