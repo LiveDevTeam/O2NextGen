@@ -33,14 +33,14 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-           ports:
+          ports:
             - name: http
               protocol: TCP
               containerPort: 15672
             - name: amqp
               protocol: TCP
               containerPort: 5672
-           livenessProbe:
+          livenessProbe:
               exec:
                 command:
                   - "rabbitmq-diagnostics"
@@ -48,7 +48,7 @@ spec:
               initialDelaySeconds: 10
               periodSeconds: 30
               timeoutSeconds: 15
-           readinessProbe:
+          readinessProbe:
               exec:
                 command:
                   - "rabbitmq-diagnostics"
