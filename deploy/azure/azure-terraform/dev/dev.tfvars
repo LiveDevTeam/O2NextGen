@@ -1,18 +1,24 @@
-k8s_resource_group = "o2nextgen-dev"
+k8s_resource_group = "development"
 k8s_location       = "westus3"
 
-# DNS
-dns_primary_zone_name = "o2bus.com"
-dns_resource_group    = "o2bus-dns"
-dns_location          = "westus3"
 
-k8s_env = "dev"
+# DNS
+dns_primary_zone_name    = "o2bus.com"
+dns_second_dns_zone_name = "o2bionics.com"
+dns_third_dns_zone_name  = "pfr-centr.com"
+dns_resource_group       = "development"
+dns_location             = "westus3"
+
+k8s_env = "prod"
 # CLUSTER K8S
 k8s_cluster_name = "o2nextgen-dev"
-k8s_version      = "1.24.6"
+k8s_version      = "1.23.12"
 k8s_dns_prefix   = "aks"
-k8s_vm_size      = "Standard_B2ms"
+k8s_vm_size      = "Standard_D2s_v3"
 k8s_node_count   = 1
+
+#ACR
+k8s_acr_name = "o2bus"
 
 # Monitoring
 grafana_admin_user     = "grafana"
