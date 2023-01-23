@@ -7,9 +7,13 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - port: 5672
+      targetPort: 5672
+      name: amqp
       protocol: TCP
+    - port: 15672
+      targetPort: 15672
       name: http
+      protocol: TCP
   selector:
     {{- include "rabbitmq.selectorLabels" . | nindent 4 }}
