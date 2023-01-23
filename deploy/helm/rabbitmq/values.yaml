@@ -37,8 +37,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 5672
+  type: LoadBalancer
+  port: 15672
 
 ingress:
   enabled: false
