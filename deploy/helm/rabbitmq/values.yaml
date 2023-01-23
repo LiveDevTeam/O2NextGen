@@ -41,7 +41,7 @@ service:
   port: 5672
 
 ingress:
-  enabled: true
+  enabled: false
   className: ""
   annotations: 
     cert-manager.io/cluster-issuer: letsencrypt
