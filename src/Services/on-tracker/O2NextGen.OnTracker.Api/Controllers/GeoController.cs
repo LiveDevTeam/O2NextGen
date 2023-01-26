@@ -13,19 +13,24 @@ namespace O2NextGen.OnTracker.Api.Controllers
     public class GeoController : ControllerBase
     {
         #region Fields
+
         private readonly IGeoIpAddressResolver _geoIpAddressResolver;
+
         #endregion
 
 
         #region Ctors
+
         public GeoController(IGeoIpAddressResolver geoIpAddressResolver)
         {
             _geoIpAddressResolver = geoIpAddressResolver;
         }
+
         #endregion
 
 
         #region Methods
+
         // GET api/values
         [HttpGet]
         public ActionResult Get()
@@ -35,8 +40,8 @@ namespace O2NextGen.OnTracker.Api.Controllers
             //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             //Request.HttpContext.Connection.RemoteIpAddress;
             //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
-            //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
-            IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
+            IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+            // IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
             string result = "";
             if (remoteIpAddress != null)
             {
@@ -47,15 +52,21 @@ namespace O2NextGen.OnTracker.Api.Controllers
                     remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
                         .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
                 }
+
                 result = remoteIpAddress.ToString();
             }
+
+
             Console.WriteLine(remoteIpAddress.ToString());
-            if (result.ToString() == "127.0.0.1")
+            if (result == "127.0.0.1")
                 return Ok("request with localhost");
-            return Ok(_geoIpAddressResolver.ResolveAddress(IPAddress.Parse(result.ToString())));
+            var found = _geoIpAddressResolver.ResolveAddress(IPAddress.Parse(result));
+
+            if (found == null)
+                return NotFound("Result not found");
+            return Ok(found);
         }
+
         #endregion
     }
-
 }
-

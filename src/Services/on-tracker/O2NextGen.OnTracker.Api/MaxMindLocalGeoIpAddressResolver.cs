@@ -11,6 +11,10 @@ namespace O2NextGen.OnTracker.Api
 {
     public sealed class MaxMindLocalGeoIpAddressResolver : IGeoIpAddressResolver
     {
+        public MaxMindLocalGeoIpAddressResolver()
+        {
+            
+        }
         private const string DefaultLang = "en";
 
         private const FileAccessMode AccessMode = FileAccessMode.Memory;
@@ -22,7 +26,7 @@ namespace O2NextGen.OnTracker.Api
         public MaxMindLocalGeoIpAddressResolver(GeoDatabase setting)
         {
             // var path =  geoDbSetting;
-            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + setting.ConnectionDb;//+ "/geoip/" + "GeoLite2-City.mmdb";
+            var path = Environment.CurrentDirectory + setting.ConnectionDb;//+ "/geoip/" + "GeoLite2-City.mmdb";
             if (string.IsNullOrWhiteSpace(path))
                 throw new Exception("MaxMind local database path is not configured");
 
@@ -35,6 +39,7 @@ namespace O2NextGen.OnTracker.Api
 
         public GeoLocation ResolveAddress(IPAddress ip)
         {
+            var all = m_reader.FindAll<GeoLocationData>();
             var response = m_reader.Find<GeoLocationData>(ip);
             if (response == null)
                 return null;
