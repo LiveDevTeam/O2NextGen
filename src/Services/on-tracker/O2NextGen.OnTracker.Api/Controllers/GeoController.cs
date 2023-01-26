@@ -54,8 +54,13 @@ namespace O2NextGen.OnTracker.Api.Controllers
                 // This usually only happens when the browser is on the same machine as the server.
                 if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
                 {
-                    remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
-                        .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).MapToIPv4();
+                   var iPs =  Array.FindAll(
+                        Dns.GetHostEntry(remoteIpAddress).AddressList,
+                        address => address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+                    // remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
+                    //     .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+
+                    remoteIpAddress = iPs.First();
                 }
             
                 result = remoteIpAddress.ToString();
