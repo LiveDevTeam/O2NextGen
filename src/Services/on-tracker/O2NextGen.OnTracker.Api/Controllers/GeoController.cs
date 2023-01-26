@@ -40,7 +40,7 @@ namespace O2NextGen.OnTracker.Api.Controllers
             //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             //Request.HttpContext.Connection.RemoteIpAddress;
             //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
-             IPAddress remoteIpAddress = HttpContext.Connection.RemoteIpAddress;
+             IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
                 // HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             // IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
             string result = "";
@@ -55,7 +55,7 @@ namespace O2NextGen.OnTracker.Api.Controllers
                 if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
                 {
                     remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
-                        .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+                        .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).MapToIPv4();
                 }
             
                 result = remoteIpAddress.ToString();
