@@ -39,10 +39,13 @@ namespace O2NextGen.OnTracker.Api.Controllers
             // var ip = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             //Request.HttpContext.Connection.RemoteIpAddress;
-            //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
-            IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+            IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
+            // IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             // IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
             string result = "";
+
+            // if (remoteIpAddress == "::1")
+            //     result = Dns.GetHostEntry(remoteIpAddress).AddressList[2].ToString();
             if (remoteIpAddress != null)
             {
                 // If we got an IPV6 address, then we need to ask the network for the IPV4 address 
@@ -52,7 +55,7 @@ namespace O2NextGen.OnTracker.Api.Controllers
                     remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
                         .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
                 }
-
+            
                 result = remoteIpAddress.ToString();
             }
 
