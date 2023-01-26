@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -52,7 +53,10 @@ namespace O2NextGen.OnTracker.Api
             //{
             //    app.UseHsts();
             //}
-            app.UseForwardedHeaders();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.UseSwagger()
                 .UseSwaggerUI(c => { c.SwaggerEndpoint($"/swagger/v1/swagger.json", "On-Tracker API V1"); });
             //app.UseHttpsRedirection();
