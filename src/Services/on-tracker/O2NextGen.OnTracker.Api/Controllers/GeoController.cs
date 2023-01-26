@@ -40,10 +40,12 @@ namespace O2NextGen.OnTracker.Api.Controllers
             //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             //Request.HttpContext.Connection.RemoteIpAddress;
             //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
-             IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+             IPAddress remoteIpAddress = HttpContext.Connection.RemoteIpAddress;
+                // HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             // IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
             string result = "";
 
+            Console.WriteLine($"ip - {remoteIpAddress}");
             // if (remoteIpAddress == "::1")
             //     result = Dns.GetHostEntry(remoteIpAddress).AddressList[2].ToString();
             if (remoteIpAddress != null)
@@ -61,8 +63,10 @@ namespace O2NextGen.OnTracker.Api.Controllers
 
 
             Console.WriteLine(remoteIpAddress.ToString());
+            
             if (result == "127.0.0.1")
                 return Ok("request with localhost");
+            Console.WriteLine("start find to base");
             var found = _geoIpAddressResolver.ResolveAddress(IPAddress.Parse(result));
 
             if (found == null)
