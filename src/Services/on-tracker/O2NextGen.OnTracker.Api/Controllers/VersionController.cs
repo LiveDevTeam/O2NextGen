@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace O2NextGen.OnTracker.Api.Controllers
 {
     [AllowAnonymous]
+    [Route("api/[controller]")]
     public class VersionController : ControllerBase
     {
         #region Fields
