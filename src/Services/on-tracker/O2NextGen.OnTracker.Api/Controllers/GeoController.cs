@@ -59,7 +59,11 @@ namespace O2NextGen.OnTracker.Api.Controllers
                         address => address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
                     // remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
                     //     .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
-
+                    foreach (var ip in iPs)
+                    {
+                        Console.WriteLine($"find ip address - {ip}");
+                    }
+                    
                     remoteIpAddress = iPs.First();
                 }
             
