@@ -59,7 +59,7 @@ ingress:
 env:
   values:
     - name: ConnectionString
-      value: Server=tcp:mssql-data;Initial Catalog=O2Bionics.O2NextGen.CGenDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
+      value: Server=tcp:mssql-data;Initial Catalog=O2Bionics.O2NextGen.OnTrackerDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
     - name: DatabaseInitializerSettings__Initialize
       value: false
 resources: {}
