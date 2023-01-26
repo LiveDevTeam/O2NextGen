@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace O2NextGen.OnTracker.Api.Controllers
 {
     [AllowAnonymous]
-    [Route("api/[controller]")]
+    [ApiController]
     public class VersionController : ControllerBase
     {
         #region Fields
@@ -35,7 +35,7 @@ namespace O2NextGen.OnTracker.Api.Controllers
 
         #region Methods
 
-        [HttpGet("[controller]")]
+        [HttpGet("api/[controller]")]
         public object Index()
         {
             var exVersion = Assembly.GetExecutingAssembly().GetName().Version;
