@@ -40,7 +40,7 @@ namespace O2NextGen.OnTracker.Api.Controllers
             //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             //Request.HttpContext.Connection.RemoteIpAddress;
             //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
-             IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
+             var remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
                 // HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
             // IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
             string result = "";
@@ -50,22 +50,24 @@ namespace O2NextGen.OnTracker.Api.Controllers
             //     result = Dns.GetHostEntry(remoteIpAddress).AddressList[2].ToString();
             if (remoteIpAddress != null)
             {
+                if (remoteIpAddress == "::1")
+                    result = Dns.GetHostEntry(remoteIpAddress).AddressList[2].ToString();
                 // If we got an IPV6 address, then we need to ask the network for the IPV4 address 
                 // This usually only happens when the browser is on the same machine as the server.
-                if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
-                {
-                   var iPs =  Array.FindAll(
-                        Dns.GetHostEntry(remoteIpAddress).AddressList,
-                        address => address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
-                    // remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
-                    //     .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
-                    foreach (var ip in iPs)
-                    {
-                        Console.WriteLine($"find ip address - {ip}");
-                    }
-                    
-                    remoteIpAddress = iPs.First();
-                }
+                // if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
+                // {
+                //    // var iPs =  Array.FindAll(
+                //    //      Dns.GetHostEntry(remoteIpAddress).AddressList,
+                //    //      address => address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+                //     // remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
+                //     //     .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+                //     // foreach (var ip in iPs)
+                //     // {
+                //     //     Console.WriteLine($"find ip address - {ip}");
+                //     // }
+                //     
+                //     remoteIpAddress = iPs.First();
+                // }
             
                 result = remoteIpAddress.ToString();
             }
