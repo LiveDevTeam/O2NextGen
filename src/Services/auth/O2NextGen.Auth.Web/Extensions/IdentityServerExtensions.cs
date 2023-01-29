@@ -178,6 +178,43 @@ namespace O2NextGen.Auth.Web.Extensions
                     AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
                 },
+                new Client()
+                {
+                    ClientId = "mvc",
+                    ClientName = "MVC Client",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    RequireClientSecret =false,
+                    RedirectUris = { "https://localhost:5003/signin-oidc"},
+                    PostLogoutRedirectUris = { "https://localhost:5003/signout-callback-oidc"},
+                    AllowedCorsOrigins = { "https://localhost:5003" },
+                    AllowedScopes = new List<string>()
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
+                    }
+                },
+                new Client()
+                {
+                    ClientId = "client.pfrcenter.blazor",
+                    ClientName = "client.pfrcenter.blazor",
+                    RequireClientSecret = false,
+                    RequireConsent = false,
+                    RequirePkce = true,
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.Address,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile ,
+                    },
+                    RedirectUris =
+                    {
+                        "https://localhost:7001/authentication/login-callback "
+                    },
+                    PostLogoutRedirectUris =
+                    {
+                        "https://localhost:7001/authentication/logout-callback "
+                    }
+                }
 
             };
         }
