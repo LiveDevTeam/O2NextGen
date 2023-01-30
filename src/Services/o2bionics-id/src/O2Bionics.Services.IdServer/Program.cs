@@ -1,9 +1,11 @@
+using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using O2Bionics.Services.IdServer;
 using O2Bionics.Services.IdServer.DbContexts;
 using O2Bionics.Services.IdServer.Initializer;
 using O2Bionics.Services.IdServer.Models;
+using O2Bionics.Services.IdServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +32,7 @@ builder.Services.AddIdentityServer(options =>
     .AddAspNetIdentity<ApplicationUser>()
     .AddDeveloperSigningCredential();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
-
+builder.Services.AddScoped<IProfileService,ProfileService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
