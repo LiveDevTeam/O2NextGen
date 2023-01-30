@@ -1,8 +1,7 @@
-﻿{
+{
   "profiles": {
     "O2Bionics.Services.IdServer": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5000;http://localhost:5068",
       "environmentVariables": {
