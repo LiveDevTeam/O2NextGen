@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using O2Bionics.Services.IdServer;
 using O2Bionics.Services.IdServer.DbContexts;
+using O2Bionics.Services.IdServer.Initializer;
 using O2Bionics.Services.IdServer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,22 +17,22 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddIdentityServer(options =>
-{
-    options.Events.RaiseErrorEvents = true;
-    options.Events.RaiseInformationEvents = true;
-    options.Events.RaiseFailureEvents = true;
-    options.Events.RaiseSuccessEvents = true;
+    {
+        options.Events.RaiseErrorEvents = true;
+        options.Events.RaiseInformationEvents = true;
+        options.Events.RaiseFailureEvents = true;
+        options.Events.RaiseSuccessEvents = true;
 
-    options.EmitStaticAudienceClaim=true;
-}).AddInMemoryIdentityResources(  SD.IdentityResources )
+        options.EmitStaticAudienceClaim = true;
+    }).AddInMemoryIdentityResources(SD.IdentityResources)
     .AddInMemoryApiScopes(SD.ApiScopes)
     .AddInMemoryClients(SD.Clients)
     .AddAspNetIdentity<ApplicationUser>()
     .AddDeveloperSigningCredential();
-
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
 builder.Services.AddControllersWithViews();
- 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,7 +45,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+using var scope = app.Services.CreateScope();
+var initializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+initializer?.Initialize();
 app.UseRouting();
 app.UseIdentityServer();
 app.UseAuthorization();
