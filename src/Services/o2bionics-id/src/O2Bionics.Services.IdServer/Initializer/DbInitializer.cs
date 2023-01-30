@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using O2Bionics.Services.IdServer.DbContexts;
 using O2Bionics.Services.IdServer.Models;
 
@@ -22,6 +23,7 @@ public class DbInitializer : IDbInitializer
 
     public void Initialize()
     {
+        _db.Database.Migrate();
         if (_roleManager.FindByNameAsync(SD.Admin).Result == null)
         {
             _roleManager.CreateAsync(new IdentityRole(SD.Admin)).GetAwaiter().GetResult();
