@@ -18,7 +18,7 @@ namespace O2Bionics.Services.IdServer
 
         public static IEnumerable<ApiScope> ApiScopes => new List<ApiScope>
         {
-            new ApiScope(name: "cgen-api", displayName: "Acces to CGen API")
+            new ApiScope(name: "cgen.api", displayName: "Acces to CGen API")
         };
 
         public static IEnumerable<Client> Clients => new List<Client>()
@@ -30,7 +30,7 @@ namespace O2Bionics.Services.IdServer
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 AllowedScopes =
                 {
-                    "cgen-api",
+                    "cgen.api",
                     "profile"
                 }
             },
@@ -46,7 +46,7 @@ namespace O2Bionics.Services.IdServer
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
                     IdentityServerConstants.StandardScopes.Email,
-                    "cgen-api",
+                    "cgen.api",
                     "profile"
                 }
             },
