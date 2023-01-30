@@ -1,8 +1,7 @@
-﻿{
+{
   "profiles": {
     "PFRCentr.App.MvcClient": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5003",
       "environmentVariables": {

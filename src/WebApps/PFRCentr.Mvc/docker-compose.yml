@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  pfrcentr.app.mvcclient:
+    image: ${DOCKER_REGISTRY-}pfrcentrapp
+    build:
+      context: .
+      dockerfile: src/PFRCentr.App.MvcClient/Dockerfile

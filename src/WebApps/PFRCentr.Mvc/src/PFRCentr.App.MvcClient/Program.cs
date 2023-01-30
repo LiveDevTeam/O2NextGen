@@ -59,8 +59,8 @@ app.UseStaticFiles();
 //app.UseCookiePolicy();
 app.UseRouting();
 
-app.UseAuthentication();    // аутентификация
-app.UseAuthorization();     // авторизация
+app.UseAuthentication();    
+app.UseAuthorization();   
 
 app.MapControllerRoute(
     name: "default",
