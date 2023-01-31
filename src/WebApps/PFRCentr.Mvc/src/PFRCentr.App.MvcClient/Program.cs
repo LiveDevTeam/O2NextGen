@@ -32,7 +32,7 @@ builder.Services.AddAuthentication(option =>
     .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
     {
         options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        options.Authority = "https://localhost:5000"; //identity server 
+        options.Authority = builder.Configuration.GetValue<string>("Services:AuthApiUrl");//identity server 
         options.GetClaimsFromUserInfoEndpoint  = true;
         //options.RequireHttpsMetadata = false;
         options.ClientId = "mvc";
