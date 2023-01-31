@@ -24,8 +24,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 //     builder.Configuration.GetSection<DataProtectionSettings>(nameof(DataProtectionSettings))?.Location;
 // if (!string.IsNullOrWhiteSpace(dataProtectionKeysLocation))
 {
-    // builder.Services
-    //     .AddDataProtection();
+    builder.Services
+        .AddDataProtection();
     // .PersistKeysToFileSystem(new DirectoryInfo(dataProtectionKeysLocation));
     // TODO: encrypt the keys
 }
@@ -51,7 +51,8 @@ builder.Services.AddIdentityServer(options =>
         options.Events.RaiseSuccessEvents = true;
 
         options.EmitStaticAudienceClaim = true;
-    }).AddInMemoryIdentityResources(SD.IdentityResources)
+    })
+    .AddInMemoryIdentityResources(SD.IdentityResources)
     .AddInMemoryApiScopes(SD.ApiScopes)
     .AddInMemoryClients(SD.GetClients(SD.GetUrls(builder.Configuration)))
     .AddAspNetIdentity<ApplicationUser>()
