@@ -691,7 +691,29 @@ resource "kubernetes_namespace" "devops" {
   }
 }
 
+# ======== Storage ========
+resource "azurerm_storage_account" "storage" {
+  name                     = var.storage_account_name
+  resource_group_name      = var.k8s_resource_group
+  location                 = var.k8s_location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  allow_blob_public_access = true
+}
 
+resource "azurerm_storage_container" "container" {
+  name                  = var.storage_container_name
+  storage_account_name  = azurerm_storage_account.storage.name
+  container_access_type = "container" # "blob" "private"
+}
+
+# resource "azurerm_storage_blob" "blob" {
+#   name                   = "sample-file.sh"
+#   storage_account_name   = azurerm_storage_account.storage.name
+#   storage_container_name = azurerm_storage_container.container.name
+#   type                   = "Block"
+#   source                 = "commands.sh"
+# }
 
 # ============================= INSTALL APPLICATION =======================================  
 # =========================================================================================

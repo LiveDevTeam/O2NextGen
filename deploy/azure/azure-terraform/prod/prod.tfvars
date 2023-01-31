@@ -24,3 +24,8 @@ k8s_acr_name = "o2nextgen"
 grafana_admin_user     = "grafana"
 grafana_admin_password = "grafana-pass"
 harbor_admin_password  = "#89_DangerSnake?"
+
+
+# Storage
+storage_account_name   = "o2nextgen-prod-dt"
+storage_container_name = "dataprotection"
