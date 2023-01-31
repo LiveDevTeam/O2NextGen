@@ -28,7 +28,7 @@ builder.Services.AddIdentityServer(options =>
         options.EmitStaticAudienceClaim = true;
     }).AddInMemoryIdentityResources(SD.IdentityResources)
     .AddInMemoryApiScopes(SD.ApiScopes)
-    .AddInMemoryClients(SD.Clients)
+    .AddInMemoryClients(SD.GetClients(SD.GetUrls(builder.Configuration)))
     .AddAspNetIdentity<ApplicationUser>()
     .AddDeveloperSigningCredential();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();

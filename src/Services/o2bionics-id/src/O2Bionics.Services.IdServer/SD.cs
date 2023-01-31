@@ -5,17 +5,18 @@ namespace O2Bionics.Services.IdServer
 {
     public static class SD
     {
-        private static Dictionary<string, string> clientUrls = new Dictionary<string, string>();
+
         public static Dictionary<string, string> GetUrls(IConfiguration configuration)
         {
             var urls = new Dictionary<string, string>();
-            urls.Add("PfrMvcUrl", 
-                Environment.GetEnvironmentVariable("PfrMvcUrl") ?? configuration.GetValue<string>("Urls:PfrMvcUrl"));
+            urls.Add("PfrMvcUrl",
+                Environment.GetEnvironmentVariable("Urls:PfrMvcUrl") ?? configuration.GetValue<string>("Urls:PfrMvcUrl"));
             Console.WriteLine(" ========================= CONFIG IDServer ========================== ");
             foreach (var item in urls)
             {
                 Console.WriteLine($"key={item.Key}   value={item.Value}");
             }
+
             Console.WriteLine(" ================= END SETTINGS ====================\r\n");
             return urls;
         }
@@ -36,35 +37,39 @@ namespace O2Bionics.Services.IdServer
             new ApiScope(name: "cgen.api", displayName: "Acces to CGen API")
         };
 
-        public static IEnumerable<Client> Clients => new List<Client>()
+        public static IEnumerable<Client> GetClients(Dictionary<string, string> clientUrls)
         {
-            new Client()
-            {
-                ClientId = "client",
-                ClientSecrets = { new Secret("secret".Sha256()) },
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes =
+            return
+                new List<Client>()
                 {
-                    "cgen.api",
-                    "profile"
-                }
-            },
-            new Client()
-            {
-                ClientId = "mvc",
-                ClientSecrets = { new Secret("secret".Sha256()) },
-                AllowedGrantTypes = GrantTypes.Code,
-                RedirectUris = { $"{clientUrls["PfrMvcUrl"]}/signin-oidc" },
-                PostLogoutRedirectUris = { $"{clientUrls["PfrMvcUrl"]}/signout-callback-oidc" },
-                AllowedScopes = new List<string>()
-                {
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.StandardScopes.Email,
-                    "cgen.api",
-                    "profile"
-                }
-            },
-        };
+                    new Client()
+                    {
+                        ClientId = "client",
+                        ClientSecrets = {new Secret("secret".Sha256())},
+                        AllowedGrantTypes = GrantTypes.ClientCredentials,
+                        AllowedScopes =
+                        {
+                            "cgen.api",
+                            "profile"
+                        }
+                    },
+                    new Client()
+                    {
+                        ClientId = "mvc",
+                        ClientSecrets = {new Secret("secret".Sha256())},
+                        AllowedGrantTypes = GrantTypes.Code,
+                        RedirectUris = {$"{clientUrls["PfrMvcUrl"]}/signin-oidc"},
+                        PostLogoutRedirectUris = {$"{clientUrls["PfrMvcUrl"]}/signout-callback-oidc"},
+                        AllowedScopes = new List<string>()
+                        {
+                            IdentityServerConstants.StandardScopes.OpenId,
+                            IdentityServerConstants.StandardScopes.Profile,
+                            IdentityServerConstants.StandardScopes.Email,
+                            "cgen.api",
+                            "profile"
+                        }
+                    },
+                };
+        }
     }
 }
