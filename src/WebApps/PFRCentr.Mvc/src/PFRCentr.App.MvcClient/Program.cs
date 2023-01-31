@@ -11,8 +11,10 @@ builder.Services.AddControllersWithViews();
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 var identityUrl = Environment.GetEnvironmentVariable("Services:AuthApiUrl") ??
     builder.Configuration.GetValue<string>("Services:AuthApiUrl");//identity server 
+var callBackUrl = builder.Configuration.GetValue<string>("CallBackUrl");
 
 Console.WriteLine($"IdentityUrl = {identityUrl}");
+Console.WriteLine($"CallBackUrl = {callBackUrl}");
 
 builder.Services.AddAuthentication(option =>
     {
@@ -39,6 +41,7 @@ builder.Services.AddAuthentication(option =>
     {
         options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         options.Authority = identityUrl;
+        options.SignedOutRedirectUri = callBackUrl.ToString();
         options.GetClaimsFromUserInfoEndpoint  = true;
         options.RequireHttpsMetadata = true;
         options.ClientId = "mvc";
