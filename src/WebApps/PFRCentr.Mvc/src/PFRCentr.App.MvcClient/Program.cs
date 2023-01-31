@@ -12,7 +12,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 var identityUrl = Environment.GetEnvironmentVariable("Services:AuthApiUrl") ??
     builder.Configuration.GetValue<string>("Services:AuthApiUrl");//identity server 
 var callBackUrl = Environment.GetEnvironmentVariable("CallBackUrl") 
-                  ??builder.Configuration.GetValue<string>("CallBackUrl");
+                  ?? builder.Configuration.GetValue<string>("CallBackUrl");
 
 Console.WriteLine($"IdentityUrl = {identityUrl}");
 Console.WriteLine($"CallBackUrl = {callBackUrl}");
