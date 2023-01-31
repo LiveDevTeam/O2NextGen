@@ -5,6 +5,21 @@ namespace O2Bionics.Services.IdServer
 {
     public static class SD
     {
+        private static Dictionary<string, string> clientUrls = new Dictionary<string, string>();
+        public static Dictionary<string, string> GetUrls(IConfiguration configuration)
+        {
+            var urls = new Dictionary<string, string>();
+            urls.Add("PfrMvcUrl", 
+                Environment.GetEnvironmentVariable("PfrMvcUrl") ?? configuration.GetValue("Urls:PfrMvcUrl"));
+            Console.WriteLine(" ========================= CONFIG IDServer ========================== ");
+            foreach (var item in urls)
+            {
+                Console.WriteLine($"key={item.Key}   value={item.Value}");
+            }
+            Console.WriteLine(" ================= END SETTINGS ====================\r\n");
+            return urls;
+        }
+
         public const string Admin = "Admin";
         public const string Customer = "Customer";
 
@@ -39,8 +54,8 @@ namespace O2Bionics.Services.IdServer
                 ClientId = "mvc",
                 ClientSecrets = { new Secret("secret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.Code,
-                RedirectUris = { "https://localhost:5003/signin-oidc" },
-                PostLogoutRedirectUris = { "https://localhost:5003/signout-callback-oidc" },
+                RedirectUris = { $"{clientUrls["PfrMvcUrl"]}/signin-oidc" },
+                PostLogoutRedirectUris = { $"{clientUrls["PfrMvcUrl"]}/signout-callback-oidc" },
                 AllowedScopes = new List<string>()
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
