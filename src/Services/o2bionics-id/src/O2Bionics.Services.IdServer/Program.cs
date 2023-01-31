@@ -29,7 +29,8 @@ var keysFolder = Path.Combine(builder.Environment.ContentRootPath, "temp-keys");
         .AddDataProtection()
         .SetApplicationName("fow-customer-portal")
         .PersistKeysToFileSystem(new DirectoryInfo(keysFolder))
-        .SetDefaultKeyLifetime(TimeSpan.FromDays(30));
+        .SetDefaultKeyLifetime(TimeSpan.FromDays(30))
+        .ProtectKeysWithDpapi();;
     // .PersistKeysToFileSystem(new DirectoryInfo(dataProtectionKeysLocation));
     // TODO: encrypt the keys
 }
