@@ -42,10 +42,6 @@ var keysFolder = Path.Combine(builder.Environment.ContentRootPath, "temp-keys");
 {
     builder.Services
         .AddDataProtection()
-        .AddKeyManagementOptions(options =>
-        {
-
-        })
         // This blob must already exist before the application is run
         .PersistKeysToAzureBlobStorage(
             "DefaultEndpointsProtocol=https;AccountName=o2nextgen001;AccountKey=twBN1I6NPVBTDfaaowm71LznRdfcN9f5uA8MhcW6fYqCOBxl5wtchEinoE7EVHdi0FLDz2sSd4Io+AStJfqN2A==;EndpointSuffix=core.windows.net",
@@ -91,6 +87,7 @@ builder.Services.AddIdentityServer(options =>
     .AddInMemoryApiScopes(SD.ApiScopes)
     .AddInMemoryClients(SD.GetClients(SD.GetUrls(builder.Configuration)))
     .AddAspNetIdentity<ApplicationUser>()
+    //.AddDeveloperSigningCredential()
     .AddSigningCredential(certificate);
 
 //.AddDeveloperSigningCredential();
@@ -104,10 +101,10 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
 
+}
+// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 using var scope = app.Services.CreateScope();
