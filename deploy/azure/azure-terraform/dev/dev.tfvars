@@ -26,5 +26,5 @@ grafana_admin_password = "grafana-pass"
 harbor_admin_password  = "#89_DangerSnake?"
 
 # Storage
-storage_account_name   = "storageacc017"
+storage_account_name   = "o2nextgen009"
 storage_container_name = "my-files"
