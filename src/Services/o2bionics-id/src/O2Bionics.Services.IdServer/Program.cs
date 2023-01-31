@@ -27,16 +27,22 @@ var keysFolder = Path.Combine(builder.Environment.ContentRootPath, "temp-keys");
 {
     builder.Services
         .AddDataProtection()
-        .SetApplicationName("fow-customer-portal")
-        .PersistKeysToFileSystem(new DirectoryInfo(keysFolder))
-        .SetDefaultKeyLifetime(TimeSpan.FromDays(30))
-        .ProtectKeysWithDpapi();;
+        .AddKeyManagementOptions(options =>
+        {
+            
+        })
+        .PersistKeysToDbContext<ApplicationDbContext>()
+        // .SetApplicationName("fow-customer-portal")
+        // .PersistKeysToFileSystem(new DirectoryInfo(keysFolder))
+        // .SetDefaultKeyLifetime(TimeSpan.FromDays(30))
+        .ProtectKeysWithDpapi();
+
     // .PersistKeysToFileSystem(new DirectoryInfo(dataProtectionKeysLocation));
     // TODO: encrypt the keys
 }
 var pass = "P@55w0rd";
 var filename = "IdentityServer4_certificate";
-var filepath = Path.Combine(builder.Environment.ContentRootPath, filename );
+var filepath = Path.Combine(builder.Environment.ContentRootPath, filename);
 // var options = new GenerateCertificateOptions
 // (
 //     pathToSave: builder.Environment.ContentRootPath,
@@ -47,7 +53,9 @@ var filepath = Path.Combine(builder.Environment.ContentRootPath, filename );
 // );
 // certificateHelper.MakeCert(options);
 
-var certificate = new X509Certificate2(Path.Combine(builder.Environment.ContentRootPath,"IdentityServer4_certificate.pfx"), pass);
+var certificate = new X509Certificate2(
+    Path.Combine(builder.Environment.ContentRootPath, "IdentityServer4_certificate.pfx"), pass);
+
 builder.Services.AddIdentityServer(options =>
     {
         options.Events.RaiseErrorEvents = true;
@@ -56,15 +64,16 @@ builder.Services.AddIdentityServer(options =>
         options.Events.RaiseSuccessEvents = true;
 
         options.EmitStaticAudienceClaim = true;
-    })
+    }).AddKeyManagement()
     .AddInMemoryIdentityResources(SD.IdentityResources)
     .AddInMemoryApiScopes(SD.ApiScopes)
     .AddInMemoryClients(SD.GetClients(SD.GetUrls(builder.Configuration)))
     .AddAspNetIdentity<ApplicationUser>()
     .AddSigningCredential(certificate);
-    //.AddDeveloperSigningCredential();
+
+//.AddDeveloperSigningCredential();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
-builder.Services.AddScoped<IProfileService,ProfileService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
