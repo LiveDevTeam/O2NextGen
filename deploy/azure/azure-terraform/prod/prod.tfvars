@@ -27,5 +27,5 @@ harbor_admin_password  = "#89_DangerSnake?"
 
 
 # Storage
-storage_account_name   = "o2nextgen999"
+storage_account_name   = "o2nextgen001"
 storage_container_name = "dataprotection"
