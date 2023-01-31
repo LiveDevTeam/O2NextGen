@@ -40,7 +40,7 @@ builder.Services.AddAuthentication(option =>
         options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         options.Authority = identityUrl;
         options.GetClaimsFromUserInfoEndpoint  = true;
-        //options.RequireHttpsMetadata = true;
+        options.RequireHttpsMetadata = true;
         options.ClientId = "mvc";
         options.ClientSecret = "secret"; 
         options.ResponseType = "code";
@@ -59,11 +59,10 @@ if (!app.Environment.IsDevelopment())
   
 }
 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-// app.UseHsts();
-// app.UseHttpsRedirection();
+app.UseHsts();
 //fix https://github.com/IdentityServer/IdentityServer4/issues/4645
 app.Use((context, next) => { context.Request.Scheme = "https"; return next(); });
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 //app.UseCookiePolicy();
 app.UseRouting();
