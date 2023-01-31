@@ -10,7 +10,7 @@ namespace O2Bionics.Services.IdServer
         {
             var urls = new Dictionary<string, string>();
             urls.Add("PfrMvcUrl", 
-                Environment.GetEnvironmentVariable("PfrMvcUrl") ?? configuration.GetValue("Urls:PfrMvcUrl"));
+                Environment.GetEnvironmentVariable("PfrMvcUrl") ?? configuration.GetValue<string>("Urls:PfrMvcUrl"));
             Console.WriteLine(" ========================= CONFIG IDServer ========================== ");
             foreach (var item in urls)
             {
