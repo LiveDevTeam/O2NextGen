@@ -61,7 +61,7 @@ env:
     - name: ConnectionString
       value: Server=tcp:mssql-data;Initial Catalog=O2Bionics.O2NextGen.IdServerDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
     - name: Urls__PfrMvcUrl
-      value: app.pfr-centr.com
+      value: https://app.pfr-centr.com
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
