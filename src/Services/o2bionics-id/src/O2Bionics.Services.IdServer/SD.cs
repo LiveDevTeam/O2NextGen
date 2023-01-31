@@ -60,6 +60,7 @@ namespace O2Bionics.Services.IdServer
                         AllowedGrantTypes = GrantTypes.Code,
                         RedirectUris = {$"{clientUrls["PfrMvcUrl"]}/signin-oidc"},
                         PostLogoutRedirectUris = {$"{clientUrls["PfrMvcUrl"]}/signout-callback-oidc"},
+                        AllowedCorsOrigins = {$"{clientUrls["PfrMvcUrl"]}"},
                         AllowedScopes = new List<string>()
                         {
                             IdentityServerConstants.StandardScopes.OpenId,
