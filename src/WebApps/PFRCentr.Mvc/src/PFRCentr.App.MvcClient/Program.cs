@@ -62,7 +62,7 @@ if (!app.Environment.IsDevelopment())
 // app.UseHsts();
 // app.UseHttpsRedirection();
 //fix https://github.com/IdentityServer/IdentityServer4/issues/4645
-// app.Use((context, next) => { context.Request.Scheme = "https"; return next(); });
+app.Use((context, next) => { context.Request.Scheme = "https"; return next(); });
 // app.UseHttpsRedirection();
 app.UseStaticFiles();
 //app.UseCookiePolicy();
