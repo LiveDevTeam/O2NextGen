@@ -23,9 +23,13 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 // var dataProtectionKeysLocation =
 //     builder.Configuration.GetSection<DataProtectionSettings>(nameof(DataProtectionSettings))?.Location;
 // if (!string.IsNullOrWhiteSpace(dataProtectionKeysLocation))
+var keysFolder = Path.Combine(builder.Environment.ContentRootPath, "temp-keys");
 {
     builder.Services
-        .AddDataProtection();
+        .AddDataProtection()
+        .SetApplicationName("fow-customer-portal")
+        .PersistKeysToFileSystem(new DirectoryInfo(keysFolder))
+        .SetDefaultKeyLifetime(TimeSpan.FromDays(30));
     // .PersistKeysToFileSystem(new DirectoryInfo(dataProtectionKeysLocation));
     // TODO: encrypt the keys
 }
