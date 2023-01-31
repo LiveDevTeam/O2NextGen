@@ -29,8 +29,8 @@ provider "tls" {}
 # We strongly recommend using the required_providers block to set the
 # Azure Provider source and version being used
 terraform {
-  backend "azure" {
-  }
+  # backend "azure" {
+  # }
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -692,18 +692,20 @@ resource "kubernetes_namespace" "devops" {
 }
 
 # ======== Storage ========
-resource "azurerm_storage_account" "storage" {
+resource "azurerm_storage_account" "k8s-storage" {
   name                     = var.storage_account_name
   resource_group_name      = var.k8s_resource_group
   location                 = var.k8s_location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  allow_blob_public_access = true
+  tags = {
+    environment = "Production"
+  }
 }
 
 resource "azurerm_storage_container" "container" {
   name                  = var.storage_container_name
-  storage_account_name  = azurerm_storage_account.storage.name
+  storage_account_name  = var.storage_account_name
   container_access_type = "container" # "blob" "private"
 }
 
