@@ -5,7 +5,7 @@ using O2Bionics.Services.IdServer.Models;
 
 namespace O2Bionics.Services.IdServer.DbContexts
 {
-    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>, IDataProtectionKeyContext
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         { 

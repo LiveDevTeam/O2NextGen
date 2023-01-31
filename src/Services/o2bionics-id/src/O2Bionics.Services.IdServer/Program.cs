@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.DataProtection;
@@ -23,19 +24,40 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 // var dataProtectionKeysLocation =
 //     builder.Configuration.GetSection<DataProtectionSettings>(nameof(DataProtectionSettings))?.Location;
 // if (!string.IsNullOrWhiteSpace(dataProtectionKeysLocation))
+var settings = builder.Configuration.GetSection("DataProtection").Get<DataProtectionSettings>();
+Console.WriteLine(" ========================= SETTINGS ========================== ");
+Console.WriteLine(
+    $"DataProtection AadTenantId={settings.AadTenantId} keyId={settings.KeyVaultKeyId} account={settings.StorageAccountName} blob={settings.StorageKeyBlobName}  blob-dev={settings.StorageDevKeyBlobName}");
+Console.WriteLine(" ================= END SETTINGS ====================\r\n");
+
+// var storageAccount = CloudStorageAccount.Parse(
+//     "DefaultEndpointsProtocol=https;AccountName=o2nextgen001;AccountKey=twBN1I6NPVBTDfaaowm71LznRdfcN9f5uA8MhcW6fYqCOBxl5wtchEinoE7EVHdi0FLDz2sSd4Io+AStJfqN2A==;EndpointSuffix=core.windows.net");
+// Console.WriteLine($"storageAccount={storageAccount}");
+// var client = storageAccount.CreateCloudBlobClient();
+// var container = client.GetContainerReference(settings.StorageKeyContainerName);
+// container.CreateIfNotExistsAsync().GetAwaiter().GetResult();
+// var blobName = IsProduction ? settings.StorageKeyBlobName : settings.StorageDevKeyBlobName;
+
 var keysFolder = Path.Combine(builder.Environment.ContentRootPath, "temp-keys");
 {
     builder.Services
         .AddDataProtection()
         .AddKeyManagementOptions(options =>
         {
-            
+
         })
-        .PersistKeysToDbContext<ApplicationDbContext>()
-        // .SetApplicationName("fow-customer-portal")
-        // .PersistKeysToFileSystem(new DirectoryInfo(keysFolder))
-        // .SetDefaultKeyLifetime(TimeSpan.FromDays(30))
-        .ProtectKeysWithDpapi();
+        // This blob must already exist before the application is run
+        .PersistKeysToAzureBlobStorage(
+            "DefaultEndpointsProtocol=https;AccountName=o2nextgen001;AccountKey=twBN1I6NPVBTDfaaowm71LznRdfcN9f5uA8MhcW6fYqCOBxl5wtchEinoE7EVHdi0FLDz2sSd4Io+AStJfqN2A==;EndpointSuffix=core.windows.net",
+            "dataprotection", "keys.xml");
+    // Removing this line below for an initial run will ensure the file is created correctly
+    //.ProtectKeysWithAzureKeyVault(new Uri("<keyIdentifier>"), new DefaultAzureCredential());
+    // .PersistKeysToAzureBlobStorage(container, blobName);
+    // .PersistKeysToDbContext<DataProtectedDbContext>()
+    // .SetApplicationName("fow-customer-portal")
+    // .PersistKeysToFileSystem(new DirectoryInfo(keysFolder))
+    // .SetDefaultKeyLifetime(TimeSpan.FromDays(30))
+    //.ProtectKeysWithDpapi();
 
     // .PersistKeysToFileSystem(new DirectoryInfo(dataProtectionKeysLocation));
     // TODO: encrypt the keys
