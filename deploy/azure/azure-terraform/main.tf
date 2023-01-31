@@ -692,22 +692,22 @@ resource "kubernetes_namespace" "devops" {
 }
 
 # ======== Storage ========
-# resource "azurerm_storage_account" "k8s-storage" {
-#   name                     = var.storage_account_name
-#   resource_group_name      = var.k8s_resource_group
-#   location                 = var.k8s_location
-#   account_tier             = "Standard"
-#   account_replication_type = "LRS"
-#   tags = {
-#     environment = "Production"
-#   }
-# }
+resource "azurerm_storage_account" "k8s-storage" {
+  name                     = var.storage_account_name
+  resource_group_name      = var.k8s_resource_group
+  location                 = var.k8s_location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  tags = {
+    environment = "Production"
+  }
+}
 
-# resource "azurerm_storage_container" "container" {
-#   name                  = var.storage_container_name
-#   storage_account_name  = var.storage_account_name
-#   container_access_type = "container" # "blob" "private"
-# }
+resource "azurerm_storage_container" "container" {
+  name                  = var.storage_container_name
+  storage_account_name  = var.storage_account_name
+  container_access_type = "container" # "blob" "private"
+}
 
 # resource "azurerm_storage_blob" "blob" {
 #   name                   = "sample-file.sh"
