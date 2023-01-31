@@ -1,13 +1,19 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.IdentityModel.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
-
+IdentityModelEventSource.ShowPII = true;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+var identityUrl = Environment.GetEnvironmentVariable("Services:AuthApiUrl") ??
+    builder.Configuration.GetValue<string>("Services:AuthApiUrl");//identity server 
+
+Console.WriteLine($"IdentityUrl = {identityUrl}");
+
 builder.Services.AddAuthentication(option =>
     {
         option.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -32,8 +38,7 @@ builder.Services.AddAuthentication(option =>
     .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
     {
         options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        options.Authority = Environment.GetEnvironmentVariable("Services:AuthApiUrl") ??
-                            builder.Configuration.GetValue<string>("Services:AuthApiUrl");//identity server 
+        options.Authority = identityUrl;
         options.GetClaimsFromUserInfoEndpoint  = true;
         //options.RequireHttpsMetadata = false;
         options.ClientId = "mvc";
