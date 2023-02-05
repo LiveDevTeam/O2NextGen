@@ -58,9 +58,21 @@ namespace O2Bionics.Services.IdServer
                         ClientId = "mvc",
                         ClientSecrets = {new Secret("secret".Sha256())},
                         AllowedGrantTypes = GrantTypes.Code,
-                        RedirectUris = {$"{clientUrls["PfrMvcUrl"]}/signin-oidc"},
-                        PostLogoutRedirectUris = {$"{clientUrls["PfrMvcUrl"]}/signout-callback-oidc"},
-                        AllowedCorsOrigins = {$"{clientUrls["PfrMvcUrl"]}"},
+                        RedirectUris =
+                        {
+                            $"{clientUrls["PfrMvcUrl"]}/signin-oidc",
+                            "https://localhost:5003/signin-oidc"
+                        },
+                        PostLogoutRedirectUris =
+                        {
+                            $"{clientUrls["PfrMvcUrl"]}/signout-callback-oidc",
+                            "https://localhost:5003/signout-callback-oidc"
+                        },
+                        AllowedCorsOrigins =
+                        {
+                            $"{clientUrls["PfrMvcUrl"]}",
+                            "https://localhost:5003"
+                        },
                         AllowedScopes = new List<string>()
                         {
                             IdentityServerConstants.StandardScopes.OpenId,
