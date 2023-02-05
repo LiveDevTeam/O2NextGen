@@ -1,12 +1,19 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Logging;
+using PFRCentr.App.MvcClient;
+using PFRCentr.App.MvcClient.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 IdentityModelEventSource.ShowPII = true;
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    });
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 var identityUrl = Environment.GetEnvironmentVariable("Services:AuthApiUrl") ??
@@ -17,7 +24,12 @@ var callBackUrl = Environment.GetEnvironmentVariable("Services:CallBackUrl") ??
 
 Console.WriteLine($"IdentityUrl = {identityUrl}");
 Console.WriteLine($"CallBackUrl = {callBackUrl}");
+SD.CGenApiBase = builder.Configuration.GetValue<string>("Services:CGenApi");
+builder.Services.AddHttpClient<ICGenCategoryService, CGenCategoryService>();
+builder.Services.AddScoped<ICGenCategoryService,CGenCategoryService>();
 
+builder.Services.AddHttpClient<ICGenCertificateService, CGenCertificateService>();
+builder.Services.AddScoped<ICGenCertificateService,CGenCertificateService>();
 builder.Services.AddAuthentication(option =>
     {
         option.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
