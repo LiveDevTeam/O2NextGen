@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  o2nextgen.auth.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"

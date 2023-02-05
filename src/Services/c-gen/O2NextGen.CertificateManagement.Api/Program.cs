@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Serilog;
+using System;
+using System.Threading.Tasks;
 
 namespace O2NextGen.CertificateManagement.Api
 {
@@ -12,13 +12,13 @@ namespace O2NextGen.CertificateManagement.Api
 
         public static readonly string AppName =
             Namespace.Substring(Namespace.LastIndexOf('.', Namespace.LastIndexOf('.') - 1) + 1);
-        
+
         public static async Task<int> Main(string[] args)
         {
-            
+
             try
             {
-                var host = CreateWebHostBuilder(args).Build();
+                var host = CreateHostBuilder(args);
                 Log.Information($"############### {AppName} ##############");
                 Log.Information("################# Starting Application #################");
                 await host.EnsureDbUpdate();
@@ -37,12 +37,13 @@ namespace O2NextGen.CertificateManagement.Api
             }
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHost CreateHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseSerilog((context, configuration) =>
                 {
                     configuration.ReadFrom.Configuration(context.Configuration);
                 })
-                .UseStartup<Startup>(); // <- Add this line
+                .UseStartup<Startup>()
+                .Build();
     }
 }

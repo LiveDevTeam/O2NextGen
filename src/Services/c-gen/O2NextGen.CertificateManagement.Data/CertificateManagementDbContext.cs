@@ -35,7 +35,7 @@ namespace O2NextGen.CertificateManagement.Data
 
             builder.Property(ci => ci.Id)
                 .HasColumnType("bigint")
-                .ForSqlServerUseSequenceHiLo("certificate_hilo")
+                .UseHiLo("certificate_hilo")
                 .IsRequired();
         }
 

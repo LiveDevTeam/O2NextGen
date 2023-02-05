@@ -1,50 +1,52 @@
-﻿using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using O2NextGen.CertificateManagement.Api.Setup;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using O2NextGen.CertificateManagement.Api.Helpers;
 using O2NextGen.CertificateManagement.Api.IoC;
-using Swashbuckle.AspNetCore.Swagger;
+using O2NextGen.CertificateManagement.Api.Setup;
+using System.Net;
+using System.Threading.Tasks;
 
 [assembly: ApiController]
 namespace O2NextGen.CertificateManagement.Api
 {
     public class Startup
     {
-        public IHostingEnvironment HostingEnvironment { get; private set; }
+        public IWebHostEnvironment HostingEnvironment { get; private set; }
         public IConfiguration AppConfiguration { get; private set; }
 
-        public Startup(IConfiguration appConfiguration, IHostingEnvironment env)
+        public Startup(IConfiguration appConfiguration, IWebHostEnvironment env)
         {
             this.HostingEnvironment = env;
             this.AppConfiguration = appConfiguration;
         }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRequiredMvcComponents();
             services.AddBusiness();
             services.AddSwaggerGen(options =>
             {
-                options.DescribeAllEnumsAsStrings();
-                options.SwaggerDoc("v1",new Info()
+                options.DescribeAllParametersInCamelCase();
+                options.SwaggerDoc("v1", new OpenApiInfo()
                 {
                     Title = "O2NextGen Platform. C-Gen HTTP API",
                     Version = "v1",
                     Description = "C-Gen API Service. The service allows you to create certificates",
-                    TermsOfService = "Terms of Service"
+                    //TermsOfService = "Terms of Service"
                 });
             });
             services.AddConfigEf(AppConfiguration);
             services.ConfigurePOCO<UrlsConfig>(AppConfiguration.GetSection("Urls"));
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -56,7 +58,7 @@ namespace O2NextGen.CertificateManagement.Api
                 {
                     builder.Run(async context =>
                     {
-                        context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
                         var error = context.Features.Get<IExceptionHandlerFeature>();
 
@@ -68,7 +70,7 @@ namespace O2NextGen.CertificateManagement.Api
                     });
                 });
             }
-            
+
             app.UseStaticFiles();
             app.UseSwagger()
                 .UseSwaggerUI(c =>
@@ -86,7 +88,8 @@ namespace O2NextGen.CertificateManagement.Api
                 await next.Invoke();
             });
 
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

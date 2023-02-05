@@ -44,7 +44,7 @@ namespace IntegrationTests.O2NextGen.CertificateManagement.Api
         // }
 
         [Fact]
-        public async Task Get_get_catalogitem_by_id_and_response_not_found_status_code()
+        public async Task Get_certificate_item_by_id_and_response_not_found_status_code()
         {
             using (var server = CreateServer())
             {

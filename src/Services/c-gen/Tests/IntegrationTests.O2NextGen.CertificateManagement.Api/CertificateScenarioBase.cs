@@ -18,7 +18,7 @@ namespace IntegrationTests.O2NextGen.CertificateManagement.Api
                 {
                     // cb.AddJsonFile("appsettings.json", false)
                     //     .AddEnvironmentVariables();
-                }).UseStartup<CertificateManagementTestsStartup>();
+                }).UseStartup<TestsStartup>();
 
             var testServer = new TestServer(hostBuilder);
 
@@ -48,10 +48,15 @@ namespace IntegrationTests.O2NextGen.CertificateManagement.Api
             }
         }
 
-        //public static class Put
-        //{
-        //    public static string CancelOrder = "api/v1/orders/cancel";
-        //    public static string ShipOrder = "api/v1/orders/ship";
-        //}
+        public static class Put
+        {
+            //    public static string CancelOrder = "api/v1/orders/cancel";
+            //    public static string ShipOrder = "api/v1/orders/ship";
+        }
+
+        public static class Post
+        {
+
+        }
     }
 }

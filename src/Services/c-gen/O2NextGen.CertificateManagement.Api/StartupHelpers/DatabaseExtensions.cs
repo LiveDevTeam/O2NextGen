@@ -1,7 +1,7 @@
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using O2NextGen.CertificateManagement.Data;
+using System.Threading.Tasks;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.AspNetCore.Hosting

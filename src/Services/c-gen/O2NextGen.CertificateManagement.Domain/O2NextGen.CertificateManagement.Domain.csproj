@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UseCases\" />
+    <None Remove="MediatR.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="MediatR" />
+    <None Remove="UseCases\Category\" />
+    <None Remove="UseCases\Certificate\" />
+    <None Remove=".DS_Store" />
+    <None Remove="Data\" />
+    <None Remove="Entities\" />
+    <None Remove="Mappings\" />
+    <None Remove="Data\Queries\" />
+    <None Remove="UseCases\ForCategory\GetCategories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UseCases\ForCategory\DeleteCategory\" />
+    <Folder Include="UseCases\ForCategory\UpdateCategory\" />
+    <Folder Include="UseCases\ForCertificate\CreateCertificate\" />
+    <Folder Include="UseCases\ForCertificate\DeleteCertificate\" />
+    <Folder Include="UseCases\ForCertificate\UpdateCertificate\" />
+    <Folder Include="Mappings\" />
+    <Folder Include="UseCases\ForCategory\GetCategories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="O2NextGen.Sdk.NetCore.Extensions" Version="1.23.107.2" />
+  </ItemGroup>
+</Project>

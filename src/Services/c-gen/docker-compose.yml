@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  o2nextgen.certificatemanagement.api:
+    image: ${DOCKER_REGISTRY-}o2nextgencertificatemanagement
+    build:
+      context: .
+      dockerfile: Dockerfile

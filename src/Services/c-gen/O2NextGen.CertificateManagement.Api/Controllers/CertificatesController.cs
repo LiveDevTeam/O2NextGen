@@ -1,14 +1,14 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using O2NextGen.CertificateManagement.Api.Mappings;
 using O2NextGen.CertificateManagement.Api.Setup;
 using O2NextGen.CertificateManagement.Business.Services;
-using O2NextGen.CertificateManagement.Api.Mappings;
 using O2NextGen.Sdk.NetCore.Models.c_gen;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace O2NextGen.CertificateManagement.Api.Controllers
 {
-    [Route("certificates")]
+    [Route("api/[controller]")]
     public class CertificatesController : ControllerBase
     {
         #region Fields
@@ -65,17 +65,17 @@ namespace O2NextGen.CertificateManagement.Api.Controllers
         public async Task<IActionResult> AddAsync(CertificateViewModel model, CancellationToken ct)
         {
             var certificate = await _certificatesService.AddAsync(model.ToModel(), ct);
-            return CreatedAtAction(nameof(GetByIdAsync), new {id = certificate.Id}, certificate);
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = certificate.Id }, certificate);
         }
-
-        #endregion
 
         [HttpDelete]
         [Route("id")]
-        public async Task<IActionResult> RemoveAsync(long id,CancellationToken ct)
+        public async Task<IActionResult> RemoveAsync(long id, CancellationToken ct)
         {
             await _certificatesService.RemoveAsync(id, ct);
             return NoContent();
         }
+
+        #endregion
     }
 }

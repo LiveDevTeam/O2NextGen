@@ -1,70 +1,111 @@
-﻿using System.Linq;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using O2NextGen.Tracker.DbUtility;
 
 namespace O2NextGen.OnTracker.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/geo")]
     [ApiController]
     public class GeoController : ControllerBase
     {
+        #region Fields
+
         private readonly IGeoIpAddressResolver _geoIpAddressResolver;
+
+        #endregion
+
+
+        #region Ctors
 
         public GeoController(IGeoIpAddressResolver geoIpAddressResolver)
         {
             _geoIpAddressResolver = geoIpAddressResolver;
         }
+
+        #endregion
+
+
+        #region Methods
+
         // GET api/values
+        // [HttpGet]
+        // public ActionResult Get()
+        // {
+        //     IPHostEntry ipHostEntry = Dns.GetHostEntry(Dns.GetHostName());
+        //     string remoteIpAddress = Convert.ToString(ipHostEntry.AddressList.FirstOrDefault(address=>address.AddressFamily==
+        //         System.Net.Sockets.AddressFamily.InterNetwork))
+        //     // Console.WriteLine("start");
+        //     // // var ip = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+        //     // //IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+        //     // //Request.HttpContext.Connection.RemoteIpAddress;
+        //     // //IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;//
+        //     //  var remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+        //     //     // HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
+        //     // // IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
+        //     // string result = "";
+        //     //
+        //     // Console.WriteLine($"ip - {remoteIpAddress}");
+        //     // // if (remoteIpAddress == "::1")
+        //     // //     result = Dns.GetHostEntry(remoteIpAddress).AddressList[2].ToString();
+        //     // if (remoteIpAddress != null)
+        //     // {
+        //     //     if (remoteIpAddress == "::1")
+        //     //         result = Dns.GetHostEntry(remoteIpAddress).AddressList[2].ToString();
+        //     //     // If we got an IPV6 address, then we need to ask the network for the IPV4 address 
+        //     //     // This usually only happens when the browser is on the same machine as the server.
+        //     //     // if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
+        //     //     // {
+        //     //     //    // var iPs =  Array.FindAll(
+        //     //     //    //      Dns.GetHostEntry(remoteIpAddress).AddressList,
+        //     //     //    //      address => address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+        //     //     //     // remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
+        //     //     //     //     .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+        //     //     //     // foreach (var ip in iPs)
+        //     //     //     // {
+        //     //     //     //     Console.WriteLine($"find ip address - {ip}");
+        //     //     //     // }
+        //     //     //     
+        //     //     //     remoteIpAddress = iPs.First();
+        //     //     // }
+        //     //
+        //     //     result = remoteIpAddress.ToString();
+        //     // }
+        //
+        //
+        //     Console.WriteLine(remoteIpAddress.ToString());
+        //     
+        //     if (result == "127.0.0.1")
+        //         return Ok("request with localhost");
+        //     Console.WriteLine("start find to base");
+        //     var found = _geoIpAddressResolver.ResolveAddress(IPAddress.Parse(result));
+        //
+        //     if (found == null)
+        //         return NotFound("Result not found");
+        //     return Ok(found);
+        // }
+
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult<string> GetIpAddress0fClient()
         {
-            // var ip = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;
-            IPAddress remoteIpAddress = HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress;//Request.HttpContext.Connection.RemoteIpAddress;
-            string result = "";
-            if (remoteIpAddress != null)
+            string ipAddress = string. Empty;
+            IPAddress ip = Request.HttpContext. Connection. RemoteIpAddress;
+            if (ip != null)
             {
-                // If we got an IPV6 address, then we need to ask the network for the IPV4 address 
-                // This usually only happens when the browser is on the same machine as the server.
-                if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
+                if (ip. AddressFamily == AddressFamily. InterNetworkV6)
                 {
-                    remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
-                        .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+                    ip = Dns.GetHostEntry(ip) .AddressList
+                        .First (_ => _. AddressFamily == AddressFamily. InterNetwork);
                 }
-                result = remoteIpAddress.ToString();
+                ipAddress = ip. ToString();
             }
-
-            if (result.ToString() == "127.0.0.1")
-                return Ok("request with localhost");
-            return Ok(_geoIpAddressResolver.ResolveAddress(IPAddress.Parse(result.ToString())));
-            // return new string[] { "value1", "value2" };
+            return Ok(ipAddress);
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        #endregion
     }
 }
-

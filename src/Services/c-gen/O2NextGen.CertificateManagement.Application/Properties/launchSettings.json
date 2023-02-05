@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "O2NextGen.CertificateManagement.Application": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:11001",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
