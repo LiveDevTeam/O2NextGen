@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PFRCentr.App.MvcClient.Models.Dto;
 using PFRCentr.App.MvcClient.Services;
 
 namespace PFRCentr.App.MvcClient.Controllers;
 
+[Authorize]
 public class CertificateController : Controller
 {
     private readonly ICGenCertificateService _cGenCertificateService;
