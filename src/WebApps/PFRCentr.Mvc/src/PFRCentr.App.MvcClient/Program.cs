@@ -28,7 +28,7 @@ var cGenApi = Environment.GetEnvironmentVariable("Services:CGenApiUrl") ??
 Console.WriteLine($"IdentityUrl = {identityUrl}");
 Console.WriteLine($"CallBackUrl = {callBackUrl}");
 Console.WriteLine($"CGenApiUrl = {cGenApi}");
-SD.CGenApiBase = builder.Configuration.GetValue<string>("Services:CGenApi");
+SD.CGenApiBase = builder.Configuration.GetValue<string>("Services:CGenApiUrl");
 builder.Services.AddHttpClient<ICGenCategoryService, CGenCategoryService>();
 builder.Services.AddScoped<ICGenCategoryService,CGenCategoryService>();
 
