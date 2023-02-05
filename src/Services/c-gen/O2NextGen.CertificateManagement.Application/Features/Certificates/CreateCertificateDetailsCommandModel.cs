@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using O2NextGen.CertificateManagement.Domain.Entities;
+﻿using O2NextGen.CertificateManagement.Domain.Entities;
+
+namespace O2NextGen.CertificateManagement.Application.Features.Certificates;
 
 public class CreateCertificateDetailsCommandModel
 {
@@ -21,4 +22,3 @@ public class CreateCertificateDetailsCommandModel
     public string LockInfo { get; set; }
     public ICollection<LanguageInfo> LanguageInfos { get; }
 }
-

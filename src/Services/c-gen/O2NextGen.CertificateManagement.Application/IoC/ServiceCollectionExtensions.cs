@@ -1,12 +1,10 @@
-﻿using System;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using O2NextGen.CertificateManagement.Domain.Data;
 using O2NextGen.CertificateManagement.Domain.Data.Queries;
 using O2NextGen.CertificateManagement.Infrastructure.Data;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace O2NextGen.CertificateManagement.Application.IoC
 {
     public static class ServiceCollectionExtensions
     {

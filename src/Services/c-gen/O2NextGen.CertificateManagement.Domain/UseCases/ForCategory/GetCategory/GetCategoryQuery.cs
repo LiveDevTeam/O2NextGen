@@ -11,5 +11,6 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategor
         }
 
         public long Id { get; }
+        public string CategoryName { get; set; }
     }
 }

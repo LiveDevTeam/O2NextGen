@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using O2NextGen.CertificateManagement.Domain.Entities;
+﻿using O2NextGen.CertificateManagement.Domain.Entities;
+
+namespace O2NextGen.CertificateManagement.Application.Features.Certificates;
 
 public class UpdateCertificateDetailsCommandModel
 {
@@ -24,4 +25,3 @@ public class UpdateCertificateDetailsCommandModel
     public string AddedDate { get; internal set; }
     public string DeletedDate { get; internal set; }
 }
-

@@ -1,17 +1,15 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using O2NextGen.CertificateManagement.Domain.Data.Queries;
 using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.CreateCertificate;
 using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.DeleteCertificate;
+using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.GetCertificate;
 using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.GetCertificates;
 using O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
 
-namespace O2NextGen.CertificateManagement.Application.Controllers
+namespace O2NextGen.CertificateManagement.Application.Features.Certificates
 {
     [Route("api/[controller]")]
+    [ApiController]
     public partial class CertificatesController : ControllerBase
     {
         #region Fields
@@ -41,7 +39,7 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
         {
-            var result = await _mediator.Send(new CertificateQuery(id));
+            var result = await _mediator.Send(new GetCertificateQuery(id), ct);
 
             if (result is null)
                 return NotFound();
@@ -60,7 +58,7 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
         [HttpPut]
         [Route("id")]
         public async Task<ActionResult<UpdateCertificateDetailsCommandResult>> UpdateAsync(
-            long id, UpdateCertificateDetailsCommandModel model, CancellationToken ct)
+            long id, [FromBody] UpdateCertificateDetailsCommandModel model, CancellationToken ct)
         {
             var result = await _mediator.Send(
                 new UpdateCertificateDetailsCommand(
@@ -96,7 +94,7 @@ namespace O2NextGen.CertificateManagement.Application.Controllers
         [HttpPost]
         [Route("")]
         public async Task<ActionResult<CreateCertificateCommandResult>> AddAsync(
-            CreateCertificateDetailsCommandModel model,
+            [FromBody] CreateCertificateDetailsCommandModel model,
             CancellationToken ct)
         {
             var result = await _mediator.Send(
