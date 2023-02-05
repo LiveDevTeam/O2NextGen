@@ -76,7 +76,7 @@ env:
       value: https://auth.o2nextgen.com
     - name: Services__CallBackUrl
       value: https://app.pfr-centr.com
-    - name: Services__CGenApi
+    - name: Services__CGenApiUrl
       value: https://cgen-api.o2nextgen.com
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
