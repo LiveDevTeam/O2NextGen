@@ -1,6 +1,3 @@
 [submodule "src/SDKs/O2.Toolkit"]
 	path = src/SDKs/O2.Toolkit
 	url = https://github.com/O2-Bionics/O2.Toolkit.git
-[submodule "src/Services/auth-server"]
-	path = src/Services/auth-server
-	url = https://github.com/O2-Bionics/O2NextGen.Auth.Server.git
