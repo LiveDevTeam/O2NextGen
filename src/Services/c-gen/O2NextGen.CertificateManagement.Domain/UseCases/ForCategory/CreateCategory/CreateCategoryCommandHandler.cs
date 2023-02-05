@@ -19,7 +19,6 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.CreateCate
         {
             var category = new Entities.Category
             {
-                Id = request.Id,
                 CategoryName = request.CategoryName,
                 CategoryDescription = request.CategoryDescription,
                 CategorySeries = request.CategorySeries,

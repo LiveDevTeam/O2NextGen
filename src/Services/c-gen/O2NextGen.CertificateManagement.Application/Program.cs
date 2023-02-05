@@ -1,7 +1,5 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using O2NextGen.CertificateManagement.Application;
+using O2NextGen.CertificateManagement.Application.IoC;
 using O2NextGen.CertificateManagement.Infrastructure.Data;
 using O2NextGen.CertificateManagement.StartupTasks.DatabaseInitializer;
 
@@ -20,6 +18,10 @@ builder.Services
     .AddInfrastructure();
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<CGenDbContext>();
+SeedData.SeedAsync(context).Wait();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

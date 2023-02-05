@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using O2NextGen.CertificateManagement.Domain.Data;
 using O2NextGen.CertificateManagement.Domain.Data.Queries;
 using O2NextGen.CertificateManagement.Domain.Entities;
 using O2NextGen.CertificateManagement.Domain.Mappings;
-using O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategories;
 
 namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategories
 {
@@ -29,8 +25,13 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategor
                 cancellationToken);
 
             return new GetCategoriesQueryResult(
-                certificates.MapAsReadOnly(certificate =>
-                    new GetCategoriesQueryResult.CategoryViewModel()));
+                certificates.MapAsReadOnly(category =>
+                    new GetCategoriesQueryResult.CategoryViewModel(
+                        category.Id,
+                        category.CategoryName,
+                        category.CategoryDescription,
+                        category.CategorySeries,
+                        category.QuantityCertificates)));
 
 
         }

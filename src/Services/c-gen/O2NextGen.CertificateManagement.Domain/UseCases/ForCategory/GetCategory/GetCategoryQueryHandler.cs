@@ -21,22 +21,28 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategor
 
         public async Task<GetCategoryQueryResult> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
         {
-            var certificate = await _queryHandler.HandleAsync(
-                new CategoryQuery(request.Id),
+            var category = await _queryHandler.HandleAsync(
+                new CategoryQuery(
+                    request.Id),
                 cancellationToken);
 
-            if (certificate is null)
+            if (category is null)
             {
                 return null;
             }
 
             return new GetCategoryQueryResult(
-                certificate.Id,
-                certificate.ModifiedDate,
-                certificate.AddedDate,
-                certificate.DeletedDate,
-                certificate.IsDeleted,
-                certificate.CustomerId);
+                id: category.Id,
+                modifiedDate: category.ModifiedDate,
+                addedDate: category.AddedDate,
+                deletedDate: category.DeletedDate,
+                isDeleted: category.IsDeleted,
+                customerId: category.CustomerId,
+                categoryName: category.CategoryName,
+                categoryDescription: category.CategoryDescription,
+                quantityCertificates: category.QuantityCertificates,
+                quantityPublishCode: category.QuantityPublishCode,
+                categorySeries: category.CategorySeries);
         }
     }
 }

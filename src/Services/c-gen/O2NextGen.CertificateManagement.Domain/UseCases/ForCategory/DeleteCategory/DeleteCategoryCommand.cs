@@ -5,7 +5,11 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.DeleteCate
 {
     public class DeleteCategoryCommand : IRequest<Unit>
     {
-
+        public DeleteCategoryCommand(long id)
+        {
+            Id = id;
+        }
+        public long Id { get; set; }
     }
 }
 
