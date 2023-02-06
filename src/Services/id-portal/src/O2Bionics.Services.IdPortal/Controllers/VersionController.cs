@@ -28,13 +28,19 @@ namespace O2Bionics.Services.IdPortal.Controllers
         [HttpGet("[controller]")]
         public object Index()
         {
-            var exVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            var exVersion = GetVersion();
             _logger.LogInformation($"get version - {exVersion}");
             return new
             {
                 Environment = _environment.EnvironmentName,
                 Version = exVersion?.ToString()
             };
+        }
+
+        protected virtual Version GetVersion()
+        {
+            var exVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            return exVersion ?? throw new InvalidOperationException();
         }
     }
 }
