@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2Bionics.Services.IdPortal
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7B217EFF-A101-4C6D-A3D8-2E2F3430AF6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.O2Bionics.Services.IdPortal", "tests\IntegrationTests.O2Bionics.Services.IdPortal\IntegrationTests.O2Bionics.Services.IdPortal.csproj", "{BDDE70F1-FDAB-4FC4-B07B-3D97ABA948F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.O2Bionics.Services.IdPortal", "tests\Tests.O2Bionics.Services.IdPortal\Tests.O2Bionics.Services.IdPortal.csproj", "{D65A7929-5FDB-49A8-8547-E98B73046140}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +27,23 @@ Global
 		{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDDE70F1-FDAB-4FC4-B07B-3D97ABA948F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDDE70F1-FDAB-4FC4-B07B-3D97ABA948F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDDE70F1-FDAB-4FC4-B07B-3D97ABA948F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDDE70F1-FDAB-4FC4-B07B-3D97ABA948F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D65A7929-5FDB-49A8-8547-E98B73046140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65A7929-5FDB-49A8-8547-E98B73046140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D65A7929-5FDB-49A8-8547-E98B73046140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65A7929-5FDB-49A8-8547-E98B73046140}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8AD066DD-B55F-49B5-8D69-6C076266C1B7}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BDDE70F1-FDAB-4FC4-B07B-3D97ABA948F2} = {7B217EFF-A101-4C6D-A3D8-2E2F3430AF6E}
+		{D65A7929-5FDB-49A8-8547-E98B73046140} = {7B217EFF-A101-4C6D-A3D8-2E2F3430AF6E}
 	EndGlobalSection
 EndGlobal
