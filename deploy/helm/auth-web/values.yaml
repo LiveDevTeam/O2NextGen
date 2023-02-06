@@ -71,6 +71,8 @@ env:
       value: Server=tcp:mssql-data;Initial Catalog=O2Bionics.O2NextGen.IdServerDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
     - name: Urls__PfrMvcUrl
       value: https://app.pfr-centr.com
+    - name: Urls__IdPortalMvcUrl
+      value: https://idportal-api.o2nextgen.com
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

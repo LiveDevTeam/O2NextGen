@@ -1,4 +1,4 @@
-namespace O2Bionics.Services.IdServer.Models
+namespace O2Bionics.Services.IdPortal.Models
 {
     public class ErrorViewModel
     {
