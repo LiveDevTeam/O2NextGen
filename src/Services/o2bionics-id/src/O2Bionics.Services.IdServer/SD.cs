@@ -5,12 +5,17 @@ namespace O2Bionics.Services.IdServer
 {
     public static class SD
     {
-
         public static Dictionary<string, string> GetUrls(IConfiguration configuration)
         {
             var urls = new Dictionary<string, string>();
             urls.Add("PfrMvcUrl",
-                Environment.GetEnvironmentVariable("Urls:PfrMvcUrl") ?? configuration.GetValue<string>("Urls:PfrMvcUrl"));
+                Environment.GetEnvironmentVariable("Urls:PfrMvcUrl") ??
+                configuration.GetValue<string>("Urls:PfrMvcUrl"));
+            urls.Add("IdPortalMvcUrl",
+                Environment.GetEnvironmentVariable("Urls:IdPortalMvcUrl") ??
+                configuration.GetValue<string>("Urls:IdPortalMvcUrl"));
+
+
             Console.WriteLine(" ========================= CONFIG IDServer ========================== ");
             foreach (var item in urls)
             {
@@ -34,7 +39,8 @@ namespace O2Bionics.Services.IdServer
 
         public static IEnumerable<ApiScope> ApiScopes => new List<ApiScope>
         {
-            new ApiScope(name: "cgen.api", displayName: "Acces to CGen API")
+            new ApiScope(name: "cgen.api", displayName: "Access to CGen API"),
+            new ApiScope(name: "idportal.api", displayName: "Access to CGen API")
         };
 
         public static IEnumerable<Client> GetClients(Dictionary<string, string> clientUrls)
@@ -50,6 +56,35 @@ namespace O2Bionics.Services.IdServer
                         AllowedScopes =
                         {
                             "cgen.api",
+                            "profile"
+                        }
+                    },
+                    new Client()
+                    {
+                        ClientId = "idportal",
+                        ClientSecrets = {new Secret("secret".Sha256())},
+                        AllowedGrantTypes = GrantTypes.Code,
+                        RedirectUris =
+                        {
+                            $"{clientUrls["IdPortalMvcUrl"]}/signin-oidc",
+                            "https://localhost:5003/signin-oidc"
+                        },
+                        PostLogoutRedirectUris =
+                        {
+                            $"{clientUrls["IdPortalMvcUrl"]}/signout-callback-oidc",
+                            "https://localhost:5003/signout-callback-oidc"
+                        },
+                        AllowedCorsOrigins =
+                        {
+                            $"{clientUrls["IdPortalMvcUrl"]}",
+                            "https://localhost:5003"
+                        },
+                        AllowedScopes = new List<string>()
+                        {
+                            IdentityServerConstants.StandardScopes.OpenId,
+                            IdentityServerConstants.StandardScopes.Profile,
+                            IdentityServerConstants.StandardScopes.Email,
+                            "idportal.api",
                             "profile"
                         }
                     },
