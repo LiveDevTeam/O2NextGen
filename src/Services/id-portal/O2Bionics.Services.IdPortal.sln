@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2Bionics.Services.IdPortal", "src\O2Bionics.Services.IdPortal\O2Bionics.Services.IdPortal.csproj", "{1657073E-9EE7-43D3-A3FD-A32025E57488}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1657073E-9EE7-43D3-A3FD-A32025E57488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1657073E-9EE7-43D3-A3FD-A32025E57488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1657073E-9EE7-43D3-A3FD-A32025E57488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7BEA3A-BD1E-4BE3-BBBB-CCD0100D10A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

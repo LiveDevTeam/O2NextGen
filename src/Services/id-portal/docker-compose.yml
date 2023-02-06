@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  o2bionics.services.idportal:
+    image: ${DOCKER_REGISTRY-}o2bionicsservices
+    build:
+      context: .
+      dockerfile: src/O2Bionics.Services.IdPortal/Dockerfile

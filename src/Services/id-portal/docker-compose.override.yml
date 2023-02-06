@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  o2bionics.services.idportal:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
