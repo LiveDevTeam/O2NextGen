@@ -1,0 +1,100 @@
+# Default values for idportal-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/ingress.global-static-ip-name: webapp-ipv6
+    # acme.cert-manager.io/http01-edit-in-place: "true"
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/acme-challenge-type: http01
+  hosts:
+    - host: idportal-api.o2nextgen.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+   - secretName: tls-o2nextgen-idportal-api
+     hosts:
+       - idportal-api.o2nextgen.com
+env:
+  values:
+    # - name: ConnectionString
+    #   value: Server=tcp:mssql-data;Initial Catalog=O2Bionics.O2NextGen.CGenDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
+    # - name: DatabaseInitializerSettings__Initialize
+    #   value: true
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+health:
+  livenessProbe:
+    httpGet:
+      path: /version
+      port: http
+  readinessProbe:
+    httpGet:
+      path: /version
+      port: http
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
