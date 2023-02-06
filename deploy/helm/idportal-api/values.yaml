@@ -86,6 +86,12 @@ health:
       path: /version
       port: http
 
+env:
+  values:
+    - name: ConnectionString
+      value: Server=tcp:mssql-data;Initial Catalog=O2Bionics.O2NextGen.IdServerDb;User ID=sa;Password=yourStrong(!)Password;Connection Timeout=30;
+    
+
 autoscaling:
   enabled: false
   minReplicas: 1
