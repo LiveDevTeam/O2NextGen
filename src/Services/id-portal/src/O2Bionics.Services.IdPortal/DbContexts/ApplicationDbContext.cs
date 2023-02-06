@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using O2Bionics.Services.IdServer.Models;
+using O2Bionics.Services.IdPortal.Models;
 
-namespace O2Bionics.Services.IdServer.DbContexts
+namespace O2Bionics.Services.IdPortal.DbContexts
 {
     public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
     {
@@ -11,7 +11,5 @@ namespace O2Bionics.Services.IdServer.DbContexts
         { 
             
         }
-
-        public DbSet<DataProtectionKey> DataProtectionKeys { get; }
     }
 }

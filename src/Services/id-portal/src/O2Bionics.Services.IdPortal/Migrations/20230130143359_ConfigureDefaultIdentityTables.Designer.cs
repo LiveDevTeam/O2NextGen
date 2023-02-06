@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using O2Bionics.Services.IdServer.DbContexts;
+using O2Bionics.Services.IdPortal.DbContexts;
 
 #nullable disable
 
