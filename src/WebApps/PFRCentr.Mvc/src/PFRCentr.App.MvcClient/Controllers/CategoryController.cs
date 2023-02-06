@@ -5,6 +5,7 @@ using PFRCentr.App.MvcClient.Services;
 
 namespace PFRCentr.App.MvcClient.Controllers;
 
+// [Authorize]
 public class CategoryController:Controller
 {
     private readonly ICGenCategoryService _icGenCategoryService;
