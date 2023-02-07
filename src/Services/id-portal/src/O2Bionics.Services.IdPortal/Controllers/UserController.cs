@@ -26,4 +26,14 @@ public class UserController : ControllerBase
         var user = await _userManager.Users.ToListAsync();
         return Ok(user.ToService());
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(string id)
+    {
+        var users = await _userManager.Users.ToListAsync();
+        var findUser = users.FirstOrDefault(_=>_.Id ==id);
+        if (findUser == null)
+            return NotFound();
+        return Ok(findUser.ToService());
+    }
 }
