@@ -15,7 +15,7 @@ public class UserController:Controller
     {
         _icGenCategoryService = icGenCategoryService;
     }
-    public async Task<ViewResult> CategoryIndex()
+    public async Task<ViewResult> UserIndex()
     {
         var response = await _icGenCategoryService.GetCategoriesAsync<List<UserDto>>();
         List<ResponseDto> list = null;
@@ -44,7 +44,7 @@ public class UserController:Controller
             // }
             // if (response == null)
             //     return View(model);
-            return RedirectToAction(nameof(CategoryIndex));
+            return RedirectToAction(nameof(UserIndex));
         }
         return View(model);
     }
@@ -77,7 +77,7 @@ public class UserController:Controller
             // }
             // if (response == null)
             //     return View(model);
-            return RedirectToAction(nameof(CategoryIndex));
+            return RedirectToAction(nameof(UserIndex));
         }
         return View(model);
     }
@@ -98,7 +98,7 @@ public class UserController:Controller
     {
         
             await _icGenCategoryService.DeleteCategoryAsync<UserDto>(model.Id);
-            return RedirectToAction(nameof(CategoryIndex));
+            return RedirectToAction(nameof(UserIndex));
             
     }
 }
