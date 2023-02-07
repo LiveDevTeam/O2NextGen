@@ -1,17 +1,17 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.CreateCategory;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.DeleteCategory;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.GetCategories;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.GetCategory;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.UpdateCategory;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.CreateProduct;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.DeleteProduct;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.GetProduct;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.GetProducts;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.UpdateProduct;
 
 namespace O2NextGen.SmartSubscriber.Application.Features.Products;
 
 [Route("api/[controller]")]
 //[ApiVersion("1.0")]
 [ApiController]
-public class ProductsController: ControllerBase
+public class ProductsController : ControllerBase
 {
     #region Fields
 
@@ -42,7 +42,7 @@ public class ProductsController: ControllerBase
     public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
     {
         _logger.LogInformation("Call API method {ByIdAsyncName}: id = {Id}", nameof(GetByIdAsync), id);
-            
+
         var result = await _mediator.Send(new GetCategoryQuery(id), ct);
 
         if (result is null)
@@ -87,7 +87,7 @@ public class ProductsController: ControllerBase
         var result = await _mediator.Send(
             new UpdateProductDetailsCommand(
                 model.Id,
-                model.ProductName,    
+                model.ProductName,
                 model.ProductDescription,
                 model.ProductCode,
                 model.CustomerId), ct);
@@ -107,5 +107,6 @@ public class ProductsController: ControllerBase
         await _mediator.Send(new DeleteProductCommand(id), ct);
         return NoContent();
     }
+
     #endregion
 }

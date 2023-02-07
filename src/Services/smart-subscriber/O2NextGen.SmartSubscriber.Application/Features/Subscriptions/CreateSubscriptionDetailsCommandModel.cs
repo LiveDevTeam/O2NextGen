@@ -1,6 +1,6 @@
 ﻿using O2NextGen.SmartSubscriber.Domain.Entities;
 
-namespace O2NextGen.SmartSubscriber.Application.Features.Subcriptions;
+namespace O2NextGen.SmartSubscriber.Application.Features.Subscriptions;
 
 public class CreateSubscriptionDetailsCommandModel
 {

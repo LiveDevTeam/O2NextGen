@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.UpdateCategory;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.UpdateProduct;
 
 public class UpdateProductDetailsCommand : IRequest<UpdateProductDetailsCommandResult>
 {

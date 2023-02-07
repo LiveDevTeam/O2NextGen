@@ -2,7 +2,7 @@
 using O2NextGen.SmartSubscriber.Domain.Data;
 using O2NextGen.SmartSubscriber.Domain.Entities;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.CreateCategory;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.CreateProduct;
 
 public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, CreateProductCommandResult>
 {

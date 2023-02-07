@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.GetCategory;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.GetProduct;
 
 public sealed class GetCategoryQuery : IRequest<GetProductQueryResult>
 {

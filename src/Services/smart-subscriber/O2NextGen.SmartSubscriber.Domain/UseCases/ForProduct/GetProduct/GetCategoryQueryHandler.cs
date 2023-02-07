@@ -3,7 +3,7 @@ using O2NextGen.SmartSubscriber.Domain.Data;
 using O2NextGen.SmartSubscriber.Domain.Data.Queries;
 using O2NextGen.SmartSubscriber.Domain.Entities;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.GetCategory;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.GetProduct;
 
 public class GetCategoryQueryHandler :
     IRequestHandler<GetCategoryQuery, GetProductQueryResult>

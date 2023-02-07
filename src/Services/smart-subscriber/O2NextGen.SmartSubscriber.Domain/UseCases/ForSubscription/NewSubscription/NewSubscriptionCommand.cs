@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.NewCertificate;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.NewSubscription;
 
 public class NewSubscriptionCommand : IRequest<NewSubscriptionCommandResult>
 {

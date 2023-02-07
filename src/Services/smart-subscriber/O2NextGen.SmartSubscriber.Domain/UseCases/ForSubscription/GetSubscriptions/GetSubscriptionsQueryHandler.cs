@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using O2NextGen.SmartSubscriber.Domain.Mappings;
 using O2NextGen.SmartSubscriber.Domain.Data;
 using O2NextGen.SmartSubscriber.Domain.Data.Queries;
 using O2NextGen.SmartSubscriber.Domain.Entities;
+using O2NextGen.SmartSubscriber.Domain.Mappings;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.GetCertificates;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.GetSubscriptions;
 
 public class GetSubscriptionsQueryHandler
     : IRequestHandler<GetSubscriptionsQuery, GetSubscriptionsQueryResult>

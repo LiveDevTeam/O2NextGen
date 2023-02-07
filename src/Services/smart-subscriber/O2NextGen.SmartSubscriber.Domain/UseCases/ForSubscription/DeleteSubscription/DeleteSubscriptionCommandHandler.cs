@@ -2,7 +2,7 @@
 using O2NextGen.SmartSubscriber.Domain.Data;
 using O2NextGen.SmartSubscriber.Domain.Data.Queries;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.DeleteCertificate;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.DeleteSubscription;
 
 public class DeleteSubscriptionCommandHandler : IRequestHandler<DeleteSubscriptionCommand, Unit>
 {

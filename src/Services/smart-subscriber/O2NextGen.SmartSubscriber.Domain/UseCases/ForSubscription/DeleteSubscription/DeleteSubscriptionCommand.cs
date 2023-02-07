@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.DeleteCertificate;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.DeleteSubscription;
 
 public sealed class DeleteSubscriptionCommand : IRequest<Unit>
 {

@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.CreateCertificate;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.DeleteCertificate;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.GetCertificate;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.GetCertificates;
-using O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.UpdateCertificate;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.CreateSubscription;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.DeleteSubscription;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.GetSubscription;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.GetSubscriptions;
+using O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.UpdateSubscription;
 
-namespace O2NextGen.SmartSubscriber.Application.Features.Subcriptions;
+namespace O2NextGen.SmartSubscriber.Application.Features.Subscriptions;
 
 [Route("api/[controller]")]
 [ApiController]

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.GetCertificate;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.GetSubscription;
 
 public sealed class GetSubscriptionQuery : IRequest<GetSubscriptionQueryResult>
 {

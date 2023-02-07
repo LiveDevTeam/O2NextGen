@@ -2,7 +2,7 @@ using MediatR;
 using O2NextGen.SmartSubscriber.Domain.Data;
 using O2NextGen.SmartSubscriber.Domain.Data.Queries;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.UpdateCategory;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.UpdateProduct;
 
 public class UpdateProductDetailsCommandHandler
     : IRequestHandler<UpdateProductDetailsCommand, UpdateProductDetailsCommandResult>

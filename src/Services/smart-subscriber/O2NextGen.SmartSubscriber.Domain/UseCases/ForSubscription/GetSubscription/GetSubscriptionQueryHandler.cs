@@ -3,7 +3,7 @@ using O2NextGen.SmartSubscriber.Domain.Data;
 using O2NextGen.SmartSubscriber.Domain.Data.Queries;
 using O2NextGen.SmartSubscriber.Domain.Entities;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.GetCertificate;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.GetSubscription;
 
 public class GetSubscriptionQueryHandler :
     IRequestHandler<GetSubscriptionQuery, GetSubscriptionQueryResult>

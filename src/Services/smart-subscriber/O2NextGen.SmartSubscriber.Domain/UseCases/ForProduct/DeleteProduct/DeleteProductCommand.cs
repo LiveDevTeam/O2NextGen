@@ -1,7 +1,7 @@
 ﻿
 using MediatR;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.DeleteCategory;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.DeleteProduct;
 
 public class DeleteProductCommand : IRequest<Unit>
 {

@@ -1,6 +1,6 @@
 ﻿using O2NextGen.SmartSubscriber.Domain.Entities;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.CreateCertificate;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.CreateSubscription;
 
 public class CreateSubscriptionCommandResult
 {

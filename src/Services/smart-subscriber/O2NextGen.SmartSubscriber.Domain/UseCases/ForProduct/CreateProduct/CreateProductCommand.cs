@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.CreateCategory;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForProduct.CreateProduct;
 
 public class CreateProductCommand : IRequest<CreateProductCommandResult>
 {

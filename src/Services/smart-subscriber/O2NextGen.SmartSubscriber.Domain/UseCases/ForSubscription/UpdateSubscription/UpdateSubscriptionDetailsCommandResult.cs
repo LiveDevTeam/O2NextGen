@@ -1,6 +1,6 @@
 ﻿using O2NextGen.SmartSubscriber.Domain.Entities;
 
-namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.UpdateCertificate;
+namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForSubscription.UpdateSubscription;
 
 public class UpdateSubscriptionDetailsCommandResult
 {
