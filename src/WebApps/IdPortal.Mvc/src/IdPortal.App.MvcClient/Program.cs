@@ -68,6 +68,7 @@ builder.Services.AddAuthentication(option =>
         options.TokenValidationParameters.NameClaimType = "name";
         options.TokenValidationParameters.RoleClaimType = "role";
         options.Scope.Add("cgen.api");
+        options.Scope.Add("idportal.api");
         options.SaveTokens = true;
     });
 
