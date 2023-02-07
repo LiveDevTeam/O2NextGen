@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["src/PFRCentr.App.MvcClient/PFRCentr.App.MvcClient.csproj", "src/PFRCentr.App.MvcClient/"]
-RUN dotnet restore "src/PFRCentr.App.MvcClient/PFRCentr.App.MvcClient.csproj"
+COPY ["src/IdPortal.App.MvcClient/IdPortal.App.MvcClient.csproj", "src/IdPortal.App.MvcClient/"]
+RUN dotnet restore "src/IdPortal.App.MvcClient/IdPortal.App.MvcClient.csproj"
 COPY . .
-WORKDIR "/src/src/PFRCentr.App.MvcClient"
-RUN dotnet build "PFRCentr.App.MvcClient.csproj" -c Release -o /app/build
+WORKDIR "/src/src/IdPortal.App.MvcClient"
+RUN dotnet build "IdPortal.App.MvcClient.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "PFRCentr.App.MvcClient.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "IdPortal.App.MvcClient.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "PFRCentr.App.MvcClient.dll"]
+ENTRYPOINT ["dotnet", "IdPortal.App.MvcClient.dll"]
