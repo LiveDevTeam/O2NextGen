@@ -37,7 +37,7 @@ public partial class SubscriptionsController : ControllerBase
     #region Methods
 
     [HttpGet]
-    [Route("{id}")]
+    [Route("{id:long}")]
     public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
     {
         var result = await _mediator.Send(new GetSubscriptionQuery(id), ct);
@@ -57,7 +57,7 @@ public partial class SubscriptionsController : ControllerBase
     }
 
     [HttpPut]
-    [Route("id")]
+    [Route("{id:long}")]
     public async Task<ActionResult<UpdateSubscriptionDetailsCommandResult>> UpdateAsync(
         long id, [FromBody] UpdateSubscriptionDetailsCommandModel model, CancellationToken ct)
     {
@@ -112,15 +112,14 @@ public partial class SubscriptionsController : ControllerBase
                 model.Product,
                 model.Lock,
                 model.LockedDate,
-                model.LockInfo,
-                model.LanguageInfos
-            ));
+                model.LockInfo
+            ), ct);
         return CreatedAtAction(GetByIdActionName,
             new {id = result.Id}, result);
     }
 
     [HttpDelete]
-    [Route("{id}")]
+    [Route("{id:long}")]
     public async Task<IActionResult> RemoveAsync(long id, CancellationToken ct)
     {
         await _mediator.Send(new DeleteSubscriptionCommand(id), ct);

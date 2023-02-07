@@ -21,16 +21,15 @@ public class CreateSubscriptionCommand : IRequest<CreateSubscriptionCommandResul
     public bool Lock { get; set; }
     public long LockedDate { get; set; }
     public string LockInfo { get; set; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
 
     public CreateSubscriptionCommand(
         string externalId, bool? IsDeleted, string ownerAccountId, string customerId,
         long expiredDate, long publishDate, string creatorId, string publishCode, bool isVisible,
-        long productId, Product product, bool @lock, long lockedDate, string lockInfo,
-        ICollection<LanguageInfo> languageInfos)
+        long productId, Product product, bool @lock, long lockedDate, string lockInfo)
     {
         ExternalId = externalId;
         this.IsDeleted = IsDeleted;
+        OwnerAccountId = ownerAccountId;
         CustomerId = customerId;
         ExpiredDate = expiredDate;
         PublishDate = publishDate;
@@ -42,6 +41,5 @@ public class CreateSubscriptionCommand : IRequest<CreateSubscriptionCommandResul
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
-        LanguageInfos = languageInfos;
     }
 }

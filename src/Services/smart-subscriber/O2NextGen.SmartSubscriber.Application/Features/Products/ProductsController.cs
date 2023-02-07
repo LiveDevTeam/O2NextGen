@@ -38,7 +38,7 @@ public class ProductsController: ControllerBase
     #region Methods
 
     [HttpGet]
-    [Route("{id}")]
+    [Route("{id:long}")]
     public async Task<IActionResult> GetByIdAsync(long id, CancellationToken ct)
     {
         _logger.LogInformation("Call API method {ByIdAsyncName}: id = {Id}", nameof(GetByIdAsync), id);
@@ -80,7 +80,7 @@ public class ProductsController: ControllerBase
     }
 
     [HttpPut]
-    [Route("{id}")]
+    [Route("{id:long}")]
     public async Task<ActionResult<UpdateProductDetailsCommandResult>> UpdateAsync(
         long id, [FromBody] UpdateProductModel model, CancellationToken ct)
     {
@@ -101,7 +101,7 @@ public class ProductsController: ControllerBase
     }
 
     [HttpDelete]
-    [Route("{id}")]
+    [Route("{id:long}")]
     public async Task<IActionResult> RemoveAsync(long id, CancellationToken ct)
     {
         await _mediator.Send(new DeleteProductCommand(id), ct);
