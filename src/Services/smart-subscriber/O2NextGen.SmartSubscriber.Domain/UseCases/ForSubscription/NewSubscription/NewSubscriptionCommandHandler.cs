@@ -78,23 +78,20 @@ public class NewSubscriptionCommandHandler :
             }
         }
 
-        var languageInfos = new List<LanguageInfo> { language };
-
         return new NewSubscriptionCommandResult(
-            AddedDate: DateTime.Now.ConvertToUnixTime(),
-            ModifiedDate: DateTime.Now.ConvertToUnixTime(),
-            PublishCode: "",
-            LockInfo: string.Empty,
-            LockedDate: 0,
-            ExpiredDate: DateTime.Now.AddDays(category.TimeLifeInDays).ConvertToUnixTime(),
-            PublishDate: DateTime.Now.ConvertToUnixTime(),
-            CreatorId: request.UserId,
-            CustomerId: request.CustomerId,
-            OwnerAccountId: Guid.Empty.ToString(),
-            DeletedDate: default(long),
-            CategoryId: request.ProductId,
-            product: category,
-            LanguageInfos: languageInfos
+            addedDate: DateTime.Now.ConvertToUnixTime(),
+            modifiedDate: DateTime.Now.ConvertToUnixTime(),
+            publishCode: "",
+            lockInfo: string.Empty,
+            lockedDate: 0,
+            expiredDate: DateTime.Now.AddDays(1).ConvertToUnixTime(),
+            publishDate: DateTime.Now.ConvertToUnixTime(),
+            creatorId: request.UserId,
+            customerId: request.CustomerId,
+            ownerAccountId: Guid.Empty.ToString(),
+            deletedDate: default(long),
+            productId: request.ProductId,
+            product: category
         );
     }
 }

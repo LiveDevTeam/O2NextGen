@@ -21,16 +21,14 @@ public class CreateSubscriptionCommandHandler
             IsDeleted = request.IsDeleted,
             CustomerId = request.CustomerId,
             ExpiredDate = request.ExpiredDate,
-            PublishDate = request.PublishDate,
+            StartedDate = request.PublishDate,
             CreatorId = request.CreatorId,
             PublishCode = request.PublishCode,
             IsVisible = request.IsVisible,
-            CategoryId = request.CategoryId,
+            ProductId = request.ProductId,
             Product = request.Product,
             Lock = request.Lock,
-            LockedDate = request.LockedDate,
-            LockInfo = request.LockInfo,
-            LanguageInfos = request.LanguageInfos
+            LockedDate = request.LockedDate
         };
 
         var addedCertificate = await certificatesRepository.AddAsync(certificate, cancellationToken);
@@ -41,15 +39,13 @@ public class CreateSubscriptionCommandHandler
             addedCertificate.OwnerAccountId,
             addedCertificate.CustomerId,
             addedCertificate.ExpiredDate,
-            addedCertificate.PublishDate,
+            addedCertificate.StartedDate,
             addedCertificate.CreatorId,
             addedCertificate.PublishCode,
             addedCertificate.IsVisible,
-            addedCertificate.CategoryId,
+            addedCertificate.ProductId,
             addedCertificate.Product,
             addedCertificate.Lock,
-            addedCertificate.LockedDate,
-            addedCertificate.LockInfo,
-            addedCertificate.LanguageInfos);
+            addedCertificate.LockedDate);
     }
 }

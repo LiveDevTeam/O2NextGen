@@ -10,7 +10,10 @@ public class UpdateSubscriptionDetailsCommandResult
         Name = name;
     }
 
-    public UpdateSubscriptionDetailsCommandResult(long id, string name, long modifiedDate, long addedDate, long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate, long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, Product product, bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos) : this(id, name)
+    public UpdateSubscriptionDetailsCommandResult(long id, string name, long modifiedDate, long addedDate,
+        long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
+        long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, Product product,
+        bool @lock, long lockedDate, string lockInfo) : this(id, name)
     {
         ModifiedDate = modifiedDate;
         AddedDate = addedDate;
@@ -28,7 +31,6 @@ public class UpdateSubscriptionDetailsCommandResult
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
-        LanguageInfos = languageInfos;
     }
 
     public long Id { get; }
@@ -49,5 +51,4 @@ public class UpdateSubscriptionDetailsCommandResult
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
 }

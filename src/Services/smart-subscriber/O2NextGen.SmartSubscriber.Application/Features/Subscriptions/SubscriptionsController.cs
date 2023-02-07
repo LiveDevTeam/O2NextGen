@@ -19,6 +19,7 @@ public partial class SubscriptionsController : ControllerBase
 
     private static readonly string GetByIdActionName
         = nameof(GetByIdAsync).Replace("Async", string.Empty);
+
     #endregion
 
 
@@ -79,8 +80,7 @@ public partial class SubscriptionsController : ControllerBase
                 model.Product,
                 model.Lock,
                 model.LockedDate,
-                model.LockInfo,
-                model.LanguageInfos), ct);
+                model.LockInfo), ct);
 
         if (result is null)
         {
@@ -116,7 +116,7 @@ public partial class SubscriptionsController : ControllerBase
                 model.LanguageInfos
             ));
         return CreatedAtAction(GetByIdActionName,
-            new { id = result.Id }, result);
+            new {id = result.Id}, result);
     }
 
     [HttpDelete]

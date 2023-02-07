@@ -37,15 +37,13 @@ public class GetSubscriptionQueryHandler :
             certificate.OwnerAccountId,
             certificate.CustomerId,
             certificate.ExpiredDate,
-            certificate.PublishDate,
+            certificate.StartedDate,
             certificate.CreatorId,
             certificate.PublishCode,
             certificate.IsVisible,
-            certificate.CategoryId,
+            certificate.ProductId,
             certificate.Product,
             certificate.Lock,
-            certificate.LockedDate,
-            certificate.LockInfo,
-            certificate.LanguageInfos);
+            certificate.LockedDate);
     }
 }

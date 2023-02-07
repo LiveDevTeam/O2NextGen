@@ -4,22 +4,23 @@ namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCertificate.NewCertificat
 
 public class NewSubscriptionCommandResult
 {
-    public NewSubscriptionCommandResult(long AddedDate, long ModifiedDate, string PublishCode, string LockInfo, int LockedDate, long ExpiredDate, long PublishDate, string CreatorId, string CustomerId, string OwnerAccountId, long DeletedDate, long CategoryId, Product product, List<LanguageInfo> LanguageInfos)
+    public NewSubscriptionCommandResult(long addedDate, long modifiedDate, string publishCode, string lockInfo,
+        int lockedDate, long expiredDate, long publishDate, string creatorId, string customerId, string ownerAccountId,
+        long deletedDate, long productId, Product product)
     {
-        this.AddedDate = AddedDate;
-        this.ModifiedDate = ModifiedDate;
-        this.PublishCode = PublishCode;
-        this.LockInfo = LockInfo;
-        this.LockedDate = LockedDate;
-        this.ExpiredDate = ExpiredDate;
-        this.PublishDate = PublishDate;
-        this.CreatorId = CreatorId;
-        this.CustomerId = CustomerId;
-        this.OwnerAccountId = OwnerAccountId;
-        this.DeletedDate = DeletedDate;
-        this.CategoryId = CategoryId;
-        this.Product = product;
-        this.LanguageInfos = LanguageInfos;
+        AddedDate = addedDate;
+        ModifiedDate = modifiedDate;
+        PublishCode = publishCode;
+        LockInfo = lockInfo;
+        LockedDate = lockedDate;
+        ExpiredDate = expiredDate;
+        PublishDate = publishDate;
+        CreatorId = creatorId;
+        CustomerId = customerId;
+        OwnerAccountId = ownerAccountId;
+        DeletedDate = deletedDate;
+        ProductId = productId;
+        Product = product;
     }
 
     public long AddedDate { get; }
@@ -33,7 +34,6 @@ public class NewSubscriptionCommandResult
     public string CustomerId { get; }
     public string OwnerAccountId { get; }
     public long DeletedDate { get; }
-    public long CategoryId { get; }
+    public long ProductId { get; }
     public Product Product { get; }
-    public List<LanguageInfo> LanguageInfos { get; }
 }

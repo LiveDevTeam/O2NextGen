@@ -8,7 +8,7 @@ using O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.UpdateCategory;
 
 namespace O2NextGen.SmartSubscriber.Application.Features.Products;
 
-[Microsoft.AspNetCore.Components.Route("api/[controller]")]
+[Route("api/[controller]")]
 //[ApiVersion("1.0")]
 [ApiController]
 public class ProductsController: ControllerBase
@@ -71,11 +71,9 @@ public class ProductsController: ControllerBase
         CancellationToken ct)
     {
         var result = await _mediator.Send(
-            new CreateProductCommand(
+            new CreateProductCommand(model.CustomerId,
                 model.ProductName,
-                model.QuantityCertificates,
-                model.ProductDescription,
-                model.ProductCode),
+                model.ProductDescription, model.ProductCode),
             ct);
         return CreatedAtAction(GetByIdActionName,
             new {id = result.Id}, result);
@@ -83,18 +81,16 @@ public class ProductsController: ControllerBase
 
     [HttpPut]
     [Route("{id}")]
-    public async Task<ActionResult<UpdateCategoryDetailsCommandResult>> UpdateAsync(
+    public async Task<ActionResult<UpdateProductDetailsCommandResult>> UpdateAsync(
         long id, [FromBody] UpdateProductModel model, CancellationToken ct)
     {
         var result = await _mediator.Send(
-            new UpdateCategoryDetailsCommand(
+            new UpdateProductDetailsCommand(
                 model.Id,
                 model.ProductName,    
                 model.ProductDescription,
                 model.ProductCode,
-                model.CustomerId,  
-                model.QuantityCertificates,
-                model.QuantityPublishCode), ct);
+                model.CustomerId), ct);
 
         if (result is null)
         {

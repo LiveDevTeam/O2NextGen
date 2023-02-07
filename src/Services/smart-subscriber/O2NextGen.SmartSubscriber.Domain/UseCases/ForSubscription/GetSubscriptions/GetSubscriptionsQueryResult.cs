@@ -20,11 +20,11 @@ public class GetSubscriptionsQueryResult
             long modifiedDate, long addedDate, long? deletedDate,
             bool? isDeleted, string ownerAccountId, string customerId,
             long expiredDate, long publishDate, string creatorId, string publishCode,
-            bool isVisible, long categoryId, Product product, bool @lock,
-            long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos)
+            bool isVisible, long productId, Product product, bool @lock,
+            long lockedDate, string lockInfo)
         {
             Id = id;
-
+            ExternalId = externalId;
             ModifiedDate = modifiedDate;
             AddedDate = addedDate;
             DeletedDate = deletedDate;
@@ -36,15 +36,15 @@ public class GetSubscriptionsQueryResult
             CreatorId = creatorId;
             PublishCode = publishCode;
             IsVisible = isVisible;
-            CategoryId = categoryId;
+            ProductId = productId;
             Product = product;
             Lock = @lock;
             LockedDate = lockedDate;
             LockInfo = lockInfo;
-            LanguageInfos = languageInfos;
         }
-
+        
         public long Id { get; set; }
+        public string ExternalId { get; }
         public long ModifiedDate { get; }
         public long AddedDate { get; }
         public long? DeletedDate { get; }
@@ -56,11 +56,10 @@ public class GetSubscriptionsQueryResult
         public string CreatorId { get; }
         public string PublishCode { get; }
         public bool IsVisible { get; }
-        public long CategoryId { get; }
+        public long ProductId { get; }
         public Product Product { get; }
         public bool Lock { get; }
         public long LockedDate { get; }
         public string LockInfo { get; }
-        public ICollection<LanguageInfo> LanguageInfos { get; }
     }
 }

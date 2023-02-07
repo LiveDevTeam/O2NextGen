@@ -8,7 +8,7 @@ public class CreateSubscriptionCommandResult
         string externalId, bool? isDeleted, string ownerAccountId, string customerId,
         long expiredDate, long publishDate, string creatorId, string publishCode,
         bool isVisible, long categoryId, Product product, bool @lock,
-        long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos)
+        long lockedDate)
     {
         ExternalId = externalId;
         IsDeleted = isDeleted;
@@ -23,8 +23,6 @@ public class CreateSubscriptionCommandResult
         Product = product;
         Lock = @lock;
         LockedDate = lockedDate;
-        LockInfo = lockInfo;
-        LanguageInfos = languageInfos;
     }
 
     public long Id { get; set; }

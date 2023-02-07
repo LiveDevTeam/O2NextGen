@@ -4,7 +4,7 @@ using O2NextGen.SmartSubscriber.Domain.Entities;
 
 namespace O2NextGen.SmartSubscriber.Infrastructure.Data.Configurations;
 
-public class CertificateDbEntityConfiguration : IEntityTypeConfiguration<Subscription>
+public class SubscriptionDbEntityConfiguration : IEntityTypeConfiguration<Subscription>
 {
     public void Configure(EntityTypeBuilder<Subscription> builder)
     {

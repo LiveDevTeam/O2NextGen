@@ -16,7 +16,7 @@ public class CreateSubscriptionCommand : IRequest<CreateSubscriptionCommandResul
     public string PublishCode { get; set; }
     public bool IsVisible { get; set; }
 
-    public long CategoryId { get; set; }
+    public long ProductId { get; set; }
     public Product Product { get; set; }
     public bool Lock { get; set; }
     public long LockedDate { get; set; }
@@ -26,7 +26,7 @@ public class CreateSubscriptionCommand : IRequest<CreateSubscriptionCommandResul
     public CreateSubscriptionCommand(
         string externalId, bool? IsDeleted, string ownerAccountId, string customerId,
         long expiredDate, long publishDate, string creatorId, string publishCode, bool isVisible,
-        long categoryId, Product product, bool @lock, long lockedDate, string lockInfo,
+        long productId, Product product, bool @lock, long lockedDate, string lockInfo,
         ICollection<LanguageInfo> languageInfos)
     {
         ExternalId = externalId;
@@ -37,7 +37,7 @@ public class CreateSubscriptionCommand : IRequest<CreateSubscriptionCommandResul
         CreatorId = creatorId;
         PublishCode = publishCode;
         IsVisible = isVisible;
-        CategoryId = categoryId;
+        ProductId = productId;
         Product = product;
         Lock = @lock;
         LockedDate = lockedDate;

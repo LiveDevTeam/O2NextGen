@@ -11,7 +11,7 @@ public class CertificateQuery : IQuery<Subscription>
 
     public CertificateQuery(string externalId, bool? isDeleted, string customerId, long expiredDate, long publishDate,
         string creatorId, string publishCode, bool isVisible, long categoryId, Product product,
-        bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos)
+        bool @lock, long lockedDate, string lockInfo)
     {
         ExternalId = externalId;
         IsDeleted = isDeleted;
@@ -26,7 +26,6 @@ public class CertificateQuery : IQuery<Subscription>
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
-        LanguageInfos = languageInfos;
     }
 
     public long Id { get; }
@@ -43,5 +42,4 @@ public class CertificateQuery : IQuery<Subscription>
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
 }

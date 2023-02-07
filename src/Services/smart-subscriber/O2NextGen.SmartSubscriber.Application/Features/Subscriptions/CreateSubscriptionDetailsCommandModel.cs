@@ -6,7 +6,6 @@ public class CreateSubscriptionDetailsCommandModel
 {
     public string ExternalId { get; set; }
     public bool? IsDeleted { get; set; }
-
     public string OwnerAccountId { get; set; }
     public string CustomerId { get; set; }
     public long ExpiredDate { get; set; }

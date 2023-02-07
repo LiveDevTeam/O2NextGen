@@ -31,12 +31,11 @@ public class UpdateCertificateDetailsCommandHandler
                 request.CreatorId,
                 request.PublishCode,
                 request.IsVisible,
-                request.CategoryId,
+                request.ProductId,
                 request.Product,
                 request.Lock,
                 request.LockedDate,
-                request.LockInfo,
-                request.LanguageInfos),
+                request.LockInfo),
             cancellationToken);
 
         if (certificate is null)
@@ -48,16 +47,14 @@ public class UpdateCertificateDetailsCommandHandler
         certificate.IsDeleted = request.IsDeleted;
         certificate.CustomerId = request.CustomerId;
         certificate.ExpiredDate = request.ExpiredDate;
-        certificate.PublishDate = request.PublishDate;
+        certificate.StartedDate = request.PublishDate;
         certificate.CreatorId = request.CreatorId;
         certificate.PublishCode = request.PublishCode;
         certificate.IsVisible = request.IsVisible;
-        certificate.CategoryId = request.CategoryId;
+        certificate.ProductId = request.ProductId;
         certificate.Product = request.Product;
         certificate.Lock = request.Lock;
         certificate.LockedDate = request.LockedDate;
-        certificate.LockInfo = request.LockInfo;
-        certificate.LanguageInfos = request.LanguageInfos;
 
 
         await _groupsRepository.UpdateAsync(certificate, cancellationToken);
@@ -72,15 +69,14 @@ public class UpdateCertificateDetailsCommandHandler
             certificate.OwnerAccountId,
             certificate.CustomerId,
             certificate.ExpiredDate,
-            certificate.PublishDate,
+            certificate.StartedDate,
             certificate.CreatorId,
             certificate.PublishCode,
             certificate.IsVisible,
-            certificate.CategoryId,
+            certificate.ProductId,
             certificate.Product,
             certificate.Lock,
             certificate.LockedDate,
-            certificate.LockInfo,
-            certificate.LanguageInfos);
+            certificate.LockInfo);
     }
 }

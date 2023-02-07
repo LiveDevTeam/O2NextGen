@@ -2,7 +2,7 @@
 
 namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.GetCategory;
 
-public sealed class GetCategoryQuery : IRequest<GetCategoryQueryResult>
+public sealed class GetCategoryQuery : IRequest<GetProductQueryResult>
 {
     public GetCategoryQuery(long id)
     {

@@ -6,7 +6,7 @@ using O2NextGen.SmartSubscriber.Domain.Entities;
 namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.GetCategory;
 
 public class GetCategoryQueryHandler :
-    IRequestHandler<GetCategoryQuery, GetCategoryQueryResult>
+    IRequestHandler<GetCategoryQuery, GetProductQueryResult>
 {
     private readonly IQueryHandler<ProductQuery, Product> _queryHandler;
 
@@ -15,7 +15,7 @@ public class GetCategoryQueryHandler :
         this._queryHandler = _queryHandler;
     }
 
-    public async Task<GetCategoryQueryResult> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
+    public async Task<GetProductQueryResult> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
     {
         var category = await _queryHandler.HandleAsync(
             new ProductQuery(
@@ -27,17 +27,15 @@ public class GetCategoryQueryHandler :
             return null;
         }
 
-        return new GetCategoryQueryResult(
+        return new GetProductQueryResult(
             id: category.Id,
             modifiedDate: category.ModifiedDate,
             addedDate: category.AddedDate,
             deletedDate: category.DeletedDate,
             isDeleted: category.IsDeleted,
             customerId: category.CustomerId,
-            categoryName: category.CategoryName,
-            categoryDescription: category.CategoryDescription,
-            quantityCertificates: category.QuantityCertificates,
-            quantityPublishCode: category.QuantityPublishCode,
-            categorySeries: category.CategorySeries);
+            productName: category.ProductName,
+            productDescription: category.ProductDescription,
+            productCode: category.ProductCode);
     }
 }

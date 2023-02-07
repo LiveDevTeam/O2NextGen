@@ -4,13 +4,13 @@ using O2NextGen.SmartSubscriber.Domain.Data.Queries;
 
 namespace O2NextGen.SmartSubscriber.Domain.UseCases.ForCategory.UpdateCategory;
 
-public class UpdateCategoryDetailsCommandHandler
-    : IRequestHandler<UpdateCategoryDetailsCommand, UpdateCategoryDetailsCommandResult>
+public class UpdateProductDetailsCommandHandler
+    : IRequestHandler<UpdateProductDetailsCommand, UpdateProductDetailsCommandResult>
 {
     private readonly IQueryHandler<ProductQuery, Entities.Product> _userGroupQueryHandler;
     private readonly IRepository<Entities.Product> _groupsRepository;
 
-    public UpdateCategoryDetailsCommandHandler(
+    public UpdateProductDetailsCommandHandler(
         IQueryHandler<ProductQuery, Entities.Product> userGroupQueryHandler,
         IRepository<Entities.Product> groupsRepository)
     {
@@ -19,7 +19,7 @@ public class UpdateCategoryDetailsCommandHandler
         _groupsRepository = groupsRepository ?? throw new ArgumentNullException(nameof(groupsRepository));
     }
 
-    public async Task<UpdateCategoryDetailsCommandResult> Handle(UpdateCategoryDetailsCommand request,
+    public async Task<UpdateProductDetailsCommandResult> Handle(UpdateProductDetailsCommand request,
         CancellationToken cancellationToken)
     {
         var category = await _userGroupQueryHandler.HandleAsync(
@@ -36,28 +36,26 @@ public class UpdateCategoryDetailsCommandHandler
       
         category.IsDeleted = request.IsDeleted;
         category.CustomerId = request.CustomerId;
-        category.CategoryName = request.CategoryName;
+        category.ProductName = request.ProductName;
         
-        category.CategoryName = request.CategoryName;
+        category.ProductName = request.ProductName;
         
         
-        category.CategoryDescription = request.CategoryDescription;
-        category.QuantityCertificates = request.QuantityCertificates;
-        category.CategorySeries = request.CategorySeries;
+        category.ProductDescription = request.ProductDescription;
+        category.ProductCode = request.ProductCode;
 
         await _groupsRepository.UpdateAsync(category, cancellationToken);
 
-        return new UpdateCategoryDetailsCommandResult(
+        return new UpdateProductDetailsCommandResult(
             category.Id,
             category.ModifiedDate,
             category.AddedDate,
             category.DeletedDate,
             category.IsDeleted,
             category.CustomerId,
-            category.CategoryName,
-            category.CategoryDescription,
-            category.QuantityCertificates,
-            category.QuantityPublishCode
+            category.ProductName,
+            category.ProductDescription,
+            category.ProductCode
         );
     }
 }

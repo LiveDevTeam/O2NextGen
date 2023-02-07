@@ -27,21 +27,5 @@ public class ApplicationDbContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
     }
-
-    //protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //{
-    //    modelBuilder.Entity<CertificateEntity>(ConfigureCertificateEntity);
-    //}
-
-    //private void ConfigureCertificateEntity(EntityTypeBuilder<CertificateEntity> builder)
-    //{
-    //    builder.ToTable("Certificate");
-
-    //    builder.Property(ci => ci.Id)
-    //        .HasColumnType("bigint")
-    //        .UseHiLo("certificate_hilo")
-    //        .IsRequired();
-    //}
-
     #endregion
 }

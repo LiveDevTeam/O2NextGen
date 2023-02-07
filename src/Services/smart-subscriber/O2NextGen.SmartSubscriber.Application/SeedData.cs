@@ -14,7 +14,7 @@ public class SeedData
         if (!context.Categories.Any())
         {
             context.Categories.AddRange(
-                GetPreconfiguredCategories());
+                GetPreconfiguredProducts());
             await context.SaveChangesAsync();
         }
         
@@ -36,7 +36,7 @@ public class SeedData
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
-                CategoryId = applicationDbContext.Categories.FirstOrDefault().Id,
+                ProductId = applicationDbContext.Categories.FirstOrDefault().Id,
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
@@ -46,7 +46,7 @@ public class SeedData
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
-                CategoryId = applicationDbContext.Categories.FirstOrDefault().Id,
+                ProductId = applicationDbContext.Categories.FirstOrDefault().Id,
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
@@ -56,7 +56,7 @@ public class SeedData
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
-                CategoryId = applicationDbContext.Categories.FirstOrDefault().Id,
+                ProductId = applicationDbContext.Categories.FirstOrDefault().Id,
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
@@ -66,7 +66,7 @@ public class SeedData
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
-                CategoryId = applicationDbContext.Categories.FirstOrDefault().Id,
+                ProductId = applicationDbContext.Categories.FirstOrDefault().Id,
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
@@ -77,29 +77,29 @@ public class SeedData
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
-                CategoryId = applicationDbContext.Categories.FirstOrDefault().Id,
+                ProductId = applicationDbContext.Categories.FirstOrDefault().Id,
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             }
         };
     }
 
-    private static Product[] GetPreconfiguredCategories()
+    private static Product[] GetPreconfiguredProducts()
     {
         return new Product[] {
             new Product()
             {
-                CategoryName = "AA Category",
-                CategorySeries = "A",
-                CategoryDescription = "desc category A",
-                QuantityCertificates = 120
+                ProductName = "PFR Centr",
+                ProductCode = "1",
+                ProductDescription = "desc category A",
+                CustomerId = ""
             },
             new Product()
             {
-                CategoryName = "B Category",
-                CategorySeries = "B",
-                CategoryDescription = "desc category B",
-                QuantityCertificates = 120
+                ProductName = "CGen",
+                ProductCode = "2",
+                ProductDescription = "desc category B",
+                CustomerId = ""
             }
         };
     }

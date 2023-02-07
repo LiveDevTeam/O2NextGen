@@ -27,10 +27,10 @@ public class GetCategoriesQueryHandler
             certificates.MapAsReadOnly(category =>
                 new GetCategoriesQueryResult.ProductViewModel(
                     category.Id,
-                    category.CategoryName,
-                    category.CategoryDescription,
-                    category.CategorySeries,
-                    category.QuantityCertificates)));
+                    category.ProductName,
+                    category.ProductDescription,
+                    category.CustomerId,
+                    category.ProductCode)));
 
 
     }

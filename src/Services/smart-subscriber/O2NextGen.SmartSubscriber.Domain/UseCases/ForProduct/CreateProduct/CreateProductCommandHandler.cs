@@ -13,38 +13,33 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         this.productRepository = productRepository;
     }
 
-    public async Task<CreateProductCommandResult> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public async Task<CreateProductCommandResult> Handle(
+        CreateProductCommand request, CancellationToken cancellationToken)
     {
         var category = new Entities.Product
         {
-            CategoryName = request.CategoryName,
-            CategoryDescription = request.CategoryDescription,
-            CategorySeries = request.CategorySeries,
+            ProductName = request.ProductName,
+            ProductDescription = request.ProductDescription,
+            ProductCode = request.ProductCode,
             CustomerId = request.CustomerId,
             AddedDate = request.AddedDate,
             ModifiedDate = request.ModifiedDate,
             DeletedDate = request.DeletedDate,
-            IsDeleted = request.IsDeleted,
-            TimeLifeInDays = request.TimeLifeInDays,
-            QuantityCertificates = request.QuantityCertificates,
-            QuantityPublishCode = request.QuantityPublishCode
+            IsDeleted = request.IsDeleted
         };
 
         var addedCertificate = await productRepository.AddAsync(category, cancellationToken);
 
         return new CreateProductCommandResult(
             addedCertificate.Id,
-            addedCertificate.CategoryName,
-            addedCertificate.CategoryDescription,
-            addedCertificate.CategorySeries,
+            addedCertificate.ProductName,
+            addedCertificate.ProductDescription,
+            addedCertificate.ProductCode,
             addedCertificate.CustomerId,
             addedCertificate.AddedDate,
             addedCertificate.ModifiedDate,
             addedCertificate.DeletedDate,
-            addedCertificate.IsDeleted,
-            addedCertificate.TimeLifeInDays,
-            addedCertificate.QuantityCertificates,
-            addedCertificate.QuantityPublishCode
+            addedCertificate.IsDeleted
         );
     }
 }

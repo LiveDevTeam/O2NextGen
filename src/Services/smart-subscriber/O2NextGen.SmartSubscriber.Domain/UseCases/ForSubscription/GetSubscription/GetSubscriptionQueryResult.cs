@@ -7,8 +7,7 @@ public sealed class GetSubscriptionQueryResult
     public GetSubscriptionQueryResult(long id, string externalId, long modifiedDate, long addedDate,
         long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
         long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId,
-        Product product, bool @lock, long lockedDate, string lockInfo,
-        ICollection<LanguageInfo> languageInfos)
+        Product product, bool @lock, long lockedDate)
     {
         Id = id;
         ExternalId = externalId;
@@ -27,8 +26,6 @@ public sealed class GetSubscriptionQueryResult
         Product = product;
         Lock = @lock;
         LockedDate = lockedDate;
-        LockInfo = lockInfo;
-        LanguageInfos = languageInfos;
     }
 
     public long Id { get; }
@@ -48,6 +45,4 @@ public sealed class GetSubscriptionQueryResult
     public Product Product { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
-    public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
 }

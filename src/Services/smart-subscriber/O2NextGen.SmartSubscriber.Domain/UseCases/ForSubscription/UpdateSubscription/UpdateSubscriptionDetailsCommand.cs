@@ -9,8 +9,7 @@ public class UpdateSubscriptionDetailsCommand : IRequest<UpdateSubscriptionDetai
         long id,
         string externalId, bool? isDeleted, string ownerAccountId, string customerId,
         long expiredDate, long publishDate, string creatorId, string publishCode, bool isVisible,
-        long categoryId, Product product, bool @lock, long lockedDate, string lockInfo,
-        ICollection<LanguageInfo> languageInfos)
+        long productId, Product product, bool @lock, long lockedDate, string lockInfo)
     {
         Id = id;
         ExternalId = externalId;
@@ -22,15 +21,18 @@ public class UpdateSubscriptionDetailsCommand : IRequest<UpdateSubscriptionDetai
         CreatorId = creatorId;
         PublishCode = publishCode;
         IsVisible = isVisible;
-        CategoryId = categoryId;
+        ProductId = productId;
         Product = product;
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
-        LanguageInfos = languageInfos;
     }
 
-    public UpdateSubscriptionDetailsCommand(long id, string externalId, bool? modifiedDate, string addedDate, string deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate, long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, Product product, bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos)
+    public UpdateSubscriptionDetailsCommand(long id, string externalId,
+        bool? modifiedDate, string addedDate, string deletedDate, bool? isDeleted, 
+        string ownerAccountId, string customerId, long expiredDate, long publishDate, string creatorId,
+        string publishCode, bool isVisible, long productId, Product product, bool @lock, 
+        long lockedDate, string lockInfo)
     {
         Id = id;
         ExternalId = externalId;
@@ -45,12 +47,11 @@ public class UpdateSubscriptionDetailsCommand : IRequest<UpdateSubscriptionDetai
         CreatorId = creatorId;
         PublishCode = publishCode;
         IsVisible = isVisible;
-        CategoryId = categoryId;
-        Category1 = product;
+        ProductId = productId;
+        Product = product;
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
-        LanguageInfos1 = languageInfos;
     }
 
     public long Id { get; }
@@ -63,15 +64,12 @@ public class UpdateSubscriptionDetailsCommand : IRequest<UpdateSubscriptionDetai
     public string CreatorId { get; }
     public string PublishCode { get; }
     public bool IsVisible { get; }
-    public long CategoryId { get; }
+    public long ProductId { get; }
     public Product Product { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
     public bool? ModifiedDate { get; }
     public string AddedDate { get; }
     public string DeletedDate { get; }
-    public Product Category1 { get; }
-    public ICollection<LanguageInfo> LanguageInfos1 { get; }
 }
