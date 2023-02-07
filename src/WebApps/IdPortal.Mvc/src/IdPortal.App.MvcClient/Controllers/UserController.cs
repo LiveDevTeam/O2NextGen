@@ -82,9 +82,9 @@ public class UserController:Controller
         return View(model);
     }
     
-    public async Task<IActionResult> DeleteUser(string categoryId)
+    public async Task<IActionResult> DeleteUser(string userId)
     {
-        var response = await _icGenCategoryService.GetCategoryByIdAsync<UserDto>(categoryId);
+        var response = await _icGenCategoryService.GetCategoryByIdAsync<UserDto>(userId);
         List<ResponseDto> list = null;
         if (response != null )
             return View(response);
