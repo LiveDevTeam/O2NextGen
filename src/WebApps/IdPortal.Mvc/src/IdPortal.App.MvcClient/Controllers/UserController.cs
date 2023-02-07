@@ -96,8 +96,7 @@ public class UserController:Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteUser(UserDto model)
     {
-        
-            await _icGenCategoryService.DeleteUserAsync<UserDto>(model.Id);
+        await _icGenCategoryService.DeleteUserAsync<UserDto>(model.Id);
             return RedirectToAction(nameof(UserIndex));
             
     }
