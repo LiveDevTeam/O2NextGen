@@ -2,22 +2,21 @@ using IdPortal.App.MvcClient.Models.Dto;
 using IdPortal.App.MvcClient.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace IdPortal.App.MvcClient.Controllers;
 
 [Authorize]
 public class UserController:Controller
 {
-    private readonly IIdPortalService _icGenCategoryService;
+    private readonly IIdPortalService _idPortalService;
 
-    public UserController(IIdPortalService icGenCategoryService)
+    public UserController(IIdPortalService idPortalService)
     {
-        _icGenCategoryService = icGenCategoryService;
+        _idPortalService = idPortalService;
     }
     public async Task<ViewResult> UserIndex()
     {
-        var response = await _icGenCategoryService.GetCategoriesAsync<List<UserDto>>();
+        var response = await _idPortalService.GetCategoriesAsync<List<UserDto>>();
         List<ResponseDto> list = null;
         // if (response != null && response.IsSuccess)
         // {
@@ -36,7 +35,7 @@ public class UserController:Controller
     {
         if (ModelState.IsValid)
         {
-            var response = await _icGenCategoryService.CreateCategoryAsync<UserDto>(model);
+            var response = await _idPortalService.CreateCategoryAsync<UserDto>(model);
             List<ResponseDto> list = null;
             // if (response != null && response.IsSuccess)
             // {
@@ -51,7 +50,7 @@ public class UserController:Controller
     
     public async Task<IActionResult> EditUser(string userId)
     {
-        var response = await _icGenCategoryService.GetCategoryByIdAsync<UserDto>(userId);
+        var response = await _idPortalService.GetCategoryByIdAsync<UserDto>(userId);
         List<ResponseDto> list = null;
         if (response != null )
             return View(response);
@@ -69,7 +68,7 @@ public class UserController:Controller
     {
         if (ModelState.IsValid)
         {
-            var response = await _icGenCategoryService.UpdateUserAsync<UserDto>(model.Id, model);
+            var response = await _idPortalService.UpdateUserAsync<UserDto>(model.Id, model);
             List<ResponseDto> list = null;
             // if (response != null && response.IsSuccess)
             // {
@@ -84,7 +83,7 @@ public class UserController:Controller
     
     public async Task<IActionResult> DeleteUser(string userId)
     {
-        var response = await _icGenCategoryService.GetCategoryByIdAsync<UserDto>(userId);
+        var response = await _idPortalService.GetCategoryByIdAsync<UserDto>(userId);
         List<ResponseDto> list = null;
         if (response != null )
             return View(response);
@@ -96,7 +95,7 @@ public class UserController:Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteUser(UserDto model)
     {
-        await _icGenCategoryService.DeleteUserAsync<UserDto>(model.Id);
+        await _idPortalService.DeleteUserAsync<UserDto>(model.Id);
             return RedirectToAction(nameof(UserIndex));
             
     }
