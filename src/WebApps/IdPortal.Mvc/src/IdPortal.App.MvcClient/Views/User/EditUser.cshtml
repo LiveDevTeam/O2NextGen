@@ -35,6 +35,13 @@
                 <input asp-for="AccessFailedCount" class="form-control"/>
                 <span asp-validation-for="AccessFailedCount" class="text-danger"></span>
             </div>
+            <div class="col-2">
+                <label asp-for="LockoutEnabled" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="LockoutEnabled" type="checkbox" value=""/>
+                <span asp-validation-for="LockoutEnabled" class="text-danger"></span>
+            </div>
             @* <div class="col-2"> *@
             @*     <label asp-for="QuantityPublishCode" class="control-label pt-2" style="font-size:20px;"></label> *@
             @* </div> *@
@@ -46,32 +53,31 @@
                 <label asp-for="FirstName" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <textarea asp-for="FirstName" class="form-control" rows="5"></textarea>
+                <input asp-for="FirstName" class="form-control"/>
                 <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="PhoneNumber" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="PhoneNumber" class="form-control"/>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="PhoneNumberConfirmed" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="PhoneNumberConfirmed" type="checkbox" value=""/>
+                <span asp-validation-for="PhoneNumberConfirmed" class="text-danger"></span>
             </div>
             <div class="col-2">
                 <label asp-for="EmailConfirmed" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <textarea asp-for="EmailConfirmed" class="form-control" rows="5"></textarea>
-                <span asp-validation-for="EmailConfirmed" class="text-danger"></span>
+                <input asp-for="EmailConfirmed" type="checkbox" value=""/>
+                <span asp-validation-for="PhoneNumberConfirmed" class="text-danger"></span>
             </div>
-            @* <div class="col-2"> *@
-            @*     <label asp-for="ImageUrl" class="control-label pt-2" style="font-size:20px;"></label> *@
-            @* </div> *@
-            @* <div class="col-10 pb-3"> *@
-            @*     <input asp-for="ImageUrl" class="form-control" /> *@
-            @*     <span asp-validation-for="ImageUrl" class="text-danger"></span> *@
-            @* </div> *@
-            @* <div class="col-2"> *@
-            @*     <label asp-for="Price" class="control-label pt-2" style="font-size:20px;"></label> *@
-            @* </div> *@
-            @* <div class="col-10 pb-3"> *@
-            @*     <input asp-for="Price" class="form-control" /> *@
-            @*     <span asp-validation-for="Price" class="text-danger"></span> *@
-            @* </div> *@
             <div class="col-5 offset-2">
-
                 <a asp-action="UserIndex" class="btn-primary btn form-control ">Back to List</a>
             </div>
             <div class="col-5">

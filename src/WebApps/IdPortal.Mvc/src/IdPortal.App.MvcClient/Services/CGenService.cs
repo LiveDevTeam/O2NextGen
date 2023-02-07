@@ -40,7 +40,7 @@ public class IdPortalService : BaseService,IIdPortalService
     }
     
 
-    public async Task<T> UpdateCategoryAsync<T>(string id,T model)
+    public async Task<T> UpdateUserAsync<T>(string id,T model)
     {
         return await SendAsync<T>(
             new ApiRequest
@@ -53,7 +53,7 @@ public class IdPortalService : BaseService,IIdPortalService
 
     }
 
-    public async Task<T> DeleteCategoryAsync<T>(string id)
+    public async Task<T> DeleteUserAsync<T>(string id)
     {
         return await SendAsync<T>(
             new ApiRequest

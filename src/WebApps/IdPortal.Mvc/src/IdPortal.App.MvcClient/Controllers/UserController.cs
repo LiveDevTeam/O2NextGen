@@ -49,9 +49,9 @@ public class UserController:Controller
         return View(model);
     }
     
-    public async Task<IActionResult> EditUser(string categoryId)
+    public async Task<IActionResult> EditUser(string userId)
     {
-        var response = await _icGenCategoryService.GetCategoryByIdAsync<UserDto>(categoryId);
+        var response = await _icGenCategoryService.GetCategoryByIdAsync<UserDto>(userId);
         List<ResponseDto> list = null;
         if (response != null )
             return View(response);
@@ -69,7 +69,7 @@ public class UserController:Controller
     {
         if (ModelState.IsValid)
         {
-            var response = await _icGenCategoryService.UpdateCategoryAsync<UserDto>(model.Id, model);
+            var response = await _icGenCategoryService.UpdateUserAsync<UserDto>(model.Id, model);
             List<ResponseDto> list = null;
             // if (response != null && response.IsSuccess)
             // {
@@ -97,7 +97,7 @@ public class UserController:Controller
     public async Task<IActionResult> DeleteUser(UserDto model)
     {
         
-            await _icGenCategoryService.DeleteCategoryAsync<UserDto>(model.Id);
+            await _icGenCategoryService.DeleteUserAsync<UserDto>(model.Id);
             return RedirectToAction(nameof(UserIndex));
             
     }

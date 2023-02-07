@@ -57,4 +57,13 @@ public class UserController : ControllerBase
         await _userManager.UpdateAsync(findUser);
         return Ok(findUser.ToService());
     }
+    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteById(string id)
+    {
+        var users = await _userManager.Users.ToListAsync();
+        var findUser = users.FirstOrDefault(_ => _.Id == id);
+        await _userManager.DeleteAsync(findUser);
+        return NoContent();
+    }
 }
