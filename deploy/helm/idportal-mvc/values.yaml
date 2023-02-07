@@ -76,8 +76,8 @@ env:
       value: https://auth.o2nextgen.com
     - name: Services__CallBackUrl
       value: https://idportal.o2nextgen.com
-    - name: Services__CGenApiUrl
-      value: https://cgen-api.o2nextgen.com
+    - name: Services__IdPortalApiUrl
+      value: https://idportal-api.o2nextgen.com
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

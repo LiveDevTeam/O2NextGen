@@ -67,17 +67,17 @@ namespace O2Bionics.Services.IdServer
                         RedirectUris =
                         {
                             $"{clientUrls["IdPortalMvcUrl"]}/signin-oidc",
-                            "https://localhost:5003/signin-oidc"
+                            "https://localhost:5001/signin-oidc"
                         },
                         PostLogoutRedirectUris =
                         {
                             $"{clientUrls["IdPortalMvcUrl"]}/signout-callback-oidc",
-                            "https://localhost:5003/signout-callback-oidc"
+                            "https://localhost:5001/signout-callback-oidc"
                         },
                         AllowedCorsOrigins =
                         {
                             $"{clientUrls["IdPortalMvcUrl"]}",
-                            "https://localhost:5003"
+                            "https://localhost:5001"
                         },
                         AllowedScopes = new List<string>()
                         {
