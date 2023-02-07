@@ -1,0 +1,81 @@
+@model List<IdPortal.App.MvcClient.Models.Dto.UserDto>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<br/>
+<br/>
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Users</h1>
+        </div>
+        <div class="col text-end pt-1">
+            <a asp-action="CreateUser" class="btn btn-outline-primary">
+                <i class="fas fa-plus">Create new Category</i>
+            </a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                UserName
+            </th>
+            <th>
+                FirstName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                AccessFailedCount
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone number
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+
+                <td>@item.UserName</td>
+
+                <td>@item.FirstName</td>
+
+                <td>@item.LastName</td>
+
+                <td>@item.AccessFailedCount</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td>
+                    <a asp-action="EditUser" class="btn btn-success"
+                       asp-controller="User" asp-route-userId="@item.Id">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a asp-action="DeleteUser" class="btn btn-danger"
+                       asp-controller="User" asp-route-userId="@item.Id">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}

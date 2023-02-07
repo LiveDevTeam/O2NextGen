@@ -22,15 +22,15 @@ var identityUrl = Environment.GetEnvironmentVariable("Services:AuthApiUrl") ??
 var callBackUrl = Environment.GetEnvironmentVariable("Services:CallBackUrl") ?? 
     builder.Configuration.GetValue<string>("Services:CallBackUrl");
 
-var cGenApi = Environment.GetEnvironmentVariable("Services:CGenApiUrl") ?? 
-              builder.Configuration.GetValue<string>("Services:CGenApiUrl");
+var idPortalApiUrl = Environment.GetEnvironmentVariable("Services:IdPortalApiUrl") ?? 
+              builder.Configuration.GetValue<string>("Services:IdPortalApiUrl");
 
 Console.WriteLine($"IdentityUrl = {identityUrl}");
 Console.WriteLine($"CallBackUrl = {callBackUrl}");
-Console.WriteLine($"CGenApiUrl = {cGenApi}");
-SD.CGenApiBase = builder.Configuration.GetValue<string>("Services:CGenApiUrl");
-builder.Services.AddHttpClient<ICGenCategoryService, CGenCategoryService>();
-builder.Services.AddScoped<ICGenCategoryService,CGenCategoryService>();
+Console.WriteLine($"IdPortalApiUrl = {idPortalApiUrl}");
+SD.CGenApiBase = builder.Configuration.GetValue<string>("Services:IdPortalApiUrl");
+builder.Services.AddHttpClient<IIdPortalService, IdPortalService>();
+builder.Services.AddScoped<IIdPortalService,IdPortalService>();
 
 builder.Services.AddHttpClient<ICGenCertificateService, CGenCertificateService>();
 builder.Services.AddScoped<ICGenCertificateService,CGenCertificateService>();
@@ -67,7 +67,8 @@ builder.Services.AddAuthentication(option =>
         options.ResponseType = "code";
         options.TokenValidationParameters.NameClaimType = "name";
         options.TokenValidationParameters.RoleClaimType = "role";
-        options.Scope.Add("cgen.api");
+        //options.Scope.Add("cgen.api");
+        options.Scope.Add("idportal.api");
         options.SaveTokens = true;
     });
 

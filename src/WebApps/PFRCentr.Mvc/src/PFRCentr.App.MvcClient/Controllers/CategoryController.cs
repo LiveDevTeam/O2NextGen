@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PFRCentr.App.MvcClient.Models.Dto;
@@ -5,7 +6,7 @@ using PFRCentr.App.MvcClient.Services;
 
 namespace PFRCentr.App.MvcClient.Controllers;
 
-// [Authorize]
+[Authorize]
 public class CategoryController:Controller
 {
     private readonly ICGenCategoryService _icGenCategoryService;

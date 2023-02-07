@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  o2nextgen.smartsubscriber.application:
+    image: ${DOCKER_REGISTRY-}o2nextgensmartsubscriber
+    build:
+      context: .
+      dockerfile: O2NextGen.SmartSubscriber.Application/Dockerfile

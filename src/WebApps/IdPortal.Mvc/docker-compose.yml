@@ -6,3 +6,10 @@ services:
     build:
       context: .
       dockerfile: src/IdPortal.App.MvcClient/Dockerfile
+
+  idportal.app.mvcclient:
+    image: ${DOCKER_REGISTRY-}idportalapp
+    build:
+      context: .
+      dockerfile: src/IdPortal.App.MvcClient/Dockerfile
+

@@ -1,0 +1,93 @@
+@model IdPortal.App.MvcClient.Models.Dto.UserDto
+<form asp-action="EditUser">
+    <input asp-for="Id" hidden/>
+    <br/>
+    <div class="container border p-3">
+        <h1 class="text-primary">Edit Category</h1>
+        <hr/>
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-2">
+                <label asp-for="UserName" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="UserName" class="form-control"/>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="LastName" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="LastName" class="form-control"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Email" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Email" class="form-control" value="@Guid.Parse("A6D86517-CF70-4EEF-8340-BCBAA4B60C4A")"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="AccessFailedCount" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="AccessFailedCount" class="form-control"/>
+                <span asp-validation-for="AccessFailedCount" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="LockoutEnabled" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="LockoutEnabled" type="checkbox" value=""/>
+                <span asp-validation-for="LockoutEnabled" class="text-danger"></span>
+            </div>
+            @* <div class="col-2"> *@
+            @*     <label asp-for="QuantityPublishCode" class="control-label pt-2" style="font-size:20px;"></label> *@
+            @* </div> *@
+            @* <div class="col-10 pb-3"> *@
+            @*     <input asp-for="QuantityPublishCode" class="form-control"/> *@
+            @*     <span asp-validation-for="QuantityPublishCode" class="text-danger"></span> *@
+            @* </div> *@
+            <div class="col-2">
+                <label asp-for="FirstName" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="FirstName" class="form-control"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="PhoneNumber" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="PhoneNumber" class="form-control"/>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="PhoneNumberConfirmed" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="PhoneNumberConfirmed" type="checkbox" value=""/>
+                <span asp-validation-for="PhoneNumberConfirmed" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="EmailConfirmed" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="EmailConfirmed" type="checkbox" value=""/>
+                <span asp-validation-for="PhoneNumberConfirmed" class="text-danger"></span>
+            </div>
+            <div class="col-5 offset-2">
+                <a asp-action="UserIndex" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Edit" class="btn btn-success form-control"/>
+
+            </div>
+
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>

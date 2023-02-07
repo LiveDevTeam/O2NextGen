@@ -3,7 +3,7 @@ using IdPortal.App.MvcClient.Models.Dto;
 
 namespace IdPortal.App.MvcClient.Services;
 
-public class CGenCategoryService : BaseService,ICGenCategoryService
+public class IdPortalService : BaseService,IIdPortalService
 {
     public async Task<T> GetCategoriesAsync<T>()
     {
@@ -11,18 +11,18 @@ public class CGenCategoryService : BaseService,ICGenCategoryService
             new ApiRequest
         {
             ApiType = SD.ApiType.GET,
-            Url = SD.CGenApiBase +"/api/Categories",
+            Url = SD.CGenApiBase +"/Users",
             Token =""
         });
     }
 
-    public async Task<T> GetCategoryByIdAsync<T>(long id)
+    public async Task<T> GetCategoryByIdAsync<T>(string id)
     {
         return await SendAsync<T>(
             new ApiRequest
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.CGenApiBase +$"/api/Categories/{id}",
+                Url = SD.CGenApiBase +$"/Users/{id}",
                 Token =""
             });
     }
@@ -34,37 +34,37 @@ public class CGenCategoryService : BaseService,ICGenCategoryService
             {
                 ApiType = SD.ApiType.POST,
                 Data = model,
-                Url = SD.CGenApiBase +"/api/Categories",
+                Url = SD.CGenApiBase +"/Users",
                 Token =""
             });
     }
     
 
-    public async Task<T> UpdateCategoryAsync<T>(long id,T model)
+    public async Task<T> UpdateUserAsync<T>(string id,T model)
     {
         return await SendAsync<T>(
             new ApiRequest
             {
                 ApiType = SD.ApiType.PUT,
                 Data = model,
-                Url = SD.CGenApiBase + $"/api/Categories/{id}",
+                Url = SD.CGenApiBase + $"/Users/{id}",
                 Token = ""
             });
 
     }
 
-    public async Task<T> DeleteCategoryAsync<T>(long id)
+    public async Task<T> DeleteUserAsync<T>(string id)
     {
         return await SendAsync<T>(
             new ApiRequest
             {
                 ApiType = SD.ApiType.DELETE,
-                Url = SD.CGenApiBase + $"/api/Categories/{id}",
+                Url = SD.CGenApiBase + $"/Users/{id}",
                 Token = ""
             });
     }
 
-    public CGenCategoryService(IHttpClientFactory httpClient) : base(httpClient)
+    public IdPortalService(IHttpClientFactory httpClient) : base(httpClient)
     {
         
     }
