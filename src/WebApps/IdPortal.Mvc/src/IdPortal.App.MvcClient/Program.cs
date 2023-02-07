@@ -29,8 +29,8 @@ Console.WriteLine($"IdentityUrl = {identityUrl}");
 Console.WriteLine($"CallBackUrl = {callBackUrl}");
 Console.WriteLine($"IdPortalApiUrl = {idPortalApiUrl}");
 SD.CGenApiBase = builder.Configuration.GetValue<string>("Services:IdPortalApiUrl");
-builder.Services.AddHttpClient<ICGenCategoryService, CGenCategoryService>();
-builder.Services.AddScoped<ICGenCategoryService,CGenCategoryService>();
+builder.Services.AddHttpClient<IIdPortalService, IdPortalService>();
+builder.Services.AddScoped<IIdPortalService,IdPortalService>();
 
 builder.Services.AddHttpClient<ICGenCertificateService, CGenCertificateService>();
 builder.Services.AddScoped<ICGenCertificateService,CGenCertificateService>();

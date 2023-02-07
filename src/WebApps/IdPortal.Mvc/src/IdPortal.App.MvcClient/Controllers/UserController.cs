@@ -1,22 +1,23 @@
 using IdPortal.App.MvcClient.Models.Dto;
 using IdPortal.App.MvcClient.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace IdPortal.App.MvcClient.Controllers;
 
-// [Authorize]
-public class CategoryController:Controller
+[Authorize]
+public class UserController:Controller
 {
-    private readonly ICGenCategoryService _icGenCategoryService;
+    private readonly IIdPortalService _icGenCategoryService;
 
-    public CategoryController(ICGenCategoryService icGenCategoryService)
+    public UserController(IIdPortalService icGenCategoryService)
     {
         _icGenCategoryService = icGenCategoryService;
     }
     public async Task<ViewResult> CategoryIndex()
     {
-        var response = await _icGenCategoryService.GetCategoriesAsync<List<CategoryDto>>();
+        var response = await _icGenCategoryService.GetCategoriesAsync<List<UserDto>>();
         List<ResponseDto> list = null;
         // if (response != null && response.IsSuccess)
         // {
@@ -25,17 +26,17 @@ public class CategoryController:Controller
         return View(response);
     }
 
-    public IActionResult CreateCategory()
+    public IActionResult CreateUser()
     {
         return View();
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> CreateCategory(CategoryDto model)
+    public async Task<IActionResult> CreateUser(UserDto model)
     {
         if (ModelState.IsValid)
         {
-            var response = await _icGenCategoryService.CreateCategoryAsync<CategoryDto>(model);
+            var response = await _icGenCategoryService.CreateCategoryAsync<UserDto>(model);
             List<ResponseDto> list = null;
             // if (response != null && response.IsSuccess)
             // {
@@ -48,9 +49,9 @@ public class CategoryController:Controller
         return View(model);
     }
     
-    public async Task<IActionResult> EditCategory(long categoryId)
+    public async Task<IActionResult> EditUser(string categoryId)
     {
-        var response = await _icGenCategoryService.GetCategoryByIdAsync<CategoryDto>(categoryId);
+        var response = await _icGenCategoryService.GetCategoryByIdAsync<UserDto>(categoryId);
         List<ResponseDto> list = null;
         if (response != null )
             return View(response);
@@ -64,11 +65,11 @@ public class CategoryController:Controller
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditCategory(CategoryDto model)
+    public async Task<IActionResult> EditUser(UserDto model)
     {
         if (ModelState.IsValid)
         {
-            var response = await _icGenCategoryService.UpdateCategoryAsync<CategoryDto>(model.Id, model);
+            var response = await _icGenCategoryService.UpdateCategoryAsync<UserDto>(model.Id, model);
             List<ResponseDto> list = null;
             // if (response != null && response.IsSuccess)
             // {
@@ -81,9 +82,9 @@ public class CategoryController:Controller
         return View(model);
     }
     
-    public async Task<IActionResult> DeleteCategory(long categoryId)
+    public async Task<IActionResult> DeleteUser(string categoryId)
     {
-        var response = await _icGenCategoryService.GetCategoryByIdAsync<CategoryDto>(categoryId);
+        var response = await _icGenCategoryService.GetCategoryByIdAsync<UserDto>(categoryId);
         List<ResponseDto> list = null;
         if (response != null )
             return View(response);
@@ -93,10 +94,10 @@ public class CategoryController:Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteCategory(CategoryDto model)
+    public async Task<IActionResult> DeleteUser(UserDto model)
     {
         
-            await _icGenCategoryService.DeleteCategoryAsync<CategoryDto>(model.Id);
+            await _icGenCategoryService.DeleteCategoryAsync<UserDto>(model.Id);
             return RedirectToAction(nameof(CategoryIndex));
             
     }

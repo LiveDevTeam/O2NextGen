@@ -1,5 +1,5 @@
-@model IdPortal.App.MvcClient.Models.Dto.CategoryDto
-<form asp-action="DeleteCategory">
+@model IdPortal.App.MvcClient.Models.Dto.UserDto
+<form asp-action="DeleteUser">
     <input asp-for="Id" hidden/>
     <br/>
     <div class="container border p-3">
@@ -9,48 +9,48 @@
         <div class="row">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-2">
-                <label asp-for="CategoryName" class="control-label pt-2" style="font-size:20px;"></label>
+                <label asp-for="UserName" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input disabled asp-for="CategoryName" class="form-control"/> 
+                <input disabled asp-for="UserName" class="form-control"/> 
             </div>
             <div class="col-2">
-                <label asp-for="CategorySeries" class="control-label pt-2" style="font-size:20px;"></label>
+                <label asp-for="LastName" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input disabled asp-for="CategorySeries" class="form-control"/>
+                <input disabled asp-for="LastName" class="form-control"/>
             </div>
             <div class="col-2">
-                <label asp-for="CustomerId" class="control-label pt-2" style="font-size:20px;"></label>
+                <label asp-for="Email" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input disabled asp-for="CustomerId" class="form-control" value="@Guid.Parse("A6D86517-CF70-4EEF-8340-BCBAA4B60C4A")"/>
+                <input disabled asp-for="Email" class="form-control" value="@Guid.Parse("A6D86517-CF70-4EEF-8340-BCBAA4B60C4A")"/>
             </div>
             <div class="col-2">
-                <label asp-for="QuantityCertificates" class="control-label pt-2" style="font-size:20px;"></label>
+                <label asp-for="AccessFailedCount" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input disabled asp-for="QuantityCertificates" class="form-control"/>
+                <input disabled asp-for="AccessFailedCount" class="form-control"/>
             </div>
+            @* <div class="col-2"> *@
+            @*     <label asp-for="QuantityPublishCode" class="control-label pt-2" style="font-size:20px;"></label> *@
+            @* </div> *@
+            @* <div class="col-10 pb-3"> *@
+            @*     <input disabled asp-for="QuantityPublishCode" class="form-control"/> *@
+            @*   *@
+            @* </div> *@
             <div class="col-2">
-                <label asp-for="QuantityPublishCode" class="control-label pt-2" style="font-size:20px;"></label>
+                <label asp-for="FirstName" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input disabled asp-for="QuantityPublishCode" class="form-control"/>
-             
-            </div>
-            <div class="col-2">
-                <label asp-for="CategoryDescription" class="control-label pt-2" style="font-size:20px;"></label>
-            </div>
-            <div class="col-10 pb-3">
-                <textarea asp-for="CategoryDescription" class="form-control" rows="5"></textarea>
+                <textarea asp-for="FirstName" class="form-control" rows="5"></textarea>
 
             </div>
             <div class="col-2">
-                <label asp-for="TimeLifeInDays" class="control-label pt-2" style="font-size:20px;"></label>
+                <label asp-for="EmailConfirmed" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <textarea disabled asp-for="TimeLifeInDays" class="form-control" rows="5"></textarea>
+                <textarea disabled asp-for="EmailConfirmed" class="form-control" rows="5"></textarea>
           
             </div>
             @* <div class="col-2"> *@

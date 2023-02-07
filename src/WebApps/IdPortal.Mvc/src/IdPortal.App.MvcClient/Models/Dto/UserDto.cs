@@ -15,7 +15,7 @@ public class CertificateDto
     public bool IsVisible { get; set; }
 
     public long CategoryId { get; set; }
-    public CategoryDto Category { get; set; }
+    public UserDto User { get; set; }
     public bool Lock { get; set; }
     public long LockedDate { get; set; }
     public string LockInfo { get; set; }
@@ -25,18 +25,17 @@ public class CertificateDto
     public string DeletedDate { get; internal set; }
 
 }
-public class CategoryDto
+public class UserDto
 {
-    public long Id { get;  set; }
-    public string CategoryName { get;  set; }
-    public string CategoryDescription { get;  set; }
-    public string CategorySeries { get;  set; }
-    public string CustomerId { get;  set; }
-    public long? AddedDate { get;  set; }
-    public long? ModifiedDate { get;  set; }
-    public long? DeletedDate { get;  set; }
-    public bool? IsDeleted { get;  set; }
-    public int TimeLifeInDays { get;  set; }
-    public int QuantityCertificates { get;  set; }
-    public int QuantityPublishCode { get;  set; }
+    public string Id { get;  set; }
+    public string UserName { get;  set; }
+    public string FirstName { get;  set; }
+    public string LastName { get;  set; }
+    public string Email { get;  set; }
+    public bool LockoutEnabled { get;  set; }
+    public string PhoneNumber { get;  set; }
+    public DateTimeOffset? LockoutEnd { get;  set; }
+    public bool PhoneNumberConfirmed { get;  set; }
+    public bool EmailConfirmed { get;  set; }
+    public int AccessFailedCount { get;  set; }
 }

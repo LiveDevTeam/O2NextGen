@@ -1,4 +1,4 @@
-@model List<IdPortal.App.MvcClient.Models.Dto.CategoryDto>
+@model List<IdPortal.App.MvcClient.Models.Dto.UserDto>
 
 @{
     ViewBag.Title = "title";
@@ -10,10 +10,10 @@
 <div class="container p-4 border">
     <div class="row pb-2">
         <div class="col">
-            <h1 class="text-primary">Categories</h1>
+            <h1 class="text-primary">Users</h1>
         </div>
         <div class="col text-end pt-1">
-            <a asp-action="CreateCategory" class="btn btn-outline-primary">
+            <a asp-action="CreateUser" class="btn btn-outline-primary">
                 <i class="fas fa-plus">Create new Category</i>
             </a>
         </div>
@@ -26,16 +26,22 @@
                 Id
             </th>
             <th>
-                Category Name
+                UserName
             </th>
             <th>
-                Category Description
+                FirstName
             </th>
             <th>
-                Category Serial
+                LastName
             </th>
             <th>
-                Category Number
+                AccessFailedCount
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone number
             </th>
         </tr>
         </thead>
@@ -45,21 +51,23 @@
             <tr>
                 <td>@item.Id</td>
 
-                <td>@item.CategoryName</td>
+                <td>@item.UserName</td>
 
-                <td>@item.CategoryDescription</td>
+                <td>@item.FirstName</td>
 
-                <td>@item.CategorySeries</td>
+                <td>@item.LastName</td>
 
-                <td>@item.QuantityCertificates</td>
+                <td>@item.AccessFailedCount</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
                 <td>
 
-                    <a asp-action="EditCategory" class="btn btn-success"
-                       asp-controller="Category" asp-route-categoryId="@item.Id">
+                    <a asp-action="EditUser" class="btn btn-success"
+                       asp-controller="User" asp-route-categoryId="@item.Id">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a asp-action="DeleteCategory" class="btn btn-danger"
-                       asp-controller="Category" asp-route-categoryId="@item.Id">
+                    <a asp-action="DeleteUser" class="btn btn-danger"
+                       asp-controller="User" asp-route-categoryId="@item.Id">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>
@@ -68,6 +76,7 @@
         </tbody>
     </table>
 </div>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial"/>
 }
