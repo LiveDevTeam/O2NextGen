@@ -1,12 +1,13 @@
-using Xunit;
+using NUnit.Framework;
 
 namespace Tests.O2NextGen.CertificateManagement.Application.Base;
 
 public class BaseTests<TClass>
     where TClass : class
 {
+    [TestCase("BaseTests")]
     public virtual void It_CheckClassName(string name = "")
     {
-        Assert.Equal(name, typeof(TClass).Name);
+        Assert.AreEqual(name, typeof(TClass).Name);
     }
 }

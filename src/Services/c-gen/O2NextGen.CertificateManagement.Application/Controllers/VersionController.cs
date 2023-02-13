@@ -1,43 +1,47 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
 
-namespace O2NextGen.CertificateManagement.Application.Controllers
+namespace O2NextGen.CertificateManagement.Application.Controllers;
+
+[AllowAnonymous]
+[ApiController]
+[Route("[controller]")]
+public class VersionController : ControllerBase
 {
+    #region Fields
 
-    [AllowAnonymous]
-    public class VersionController : ControllerBase
+    private readonly IWebHostEnvironment _environment;
+    private readonly ILogger<VersionController> _logger;
+
+    #endregion
+
+
+    #region Ctors
+
+    public VersionController(IWebHostEnvironment environment, ILogger<VersionController> logger)
     {
-        #region Fields
+        _environment = environment;
+        _logger = logger;
+    }
 
-        private readonly IWebHostEnvironment _environment;
-        private readonly ILogger<VersionController> _logger;
+    #endregion
 
-        #endregion
-
-
-        #region Ctors
-
-        public VersionController(IWebHostEnvironment environment, ILogger<VersionController> logger)
+    [HttpGet]
+    public object Index()
+    {
+        var exVersion = GetVersion();
+        _logger.LogInformation($"get version - {exVersion}");
+        return new
         {
-            _environment = environment;
-            _logger = logger;
-        }
+            Environment = _environment.EnvironmentName,
+            Version = exVersion?.ToString()
+        };
+    }
 
-        #endregion
-
-        [HttpGet("[controller]")]
-        public object Index()
-        {
-            var exVersion = Assembly.GetExecutingAssembly().GetName().Version;
-            _logger.LogInformation($"get version - {exVersion}");
-            return new
-            {
-                Environment = _environment.EnvironmentName,
-                Version = exVersion.ToString()
-            };
-        }
+    protected virtual Version GetVersion()
+    {
+        var exVersion = Assembly.GetExecutingAssembly().GetName().Version;
+        return exVersion ?? throw new InvalidOperationException();
     }
 }

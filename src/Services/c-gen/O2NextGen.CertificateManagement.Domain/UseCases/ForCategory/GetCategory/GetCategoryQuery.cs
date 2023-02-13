@@ -1,16 +1,14 @@
 ﻿using MediatR;
 
-namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategory
+namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategory;
+
+public sealed class GetCategoryQuery : IRequest<GetCategoryQueryResult>
 {
-
-    public sealed class GetCategoryQuery : IRequest<GetCategoryQueryResult>
+    public GetCategoryQuery(long id)
     {
-        public GetCategoryQuery(long id)
-        {
-            Id = id;
-        }
-
-        public long Id { get; }
-        public string CategoryName { get; set; }
+        Id = id;
     }
+
+    public long Id { get; }
+    public string CategoryName { get; set; }
 }

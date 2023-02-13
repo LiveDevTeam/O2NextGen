@@ -1,7 +1,7 @@
 ﻿using MediatR;
-namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategories
+
+namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategories;
+
+public class GetCategoriesQuery : IRequest<GetCategoriesQueryResult>
 {
-    public class GetCategoriesQuery : IRequest<GetCategoriesQueryResult>
-    {
-    }
 }

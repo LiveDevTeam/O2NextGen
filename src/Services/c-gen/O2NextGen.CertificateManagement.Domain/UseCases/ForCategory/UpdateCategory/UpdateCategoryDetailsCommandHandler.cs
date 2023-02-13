@@ -1,18 +1,19 @@
 using MediatR;
 using O2NextGen.CertificateManagement.Domain.Data;
 using O2NextGen.CertificateManagement.Domain.Data.Queries;
+using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.UpdateCategory;
 
 public class UpdateCategoryDetailsCommandHandler
     : IRequestHandler<UpdateCategoryDetailsCommand, UpdateCategoryDetailsCommandResult>
 {
-    private readonly IQueryHandler<CategoryQuery, Entities.Category> _userGroupQueryHandler;
-    private readonly IRepository<Entities.Category> _groupsRepository;
+    private readonly IRepository<Category> _groupsRepository;
+    private readonly IQueryHandler<CategoryQuery, Category> _userGroupQueryHandler;
 
     public UpdateCategoryDetailsCommandHandler(
-        IQueryHandler<CategoryQuery, Entities.Category> userGroupQueryHandler,
-        IRepository<Entities.Category> groupsRepository)
+        IQueryHandler<CategoryQuery, Category> userGroupQueryHandler,
+        IRepository<Category> groupsRepository)
     {
         _userGroupQueryHandler =
             userGroupQueryHandler ?? throw new ArgumentNullException(nameof(userGroupQueryHandler));
@@ -28,19 +29,16 @@ public class UpdateCategoryDetailsCommandHandler
             ),
             cancellationToken);
 
-        if (category is null)
-        {
-            return null;
-        }
+        if (category is null) return null;
 
-      
+
         category.IsDeleted = request.IsDeleted;
         category.CustomerId = request.CustomerId;
         category.CategoryName = request.CategoryName;
-        
+
         category.CategoryName = request.CategoryName;
-        
-        
+
+
         category.CategoryDescription = request.CategoryDescription;
         category.QuantityCertificates = request.QuantityCertificates;
         category.CategorySeries = request.CategorySeries;

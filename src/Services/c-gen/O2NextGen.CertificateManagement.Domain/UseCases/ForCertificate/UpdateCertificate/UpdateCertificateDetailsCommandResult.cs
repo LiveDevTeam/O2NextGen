@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using O2NextGen.CertificateManagement.Domain.Entities;
+﻿using O2NextGen.CertificateManagement.Domain.Entities;
 
 public class UpdateCertificateDetailsCommandResult
 {
@@ -9,7 +8,10 @@ public class UpdateCertificateDetailsCommandResult
         Name = name;
     }
 
-    public UpdateCertificateDetailsCommandResult(long id, string name, long modifiedDate, long addedDate, long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate, long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, Category category, bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos) : this(id, name)
+    public UpdateCertificateDetailsCommandResult(long id, string name, long modifiedDate, long addedDate,
+        long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
+        long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, Category category,
+        bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos) : this(id, name)
     {
         ModifiedDate = modifiedDate;
         AddedDate = addedDate;
@@ -50,5 +52,3 @@ public class UpdateCertificateDetailsCommandResult
     public string LockInfo { get; }
     public ICollection<LanguageInfo> LanguageInfos { get; }
 }
-
-

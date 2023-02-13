@@ -1,18 +1,13 @@
 ﻿using MediatR;
 
-namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.GetCertificate
+namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.GetCertificate;
+
+public sealed class GetCertificateQuery : IRequest<GetCertificateQueryResult>
 {
-
-    public sealed class GetCertificateQuery : IRequest<GetCertificateQueryResult>
+    public GetCertificateQuery(long id)
     {
-        private long id;
-
-        public GetCertificateQuery(long id)
-        {
-            Id = id;
-        }
-
-        public long Id { get => id; set => id = value; }
+        Id = id;
     }
-}
 
+    public long Id { get; set; }
+}

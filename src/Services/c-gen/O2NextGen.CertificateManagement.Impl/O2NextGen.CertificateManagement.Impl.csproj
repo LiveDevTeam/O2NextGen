@@ -1,17 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj" />
-    <ProjectReference Include="..\O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="Services\"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Services\"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj"/>
+        <ProjectReference Include="..\O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj"/>
+    </ItemGroup>
 </Project>
