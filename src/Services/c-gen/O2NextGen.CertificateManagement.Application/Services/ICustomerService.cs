@@ -1,5 +1,12 @@
-﻿namespace O2NextGen.CertificateManagement.Application.Services;
+﻿using System.Drawing;
 
+namespace O2NextGen.CertificateManagement.Application.Services;
+
+    public interface ITemplateService
+    {
+        Image GetTemplate(long categoryModelId);
+        TemplateService.TemplateCertificate GetSettingsOtTemplate(long categoryModelId);
+    }
 public interface ICustomerService
 {
     Guid CustomerId { get; }

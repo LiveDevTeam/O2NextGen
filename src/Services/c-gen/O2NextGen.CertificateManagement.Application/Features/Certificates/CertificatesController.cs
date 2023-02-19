@@ -61,7 +61,7 @@ public class CertificatesController : ControllerBase
 
     [HttpPut]
     [Route("id")]
-    public async Task<ActionResult<UpdateCertificateDetailsCommandResult>> UpdateAsync(
+    public async Task<ActionResult<UpdateCertificate>> UpdateAsync(
         long id, [FromBody] UpdateCertificateDetailsCommandModel model, CancellationToken ct)
     {
         var result = await _mediator.Send(

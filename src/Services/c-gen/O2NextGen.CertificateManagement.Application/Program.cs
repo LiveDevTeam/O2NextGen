@@ -20,6 +20,8 @@ builder.Services.AddApiVersioning(o =>
     o.DefaultApiVersion = new ApiVersion(1, 0);
 });
 
+builder.Services.AddCustomIntegrations(configuration);
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1.1", 

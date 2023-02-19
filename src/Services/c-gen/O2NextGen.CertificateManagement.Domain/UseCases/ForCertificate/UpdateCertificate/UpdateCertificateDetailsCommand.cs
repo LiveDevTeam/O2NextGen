@@ -3,7 +3,7 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
 
-public class UpdateCertificateDetailsCommand : IRequest<UpdateCertificateDetailsCommandResult>
+public class UpdateCertificateDetailsCommand : IRequest<global::UpdateCertificate>
 {
     public UpdateCertificateDetailsCommand(
         long id,

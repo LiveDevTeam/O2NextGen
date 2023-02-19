@@ -3,7 +3,7 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Data;
 
-public class CGenDbContext : DbContext
+public class CGenDbContext : DbContext, ICertificateDataContext
 {
     #region Ctors
 

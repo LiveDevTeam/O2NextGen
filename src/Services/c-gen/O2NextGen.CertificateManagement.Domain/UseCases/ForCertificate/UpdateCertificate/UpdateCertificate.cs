@@ -1,14 +1,14 @@
 ﻿using O2NextGen.CertificateManagement.Domain.Entities;
 
-public class UpdateCertificateDetailsCommandResult
+public class UpdateCertificate: IUpdateCertificate
 {
-    public UpdateCertificateDetailsCommandResult(long id, string name)
+    public UpdateCertificate(long id, string name)
     {
         Id = id;
         Name = name;
     }
 
-    public UpdateCertificateDetailsCommandResult(long id, string name, long modifiedDate, long addedDate,
+    public UpdateCertificate(long id, string name, long modifiedDate, long addedDate,
         long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
         long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, Category category,
         bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos) : this(id, name)
@@ -34,6 +34,7 @@ public class UpdateCertificateDetailsCommandResult
 
     public long Id { get; }
     public string Name { get; }
+    public string ExternalId { get; }
     public long ModifiedDate { get; }
     public long AddedDate { get; }
     public long? DeletedDate { get; }

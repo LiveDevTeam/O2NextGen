@@ -6,19 +6,19 @@
         <Nullable>disable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <None Remove="Data\"/>
-        <None Remove="Data\Configurations\"/>
-        <None Remove="Queries\"/>
+        <None Remove="Data\" />
+        <None Remove="Data\Configurations\" />
+        <None Remove="Queries\" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Data\Configurations\"/>
-        <Folder Include="Queries\"/>
+        <Folder Include="Data\Configurations\" />
+        <Folder Include="Queries\" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\O2NextGen.CertificateManagement.Domain\O2NextGen.CertificateManagement.Domain.csproj"/>
+        <ProjectReference Include="..\O2NextGen.CertificateManagement.Domain\O2NextGen.CertificateManagement.Domain.csproj" />
     </ItemGroup>
 </Project>

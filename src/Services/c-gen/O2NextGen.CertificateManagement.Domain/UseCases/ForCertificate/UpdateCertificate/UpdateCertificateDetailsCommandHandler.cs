@@ -6,7 +6,7 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
 
 public class UpdateCertificateDetailsCommandHandler
-    : IRequestHandler<UpdateCertificateDetailsCommand, UpdateCertificateDetailsCommandResult>
+    : IRequestHandler<UpdateCertificateDetailsCommand, global::UpdateCertificate>
 {
     private readonly IRepository<Certificate> _groupsRepository;
     private readonly IQueryHandler<CertificateQuery, Certificate> _userGroupQueryHandler;
@@ -20,7 +20,7 @@ public class UpdateCertificateDetailsCommandHandler
         _groupsRepository = groupsRepository ?? throw new ArgumentNullException(nameof(groupsRepository));
     }
 
-    public async Task<UpdateCertificateDetailsCommandResult> Handle(UpdateCertificateDetailsCommand request,
+    public async Task<global::UpdateCertificate> Handle(UpdateCertificateDetailsCommand request,
         CancellationToken cancellationToken)
     {
         var certificate = await _userGroupQueryHandler.HandleAsync(
@@ -61,7 +61,7 @@ public class UpdateCertificateDetailsCommandHandler
 
         await _groupsRepository.UpdateAsync(certificate, cancellationToken);
 
-        return new UpdateCertificateDetailsCommandResult(
+        return new global::UpdateCertificate(
             certificate.Id,
             certificate.ExternalId,
             certificate.ModifiedDate,
