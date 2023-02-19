@@ -6,8 +6,8 @@ public class UpdateCategoryDetailsCommand : IRequest<UpdateCategoryDetailsComman
 {
     public UpdateCategoryDetailsCommand(
         long id,
-        string categoryName, 
-        string categoryDescription, 
+        string categoryName,
+        string categoryDescription,
         string categorySeries,
         string customerId,
         int quantityCertificates,

@@ -1,35 +1,34 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using O2NextGen.CertificateManagement.Domain.Data;
 using O2NextGen.CertificateManagement.Domain.Data.Queries;
+using O2NextGen.CertificateManagement.Domain.Entities;
 
-namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate
+namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
+
+public class UpdateCertificateDetailsCommandHandler
+    : IRequestHandler<UpdateCertificateDetailsCommand, global::UpdateCertificate>
 {
-    public class UpdateCertificateDetailsCommandHandler
-        : IRequestHandler<UpdateCertificateDetailsCommand, UpdateCertificateDetailsCommandResult>
+    private readonly IRepository<Certificate> _groupsRepository;
+    private readonly IQueryHandler<CertificateQuery, Certificate> _userGroupQueryHandler;
+
+    public UpdateCertificateDetailsCommandHandler(
+        IQueryHandler<CertificateQuery, Certificate> userGroupQueryHandler,
+        IRepository<Certificate> groupsRepository)
     {
-        private readonly IQueryHandler<CertificateQuery, Entities.Certificate> _userGroupQueryHandler;
-        private readonly IRepository<Entities.Certificate> _groupsRepository;
+        _userGroupQueryHandler =
+            userGroupQueryHandler ?? throw new ArgumentNullException(nameof(userGroupQueryHandler));
+        _groupsRepository = groupsRepository ?? throw new ArgumentNullException(nameof(groupsRepository));
+    }
 
-        public UpdateCertificateDetailsCommandHandler(
-            IQueryHandler<CertificateQuery, Entities.Certificate> userGroupQueryHandler,
-            IRepository<Entities.Certificate> groupsRepository)
-        {
-            _userGroupQueryHandler =
-                userGroupQueryHandler ?? throw new ArgumentNullException(nameof(userGroupQueryHandler));
-            _groupsRepository = groupsRepository ?? throw new ArgumentNullException(nameof(groupsRepository));
-        }
-
-        public async Task<UpdateCertificateDetailsCommandResult> Handle(UpdateCertificateDetailsCommand request, CancellationToken cancellationToken)
-        {
-            var certificate = await _userGroupQueryHandler.HandleAsync(
-                new CertificateQuery(
-                    request.ExternalId,
+    public async Task<global::UpdateCertificate> Handle(UpdateCertificateDetailsCommand request,
+        CancellationToken cancellationToken)
+    {
+        var certificate = await _userGroupQueryHandler.HandleAsync(
+            new CertificateQuery(
+                request.ExternalId,
                 request.IsDeleted,
                 request.CustomerId,
-               request.ExpiredDate,
+                request.ExpiredDate,
                 request.PublishDate,
                 request.CreatorId,
                 request.PublishCode,
@@ -40,52 +39,47 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateC
                 request.LockedDate,
                 request.LockInfo,
                 request.LanguageInfos),
-                cancellationToken);
+            cancellationToken);
 
-            if (certificate is null)
-            {
-                return null;
-            }
+        if (certificate is null) return null;
 
-            certificate.ExternalId = request.ExternalId;
-            certificate.IsDeleted = request.IsDeleted;
-            certificate.CustomerId = request.CustomerId;
-            certificate.ExpiredDate = request.ExpiredDate;
-            certificate.PublishDate = request.PublishDate;
-            certificate.CreatorId = request.CreatorId;
-            certificate.PublishCode = request.PublishCode;
-            certificate.IsVisible = request.IsVisible;
-            certificate.CategoryId = request.CategoryId;
-            certificate.Category = request.Category;
-            certificate.Lock = request.Lock;
-            certificate.LockedDate = request.LockedDate;
-            certificate.LockInfo = request.LockInfo;
-            certificate.LanguageInfos = request.LanguageInfos;
+        certificate.ExternalId = request.ExternalId;
+        certificate.IsDeleted = request.IsDeleted;
+        certificate.CustomerId = request.CustomerId;
+        certificate.ExpiredDate = request.ExpiredDate;
+        certificate.PublishDate = request.PublishDate;
+        certificate.CreatorId = request.CreatorId;
+        certificate.PublishCode = request.PublishCode;
+        certificate.IsVisible = request.IsVisible;
+        certificate.CategoryId = request.CategoryId;
+        certificate.Category = request.Category;
+        certificate.Lock = request.Lock;
+        certificate.LockedDate = request.LockedDate;
+        certificate.LockInfo = request.LockInfo;
+        certificate.LanguageInfos = request.LanguageInfos;
 
 
-            await _groupsRepository.UpdateAsync(certificate, cancellationToken);
+        await _groupsRepository.UpdateAsync(certificate, cancellationToken);
 
-            return new UpdateCertificateDetailsCommandResult(
-                certificate.Id,
-                certificate.ExternalId,
-                certificate.ModifiedDate,
-                certificate.AddedDate,
-                certificate.DeletedDate,
-                certificate.IsDeleted,
-                certificate.OwnerAccountId,
-                certificate.CustomerId,
-                certificate.ExpiredDate,
-                certificate.PublishDate,
-                certificate.CreatorId,
-                certificate.PublishCode,
-                certificate.IsVisible,
-                certificate.CategoryId,
-                certificate.Category,
-                certificate.Lock,
-                certificate.LockedDate,
-                certificate.LockInfo,
-                certificate.LanguageInfos);
-        }
+        return new global::UpdateCertificate(
+            certificate.Id,
+            certificate.ExternalId,
+            certificate.ModifiedDate,
+            certificate.AddedDate,
+            certificate.DeletedDate,
+            certificate.IsDeleted,
+            certificate.OwnerAccountId,
+            certificate.CustomerId,
+            certificate.ExpiredDate,
+            certificate.PublishDate,
+            certificate.CreatorId,
+            certificate.PublishCode,
+            certificate.IsVisible,
+            certificate.CategoryId,
+            certificate.Category,
+            certificate.Lock,
+            certificate.LockedDate,
+            certificate.LockInfo,
+            certificate.LanguageInfos);
     }
 }
-

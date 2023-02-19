@@ -1,74 +1,74 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <UserSecretsId>e238f36a-3514-4436-b624-9b4f799bb82d</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..\..</DockerfileContext>
-    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <UserSecretsId>e238f36a-3514-4436-b624-9b4f799bb82d</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..\..</DockerfileContext>
+        <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-    <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="wwwroot\"/>
+        <Folder Include="Services\"/>
+        <Folder Include="ViewModels\"/>
+    </ItemGroup>
 
-  <ItemGroup>
+    <ItemGroup>
 
-    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
-    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
-    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.11" />
-    <PackageReference Include="O2NextGen.Sdk.NetCore.Models" Version="1.0.0" />
-    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
-    <PackageReference Include="QRCoder" Version="1.4.1" />
-    <PackageReference Include="runtime.osx.10.10-x64.CoreCompat.System.Drawing" Version="5.8.64" />
-    <PackageReference Include="MediatR" Version="11.1.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-  </ItemGroup>
+        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0"/>
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0"/>
+        <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.11"/>
+        <PackageReference Include="O2NextGen.Sdk.NetCore.Models" Version="1.0.0"/>
+        <PackageReference Include="System.Drawing.Common" Version="5.0.2"/>
+        <PackageReference Include="QRCoder" Version="1.4.1"/>
+        <PackageReference Include="runtime.osx.10.10-x64.CoreCompat.System.Drawing" Version="5.8.64"/>
+        <PackageReference Include="MediatR" Version="11.1.0"/>
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj" />
-    <ProjectReference Include="..\O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj" />
-    <ProjectReference Include="..\O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\O2NextGen.CertificateManagement.Domain\O2NextGen.CertificateManagement.Domain.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\O2NextGen.CertificateManagement.Business\O2NextGen.CertificateManagement.Business.csproj"/>
+        <ProjectReference Include="..\O2NextGen.CertificateManagement.Data\O2NextGen.CertificateManagement.Data.csproj"/>
+        <ProjectReference Include="..\O2NextGen.CertificateManagement.Impl\O2NextGen.CertificateManagement.Impl.csproj">
+            <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+        </ProjectReference>
+        <ProjectReference Include="..\O2NextGen.CertificateManagement.Domain\O2NextGen.CertificateManagement.Domain.csproj">
+            <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+        </ProjectReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Certificates\Create.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Certificates\Detail.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Certificates\Index.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
-  </ItemGroup>
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Views\Certificates\Create.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Certificates\Detail.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Certificates\Index.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Logs\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Logs\**"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Remove="Logs\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="Logs\**"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Logs\**" />
-    <None Remove="Services\" />
-    <None Remove="ViewModels\" />
-    <None Remove="MediatR" />
-    <None Remove="MediatR.Extensions.Microsoft.DependencyInjection" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="Logs\**"/>
+        <None Remove="Services\"/>
+        <None Remove="ViewModels\"/>
+        <None Remove="MediatR"/>
+        <None Remove="MediatR.Extensions.Microsoft.DependencyInjection"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Content Remove="Logs\**" />
-    <Content Remove="Properties\launchSettings.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\launchSettings.json" />
-  </ItemGroup>
+    <ItemGroup>
+        <Content Remove="Logs\**"/>
+        <Content Remove="Properties\launchSettings.json"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Properties\launchSettings.json"/>
+    </ItemGroup>
 </Project>

@@ -4,25 +4,27 @@ using O2NextGen.CertificateManagement.Application.Services;
 
 namespace O2NextGen.CertificateManagement.Application.Features.Projects;
 
-[Route("api/[controller]")]
+[ApiVersion("1.0")]
+[ApiVersion("1.1")]
+[ApiController]
+// ReSharper disable once RouteTemplates.RouteParameterConstraintNotResolved
+[Route("api/v{v:apiVersion}/[controller]")]
 public class ProjectsController : ControllerBase
 {
     private readonly ICustomerService _customerService;
-
-    private List<ProjectViewModel> memoryList { get; }
 
     public ProjectsController(ICustomerService customerService)
     {
         _customerService = customerService;
         memoryList = new List<ProjectViewModel>
         {
-            new ProjectViewModel
+            new()
             {
                 Name = "PROJECT PFR",
                 Description = "Project of PFR CENTER",
                 TenantId = _customerService.CustomerId
             },
-            new ProjectViewModel()
+            new()
             {
                 Name = "PROJECT PFR 2",
                 Description = "Project of PFR CENTER",
@@ -30,6 +32,8 @@ public class ProjectsController : ControllerBase
             }
         };
     }
+
+    private List<ProjectViewModel> memoryList { get; }
 
     [HttpGet]
     [ProducesResponseType((int) HttpStatusCode.NotFound)]
@@ -77,6 +81,6 @@ public class ProjectsController : ControllerBase
     [ProducesResponseType((int) HttpStatusCode.NoContent)]
     public async Task<IActionResult> RemoveAsync(long id, CancellationToken ct)
     {
-       return NoContent();
+        return NoContent();
     }
 }

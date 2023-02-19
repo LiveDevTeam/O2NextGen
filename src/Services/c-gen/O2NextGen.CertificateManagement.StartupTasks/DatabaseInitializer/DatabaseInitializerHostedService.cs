@@ -1,36 +1,32 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace O2NextGen.CertificateManagement.StartupTasks.DatabaseInitializer
+namespace O2NextGen.CertificateManagement.StartupTasks.DatabaseInitializer;
+
+public class DatabaseInitializerHostedService<TDbContext> : IHostedService
+    where TDbContext : DbContext
 {
-    public class DatabaseInitializerHostedService<TDbContext> : IHostedService
-        where TDbContext : DbContext
+    private readonly IServiceScopeFactory _scopeFactory;
+
+    private readonly DatabaseInitializerSettings _settings;
+
+    public DatabaseInitializerHostedService(IServiceScopeFactory scopeFactory, DatabaseInitializerSettings settings)
     {
-        private readonly IServiceScopeFactory _scopeFactory;
+        _scopeFactory = scopeFactory;
+        _settings = settings;
+    }
 
-        private readonly DatabaseInitializerSettings _settings;
+    public async Task StartAsync(CancellationToken cancellationToken)
+    {
+        using var scope = _scopeFactory.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<TDbContext>();
 
-        public DatabaseInitializerHostedService(IServiceScopeFactory scopeFactory, DatabaseInitializerSettings settings)
-        {
-            _scopeFactory = scopeFactory;
-            _settings = settings;
-        }
+        if (_settings.Initialize) await dbContext.Database.MigrateAsync(cancellationToken);
+    }
 
-        public async Task StartAsync(CancellationToken cancellationToken)
-        {
-            using var scope = _scopeFactory.CreateScope();
-            var dbContext = scope.ServiceProvider.GetRequiredService<TDbContext>();
-
-            if (_settings.Initialize)
-            {
-                await dbContext.Database.MigrateAsync(cancellationToken);
-            }
-        }
-
-        public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
     }
 }
-

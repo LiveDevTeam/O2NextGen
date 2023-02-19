@@ -7,30 +7,34 @@ namespace O2NextGen.CertificateManagement.Application;
 
 public class SeedData
 {
-    public static async Task SeedAsync(CGenDbContext context)
+    public static async Task SeedAsync(CGenDbContext context, ConfigurationManager configuration)
     {
-        context.Database.Migrate();
+        // context.Database.EnsureDeleted();
+        if (bool.Parse(configuration["IsTests"]) == false)
+        {
+            await context.Database.MigrateAsync();
 
-        if (!context.Categories.Any())
-        {
-            context.Categories.AddRange(
-                GetPreconfiguredCategories());
-            await context.SaveChangesAsync();
-        }
-        
-        if (!context.Certificates.Any())
-        {
-            context.Certificates.AddRange(
-                GetPreconfiguredCertificates(context));
-            await context.SaveChangesAsync();
+            if (!context.Categories.Any())
+            {
+                context.Categories.AddRange(
+                    GetPreconfiguredCategories());
+                await context.SaveChangesAsync();
+            }
+
+            if (!context.Certificates.Any())
+            {
+                context.Certificates.AddRange(
+                    GetPreconfiguredCertificates(context));
+                await context.SaveChangesAsync();
+            }
         }
     }
 
     private static Certificate[] GetPreconfiguredCertificates(CGenDbContext cGenDbContext)
     {
-        return new Certificate[]
+        return new[]
         {
-            new Certificate()
+            new()
             {
                 Category = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
@@ -40,7 +44,7 @@ public class SeedData
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
-            new Certificate()
+            new Certificate
             {
                 Category = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
@@ -50,7 +54,7 @@ public class SeedData
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
-            new Certificate()
+            new Certificate
             {
                 Category = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
@@ -60,7 +64,7 @@ public class SeedData
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
-            new Certificate()
+            new Certificate
             {
                 Category = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
@@ -71,7 +75,7 @@ public class SeedData
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
 
-            new Certificate()
+            new Certificate
             {
                 Category = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
@@ -86,15 +90,16 @@ public class SeedData
 
     private static Category[] GetPreconfiguredCategories()
     {
-        return new Category[] {
-            new Category()
+        return new[]
+        {
+            new()
             {
                 CategoryName = "AA Category",
                 CategorySeries = "A",
                 CategoryDescription = "desc category A",
                 QuantityCertificates = 120
             },
-            new Category()
+            new Category
             {
                 CategoryName = "B Category",
                 CategorySeries = "B",

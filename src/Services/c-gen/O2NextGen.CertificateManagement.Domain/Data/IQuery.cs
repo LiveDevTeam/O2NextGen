@@ -1,8 +1,5 @@
-﻿namespace O2NextGen.CertificateManagement.Domain.Data
+﻿namespace O2NextGen.CertificateManagement.Domain.Data;
+
+public interface IQuery<out TResult>
 {
-    public interface IQuery<out TResult>
-    {
-
-    }
 }
-
