@@ -8,6 +8,7 @@ using QRCoder;
 
 namespace O2NextGen.CertificateManagement.Application.Controllers.Features.QRCodes;
 
+[Authorize]
 [ApiVersion("1.0")]
 [ApiVersion("1.1")]
 [ApiController]

@@ -1,9 +1,10 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using O2NextGen.CertificateManagement.Application.Services;
 
 namespace O2NextGen.CertificateManagement.Application.Controllers.Features.Projects;
-
+[Authorize]
 [ApiVersion("1.0")]
 [ApiVersion("1.1")]
 [ApiController]

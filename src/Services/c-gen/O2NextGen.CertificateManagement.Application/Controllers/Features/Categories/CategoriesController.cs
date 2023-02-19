@@ -10,7 +10,6 @@ using O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.UpdateCategory
 
 namespace O2NextGen.CertificateManagement.Application.Controllers.Features.Categories;
 
-//[ApiVersion("1.0")]
 [Authorize]
 [ApiController]
 [ApiVersion("1.0")]
