@@ -1,9 +1,6 @@
-using Newtonsoft.Json;
-using PFRCentr.App.MvcClient.Models.Dto;
-
 namespace PFRCentr.App.MvcClient.Services;
 
-public class CGenCategoryService : BaseService,ICGenCategoryService
+public class CGenCategoryService : BaseService, ICGenCategoryService
 {
     public async Task<T> GetCategoriesAsync<T>()
     {
@@ -11,7 +8,7 @@ public class CGenCategoryService : BaseService,ICGenCategoryService
             new ApiRequest
         {
             ApiType = SD.ApiType.GET,
-            Url = SD.CGenApiBase +"/api/Categories",
+            Url = SD.CGenApiBase +"/api/v1.0/Categories",
             Token =""
         });
     }
@@ -22,7 +19,7 @@ public class CGenCategoryService : BaseService,ICGenCategoryService
             new ApiRequest
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.CGenApiBase +$"/api/Categories/{id}",
+                Url = SD.CGenApiBase +$"/api/v1.0/Categories/{id}",
                 Token =""
             });
     }
@@ -34,7 +31,7 @@ public class CGenCategoryService : BaseService,ICGenCategoryService
             {
                 ApiType = SD.ApiType.POST,
                 Data = model,
-                Url = SD.CGenApiBase +"/api/Categories",
+                Url = SD.CGenApiBase +"/api/v1.0/Categories",
                 Token =""
             });
     }
@@ -47,7 +44,7 @@ public class CGenCategoryService : BaseService,ICGenCategoryService
             {
                 ApiType = SD.ApiType.PUT,
                 Data = model,
-                Url = SD.CGenApiBase + $"/api/Categories/{id}",
+                Url = SD.CGenApiBase + $"/api/v1.0/Categories/{id}",
                 Token = ""
             });
 
@@ -59,7 +56,7 @@ public class CGenCategoryService : BaseService,ICGenCategoryService
             new ApiRequest
             {
                 ApiType = SD.ApiType.DELETE,
-                Url = SD.CGenApiBase + $"/api/Categories/{id}",
+                Url = SD.CGenApiBase + $"/api/v1.0/Categories/{id}",
                 Token = ""
             });
     }

@@ -11,7 +11,7 @@ public class CGenCertificateService: BaseService,ICGenCertificateService
             new ApiRequest
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.CGenApiBase +"/api/Certificates",
+                Url = SD.CGenApiBase +"/api/v1.0/Certificates",
                 Token =""
             });
     }
@@ -22,7 +22,7 @@ public class CGenCertificateService: BaseService,ICGenCertificateService
             new ApiRequest
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.CGenApiBase +$"/api/Certificates/{id}",
+                Url = SD.CGenApiBase +$"/api/v1.0/Certificates/{id}",
                 Token =""
             });
     }
@@ -34,7 +34,7 @@ public class CGenCertificateService: BaseService,ICGenCertificateService
             {
                 ApiType = SD.ApiType.POST,
                 Data = model,
-                Url = SD.CGenApiBase +"/api/Certificates",
+                Url = SD.CGenApiBase +"/api/v1.0/Certificates",
                 Token =""
             });
     }
@@ -47,7 +47,7 @@ public class CGenCertificateService: BaseService,ICGenCertificateService
             {
                 ApiType = SD.ApiType.PUT,
                 Data = model,
-                Url = SD.CGenApiBase + $"/api/Certificates/{id}",
+                Url = SD.CGenApiBase + $"/api/v1.0/Certificates/{id}",
                 Token = ""
             });
 
@@ -59,7 +59,7 @@ public class CGenCertificateService: BaseService,ICGenCertificateService
             new ApiRequest
             {
                 ApiType = SD.ApiType.DELETE,
-                Url = SD.CGenApiBase + $"/api/Certificates/{id}",
+                Url = SD.CGenApiBase + $"/api/v1.0/Certificates/{id}",
                 Token = ""
             });
     }
