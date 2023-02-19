@@ -20,8 +20,8 @@ public class CertificateDataContextTests
         var mock = new Mock<ICertificateDataContext>();
         mock.SetupProperty(p => p.Certificates);
         var obj = mock.Object;
-        obj.Certificates = It.IsAny<DbSet<Certificate>>();
-        Assert.That(obj.Certificates, Is.EqualTo(It.IsAny<DbSet<Certificate>>()));
+        obj.Certificates = It.IsAny<DbSet<CertificateEntity>>();
+        Assert.That(obj.Certificates, Is.EqualTo(It.IsAny<DbSet<CertificateEntity>>()));
     }
 
     [Test]
@@ -30,8 +30,8 @@ public class CertificateDataContextTests
         var mock = new Mock<ICertificateDataContext>();
         mock.SetupProperty(p => p.Categories);
         var obj = mock.Object;
-        obj.Categories = It.IsAny<DbSet<Category>>();
-        Assert.That(obj.Categories, Is.EqualTo(It.IsAny<DbSet<Category>>()));
+        obj.Categories = It.IsAny<DbSet<CategoryEntity>>();
+        Assert.That(obj.Categories, Is.EqualTo(It.IsAny<DbSet<CategoryEntity>>()));
     }
 
     // [Test]

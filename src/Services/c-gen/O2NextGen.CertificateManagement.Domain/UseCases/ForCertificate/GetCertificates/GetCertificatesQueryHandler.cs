@@ -9,10 +9,10 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.GetCert
 public class GetCertificatesQueryHandler
     : IRequestHandler<GetCertificatesQuery, GetCertificatesQueryResult>
 {
-    private readonly IQueryHandler<CertificatesQuery, IReadOnlyCollection<Certificate>> queryHandler;
+    private readonly IQueryHandler<CertificatesQuery, IReadOnlyCollection<CertificateEntity>> queryHandler;
 
     public GetCertificatesQueryHandler(
-        IQueryHandler<CertificatesQuery, IReadOnlyCollection<Certificate>> queryHandler)
+        IQueryHandler<CertificatesQuery, IReadOnlyCollection<CertificateEntity>> queryHandler)
     {
         this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
     }
@@ -41,7 +41,7 @@ public class GetCertificatesQueryHandler
                     certificate.PublishCode,
                     certificate.IsVisible,
                     certificate.CategoryId,
-                    certificate.Category,
+                    certificate.CategoryEntity,
                     certificate.Lock,
                     certificate.LockedDate,
                     certificate.LockInfo,

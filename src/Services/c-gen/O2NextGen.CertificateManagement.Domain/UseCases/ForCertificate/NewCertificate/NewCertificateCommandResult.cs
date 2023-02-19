@@ -6,7 +6,7 @@ public class NewCertificateCommandResult
 {
     public NewCertificateCommandResult(long AddedDate, long ModifiedDate, string PublishCode, string LockInfo,
         int LockedDate, long ExpiredDate, long PublishDate, string CreatorId, string CustomerId, string OwnerAccountId,
-        long DeletedDate, long CategoryId, Category Category, List<LanguageInfo> LanguageInfos)
+        long DeletedDate, long CategoryId, CategoryEntity categoryEntity, List<LanguageInfoEntity> LanguageInfos)
     {
         this.AddedDate = AddedDate;
         this.ModifiedDate = ModifiedDate;
@@ -20,7 +20,7 @@ public class NewCertificateCommandResult
         this.OwnerAccountId = OwnerAccountId;
         this.DeletedDate = DeletedDate;
         this.CategoryId = CategoryId;
-        this.Category = Category;
+        this.CategoryEntity = categoryEntity;
         this.LanguageInfos = LanguageInfos;
     }
 
@@ -36,6 +36,6 @@ public class NewCertificateCommandResult
     public string OwnerAccountId { get; }
     public long DeletedDate { get; }
     public long CategoryId { get; }
-    public Category Category { get; }
-    public List<LanguageInfo> LanguageInfos { get; }
+    public CategoryEntity CategoryEntity { get; }
+    public List<LanguageInfoEntity> LanguageInfos { get; }
 }

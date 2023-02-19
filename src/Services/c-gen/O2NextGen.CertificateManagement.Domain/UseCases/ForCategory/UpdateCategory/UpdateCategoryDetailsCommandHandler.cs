@@ -8,12 +8,12 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.UpdateCate
 public class UpdateCategoryDetailsCommandHandler
     : IRequestHandler<UpdateCategoryDetailsCommand, UpdateCategoryDetailsCommandResult>
 {
-    private readonly IRepository<Category> _groupsRepository;
-    private readonly IQueryHandler<CategoryQuery, Category> _userGroupQueryHandler;
+    private readonly IRepository<CategoryEntity> _groupsRepository;
+    private readonly IQueryHandler<CategoryQuery, CategoryEntity> _userGroupQueryHandler;
 
     public UpdateCategoryDetailsCommandHandler(
-        IQueryHandler<CategoryQuery, Category> userGroupQueryHandler,
-        IRepository<Category> groupsRepository)
+        IQueryHandler<CategoryQuery, CategoryEntity> userGroupQueryHandler,
+        IRepository<CategoryEntity> groupsRepository)
     {
         _userGroupQueryHandler =
             userGroupQueryHandler ?? throw new ArgumentNullException(nameof(userGroupQueryHandler));

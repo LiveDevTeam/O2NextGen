@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using O2NextGen.CertificateManagement.Application.Services;
 
-namespace Tests.O2NextGen.CertificateManagement.Application;
+namespace Tests.O2NextGen.CertificateManagement.Application.Services;
 
 public class QrCodeServiceTests : BaseServiceTests<QrCodeService>
 {

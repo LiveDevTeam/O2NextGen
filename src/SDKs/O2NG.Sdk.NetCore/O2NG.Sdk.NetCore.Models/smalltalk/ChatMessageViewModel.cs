@@ -1,9 +1,5 @@
-﻿namespace O2NextGen.Sdk.NetCore.Models.SmallTalk
+﻿namespace O2NextGen.Sdk.NetCore.Models.SmallTalk;
+
+public class ChatMessageViewModel
 {
-
-    public class ChatMessageViewModel
-    {
-
-    }
-
 }

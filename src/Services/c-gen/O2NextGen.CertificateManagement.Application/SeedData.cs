@@ -30,13 +30,13 @@ public class SeedData
         }
     }
 
-    private static Certificate[] GetPreconfiguredCertificates(CGenDbContext cGenDbContext)
+    private static CertificateEntity[] GetPreconfiguredCertificates(CGenDbContext cGenDbContext)
     {
         return new[]
         {
             new()
             {
-                Category = cGenDbContext.Categories.FirstOrDefault(),
+                CategoryEntity = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
@@ -44,9 +44,9 @@ public class SeedData
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
-            new Certificate
+            new CertificateEntity
             {
-                Category = cGenDbContext.Categories.FirstOrDefault(),
+                CategoryEntity = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
@@ -54,9 +54,9 @@ public class SeedData
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
-            new Certificate
+            new CertificateEntity
             {
-                Category = cGenDbContext.Categories.FirstOrDefault(),
+                CategoryEntity = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
@@ -64,9 +64,9 @@ public class SeedData
                 CreatorId = Guid.NewGuid().ToString(),
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
-            new Certificate
+            new CertificateEntity
             {
-                Category = cGenDbContext.Categories.FirstOrDefault(),
+                CategoryEntity = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
@@ -75,9 +75,9 @@ public class SeedData
                 ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
             },
 
-            new Certificate
+            new CertificateEntity
             {
-                Category = cGenDbContext.Categories.FirstOrDefault(),
+                CategoryEntity = cGenDbContext.Categories.FirstOrDefault(),
                 CustomerId = Guid.NewGuid().ToString(),
                 AddedDate = DateTime.Now.ConvertToUnixTime(),
                 IsVisible = true,
@@ -88,7 +88,7 @@ public class SeedData
         };
     }
 
-    private static Category[] GetPreconfiguredCategories()
+    private static CategoryEntity[] GetPreconfiguredCategories()
     {
         return new[]
         {
@@ -99,7 +99,7 @@ public class SeedData
                 CategoryDescription = "desc category A",
                 QuantityCertificates = 120
             },
-            new Category
+            new CategoryEntity
             {
                 CategoryName = "B Category",
                 CategorySeries = "B",

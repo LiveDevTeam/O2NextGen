@@ -7,8 +7,8 @@ public sealed class GetCertificateQueryResult
     public GetCertificateQueryResult(long id, string externalId, long modifiedDate, long addedDate,
         long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
         long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId,
-        Category category, bool @lock, long lockedDate, string lockInfo,
-        ICollection<LanguageInfo> languageInfos)
+        CategoryEntity categoryEntity, bool @lock, long lockedDate, string lockInfo,
+        ICollection<LanguageInfoEntity> languageInfos)
     {
         Id = id;
         ExternalId = externalId;
@@ -24,7 +24,7 @@ public sealed class GetCertificateQueryResult
         PublishCode = publishCode;
         IsVisible = isVisible;
         CategoryId = categoryId;
-        Category = category;
+        CategoryEntity = categoryEntity;
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
@@ -45,9 +45,9 @@ public sealed class GetCertificateQueryResult
     public string PublishCode { get; }
     public bool IsVisible { get; }
     public long CategoryId { get; }
-    public Category Category { get; }
+    public CategoryEntity CategoryEntity { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
+    public ICollection<LanguageInfoEntity> LanguageInfos { get; }
 }

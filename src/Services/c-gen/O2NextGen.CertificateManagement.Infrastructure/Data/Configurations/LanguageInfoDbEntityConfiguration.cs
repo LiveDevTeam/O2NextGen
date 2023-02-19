@@ -4,12 +4,12 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Data.Configurations;
 
-public class LanguageInfoDbEntityConfiguration : IEntityTypeConfiguration<LanguageInfo>
+public class LanguageInfoDbEntityConfiguration : IEntityTypeConfiguration<LanguageInfoEntity>
 {
-    public void Configure(EntityTypeBuilder<LanguageInfo> builder)
+    public void Configure(EntityTypeBuilder<LanguageInfoEntity> builder)
     {
-        builder.ToTable("LanguageInfos")
-            .HasOne(e => e.Certificate)
+        builder.ToTable("LanguageInfoEntity")
+            .HasOne(e => e.CertificateEntity)
             .WithMany(e => e.LanguageInfos)
             .HasForeignKey(e => e.CertificateId)
             .OnDelete(DeleteBehavior.Cascade);

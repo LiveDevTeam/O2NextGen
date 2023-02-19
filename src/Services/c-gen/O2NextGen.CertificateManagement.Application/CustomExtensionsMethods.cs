@@ -1,5 +1,7 @@
 using O2NextGen.CertificateManagement.Application.Services;
 
+namespace O2NextGen.CertificateManagement.Application;
+
 internal static class CustomExtensionsMethods
 {
     public static IServiceCollection AddCustomIntegrations(this IServiceCollection services,

@@ -1,4 +1,6 @@
-namespace IntegrationTests.O2NextGen.CertificateManagement.Application.Features;
+using IntegrationTests.O2NextGen.CertificateManagement.Application.Features;
+
+namespace IntegrationTests.O2NextGen.CertificateManagement.Application;
 
 public class TemplateScenarioBase : BaseIntegrationApiTests
 {

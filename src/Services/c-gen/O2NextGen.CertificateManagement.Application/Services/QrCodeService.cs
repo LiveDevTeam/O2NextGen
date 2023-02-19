@@ -1,5 +1,6 @@
 using System.Drawing;
 using Microsoft.Extensions.Options;
+using O2NextGen.CertificateManagement.Application.IoC;
 using O2NextGen.Sdk.NetCore.Extensions;
 
 namespace O2NextGen.CertificateManagement.Application.Services;

@@ -10,6 +10,7 @@ using Tests.O2NextGen.CertificateManagement.Application.Base;
 
 namespace Tests.O2NextGen.CertificateManagement.Application;
 
+[TestFixture]
 public class VersionControllerTests : BaseControllerTests<VersionController>
 {
     [Test]
@@ -42,7 +43,7 @@ public class VersionControllerTests : BaseControllerTests<VersionController>
     {
         Assert.IsFalse(
             Attribute.GetCustomAttributes(typeof(VersionController), typeof(ApiVersionAttribute)).Any(att =>
-                ((ApiVersionAttribute) att).Versions.Any(x => x.MajorVersion == 1 && x.MinorVersion == 0)));
+                ((ApiVersionAttribute) att).Versions.Any(x => x is {MajorVersion: 1, MinorVersion: 0})));
     }
 
     [Test]
@@ -50,7 +51,7 @@ public class VersionControllerTests : BaseControllerTests<VersionController>
     {
         Assert.IsFalse(
             Attribute.GetCustomAttributes(typeof(VersionController), typeof(ApiVersionAttribute)).Any(att =>
-                ((ApiVersionAttribute) att).Versions.Any(x => x.MajorVersion == 1 && x.MinorVersion == 1)));
+                ((ApiVersionAttribute) att).Versions.Any(x => x is {MajorVersion: 1, MinorVersion: 1})));
     }
 
     #endregion

@@ -7,9 +7,9 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.CreateC
 public class CreateCertificateCommandHandler
     : IRequestHandler<CreateCertificateCommand, CreateCertificateCommandResult>
 {
-    private readonly IRepository<Certificate> certificatesRepository;
+    private readonly IRepository<CertificateEntity> certificatesRepository;
 
-    public CreateCertificateCommandHandler(IRepository<Certificate> certificatesRepository)
+    public CreateCertificateCommandHandler(IRepository<CertificateEntity> certificatesRepository)
     {
         this.certificatesRepository = certificatesRepository;
     }
@@ -17,7 +17,7 @@ public class CreateCertificateCommandHandler
     public async Task<CreateCertificateCommandResult> Handle(
         CreateCertificateCommand request, CancellationToken cancellationToken)
     {
-        var certificate = new Certificate
+        var certificate = new CertificateEntity
         {
             ExternalId = request.ExternalId,
             IsDeleted = request.IsDeleted,
@@ -28,7 +28,7 @@ public class CreateCertificateCommandHandler
             PublishCode = request.PublishCode,
             IsVisible = request.IsVisible,
             CategoryId = request.CategoryId,
-            Category = request.Category,
+            CategoryEntity = request.CategoryEntity,
             Lock = request.Lock,
             LockedDate = request.LockedDate,
             LockInfo = request.LockInfo,
@@ -48,7 +48,7 @@ public class CreateCertificateCommandHandler
             addedCertificate.PublishCode,
             addedCertificate.IsVisible,
             addedCertificate.CategoryId,
-            addedCertificate.Category,
+            addedCertificate.CategoryEntity,
             addedCertificate.Lock,
             addedCertificate.LockedDate,
             addedCertificate.LockInfo,

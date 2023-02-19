@@ -6,7 +6,7 @@ using O2NextGen.CertificateManagement.Infrastructure.Data;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Queries;
 
-public class CategoriesQueryHandler : IQueryHandler<CategoriesQuery, IReadOnlyCollection<Category>>
+public class CategoriesQueryHandler : IQueryHandler<CategoriesQuery, IReadOnlyCollection<CategoryEntity>>
 {
     private readonly CGenDbContext context;
 
@@ -15,7 +15,7 @@ public class CategoriesQueryHandler : IQueryHandler<CategoriesQuery, IReadOnlyCo
         this.context = context;
     }
 
-    public async Task<IReadOnlyCollection<Category>> HandleAsync(CategoriesQuery query, CancellationToken ct)
+    public async Task<IReadOnlyCollection<CategoryEntity>> HandleAsync(CategoriesQuery query, CancellationToken ct)
     {
         return (await context
                 .Categories

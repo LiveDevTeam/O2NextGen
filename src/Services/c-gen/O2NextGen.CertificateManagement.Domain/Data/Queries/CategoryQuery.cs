@@ -2,14 +2,14 @@
 
 namespace O2NextGen.CertificateManagement.Domain.Data.Queries;
 
-public class CategoryQuery : IQuery<Category>
+public class CategoryQuery : IQuery<CategoryEntity>
 {
-    public CategoryQuery(long id)
+    public CategoryQuery(long? id)
     {
         Id = id;
     }
 
-    public long Id { get; set; }
+    public long? Id { get; set; }
     public string CategoryName { get; set; }
     public int QuantityCertificates { get; set; }
     public string CategoryDescription { get; set; }

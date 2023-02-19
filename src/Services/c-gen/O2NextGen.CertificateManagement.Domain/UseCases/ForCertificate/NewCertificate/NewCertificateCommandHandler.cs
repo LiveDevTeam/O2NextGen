@@ -9,9 +9,9 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.NewCert
 public class NewCertificateCommandHandler :
     IRequestHandler<NewCertificateCommand, NewCertificateCommandResult>
 {
-    private readonly IQueryHandler<CategoryQuery, Category> _queryCategoryHandler;
+    private readonly IQueryHandler<CategoryQuery, CategoryEntity> _queryCategoryHandler;
 
-    public NewCertificateCommandHandler(IQueryHandler<CategoryQuery, Category> queryCategoryHandler)
+    public NewCertificateCommandHandler(IQueryHandler<CategoryQuery, CategoryEntity> queryCategoryHandler)
     {
         _queryCategoryHandler = queryCategoryHandler;
     }
@@ -25,51 +25,51 @@ public class NewCertificateCommandHandler :
         if (category == null)
             throw new ArgumentException($"CategoryModel {nameof(category)} not found");
 
-        LanguageInfo language;
+        LanguageInfoEntity language;
 
         switch (request.LanguageId)
         {
             case 1:
             {
-                language = new LanguageInfo
+                language = new LanguageInfoEntity
                 {
                     LanguageId = request.LanguageId,
                     Firstname = string.Empty,
                     Lastname = string.Empty,
-                    Middlename = string.Empty
+                    MiddleName = string.Empty
                 };
                 break;
             }
             case 2:
             {
-                language = new LanguageInfo
+                language = new LanguageInfoEntity
                 {
                     LanguageId = request.LanguageId,
                     Firstname = string.Empty,
                     Lastname = string.Empty,
-                    Middlename = string.Empty
+                    MiddleName = string.Empty
                 };
                 break;
             }
             case 3:
             {
-                language = new LanguageInfo
+                language = new LanguageInfoEntity
                 {
                     LanguageId = request.LanguageId,
                     Firstname = string.Empty,
                     Lastname = string.Empty,
-                    Middlename = string.Empty
+                    MiddleName = string.Empty
                 };
                 break;
             }
             case 4:
             {
-                language = new LanguageInfo
+                language = new LanguageInfoEntity
                 {
                     LanguageId = request.LanguageId,
                     Firstname = string.Empty,
                     Lastname = string.Empty,
-                    Middlename = string.Empty
+                    MiddleName = string.Empty
                 };
                 break;
             }
@@ -80,7 +80,7 @@ public class NewCertificateCommandHandler :
             }
         }
 
-        var languageInfos = new List<LanguageInfo> {language};
+        var languageInfos = new List<LanguageInfoEntity> {language};
 
         return new NewCertificateCommandResult(
             DateTime.Now.ConvertToUnixTime(),

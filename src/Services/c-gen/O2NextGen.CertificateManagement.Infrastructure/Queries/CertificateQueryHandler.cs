@@ -5,7 +5,7 @@ using O2NextGen.CertificateManagement.Infrastructure.Data;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Queries;
 
-public class CertificateQueryHandler : IQueryHandler<CertificateQuery, Certificate>
+public class CertificateQueryHandler : IQueryHandler<CertificateQuery, CertificateEntity>
 {
     private readonly CGenDbContext context;
 
@@ -14,9 +14,9 @@ public class CertificateQueryHandler : IQueryHandler<CertificateQuery, Certifica
         this.context = context;
     }
 
-    public async Task<Certificate> HandleAsync(CertificateQuery query, CancellationToken ct)
+    public async Task<CertificateEntity> HandleAsync(CertificateQuery query, CancellationToken ct)
     {
-        var result = await context.Set<Certificate>().FindAsync(new object[] {query.Id}, ct);
+        var result = await context.Set<CertificateEntity>().FindAsync(new object[] {query.Id}, ct);
         return result;
     }
 }

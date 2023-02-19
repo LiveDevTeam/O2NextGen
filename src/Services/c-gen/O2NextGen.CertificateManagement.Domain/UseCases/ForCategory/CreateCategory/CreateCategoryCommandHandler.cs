@@ -6,9 +6,9 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.CreateCate
 
 public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, CreateCategoryCommandResult>
 {
-    private readonly IRepository<Category> categoryRepository;
+    private readonly IRepository<CategoryEntity> categoryRepository;
 
-    public CreateCategoryCommandHandler(IRepository<Category> categoryRepository)
+    public CreateCategoryCommandHandler(IRepository<CategoryEntity> categoryRepository)
     {
         this.categoryRepository = categoryRepository;
     }
@@ -16,7 +16,7 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
     public async Task<CreateCategoryCommandResult> Handle(CreateCategoryCommand request,
         CancellationToken cancellationToken)
     {
-        var category = new Category
+        var category = new CategoryEntity
         {
             CategoryName = request.CategoryName,
             CategoryDescription = request.CategoryDescription,

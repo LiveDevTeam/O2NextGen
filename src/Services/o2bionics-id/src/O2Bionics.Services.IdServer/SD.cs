@@ -11,6 +11,9 @@ namespace O2Bionics.Services.IdServer
             urls.Add("PfrMvcUrl",
                 Environment.GetEnvironmentVariable("Urls:PfrMvcUrl") ??
                 configuration.GetValue<string>("Urls:PfrMvcUrl"));
+            urls.Add("CGenApiUrl",
+                Environment.GetEnvironmentVariable("Urls:CGenApiUrl") ??
+                configuration.GetValue<string>("Urls:CGenApiUrl"));
             urls.Add("IdPortalMvcUrl",
                 Environment.GetEnvironmentVariable("Urls:IdPortalMvcUrl") ??
                 configuration.GetValue<string>("Urls:IdPortalMvcUrl"));
@@ -40,6 +43,7 @@ namespace O2Bionics.Services.IdServer
         public static IEnumerable<ApiScope> ApiScopes => new List<ApiScope>
         {
             new ApiScope(name: "cgen.api", displayName: "Access to CGen API"),
+            new ApiScope(name: "smalltalk.api", displayName: "Access to Smalltalk API"),
             new ApiScope(name: "idportal.api", displayName: "Access to CGen API")
         };
 
@@ -117,6 +121,49 @@ namespace O2Bionics.Services.IdServer
                             "profile"
                         }
                     },
+                    new Client
+                    {
+                        ClientId = "cgenswaggerui",
+                        ClientName = "CGen Swagger UI",
+                        RequireClientSecret = false,
+                        AllowedGrantTypes = GrantTypes.Code,
+                        RequirePkce = true,
+                        RedirectUris =
+                        {
+                            $"{clientUrls["CGenApiUrl"]}/swagger/oauth2-redirect.html",
+                            "https://localhost:11001/swagger/oauth2-redirect.html"
+                        },
+                        PostLogoutRedirectUris =
+                        {
+                            $"{clientUrls["CGenApiUrl"]}/swagger/",
+                            "https://localhost:11001/swagger/"
+                        },
+                        AllowedCorsOrigins =
+                        {
+                            $"{clientUrls["CGenApiUrl"]}",
+                            "https://localhost:11001"
+                        },
+                        AllowedScopes = new List<string>
+                        {
+                            "openid", "profile", "cgen.api",
+                        }
+                    },
+                    new Client
+                    {
+                        ClientId = "smalltalkapi",
+                        ClientName = "Smalltalkapi Swagger UI",
+                        AllowedGrantTypes = GrantTypes.Implicit,
+                        AllowAccessTokensViaBrowser = true,
+
+                        RedirectUris = { $"http://localhost:5003/swagger/o2c.html" },
+                        PostLogoutRedirectUris = { $"http://localhost:5003/swagger/" },
+
+                        AllowedScopes = new List<string>
+                        {
+                            "smalltalk.api"
+                        }
+                    },
+                    
                 };
         }
     }

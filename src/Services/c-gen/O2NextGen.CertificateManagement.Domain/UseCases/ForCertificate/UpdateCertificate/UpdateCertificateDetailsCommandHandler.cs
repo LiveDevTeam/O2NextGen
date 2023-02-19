@@ -6,21 +6,21 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
 
 public class UpdateCertificateDetailsCommandHandler
-    : IRequestHandler<UpdateCertificateDetailsCommand, global::UpdateCertificate>
+    : IRequestHandler<UpdateCertificateDetailsCommand, global::O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate.UpdateCertificate>
 {
-    private readonly IRepository<Certificate> _groupsRepository;
-    private readonly IQueryHandler<CertificateQuery, Certificate> _userGroupQueryHandler;
+    private readonly IRepository<CertificateEntity> _groupsRepository;
+    private readonly IQueryHandler<CertificateQuery, CertificateEntity> _userGroupQueryHandler;
 
     public UpdateCertificateDetailsCommandHandler(
-        IQueryHandler<CertificateQuery, Certificate> userGroupQueryHandler,
-        IRepository<Certificate> groupsRepository)
+        IQueryHandler<CertificateQuery, CertificateEntity> userGroupQueryHandler,
+        IRepository<CertificateEntity> groupsRepository)
     {
         _userGroupQueryHandler =
             userGroupQueryHandler ?? throw new ArgumentNullException(nameof(userGroupQueryHandler));
         _groupsRepository = groupsRepository ?? throw new ArgumentNullException(nameof(groupsRepository));
     }
 
-    public async Task<global::UpdateCertificate> Handle(UpdateCertificateDetailsCommand request,
+    public async Task<global::O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate.UpdateCertificate> Handle(UpdateCertificateDetailsCommand request,
         CancellationToken cancellationToken)
     {
         var certificate = await _userGroupQueryHandler.HandleAsync(
@@ -34,7 +34,7 @@ public class UpdateCertificateDetailsCommandHandler
                 request.PublishCode,
                 request.IsVisible,
                 request.CategoryId,
-                request.Category,
+                request.CategoryEntity,
                 request.Lock,
                 request.LockedDate,
                 request.LockInfo,
@@ -52,7 +52,7 @@ public class UpdateCertificateDetailsCommandHandler
         certificate.PublishCode = request.PublishCode;
         certificate.IsVisible = request.IsVisible;
         certificate.CategoryId = request.CategoryId;
-        certificate.Category = request.Category;
+        certificate.CategoryEntity = request.CategoryEntity;
         certificate.Lock = request.Lock;
         certificate.LockedDate = request.LockedDate;
         certificate.LockInfo = request.LockInfo;
@@ -61,7 +61,7 @@ public class UpdateCertificateDetailsCommandHandler
 
         await _groupsRepository.UpdateAsync(certificate, cancellationToken);
 
-        return new global::UpdateCertificate(
+        return new global::O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate.UpdateCertificate(
             certificate.Id,
             certificate.ExternalId,
             certificate.ModifiedDate,
@@ -76,7 +76,7 @@ public class UpdateCertificateDetailsCommandHandler
             certificate.PublishCode,
             certificate.IsVisible,
             certificate.CategoryId,
-            certificate.Category,
+            certificate.CategoryEntity,
             certificate.Lock,
             certificate.LockedDate,
             certificate.LockInfo,

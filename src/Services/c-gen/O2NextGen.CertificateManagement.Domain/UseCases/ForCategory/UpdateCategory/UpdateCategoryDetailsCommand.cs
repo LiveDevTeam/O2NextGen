@@ -5,7 +5,7 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.UpdateCate
 public class UpdateCategoryDetailsCommand : IRequest<UpdateCategoryDetailsCommandResult>
 {
     public UpdateCategoryDetailsCommand(
-        long id,
+        long? id,
         string categoryName,
         string categoryDescription,
         string categorySeries,
@@ -33,5 +33,5 @@ public class UpdateCategoryDetailsCommand : IRequest<UpdateCategoryDetailsComman
     public int TimeLifeInDays { get; set; }
     public int QuantityCertificates { get; set; }
     public int QuantityPublishCode { get; set; }
-    public long Id { get; }
+    public long? Id { get; }
 }

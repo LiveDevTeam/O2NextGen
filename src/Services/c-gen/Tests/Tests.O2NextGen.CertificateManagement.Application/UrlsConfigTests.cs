@@ -1,8 +1,9 @@
 using Moq;
 using NUnit.Framework;
 using O2NextGen.CertificateManagement.Application;
+using Tests.O2NextGen.CertificateManagement.Application.Base;
 
-namespace Tests.O2NextGen.CertificateManagement.Application.Base;
+namespace Tests.O2NextGen.CertificateManagement.Application;
 
 public class UrlsConfigTests : BaseConfigTests<UrlsConfig>
 {

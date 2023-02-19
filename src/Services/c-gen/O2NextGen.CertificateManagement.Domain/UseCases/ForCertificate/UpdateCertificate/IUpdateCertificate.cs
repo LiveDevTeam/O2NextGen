@@ -1,5 +1,7 @@
 using O2NextGen.CertificateManagement.Domain.Entities;
 
+namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
+
 public interface IUpdateCertificate
 {
     long Id { get;}
@@ -17,9 +19,9 @@ public interface IUpdateCertificate
     public string PublishCode { get; }
     public bool IsVisible { get; }
     public long CategoryId { get; }
-    public Category Category { get; }
+    public CategoryEntity CategoryEntity { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
+    public ICollection<LanguageInfoEntity> LanguageInfos { get; }
 }

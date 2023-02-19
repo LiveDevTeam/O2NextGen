@@ -4,11 +4,11 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Data.Configurations;
 
-public class CertificateDbEntityConfiguration : IEntityTypeConfiguration<Certificate>
+public class CertificateDbEntityConfiguration : IEntityTypeConfiguration<CertificateEntity>
 {
-    public void Configure(EntityTypeBuilder<Certificate> builder)
+    public void Configure(EntityTypeBuilder<CertificateEntity> builder)
     {
-        builder.ToTable("Certificate");
+        builder.ToTable("CertificateEntity");
 
         builder.Property(ci => ci.Id)
             .HasColumnType("bigint")

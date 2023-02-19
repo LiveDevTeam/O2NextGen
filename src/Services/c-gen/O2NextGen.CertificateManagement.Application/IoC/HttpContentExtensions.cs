@@ -1,4 +1,4 @@
-namespace O2NextGen.CertificateManagement.Application.Services;
+namespace O2NextGen.CertificateManagement.Application.IoC;
 
 public static class HttpContentExtensions
 {

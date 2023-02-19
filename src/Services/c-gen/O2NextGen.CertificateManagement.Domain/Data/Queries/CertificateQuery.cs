@@ -2,7 +2,7 @@
 
 namespace O2NextGen.CertificateManagement.Domain.Data.Queries;
 
-public class CertificateQuery : IQuery<Certificate>
+public class CertificateQuery : IQuery<CertificateEntity>
 {
     public CertificateQuery(long id)
     {
@@ -10,8 +10,8 @@ public class CertificateQuery : IQuery<Certificate>
     }
 
     public CertificateQuery(string externalId, bool? isDeleted, string customerId, long expiredDate, long publishDate,
-        string creatorId, string publishCode, bool isVisible, long categoryId, Category category,
-        bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos)
+        string creatorId, string publishCode, bool isVisible, long categoryId, CategoryEntity categoryEntity,
+        bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfoEntity> languageInfos)
     {
         ExternalId = externalId;
         IsDeleted = isDeleted;
@@ -22,7 +22,7 @@ public class CertificateQuery : IQuery<Certificate>
         PublishCode = publishCode;
         IsVisible = isVisible;
         CategoryId = categoryId;
-        Category = category;
+        CategoryEntity = categoryEntity;
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
@@ -39,9 +39,9 @@ public class CertificateQuery : IQuery<Certificate>
     public string PublishCode { get; }
     public bool IsVisible { get; }
     public long CategoryId { get; }
-    public Category Category { get; }
+    public CategoryEntity CategoryEntity { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
+    public ICollection<LanguageInfoEntity> LanguageInfos { get; }
 }

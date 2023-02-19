@@ -7,12 +7,12 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.DeleteC
 
 public class DeleteCertificateCommandHandler : IRequestHandler<DeleteCertificateCommand, Unit>
 {
-    private readonly IQueryHandler<CertificateQuery, Certificate> _userGroupQueryHandler;
-    private readonly IRepository<Certificate> groupsRepository;
+    private readonly IQueryHandler<CertificateQuery, CertificateEntity> _userGroupQueryHandler;
+    private readonly IRepository<CertificateEntity> groupsRepository;
 
     public DeleteCertificateCommandHandler(
-        IQueryHandler<CertificateQuery, Certificate> userGroupQueryHandler,
-        IRepository<Certificate> groupsRepository)
+        IQueryHandler<CertificateQuery, CertificateEntity> userGroupQueryHandler,
+        IRepository<CertificateEntity> groupsRepository)
     {
         _userGroupQueryHandler =
             userGroupQueryHandler ?? throw new ArgumentNullException(nameof(userGroupQueryHandler));

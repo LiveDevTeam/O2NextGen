@@ -2,7 +2,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using O2NextGen.CertificateManagement.Application.Features.Categories;
+using O2NextGen.CertificateManagement.Application.Controllers.ViewModels;
 
 namespace IntegrationTests.O2NextGen.CertificateManagement.Application.Features;
 
@@ -47,7 +47,7 @@ public class CategoriesApiTests :
         // var webAppFactory = new CustomWebApplicationFactory<Program>();//
         // var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "/api/v1.0/categories";
-        var addItem = new CreateCategoryModel
+        var addItem = new CategoryViewModel
         {
             CategoryName = "Update",
             CategoryDescription = "Update Description",
@@ -73,7 +73,7 @@ public class CategoriesApiTests :
         // var webAppFactory = new CustomWebApplicationFactory<Program>();//
         // var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "/api/v1.0/categories";
-        var addItem = new CreateCategoryModel
+        var addItem = new CategoryViewModel
         {
             CategoryName = "Update",
             CategoryDescription = "Update Description",

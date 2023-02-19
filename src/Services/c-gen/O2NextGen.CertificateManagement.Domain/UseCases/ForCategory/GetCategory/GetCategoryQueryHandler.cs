@@ -8,9 +8,9 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategor
 public class GetCategoryQueryHandler :
     IRequestHandler<GetCategoryQuery, GetCategoryQueryResult>
 {
-    private readonly IQueryHandler<CategoryQuery, Category> _queryHandler;
+    private readonly IQueryHandler<CategoryQuery, CategoryEntity> _queryHandler;
 
-    public GetCategoryQueryHandler(IQueryHandler<CategoryQuery, Category> _queryHandler)
+    public GetCategoryQueryHandler(IQueryHandler<CategoryQuery, CategoryEntity> _queryHandler)
     {
         this._queryHandler = _queryHandler;
     }

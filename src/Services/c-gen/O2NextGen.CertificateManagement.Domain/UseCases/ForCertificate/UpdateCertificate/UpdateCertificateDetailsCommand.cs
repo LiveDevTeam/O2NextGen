@@ -3,14 +3,14 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
 
-public class UpdateCertificateDetailsCommand : IRequest<global::UpdateCertificate>
+public class UpdateCertificateDetailsCommand : IRequest<global::O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate.UpdateCertificate>
 {
     public UpdateCertificateDetailsCommand(
         long id,
         string externalId, bool? isDeleted, string ownerAccountId, string customerId,
         long expiredDate, long publishDate, string creatorId, string publishCode, bool isVisible,
-        long categoryId, Category category, bool @lock, long lockedDate, string lockInfo,
-        ICollection<LanguageInfo> languageInfos)
+        long categoryId, CategoryEntity categoryEntity, bool @lock, long lockedDate, string lockInfo,
+        ICollection<LanguageInfoEntity> languageInfos)
     {
         Id = id;
         ExternalId = externalId;
@@ -23,17 +23,17 @@ public class UpdateCertificateDetailsCommand : IRequest<global::UpdateCertificat
         PublishCode = publishCode;
         IsVisible = isVisible;
         CategoryId = categoryId;
-        Category = category;
+        CategoryEntity = categoryEntity;
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
         LanguageInfos = languageInfos;
     }
 
-    public UpdateCertificateDetailsCommand(long id, string externalId, bool? modifiedDate, string addedDate,
-        string deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
-        long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, Category category,
-        bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos)
+    public UpdateCertificateDetailsCommand(long id, string externalId, long? modifiedDate, long? addedDate,
+        long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
+        long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, CategoryEntity categoryEntity,
+        bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfoEntity> languageInfos)
     {
         Id = id;
         ExternalId = externalId;
@@ -49,7 +49,7 @@ public class UpdateCertificateDetailsCommand : IRequest<global::UpdateCertificat
         PublishCode = publishCode;
         IsVisible = isVisible;
         CategoryId = categoryId;
-        Category1 = category;
+        Category1 = categoryEntity;
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
@@ -67,14 +67,14 @@ public class UpdateCertificateDetailsCommand : IRequest<global::UpdateCertificat
     public string PublishCode { get; }
     public bool IsVisible { get; }
     public long CategoryId { get; }
-    public Category Category { get; }
+    public CategoryEntity CategoryEntity { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
-    public bool? ModifiedDate { get; }
-    public string AddedDate { get; }
-    public string DeletedDate { get; }
-    public Category Category1 { get; }
-    public ICollection<LanguageInfo> LanguageInfos1 { get; }
+    public ICollection<LanguageInfoEntity> LanguageInfos { get; }
+    public long? ModifiedDate { get; }
+    public long? AddedDate { get; }
+    public long? DeletedDate { get; }
+    public CategoryEntity Category1 { get; }
+    public ICollection<LanguageInfoEntity> LanguageInfos1 { get; }
 }

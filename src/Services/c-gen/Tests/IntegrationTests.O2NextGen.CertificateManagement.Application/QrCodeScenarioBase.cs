@@ -1,6 +1,7 @@
 using System;
+using IntegrationTests.O2NextGen.CertificateManagement.Application.Features;
 
-namespace IntegrationTests.O2NextGen.CertificateManagement.Application.Features;
+namespace IntegrationTests.O2NextGen.CertificateManagement.Application;
 
 public class QrCodeScenarioBase : BaseIntegrationApiTests
 {

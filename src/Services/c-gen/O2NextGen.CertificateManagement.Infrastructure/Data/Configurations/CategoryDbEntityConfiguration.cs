@@ -4,11 +4,11 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Data.Configurations;
 
-public class CategoryDbEntityConfiguration : IEntityTypeConfiguration<Category>
+public class CategoryDbEntityConfiguration : IEntityTypeConfiguration<CategoryEntity>
 {
-    public void Configure(EntityTypeBuilder<Category> builder)
+    public void Configure(EntityTypeBuilder<CategoryEntity> builder)
     {
-        builder.ToTable("Category");
+        builder.ToTable("CategoryEntity");
 
         builder.Property(ci => ci.Id)
             .HasColumnType("bigint")

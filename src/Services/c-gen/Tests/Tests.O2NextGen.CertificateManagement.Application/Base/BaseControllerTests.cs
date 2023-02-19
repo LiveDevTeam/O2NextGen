@@ -7,6 +7,7 @@ using NUnit.Framework;
 
 namespace Tests.O2NextGen.CertificateManagement.Application.Base;
 
+[TestFixture]
 public class BaseControllerTests<TClass> : BaseTests<TClass>
     where TClass : class
 {

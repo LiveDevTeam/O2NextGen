@@ -7,12 +7,12 @@ namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.DeleteCate
 
 public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, Unit>
 {
-    private readonly IQueryHandler<CategoryQuery, Category> _userGroupQueryHandler;
-    private readonly IRepository<Category> groupsRepository;
+    private readonly IQueryHandler<CategoryQuery, CategoryEntity> _userGroupQueryHandler;
+    private readonly IRepository<CategoryEntity> groupsRepository;
 
     public DeleteCategoryCommandHandler(
-        IQueryHandler<CategoryQuery, Category> userGroupQueryHandler,
-        IRepository<Category> groupsRepository)
+        IQueryHandler<CategoryQuery, CategoryEntity> userGroupQueryHandler,
+        IRepository<CategoryEntity> groupsRepository)
     {
         _userGroupQueryHandler =
             userGroupQueryHandler ?? throw new ArgumentNullException(nameof(userGroupQueryHandler));

@@ -1,5 +1,6 @@
 using System.Drawing;
 using Microsoft.Extensions.Options;
+using O2NextGen.CertificateManagement.Application.Controllers.ViewModels.Base;
 using O2NextGen.Sdk.NetCore.Extensions;
 
 namespace O2NextGen.CertificateManagement.Application.Services;
@@ -144,7 +145,7 @@ public abstract class TemplateService : ITemplateService
         public int PointX { get; set; }
         public int PointY { get; set; }
         public int Width { get; set; }
-        public long Id { get; set; }
+        public long? Id { get; set; }
 
         #region Basic fields
 

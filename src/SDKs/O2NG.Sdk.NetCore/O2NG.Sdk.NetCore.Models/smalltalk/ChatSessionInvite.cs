@@ -1,7 +1,6 @@
-﻿namespace O2NextGen.Sdk.NetCore.Models.SmallTalk
+﻿namespace O2NextGen.Sdk.NetCore.Models.SmallTalk;
+
+public abstract class ChatSessionInvite
 {
-    public abstract class ChatSessionInvite
-    {
-        public long Id { get; set; }
-    }
+    public long Id { get; set; }
 }

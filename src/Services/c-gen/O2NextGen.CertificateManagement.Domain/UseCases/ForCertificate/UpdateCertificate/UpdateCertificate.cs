@@ -1,5 +1,7 @@
 ﻿using O2NextGen.CertificateManagement.Domain.Entities;
 
+namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCertificate.UpdateCertificate;
+
 public class UpdateCertificate: IUpdateCertificate
 {
     public UpdateCertificate(long id, string name)
@@ -10,8 +12,8 @@ public class UpdateCertificate: IUpdateCertificate
 
     public UpdateCertificate(long id, string name, long modifiedDate, long addedDate,
         long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
-        long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, Category category,
-        bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfo> languageInfos) : this(id, name)
+        long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, CategoryEntity categoryEntity,
+        bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfoEntity> languageInfos) : this(id, name)
     {
         ModifiedDate = modifiedDate;
         AddedDate = addedDate;
@@ -25,7 +27,7 @@ public class UpdateCertificate: IUpdateCertificate
         PublishCode = publishCode;
         IsVisible = isVisible;
         CategoryId = categoryId;
-        Category = category;
+        CategoryEntity = categoryEntity;
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
@@ -47,9 +49,9 @@ public class UpdateCertificate: IUpdateCertificate
     public string PublishCode { get; }
     public bool IsVisible { get; }
     public long CategoryId { get; }
-    public Category Category { get; }
+    public CategoryEntity CategoryEntity { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }
-    public ICollection<LanguageInfo> LanguageInfos { get; }
+    public ICollection<LanguageInfoEntity> LanguageInfos { get; }
 }

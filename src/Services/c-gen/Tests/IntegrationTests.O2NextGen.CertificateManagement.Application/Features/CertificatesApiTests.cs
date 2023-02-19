@@ -48,9 +48,9 @@ public class CertificatesApiTests : BaseIntegrationApiTests
         // var webAppFactory = new CustomWebApplicationFactory<Program>();//
         // var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "api/v1.0/certificates";
-        var addItem = new Certificate
+        var addItem = new CertificateEntity
         {
-            Category = context.Categories.FirstOrDefault(),
+            CategoryEntity = context.Categories.FirstOrDefault(),
             CustomerId = Guid.NewGuid().ToString(),
             AddedDate = DateTime.Now.ConvertToUnixTime(),
             IsVisible = true,
@@ -76,9 +76,9 @@ public class CertificatesApiTests : BaseIntegrationApiTests
         // var webAppFactory = new CustomWebApplicationFactory<Program>();//
         // var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "api/v1.0/certificates";
-        var addItem = new Certificate
+        var addItem = new CertificateEntity
         {
-            Category = context.Categories.FirstOrDefault(),
+            CategoryEntity = context.Categories.FirstOrDefault(),
             CustomerId = Guid.NewGuid().ToString(),
             AddedDate = DateTime.Now.ConvertToUnixTime(),
             IsVisible = true,

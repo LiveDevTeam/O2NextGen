@@ -2,6 +2,6 @@
 
 namespace O2NextGen.CertificateManagement.Domain.Data.Queries;
 
-public class CategoriesQuery : IQuery<IReadOnlyCollection<Category>>
+public class CategoriesQuery : IQuery<IReadOnlyCollection<CategoryEntity>>
 {
 }

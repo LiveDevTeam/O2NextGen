@@ -40,8 +40,8 @@ public class CGenDbContext : DbContext, ICertificateDataContext
 
     #region Fields
 
-    public DbSet<Certificate> Certificates { get; set; }
-    public DbSet<Category> Categories { get; set; }
+    public DbSet<CertificateEntity> Certificates { get; set; }
+    public DbSet<CategoryEntity> Categories { get; set; }
 
     #endregion
 }

@@ -9,7 +9,7 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 using O2NextGen.CertificateManagement.Infrastructure.Data;
 using O2NextGen.Sdk.NetCore.Extensions;
 
-namespace IntegrationTests.O2NextGen.CertificateManagement.Application.Features;
+namespace IntegrationTests.O2NextGen.CertificateManagement.Application;
 
 public class CustomWebApplicationFactory<TProgram>
     : WebApplicationFactory<TProgram> where TProgram : class
@@ -41,7 +41,7 @@ public class CustomWebApplicationFactory<TProgram>
             // foreach (var category in context.Categories)
             //     context.Categories.Remove(category);
 
-            Context.Categories.AddRange(new Category
+            Context.Categories.AddRange(new CategoryEntity
                 {
                     //Id = 1,
                     CategoryName = "AA Category",
@@ -49,7 +49,7 @@ public class CustomWebApplicationFactory<TProgram>
                     CategoryDescription = "desc category A",
                     QuantityCertificates = 120
                 },
-                new Category
+                new CategoryEntity
                 {
                     //Id = 2,
                     CategoryName = "AA Category 2",
@@ -58,9 +58,9 @@ public class CustomWebApplicationFactory<TProgram>
                     QuantityCertificates = 120
                 });
 
-            Context.Certificates.AddRange(new Certificate
+            Context.Certificates.AddRange(new CertificateEntity
                 {
-                    Category = Context.Categories.FirstOrDefault(),
+                    CategoryEntity = Context.Categories.FirstOrDefault(),
                     CustomerId = Guid.NewGuid().ToString(),
                     AddedDate = DateTime.Now.ConvertToUnixTime(),
                     IsVisible = true,
@@ -68,9 +68,9 @@ public class CustomWebApplicationFactory<TProgram>
                     CreatorId = Guid.NewGuid().ToString(),
                     ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
                 },
-                new Certificate
+                new CertificateEntity
                 {
-                    Category = Context.Categories.FirstOrDefault(),
+                    CategoryEntity = Context.Categories.FirstOrDefault(),
                     CustomerId = Guid.NewGuid().ToString(),
                     AddedDate = DateTime.Now.ConvertToUnixTime(),
                     IsVisible = true,

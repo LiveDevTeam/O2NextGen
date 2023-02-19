@@ -5,7 +5,7 @@ using O2NextGen.CertificateManagement.Infrastructure.Data;
 
 namespace O2NextGen.CertificateManagement.Infrastructure.Queries;
 
-public class CategoryQueryHandler : IQueryHandler<CategoryQuery, Category>
+public class CategoryQueryHandler : IQueryHandler<CategoryQuery, CategoryEntity>
 {
     private readonly CGenDbContext context;
 
@@ -14,9 +14,9 @@ public class CategoryQueryHandler : IQueryHandler<CategoryQuery, Category>
         this.context = context;
     }
 
-    public async Task<Category> HandleAsync(CategoryQuery query, CancellationToken ct)
+    public async Task<CategoryEntity> HandleAsync(CategoryQuery query, CancellationToken ct)
     {
-        var result = await context.Set<Category>().FindAsync(new object[] {query.Id}, ct);
+        var result = await context.Set<CategoryEntity>().FindAsync(new object[] {query.Id}, ct);
         return result;
     }
 }
