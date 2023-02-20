@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
 using O2NextGen.CertificateManagement.Domain.Entities;
@@ -10,6 +11,49 @@ namespace Tests.O2NextGen.CertificateManagement.Application;
 public class UpdateCertificateTests
     : BaseViewModelTests<UpdateCertificate>
 {
+    
+    [SetUp]
+    public new void Setup()
+    {
+        UpdateCertificateModel = new UpdateCertificate(
+            1, //model.Object.Id,
+            "ExternalId", //model.Object.ExternalId,
+            9, //model.Object.ModifiedDate,
+            9, // model.Object.AddedDate,
+            9, //model.Object.DeletedDate,
+            true, //model.Object.IsDeleted,
+            "OwnerAccountId", //model.Object.OwnerAccountId,
+            "CustomerId", //model.Object.CustomerId,
+            9, //model.Object.ExpiredDate,
+            9, //model.Object.PublishDate,
+            "CreatorId", //model.Object.CreatorId,
+            "PublishCode", //model.Object.PublishCode,
+            true, //model.Object.IsVisible,
+            9, //model.Object.CategoryId,
+            new CategoryEntity() { }, //model.Object.Category,
+            true, //model.Object.Lock,
+            9, //model.Object.LockedDate,
+            "LockInfo", //model.Object.LockInfo,
+            new List<LanguageInfoEntity>() {new LanguageInfoEntity()}); //model.Object.LanguageInfos);
+        // {
+        //     // TimeLifeInDays = 9,
+        //     // CategoryName = "CategoryName",
+        //     // CategorySeries = "CategorySeries",
+        //     // CustomerId = "CustomerId",
+        //     // QuantityCertificates = 9,
+        //     // CategoryDescription = "CategoryDescription"
+        // };
+    }
+    private static Mock<IUpdateCertificate> MockCategoryViewModel()
+    {
+        var model = new Mock<IUpdateCertificate>();
+        model.SetupAllProperties();
+        return model;
+    }
+#pragma warning disable CS8618
+    private IUpdateCertificate UpdateCertificateModel { get; set; }
+#pragma warning restore CS8618
+    
     [Test]
     [TestCase("UpdateCertificate")]
     public override void It_CheckClassName(string name = "")
@@ -149,7 +193,7 @@ public class UpdateCertificateTests
     public void UpdateCertificateTests_PropertyLock_IsType()
     {
         Assert.IsTrue(
-            BaseHelper<string>.It_CheckExistPropertyOfType("Lock",
+            BaseHelper<UpdateCertificate>.It_CheckExistPropertyOfType("Lock",
                 typeof(bool)));
     }
 
@@ -235,7 +279,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -272,7 +316,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -310,7 +354,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -348,7 +392,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -386,7 +430,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -424,7 +468,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -462,7 +506,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -483,7 +527,7 @@ public class UpdateCertificateTests
     {
         var model = new Mock<IUpdateCertificate>();
 
-        model.Setup(_ => _.CategoryEntity).Returns(It.IsAny<CategoryEntity>());
+        model.Setup(_ => _.Category).Returns(It.IsAny<CategoryEntity>());
 
         var nameUser = new UpdateCertificate(
             model.Object.Id,
@@ -500,7 +544,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -508,11 +552,11 @@ public class UpdateCertificateTests
 
         //Arrange
         //model.Setup(_ => _.Id).Returns(It.IsAny<long>());
-        var getPropertyValue = nameUser.CategoryEntity;
+        var getPropertyValue = nameUser.Category;
 
         //Act
         //model.VerifySet(_=>_.Id = It.IsAny<long>());
-        model.VerifyGet(_ => _.CategoryEntity, Times.Once);
+        model.VerifyGet(_ => _.Category, Times.Once);
         //Assert.Equals(It.IsAny<long>(),getId);
     }
 
@@ -539,7 +583,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -577,7 +621,7 @@ public class UpdateCertificateTests
             model.Object.PublishCode,
             model.Object.IsVisible,
             model.Object.CategoryId,
-            model.Object.CategoryEntity,
+            model.Object.Category,
             model.Object.Lock,
             model.Object.LockedDate,
             model.Object.LockInfo,
@@ -596,39 +640,44 @@ public class UpdateCertificateTests
     [Test]
     public void UpdateCertificateTests_Property_LockInfo()
     {
-        var model = new Mock<IUpdateCertificate>();
-
-        model.Setup(_ => _.LockInfo).Returns(It.IsAny<string>());
-
-        var nameUser = new UpdateCertificate(
-            model.Object.Id,
-            model.Object.ExternalId,
-            model.Object.ModifiedDate,
-            model.Object.AddedDate,
-            model.Object.DeletedDate,
-            model.Object.IsDeleted,
-            model.Object.OwnerAccountId,
-            model.Object.CustomerId,
-            model.Object.ExpiredDate,
-            model.Object.PublishDate,
-            model.Object.CreatorId,
-            model.Object.PublishCode,
-            model.Object.IsVisible,
-            model.Object.CategoryId,
-            model.Object.CategoryEntity,
-            model.Object.Lock,
-            model.Object.LockedDate,
-            model.Object.LockInfo,
-            model.Object.LanguageInfos);
-
-        //Arrange
-        //model.Setup(_ => _.Id).Returns(It.IsAny<long>());
-        var getPropertyValue = nameUser.LockInfo;
-
-        //Act
-        //model.VerifySet(_=>_.Id = It.IsAny<long>());
-        model.VerifyGet(_ => _.LockInfo, Times.Once);
-        //Assert.Equals(It.IsAny<long>(),getId);
+        // var model = MockCategoryViewModel();
+        //
+        // model.Object.LockInfo = UpdateCertificateModel.LockInfo;
+        //
+        // Assert.That(model.Object.LockInfo, Is.EqualTo(UpdateCertificateModel.LockInfo));
+         var model = new Mock<IUpdateCertificate>();
+        
+         model.Setup(_ => _.LockInfo).Returns(It.IsAny<string>());
+        
+         var nameUser = new UpdateCertificate(
+             model.Object.Id,
+             model.Object.ExternalId,
+             model.Object.ModifiedDate,
+             model.Object.AddedDate,
+             model.Object.DeletedDate,
+             model.Object.IsDeleted,
+             model.Object.OwnerAccountId,
+             model.Object.CustomerId,
+             model.Object.ExpiredDate,
+             model.Object.PublishDate,
+             model.Object.CreatorId,
+             model.Object.PublishCode,
+             model.Object.IsVisible,
+             model.Object.CategoryId,
+             model.Object.Category,
+             model.Object.Lock,
+             model.Object.LockedDate,
+             model.Object.LockInfo,
+             model.Object.LanguageInfos);
+        
+         //Arrange
+         //model.Setup(_ => _.Id).Returns(It.IsAny<long>());
+         var getPropertyValue = nameUser.LockInfo;
+        
+         //Act
+         //model.VerifySet(_=>_.Id = It.IsAny<long>());
+         model.VerifyGet(_ => _.LockInfo, Times.Once);
+        Assert.Equals(It.IsAny<long>(),getPropertyValue);
     }
 
     // [Test]

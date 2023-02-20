@@ -17,7 +17,7 @@ public class ProjectsApiTests :
         //var webAppFactory = new CustomWebApplicationFactory<Program>();//
         //var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "/api/v1.0/Projects/1";
-        var response = await _httpClient.GetAsync(url);
+        var response = await HttpClient.GetAsync(url);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
@@ -32,7 +32,7 @@ public class ProjectsApiTests :
         // var webAppFactory = new CustomWebApplicationFactory<Program>();//
         // var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "api/v1.0/Projects";
-        var response = await _httpClient.GetAsync(url);
+        var response = await HttpClient.GetAsync(url);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
@@ -58,7 +58,7 @@ public class ProjectsApiTests :
         var ser = JsonConvert.SerializeObject(addItem);
         var content = new StringContent(ser,
             Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync(url, content);
+        var response = await HttpClient.PostAsync(url, content);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
@@ -84,7 +84,7 @@ public class ProjectsApiTests :
         var ser = JsonConvert.SerializeObject(addItem);
         var content = new StringContent(ser,
             Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync(url, content);
+        var response = await HttpClient.PostAsync(url, content);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
@@ -99,7 +99,7 @@ public class ProjectsApiTests :
         // var webAppFactory = new CustomWebApplicationFactory<Program>();//
         // var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "/api/v1.0/Projects/2";
-        var response = await _httpClient.DeleteAsync(url);
+        var response = await HttpClient.DeleteAsync(url);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299

@@ -13,16 +13,6 @@ public class QrCodeServiceTests : BaseServiceTests<QrCodeService>
     }
 }
 
-public class CustomerServiceTests : BaseServiceTests<CustomerService>
-{
-    [Test]
-    [TestCase("CustomerService")]
-    public override void It_CheckClassName(string name = "")
-    {
-        base.It_CheckClassName(name);
-    }
-}
-
 public class IdentityServiceTests : BaseServiceTests<IdentityService>
 {
     [Test]

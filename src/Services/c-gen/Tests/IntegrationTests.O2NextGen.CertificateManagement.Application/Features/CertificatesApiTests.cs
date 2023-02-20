@@ -18,7 +18,7 @@ public class CertificatesApiTests : BaseIntegrationApiTests
         //var webAppFactory = new CustomWebApplicationFactory<Program>();//
         //var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "api/v1.0/certificates/1";
-        var response = await _httpClient.GetAsync(url);
+        var response = await HttpClient.GetAsync(url);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
@@ -33,7 +33,7 @@ public class CertificatesApiTests : BaseIntegrationApiTests
         // var webAppFactory = new CustomWebApplicationFactory<Program>();//
         // var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "api/v1.0/certificates";
-        var response = await _httpClient.GetAsync(url);
+        var response = await HttpClient.GetAsync(url);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
@@ -50,18 +50,18 @@ public class CertificatesApiTests : BaseIntegrationApiTests
         const string url = "api/v1.0/certificates";
         var addItem = new CertificateEntity
         {
-            CategoryEntity = context.Categories.FirstOrDefault(),
+            CategoryEntity = Context.Categories.FirstOrDefault(),
             CustomerId = Guid.NewGuid().ToString(),
             AddedDate = DateTime.Now.ConvertToUnixTime(),
             IsVisible = true,
-            CategoryId = context.Categories.FirstOrDefault().Id,
+            CategoryId = Context.Categories.FirstOrDefault().Id,
             CreatorId = Guid.NewGuid().ToString(),
             ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
         };
         var ser = JsonConvert.SerializeObject(addItem);
         var content = new StringContent(ser,
             Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync(url, content);
+        var response = await HttpClient.PostAsync(url, content);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
@@ -78,18 +78,18 @@ public class CertificatesApiTests : BaseIntegrationApiTests
         const string url = "api/v1.0/certificates";
         var addItem = new CertificateEntity
         {
-            CategoryEntity = context.Categories.FirstOrDefault(),
+            CategoryEntity = Context.Categories.FirstOrDefault(),
             CustomerId = Guid.NewGuid().ToString(),
             AddedDate = DateTime.Now.ConvertToUnixTime(),
             IsVisible = true,
-            CategoryId = context.Categories.FirstOrDefault().Id,
+            CategoryId = Context.Categories.FirstOrDefault().Id,
             CreatorId = Guid.NewGuid().ToString(),
             ExpiredDate = DateTime.Now.AddYears(1).ConvertToUnixTime()
         };
         var ser = JsonConvert.SerializeObject(addItem);
         var content = new StringContent(ser,
             Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync(url, content);
+        var response = await HttpClient.PostAsync(url, content);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
@@ -104,7 +104,7 @@ public class CertificatesApiTests : BaseIntegrationApiTests
         // var webAppFactory = new CustomWebApplicationFactory<Program>();//
         // var _httpClient = webAppFactory.CreateDefaultClient();
         const string url = "api/v1.0/certificates/2";
-        var response = await _httpClient.DeleteAsync(url);
+        var response = await HttpClient.DeleteAsync(url);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299

@@ -12,7 +12,7 @@ public class UpdateCertificate: IUpdateCertificate
 
     public UpdateCertificate(long id, string name, long modifiedDate, long addedDate,
         long? deletedDate, bool? isDeleted, string ownerAccountId, string customerId, long expiredDate,
-        long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, CategoryEntity categoryEntity,
+        long publishDate, string creatorId, string publishCode, bool isVisible, long categoryId, CategoryEntity category,
         bool @lock, long lockedDate, string lockInfo, ICollection<LanguageInfoEntity> languageInfos) : this(id, name)
     {
         ModifiedDate = modifiedDate;
@@ -27,7 +27,7 @@ public class UpdateCertificate: IUpdateCertificate
         PublishCode = publishCode;
         IsVisible = isVisible;
         CategoryId = categoryId;
-        CategoryEntity = categoryEntity;
+        Category = category;
         Lock = @lock;
         LockedDate = lockedDate;
         LockInfo = lockInfo;
@@ -49,7 +49,7 @@ public class UpdateCertificate: IUpdateCertificate
     public string PublishCode { get; }
     public bool IsVisible { get; }
     public long CategoryId { get; }
-    public CategoryEntity CategoryEntity { get; }
+    public CategoryEntity Category { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }

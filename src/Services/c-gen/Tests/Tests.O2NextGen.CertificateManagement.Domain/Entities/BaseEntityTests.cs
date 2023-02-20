@@ -7,7 +7,7 @@ using Assert = NUnit.Framework.Assert;
 
 namespace Tests.O2NextGen.CertificateManagement.Domain.Entities
 {
-    [TestFixture]
+    //[TestFixture]
     public class BaseEntityTests<TClass> : BaseTests<TClass>
         where TClass : class
     {

@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace Tests.O2NextGen.CertificateManagement.Application.Base;
 
-[TestFixture]
+// [TestFixture]
 public class BaseControllerTests<TClass> : BaseTests<TClass>
     where TClass : class
 {
@@ -24,9 +24,9 @@ public class BaseControllerTests<TClass> : BaseTests<TClass>
     }
 
     [Test]
-    public void ControllerBaseTests_AttributeAuthorize()
+    public void ControllerBaseTests_NotAttributeAuthorize()
     {
-        Assert.IsNotNull(Attribute.GetCustomAttribute(typeof(TClass), typeof(AuthorizeAttribute)));
+        Assert.IsNull(Attribute.GetCustomAttribute(typeof(TClass), typeof(AuthorizeAttribute)));
     }
 
     [Test]

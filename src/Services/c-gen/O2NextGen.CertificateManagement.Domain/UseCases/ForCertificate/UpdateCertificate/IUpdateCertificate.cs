@@ -19,9 +19,9 @@ public interface IUpdateCertificate
     public string PublishCode { get; }
     public bool IsVisible { get; }
     public long CategoryId { get; }
-    public CategoryEntity CategoryEntity { get; }
+    public CategoryEntity Category { get; }
     public bool Lock { get; }
     public long LockedDate { get; }
-    public string LockInfo { get; }
+    public string LockInfo { get;  }
     public ICollection<LanguageInfoEntity> LanguageInfos { get; }
 }

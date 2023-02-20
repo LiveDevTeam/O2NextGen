@@ -17,7 +17,7 @@ public class VersionApiTestses : BaseIntegrationApiTests
     {
         // Act
         const string url = "/version";
-        var response = await _httpClient.GetAsync(url);
+        var response = await HttpClient.GetAsync(url);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299

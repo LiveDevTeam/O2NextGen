@@ -49,6 +49,51 @@
         <None Remove="Features\Projects\" />
         <None Remove="Microsoft.EntityFrameworkCore.Design" />
         <None Include="appsettings.Tests.json" />
+        <None Update="Files\pfr-community_logo.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\A\A0002092019_cert_tr.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\A\pft_template_cert.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\A\pft_template_cert_en.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\A\pft_template_cert_tr.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\AA\certificate-ab_en.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\AA\certificate-ab_ru.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\AA\certificate-ab_tr.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\AB\certificate-bb_ru.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\B\pfr_template_cert_b.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\B\pfr_template_cert_b_en.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\B\pfr_template_cert_b_ru.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\B\pft_template_cert_b.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\BB\certificate-b2_ru.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Files\Templates\Certificates\T\template-hypnos.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="IoC\" />

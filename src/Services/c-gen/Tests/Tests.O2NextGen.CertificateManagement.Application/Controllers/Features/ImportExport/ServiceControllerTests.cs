@@ -26,11 +26,11 @@ public class ServiceControllerTests
                 ((ApiVersionAttribute) att).Versions.Any(x => x.MajorVersion == 1 && x.MinorVersion == 0)));
     }
 
-    // [Test]
-    // public void ControllerBaseTests_AttributeApiVersion_Supported_v1_1()
-    // {
-    //     Assert.IsTrue(
-    //         Attribute.GetCustomAttributes(typeof(ServiceController), typeof(ApiVersionAttribute)).Any(att =>
-    //             ((ApiVersionAttribute) att).Versions.Any(x => x.MajorVersion == 1 && x.MinorVersion == 1)));
-    // }
+    [Test]
+    public void ControllerBaseTests_AttributeApiVersion_NotSupported_v1_1()
+    {
+        Assert.IsFalse(
+            Attribute.GetCustomAttributes(typeof(ServiceController), typeof(ApiVersionAttribute)).Any(att =>
+                ((ApiVersionAttribute) att).Versions.Any(x => x.MajorVersion == 1 && x.MinorVersion == 1)));
+    }
 }

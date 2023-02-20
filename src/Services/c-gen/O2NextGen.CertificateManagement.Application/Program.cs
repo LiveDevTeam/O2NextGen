@@ -291,8 +291,15 @@ app.Use(async (context, next) =>
 app.UseHttpsRedirection();
  app.UseCors("CorsPolicy");
 app.UseRouting();
+ if (builder.Configuration["IsTests"] == bool.TrueString.ToLowerInvariant())
+ {
+     app.UseMiddleware<AutoAuthorizeMiddleware>();
+ }
+ else
+ {
+     app.UseAuthentication();
+ }
  
- app.UseAuthentication();
  
  app.UseSwagger();
  app.UseSwaggerUI(options =>
@@ -313,4 +320,16 @@ namespace O2NextGen.CertificateManagement.Application
     public partial class Program
     {
     }
+    
+    // protected override void ConfigureAuth(IApplicationBuilder app)
+    // {
+    //     if (Configuration["isTest"] == bool.TrueString.ToLowerInvariant())
+    //     {
+    //         app.UseMiddleware<AutoAuthorizeMiddleware>();
+    //     }
+    //     else
+    //     {
+    //         base.ConfigureAuth(app);
+    //     }
+    // }
 }

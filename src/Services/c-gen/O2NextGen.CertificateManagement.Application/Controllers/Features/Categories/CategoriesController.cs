@@ -13,7 +13,7 @@ namespace O2NextGen.CertificateManagement.Application.Controllers.Features.Categ
 [Authorize]
 [ApiController]
 [ApiVersion("1.0")]
-[ApiVersion("1.1")]
+// [ApiVersion("1.1")]
 // ReSharper disable once RouteTemplates.RouteParameterConstraintNotResolved
 [Route("api/v{v:apiVersion}/[controller]")]
 public class CategoriesController : ControllerBase

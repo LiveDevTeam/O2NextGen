@@ -7,7 +7,7 @@ public class TemplateControllerTests : TemplateScenarioBase
     [Fact]
     public async Task GetImageOfCertificate()
     {
-        var response = await _httpClient
+        var response = await HttpClient
             .GetAsync(Get.Templates);
 
         response.EnsureSuccessStatusCode();
@@ -16,7 +16,7 @@ public class TemplateControllerTests : TemplateScenarioBase
     [Fact]
     public async Task GetSettingsOtTemplate()
     {
-        var response = await _httpClient
+        var response = await HttpClient
             .GetAsync(Get.GetSettingsOtTemplate);
 
         response.EnsureSuccessStatusCode();

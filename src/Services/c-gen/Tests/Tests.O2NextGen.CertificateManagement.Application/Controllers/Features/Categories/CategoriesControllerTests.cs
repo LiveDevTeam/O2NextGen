@@ -29,9 +29,9 @@ public class CategoriesControllerTests
     }
 
     [Test]
-    public void ControllerBaseTests_AttributeApiVersion_Supported_v1_1()
+    public void ControllerBaseTests_AttributeApiVersion_NotSupported_v1_1()
     {
-        Assert.IsTrue(
+        Assert.IsFalse(
             Attribute.GetCustomAttributes(typeof(CategoriesController), typeof(ApiVersionAttribute)).Any(att =>
                 ((ApiVersionAttribute) att).Versions.Any(x => x.MajorVersion == 1 && x.MinorVersion == 1)));
     }

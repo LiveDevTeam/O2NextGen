@@ -5,16 +5,15 @@ namespace IntegrationTests.O2NextGen.CertificateManagement.Application.Features;
 
 public class BaseIntegrationApiTests
 {
-    private readonly CustomWebApplicationFactory<global::O2NextGen.CertificateManagement.Application.Program> webAppFactory;
+    private readonly CustomWebApplicationFactory<Program> _webAppFactory = new CustomWebApplicationFactory<Program>();
 
-    public BaseIntegrationApiTests()
+    protected BaseIntegrationApiTests()
     {
-        webAppFactory = new CustomWebApplicationFactory<global::O2NextGen.CertificateManagement.Application.Program>(); //
-        _httpClient = webAppFactory.CreateDefaultClient();
-        context = webAppFactory.Context;
+        HttpClient = _webAppFactory.CreateDefaultClient();
+        Context = _webAppFactory.Context;
     }
 
-    public CGenDbContext context { get; }
+    protected CGenDbContext Context { get; }
 
-    public HttpClient _httpClient { get; set; }
+    protected HttpClient HttpClient { get; set; }
 }
