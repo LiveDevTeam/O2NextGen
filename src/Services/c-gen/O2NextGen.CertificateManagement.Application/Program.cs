@@ -45,19 +45,19 @@ builder.Services.AddApiVersioning(o =>
 //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 builder.Services.AddCustomIntegrations(configuration);
- var tokenValidationParameters = new TokenValidationParameters
- {
-
-     RequireExpirationTime = true,
-     RequireSignedTokens = false,
-     ValidateIssuerSigningKey = true,
-     ValidateIssuer = true,
-     ValidIssuer = "cgen.api",
-     ValidateAudience = true,
-     ValidAudience = identityUrl,
-     ValidateLifetime = false,
-     ClockSkew = TimeSpan.Zero
- };
+ // var tokenValidationParameters = new TokenValidationParameters
+ // {
+ //
+ //     RequireExpirationTime = true,
+ //     RequireSignedTokens = false,
+ //     ValidateIssuerSigningKey = true,
+ //     ValidateIssuer = true,
+ //     ValidIssuer = "cgen.api",
+ //     ValidateAudience = true,
+ //     ValidAudience = identityUrl,
+ //     ValidateLifetime = false,
+ //     ClockSkew = TimeSpan.Zero
+ // };
  builder.Services
      .AddAuthentication("Bearer")
      .AddJwtBearer("Bearer", options =>
@@ -65,7 +65,7 @@ builder.Services.AddCustomIntegrations(configuration);
      // identity server issuing token
      // options.Audience = "cgen.api";
      // // options.ClaimsIssuer = "https://sts.windows.net/a1d50521-9687-4e4d-a76d-ddd53ab0c668/";
-     options.RequireHttpsMetadata=false;
+     options.RequireHttpsMetadata= false;
      options.Authority = builder.Configuration.GetValue<string>("UrlsConfig:IdentityUrl");
      options.TokenValidationParameters = new TokenValidationParameters()
      {
@@ -121,12 +121,20 @@ builder.Services.AddCustomIntegrations(configuration);
      options.Audience = "cgen.api";
  });
 //
- // builder.Services.AddAuthorization();
+ // // builder.Services.AddAuthorization();
+ // builder.Services.AddAuthorization(options =>
+ // {
+ //     options.AddPolicy("ApiScope", policy =>
+ //     {
+ //         policy.RequireAuthenticatedUser();
+ //         policy.RequireClaim("scope", "mango");
+ //     });
+ // });
 builder.Services.AddAuthorization(auth =>
 {
-    auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
-        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-        .RequireAuthenticatedUser().Build());
+    // auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+    //     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+    //     .RequireAuthenticatedUser().Build());
 });
  
 

@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -18,6 +19,7 @@ public class ResponseDto
     public string DisplayMessage { get; set; }
     public List<string> ErrorMessage { get; set; }
     public bool IsSuccess { get; set; }
+    
     public object Result { get; set; }
 }
 
@@ -61,7 +63,13 @@ public class BaseService : IBaseService
                 });
                 message.Content = new StringContent(json,Encoding.UTF8,"application/json");
             }
-            HttpResponseMessage apiResponce = null;
+
+            if (!string.IsNullOrEmpty(apiRequest.Token))
+            {
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+            }
+            HttpResponseMessage apiResponse = null;
             switch (apiRequest.ApiType)
             {
                 case SD.ApiType.POST:
@@ -78,8 +86,8 @@ public class BaseService : IBaseService
                     break;
             }
 
-            apiResponce = await client.SendAsync(message);
-            var apiContent = await apiResponce.Content.ReadAsStringAsync();
+            apiResponse = await client.SendAsync(message);
+            var apiContent = await apiResponse.Content.ReadAsStringAsync();
             var apiResponseDto = JsonConvert.DeserializeObject<T>(apiContent);
             return apiResponseDto;
         }

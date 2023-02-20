@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -7,7 +8,7 @@ using PFRCentr.App.MvcClient.Services;
 namespace PFRCentr.App.MvcClient.Controllers;
 
 [Authorize]
-public class CategoryController:Controller
+public class CategoryController : Controller
 {
     private readonly ICGenCategoryService _icGenCategoryService;
 
@@ -15,9 +16,11 @@ public class CategoryController:Controller
     {
         _icGenCategoryService = icGenCategoryService;
     }
+
     public async Task<ViewResult> CategoryIndex()
     {
-        var response = await _icGenCategoryService.GetCategoriesAsync<List<CategoryDto>>();
+        var token = await HttpContext.GetTokenAsync("access_token");
+        var response = await _icGenCategoryService.GetCategoriesAsync<List<CategoryDto>>(token);
         List<ResponseDto> list = null;
         // if (response != null && response.IsSuccess)
         // {
@@ -30,13 +33,15 @@ public class CategoryController:Controller
     {
         return View();
     }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> CreateCategory(CategoryDto model)
     {
         if (ModelState.IsValid)
         {
-            var response = await _icGenCategoryService.CreateCategoryAsync<CategoryDto>(model);
+            var token = await HttpContext.GetTokenAsync("access_token");
+            var response = await _icGenCategoryService.CreateCategoryAsync<CategoryDto>(model, token);
             List<ResponseDto> list = null;
             // if (response != null && response.IsSuccess)
             // {
@@ -46,14 +51,16 @@ public class CategoryController:Controller
             //     return View(model);
             return RedirectToAction(nameof(CategoryIndex));
         }
+
         return View(model);
     }
-    
+
     public async Task<IActionResult> EditCategory(long categoryId)
     {
-        var response = await _icGenCategoryService.GetCategoryByIdAsync<CategoryDto>(categoryId);
+        var token = await HttpContext.GetTokenAsync("access_token");
+        var response = await _icGenCategoryService.GetCategoryByIdAsync<CategoryDto>(categoryId, token);
         List<ResponseDto> list = null;
-        if (response != null )
+        if (response != null)
             return View(response);
         return NotFound();
         // {
@@ -61,15 +68,16 @@ public class CategoryController:Controller
         // }
         // if (response == null)
         //     return View(model);
-
     }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> EditCategory(CategoryDto model)
     {
         if (ModelState.IsValid)
         {
-            var response = await _icGenCategoryService.UpdateCategoryAsync<CategoryDto>(model.Id, model);
+            var token = await HttpContext.GetTokenAsync("access_token");
+            var response = await _icGenCategoryService.UpdateCategoryAsync<CategoryDto>(model.Id, model, token);
             List<ResponseDto> list = null;
             // if (response != null && response.IsSuccess)
             // {
@@ -79,26 +87,26 @@ public class CategoryController:Controller
             //     return View(model);
             return RedirectToAction(nameof(CategoryIndex));
         }
+
         return View(model);
     }
-    
+
     public async Task<IActionResult> DeleteCategory(long categoryId)
     {
-        var response = await _icGenCategoryService.GetCategoryByIdAsync<CategoryDto>(categoryId);
+        var token = await HttpContext.GetTokenAsync("access_token");
+        var response = await _icGenCategoryService.GetCategoryByIdAsync<CategoryDto>(categoryId, token);
         List<ResponseDto> list = null;
-        if (response != null )
+        if (response != null)
             return View(response);
         return NotFound();
-
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteCategory(CategoryDto model)
     {
-        
-            await _icGenCategoryService.DeleteCategoryAsync<CategoryDto>(model.Id);
-            return RedirectToAction(nameof(CategoryIndex));
-            
+        var token = await HttpContext.GetTokenAsync("access_token");
+        await _icGenCategoryService.DeleteCategoryAsync<CategoryDto>(model.Id, token);
+        return RedirectToAction(nameof(CategoryIndex));
     }
 }
