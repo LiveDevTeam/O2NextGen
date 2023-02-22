@@ -55,6 +55,7 @@ public class ProjectsApiTests :
             QuantityCertificates = 1,
             QuantityPublishCode = 10
         };
+        
         var ser = JsonConvert.SerializeObject(addItem);
         var content = new StringContent(ser,
             Encoding.UTF8, "application/json");

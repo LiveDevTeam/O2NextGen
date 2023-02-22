@@ -6,7 +6,7 @@ using O2NextGen.CertificateManagement.Application.Services;
 namespace O2NextGen.CertificateManagement.Application.Controllers.Features.Projects;
 [Authorize]
 [ApiVersion("1.0")]
-[ApiVersion("1.1")]
+//[ApiVersion("1.1")]
 [ApiController]
 // ReSharper disable once RouteTemplates.RouteParameterConstraintNotResolved
 [Route("api/v{v:apiVersion}/[controller]")]
