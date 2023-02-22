@@ -4,11 +4,11 @@ using O2NextGen.CertificateManagement.Domain.Entities;
 
 namespace O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.CreateCategory;
 
-public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, CreateCategoryCommandResult>
+public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, CreateCategoryCommandResult>
 {
     private readonly IRepository<CategoryEntity> categoryRepository;
 
-    public CreateCategoryCommandHandler(IRepository<CategoryEntity> categoryRepository)
+    public CreateCategoryHandler(IRepository<CategoryEntity> categoryRepository)
     {
         this.categoryRepository = categoryRepository;
     }
@@ -28,7 +28,7 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
             IsDeleted = request.IsDeleted,
             TimeLifeInDays = request.TimeLifeInDays,
             QuantityCertificates = request.QuantityCertificates,
-            QuantityPublishCode = request.QuantityPublishCode
+            QuantityPublishCode = request.QuantityPublishCode,
         };
 
         var addedCertificate = await categoryRepository.AddAsync(category, cancellationToken);
