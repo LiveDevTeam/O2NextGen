@@ -34,6 +34,9 @@ builder.Services.AddScoped<ICGenCategoryService,CGenCategoryService>();
 
 builder.Services.AddHttpClient<ICGenCertificateService, CGenCertificateService>();
 builder.Services.AddScoped<ICGenCertificateService,CGenCertificateService>();
+
+builder.Services.AddTransient<IPublishBase, PublishBase>();
+
 builder.Services.AddAuthentication(option =>
     {
         option.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
