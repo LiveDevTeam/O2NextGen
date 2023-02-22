@@ -45,7 +45,7 @@ public sealed class GetCertificateQueryResult
     public string PublishCode { get; }
     public bool IsVisible { get; }
     public long CategoryId { get; }
-    public CategoryEntity CategoryEntity { get; }
+    public CategoryEntity CategoryEntity { get; set; }
     public bool Lock { get; }
     public long LockedDate { get; }
     public string LockInfo { get; }

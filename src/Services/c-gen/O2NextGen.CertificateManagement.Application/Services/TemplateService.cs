@@ -5,7 +5,7 @@ using O2NextGen.Sdk.NetCore.Extensions;
 
 namespace O2NextGen.CertificateManagement.Application.Services;
 
-public abstract class TemplateService : ITemplateService
+public  class TemplateService : ITemplateService
 {
     public enum ElementType
     {
@@ -19,7 +19,7 @@ public abstract class TemplateService : ITemplateService
     private readonly IOptions<UrlsConfig> _config;
     private readonly HttpClient _httpClient;
 
-    protected TemplateService(HttpClient httpClient, IOptions<UrlsConfig> config)
+    public TemplateService(HttpClient httpClient, IOptions<UrlsConfig> config)
     {
         _httpClient = httpClient;
         _config = config;

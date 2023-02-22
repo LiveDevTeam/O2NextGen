@@ -111,11 +111,11 @@ builder.Services.AddCustomIntegrations(configuration);
          //     IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey),
          //     ClockSkew = TimeSpan.Zero 
          // };
-     // // allow self-signed SSL certs
-     // options.BackchannelHttpHandler = new HttpClientHandler
-     // {
-     //     ServerCertificateCustomValidationCallback = delegate { return true; }
-     // };
+     // allow self-signed SSL certs
+     options.BackchannelHttpHandler = new HttpClientHandler
+     {
+         ServerCertificateCustomValidationCallback = delegate { return true; }
+     };
      //        
      // // the scope id of this api
      options.Audience = "cgen.api";

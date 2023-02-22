@@ -10,12 +10,12 @@ internal static class CustomExtensionsMethods
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<ICustomerService, CustomerService>();
-        if (configuration["isTest"] == bool.FalseString.ToLowerInvariant())
+        if (configuration["isTests"] == bool.FalseString.ToLowerInvariant())
             services.AddHttpClient<IQrCodeService, QrCodeService>();
 
 
         services.AddHttpClient<ITemplateService, TemplateService>();
-        // services.AddHttpClient<ISubscribeService, SubscribeService>();
+        //services.AddHttpClient<ISubscribeService, SubscribeService>();
         return services;
     }
 }
