@@ -1,4 +1,5 @@
 using O2NextGen.CertificateManagement.Application.Services;
+using O2NextGen.CertificateManagement.Application.Services.Interfaces;
 
 namespace O2NextGen.CertificateManagement.Application;
 
@@ -15,7 +16,7 @@ internal static class CustomExtensionsMethods
 
 
         services.AddHttpClient<ITemplateService, TemplateService>();
-        //services.AddHttpClient<ISubscribeService, SubscribeService>();
+        services.AddHttpClient<ISubscribeService, SubscribeService>();
         return services;
     }
 }

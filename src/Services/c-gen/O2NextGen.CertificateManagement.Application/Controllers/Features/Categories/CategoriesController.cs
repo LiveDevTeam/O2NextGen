@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using O2NextGen.CertificateManagement.Application.Controllers.ViewModels;
+using O2NextGen.CertificateManagement.Application.Services.Interfaces;
 using O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.CreateCategory;
 using O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.DeleteCategory;
 using O2NextGen.CertificateManagement.Domain.UseCases.ForCategory.GetCategories;
@@ -20,18 +21,21 @@ public class CategoriesController : ControllerBase
 {
     #region Ctors
 
-    public CategoriesController(IMediator mediator, ILogger<CategoriesController> logger)
+    public CategoriesController(IMediator mediator, ILogger<CategoriesController> logger, ISubscribeService subscribeService)
     {
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _subscribeService = subscribeService ?? throw new ArgumentNullException(nameof(subscribeService));;
     }
 
     #endregion
 
+    
     #region Fields
 
     private readonly IMediator _mediator;
     private readonly ILogger<CategoriesController> _logger;
+    private readonly ISubscribeService _subscribeService;
 
     private static readonly string GetByIdActionName
         = nameof(GetByIdAsync).Replace("Async", string.Empty);
@@ -77,6 +81,8 @@ public class CategoriesController : ControllerBase
         [FromBody] CategoryViewModel viewModel,
         CancellationToken ct)
     {
+        var productId = _subscribeService.GetProductId();
+        var tenantId = _subscribeService.GetTenantInfo();
         var result = await _mediator.Send(
             new CreateCategoryCommand(
                 viewModel.CategoryName,
