@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
+import Snowfall from "react-snowfall";
 
 export default class NGSplashScreen extends Component {
 
   render() {
     return (
+        <div>
+            <Snowfall
+                color="#dee4fd"
+                snowflakeCount={500}
+                radius={[0.5, 3.0]}
+                speed={[0.5, 3.0]}
+                wind={[-0.5, 2.0]}
+            />
         <section className="flex justify-center xl:mx-20 m-20">
 
             <div className="relative">
@@ -36,6 +45,7 @@ export default class NGSplashScreen extends Component {
                 {" "}
             </section>
         </section>
+        </div>
     )
   }
 }

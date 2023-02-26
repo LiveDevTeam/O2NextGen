@@ -1,12 +1,19 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Text.Json;
+using JavaScriptEngineSwitcher.ChakraCore;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Logging;
 using PFRCentr.App.MvcClient;
 using PFRCentr.App.MvcClient.Services;
+using React.AspNet;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddReact();
+builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
+
 IdentityModelEventSource.ShowPII = true;
 // Add services to the container.
 builder.Services.AddControllersWithViews()
@@ -90,6 +97,8 @@ app.UseHsts();
 //fix https://github.com/IdentityServer/IdentityServer4/issues/4645
 app.Use((context, next) => { context.Request.Scheme = "https"; return next(); });
 app.UseHttpsRedirection();
+app.UseReact(config => { });
+app.UseDefaultFiles();
 app.UseStaticFiles();
 //app.UseCookiePolicy();
 app.UseRouting();
