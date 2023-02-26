@@ -5,35 +5,104 @@
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Database</h1>
+        </div>
+    </div>
+    @Html.Partial("_Pagination", Model.PaginationInfo)
+    <div class="col-md" style="overflow-x: auto">
+        <table class="table table-bordered" style="width:auto">
+            <thead>
+            <tr>
+                <th>
+                    image
+                </th>
+                <th>
+                    Id
+                </th>
+                <th>
+                    CategoryId
+                </th>
+                <th>
+                    CreatorId
+                </th>
+                <th>
+                    CustomerId
+                </th>
+                <th>
+                    ExpiredDate
+                </th>
+                <th>
+                    IsVisible
+                </th>
+                <th>
+                    PublishCode
+                </th>
+                <th>
+                    PublishDate
+                </th>
+                <th>
+                    OwnerAccountId
+                </th>
+            </tr>
+            </thead>
 
-<div class="container">
-    @if (Model.CatalogItems.Count() > 0)
-    {
-        @Html.Partial("_Pagination", Model.PaginationInfo)
+            <tbody>
 
-        <div class="esh-catalog-items row">
-            @foreach (var catalogItem in Model.CatalogItems)
+            @foreach (var item in Model.CatalogItems)
             {
-                <br/>
-                <img width="100" height="100" src="data:image/png;base64,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" class="detailImage" />
-                <label> @catalogItem.Id</label>
-                <label> @catalogItem.CategoryId</label>
-                <label> @catalogItem.CreatorId</label>
-                <label> @catalogItem.OwnerAccountId</label>
-                <br/>
-                @* <div class="esh-catalog-item col-md-4"> *@
-                @*     @Html.Partial("_product", catalogItem) *@
-                @* </div> *@
+                <tr>
+                    <td>
+                        <img width="100" height="100" src="data:image/png;base64,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" class="detailImage"/>
+                    </td>
+                    <td>@item.Id</td>
+                    <td>@item.CategoryId</td>
+                    <td>@item.CreatorId</td>
+                    <td>@item.CustomerId</td>
+                    <td>@item.ExpiredDate</td>
+                    <td>@item.IsVisible</td>
+                    <td>@item.PublishCode</td>
+                    <td>@item.PublishDate</td>
+                    <td>@item.OwnerAccountId</td>
+                </tr>
             }
-        </div>
 
+            </tbody>
+        </table>
         @Html.Partial("_Pagination", Model.PaginationInfo)
-    }
-    else
-    {
-        <div class="esh-catalog-items row">
-            THERE ARE NO RESULTS THAT MATCH YOUR SEARCH
-        </div>
-    }
+    </div>
 </div>
+@* <br/> *@
+@* <br/> *@
+@* <div class="container"> *@
+@*     @if (Model.CatalogItems.Count() > 0) *@
+@*     { *@
+@*         @Html.Partial("_Pagination", Model.PaginationInfo) *@
+@* *@
+@*         <div class="esh-catalog-items row"> *@
+@*             @foreach (var catalogItem in Model.CatalogItems) *@
+@*             { *@
+@*                 <br/> *@
+@*                 <img width="100" height="100" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAZKADAAQAAAABAAAAZAAAAAAvu95BAAAHeElEQVR4Ae1dZ2/kOAxVJpNN771XBAHy//9FPqchSK9IkN7r5elAg6uxZM5cVqfBkkDgIoqi35Momp7FNqysrHwZlWQQKCXjiTpiEVBCEpsISogSkhgCibmjK0QJSQyBxNzRFaKEJIZAYu7oClFCEkMgMXd0hSghiSGQmDu6QpSQxBBIzB1dIUpIYggk5o6uECUkMQQSc0dXiBKSGAKJuaMrRAlJDIHE3NEVooQkhkBi7ugKUUISQyAxd3SFKCGJIZCYO7pClJDEEEjMHV0hSkhiCCTmjq4QJSQxBBJzp1yLP52dnaarq8v8+vXLNDU1mc/PT/P29maenp7M8/Ozubu7M19ff9+/lJubmzPNzc3m4+PDbG5u1gKtKbe3t5uHhwdR546ODjM1NWVaW1uD+iBld3dXbDdorE4aQURvb6/1FoRUK4RtaWlpyYyOjhb27+vrM4uLi4VkwFBLS4uR2i0cuE4UgE+twrG1IWtsbMzO5tvb21ybbW1tZmZmxjQ0NGTtNzc35uzszIYphCfMkIGBAdPf329KpX9zhSK7mbE6PwE+Q0NDNT2Fi22WZU1PT5vGxsYKoyBhdnb2NzJOT0/N1taW3Sve399tzHx8fDT7+/v2Pt8/fHYrBqrDG8Cmu7vbRo5yufrtOA/bzAo26MHBQQOwuWCPQQgiub+/N8fHx3RZccSGjvbx8XHb5rNb0bEObiAKAA8kMsCkp6fH1EIEPWoetiWEHhLalOgaRwxKgtWws7NTmEGB1CK7ZLOejgjHiBYTExM2PP8XMvDcediWLy4u7LKDAuIZZsHLywsurWBJklxfX5vX11e6DB6L7AY7O42YjbRKMSmwSiXC+0Ef/dC/VkH2+JOSh22Z3hkQzyB4xyBCQA4BgTbfpo82V0J2Xd2ia8xIch7708bGRmFKjdmLrBDhBYJUdHV1tWioYPvl5aXBpMwThB+MJxUftiU4ig2ZhBMAcrgAZKmE7EptkB6SBcrtMXFmvjM+yuRIxz0imSAy0AYb0tXt2uLXeAn2/XG9onMftjbL4kCDORKedeEtvNrl7rNL9qVHALn7/aJJgklDSQPd40ek3zw+I3xidqckPmwtISh7kCArIuGbFoUxapMcfXYlfV0dhIrz8/PsNvJ+lG9cAVmTk5PZbUykg4OD7DqVEx+2lhAKB3CWM8c7Vbs6YMtnF221yOHhoX0Rpb4IXdxHyuspnCG0bG9v2xBDfVI5cr85thWE0MPAcU4OB1f6ULwPtyvt7+q5AGOPQG2NBJUBZIoke3t7tthJ1ykdfdhaQijDgsP83NdJ+mDcFj+X9s/TQ+rJQxDenVALwiY5MjKSdUlx38ic+z7xYWvf1PlM5p14CYSfc53Quc9uqI+kDWCDACroIXRxSXXf4D5yPPm5XSE+tjigXIcbDp3zPtxWqI+0DWksJRpYfbQC3bAmtRdbj+PBcaoghG8w/JxvQlLn+UDclrR/SA8PhDKOKyDqp9+o3TF+4prjwbG1hPANlyvycw6u1CGfXWn/Ij1aFUV6Kbb7sLWE8MyEK/JzzqL0AX12pf1DevAHn0xdQdbFX27d9lSufdhaQvD5kIQr8nPUaviMJ/3Q0Wc31Efaho2cSiNUykBf+AiiUl89PmxLeCg+o3i5g5/jQd36Swi8kN1QP0nb8PBwVmyEPsoq+FEBZStYmaHSimSMP63jw7bEQcZGySu6YJGXuqniKnE2ZFfS36eDlcrBRgp8dXVlq78nJydZN5CWV1rJFP7nEx+2JbzdkuCjEs0yuoeHJUHBTrK5Q6fILtms5gi7PBy5L4n4MMZ/QeOWVqoZK4ZuHrYlHq7yav38HsLQ/Px8YXxG6bvIbi0PDICp+ImJg7QX+weJew/+ok+qkoet3dThMF6y+GdXegiUvvl9hKLQQ6IKyz8F++ySfekRdnlJ/ejo6LfvOGQH4/HSCsJsrb8IIZt/6piHrS2duDPLdQCb5vLyclZZRckCsRzxG2ED/bEi8M2Zp7pFdt1xfNewia+GJNjn8BMkn8AvEEEEoi/2Qv4hztc39n0X2xKVGnjsdZ3CBoQshn9xAwHYXBHCFhYW7DcITobErjtO3rW7b8AXPESRoNJL32OQAuPHCdWm7UVj/ES7i21pfX3d+52YD4iC3dramv1IxOswXAfnWBWIjVK7bn/3GquO70cgg4B2dfk1HhSkkODDFRUj6d5PHvleJvGPj82xbajl/w+hdxJssPjDDMTqgSMIDdU6xJ3728+zH8pVAwRmA9/oq+mrumEEsiwrrKatsRBQQmIhLRxHCRECFUtNCYmFtHAcJUQIVCw1JSQW0sJxlBAhULHUlJBYSAvHUUKEQMVSU0JiIS0cRwkRAhVLTQmJhbRwHCVECFQsNSUkFtLCcZQQIVCx1JSQWEgLx1FChEDFUlNCYiEtHEcJEQIVS00JiYW0cBwlRAhULDUlJBbSwnGUECFQsdSUkFhIC8dRQoRAxVJTQmIhLRxHCRECFUtNCYmFtHAcJUQIVCw1JSQW0sJxlBAhULHUlJBYSAvHUUKEQMVSU0JiIS0c5x+c8FMRoErqJwAAAABJRU5ErkJggg==" class="detailImage"/> *@
+@*                 <label> @catalogItem.Id</label> *@
+@*                 <label> @catalogItem.CategoryId</label> *@
+@*                 <label> @catalogItem.CreatorId</label> *@
+@*                 <label> @catalogItem.OwnerAccountId</label> *@
+@*                 <br/> *@
+@*                 $1$ <div class="esh-catalog-item col-md-4"> #1# *@
+@*                 $1$     @Html.Partial("_product", catalogItem) #1# *@
+@*                 $1$ </div> #1# *@
+@*             } *@
+@*         </div> *@
+@* *@
+@*         @Html.Partial("_Pagination", Model.PaginationInfo) *@
+@*     } *@
+@*     else *@
+@*     { *@
+@*         <div class="esh-catalog-items row"> *@
+@*             THERE ARE NO RESULTS THAT MATCH YOUR SEARCH *@
+@*         </div> *@
+@*     } *@
+@* </div> *@
