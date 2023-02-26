@@ -17,6 +17,9 @@ namespace O2Bionics.Services.IdServer
             urls.Add("IdPortalMvcUrl",
                 Environment.GetEnvironmentVariable("Urls:IdPortalMvcUrl") ??
                 configuration.GetValue<string>("Urls:IdPortalMvcUrl"));
+            urls.Add("PFRAppUrl",
+                Environment.GetEnvironmentVariable("Urls:PFRAppUrl") ??
+                configuration.GetValue<string>("Urls:PFRAppUrl"));
 
 
             Console.WriteLine(" ========================= CONFIG IDServer ========================== ");
@@ -155,15 +158,52 @@ namespace O2Bionics.Services.IdServer
                         AllowedGrantTypes = GrantTypes.Implicit,
                         AllowAccessTokensViaBrowser = true,
 
-                        RedirectUris = { $"http://localhost:5003/swagger/o2c.html" },
-                        PostLogoutRedirectUris = { $"http://localhost:5003/swagger/" },
+                        RedirectUris = {$"http://localhost:5003/swagger/o2c.html"},
+                        PostLogoutRedirectUris = {$"http://localhost:5003/swagger/"},
 
                         AllowedScopes = new List<string>
                         {
                             "smalltalk.api"
                         }
                     },
-                    
+
+                    // React client
+                    new Client
+                    {
+                        ClientId = "wewantdoughnuts",
+                        ClientName = "We Want Doughnuts",
+                        ClientUri = "http://localhost:3000",
+
+                        AllowedGrantTypes = GrantTypes.Implicit,
+
+                        RequireClientSecret = false,
+
+                        RedirectUris =
+                        {
+                            $"{clientUrls["PFRAppUrl"]}/signin-oidc",
+                            "http://localhost:3000/signin-oidc",
+                        },
+
+                        PostLogoutRedirectUris =
+                        {
+                            $"{clientUrls["PFRAppUrl"]}/signout-oidc",
+                            "http://localhost:3000/signout-oidc"
+                        },
+                        AllowedCorsOrigins =
+                        {
+                            "http://localhost:3000",
+                            $"{clientUrls["PFRAppUrl"]}"
+                        },
+
+                        AllowedScopes = new List<string>
+                        {
+                            IdentityServerConstants.StandardScopes.OpenId,
+                            IdentityServerConstants.StandardScopes.Profile,
+                            "cgen.api"
+                        },
+
+                        AllowAccessTokensViaBrowser = true
+                    }
                 };
         }
     }

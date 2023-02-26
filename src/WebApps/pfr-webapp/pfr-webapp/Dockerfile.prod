@@ -4,7 +4,7 @@ WORKDIR  /app
 COPY  package.json .
 RUN yarn install
 COPY . .
-ENV REACT_APP_NAME=myName 
+ENV REACT_APP_NAME=myName
 COPY .env .
 RUN yarn build
 
