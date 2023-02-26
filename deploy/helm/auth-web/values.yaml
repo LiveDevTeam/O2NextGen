@@ -75,6 +75,8 @@ env:
       value: https://idportal.o2nextgen.com
     - name: Urls__CGenApiUrl
       value: https://cgen-api.o2nextgen.com
+    - name: Urls__PFRAppUrl
+      value: https://pfr-centr.com
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
