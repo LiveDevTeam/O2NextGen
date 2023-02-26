@@ -26,7 +26,7 @@ function Header() {
                     </div>
                     <div>
                         <p className="ml-2 text-2xl text-gray-700 uppercase font-bold">#PF_R Community</p>
-                        <p className="ml-2 text-gray-500 lowercase font-semibold">Community of specialists</p>
+                        <p className="ml-2 text-gray-500 lowercase font-semibold">Сообщество специалистов</p>
                     </div>
                 </div>
             </div>
@@ -63,22 +63,22 @@ function Header() {
             <div className="flex-col justify-end items-center">
                 <ul className="flex justify-end items-center mt-2">
                     <li className="px-2 text-gray-500 cursor-pointer hover:font-bold hover:text-pink-500">
-                        <Link to="/"> Home</Link>
+                        <Link to="/"> Главная</Link>
                     </li>
                     <li className="px-2 text-gray-500 cursor-pointer  hover:font-bold hover:text-indigo-500">
-                        <Link to="/specialists"> Find a Specialist</Link>
+                        <Link to="/specialists"> Найти специалиста</Link>
                     </li>
                     <li className="px-2 text-gray-500 cursor-pointer  hover:font-bold hover:text-indigo-500">
-                        <Link to="/database"> Database certificates</Link>
+                        <Link to="/database"> База сертификатов</Link>
                     </li>
                     <li className="px-2 text-gray-500 cursor-pointer  hover:font-bold hover:text-yellow-500">
-                        <Link to="/community"> Community</Link>
+                        <Link to="/community"> Сообщество</Link>
                     </li>
                     <li className="px-2 text-gray-500 cursor-pointer  hover:font-bold hover:text-yellow-500">
-                        <Link to="/community"> #PF_R Shop</Link>
+                        <Link to="/community"> Онлайн магазин</Link>
                     </li>
                     <li className="px-2 text-gray-500 cursor-pointer hover:font-bold hover:text-green-500">
-                        <Link to="/about"> About</Link>
+                        <Link to="/about"> О нас</Link>
                     </li>
                     {
                         (user) ?
@@ -87,22 +87,22 @@ function Header() {
                                 <div className="px-2 text-gray-500 cursor-pointer hover:font-bold hover:text-blue-500">Hello, {user.profile.given_name}</div>
                             </li>
 
-                        ) :
-                            ( <li className="px-2 text-gray-500 cursor-pointer hover:font-bold  hover:text-red-500">
-                                <Link to="/about"> Sign up</Link>
-                            </li>)
+                        ) : null
+                            // ( <li className="px-2 text-gray-500 cursor-pointer hover:font-bold  hover:text-red-500">
+                            //     <Link to="/about"> Зарегистрироваться</Link>
+                            // </li>)
                     }
                     {
                         (user) ?
                             (
                                 <li className="px-2 text-gray-500 cursor-pointer hover:font-bold hover:text-blue-500">
-                                    <Link to="/about" onClick={() => signOut()}> Logout</Link>
+                                    <Link to="/about" onClick={() => signOut()}> Выход</Link>
                                 </li>
 
                             )
                             : (
                                 <li className="px-2 text-gray-500 cursor-pointer hover:font-bold  hover:text-blue-500">
-                                    <Link to="/about" onClick={() => login()}> Login</Link>
+                                    <Link to="/about" onClick={() => login()}> Войти в систему</Link>
                                 </li>
                             )
                     }

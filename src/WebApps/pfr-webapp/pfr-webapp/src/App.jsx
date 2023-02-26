@@ -44,44 +44,44 @@ function App() {
                 <Route path="/login" component={Login} />
                 <Route path="/signout-oidc" component={SignoutOidc} />
                 <Route path="/signin-oidc" component={SigninOidc} />
-                <Route path="/specialists" component={Specialists}/>
-                <Route path="/database" component={Database}/>
-                <Route path="/community" component={Community}/>
+                <PrivateRoute  path="/specialists" component={Specialists}/>
+                <PrivateRoute  path="/database" component={Database}/>
+                <PrivateRoute  path="/community" component={Community}/>
                 {/*<Route path="/about" component={About}/>*/}
-                <PrivateRoute exact path="/" component={Home} />
+                <Route  exact path="/" component={Home} />
 
-                <Route path="/specialists">
+                <PrivateRoute path="/specialists">
                   <Specialists/>
                   <Footer/>
-                </Route>
-                <Route path="/detail-specialist">
+                </PrivateRoute>
+                <PrivateRoute path="/detail-specialist">
                   <DetailSpecialist/>
                   <Footer/>
-                </Route>
-                <Route path="/about">
+                </PrivateRoute>
+                <PrivateRoute path="/about">
                   <About/>
                   <Footer/>
-                </Route>
-                <Route path="/about-advertising">
+                </PrivateRoute>
+                <PrivateRoute path="/about-advertising">
                   <AboutAdvertising/>
                   <Footer/>
-                </Route>
-                <Route path="/trademarks">
+                </PrivateRoute>
+                <PrivateRoute path="/trademarks">
                   <Trademarks/>
                   <Footer/>
-                </Route>
-                <Route path="/terms-of-use">
+                </PrivateRoute>
+                <PrivateRoute path="/terms-of-use">
                   <TermsOfUse/>
                   <Footer/>
-                </Route>
-                <Route path="/privacystatement">
+                </PrivateRoute>
+                <PrivateRoute path="/privacystatement">
                   <PrivacyStatement/>
                   <Footer/>
-                </Route>
-                <Route path="/sitemap">
+                </PrivateRoute>
+                <PrivateRoute path="/sitemap">
                   <SiteMap/>
                   <Footer/>
-                </Route>
+                </PrivateRoute>
               </Switch>
             </Router>
           </AuthProvider>
