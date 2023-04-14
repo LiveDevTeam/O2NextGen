@@ -56,7 +56,7 @@ namespace O2NextGen.ESender.Api.IoC
             {
                 options.Filters.Add<ApiExceptionFilter>();
             });
-            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
            
             //var mvcBuilder = services.AddMvcCore(options =>
             //{
