@@ -14,7 +14,7 @@ namespace O2NextGen.ESender.Api.Helpers
             _logger = logger;
             SmtpServerHost = "localhost";
             SmtpServerPort = 25;
-            From= "support@pfr-centr.com";
+            From= "no-reply@o2nextgen.com";
         }
 
         public string From { get; set; }
@@ -30,7 +30,7 @@ namespace O2NextGen.ESender.Api.Helpers
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.Host = SmtpServerHost;
                 client.Port = SmtpServerPort;
-                //client.Credentials = new System.Net.NetworkCredential("support@pfr-centr.com", "password");
+                client.Credentials = new System.Net.NetworkCredential("no-reply@o2nextgen.com", "#89_DangerSnake?");
                 _logger.LogInformation($">> Settings for email server  host={client.Host} port={client.Port}");
                 using (var message = new MailMessage(From, to))
                 {

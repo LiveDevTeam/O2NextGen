@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using O2NextGen.ESender.Api.Helpers;
 using O2NextGen.ESender.Api.Mappings;
 using O2NextGen.ESender.Business.Services;
+using O2NextGen.ESender.Data.Entities;
 using O2NextGen.Sdk.NetCore.Models.e_sender;
 
 namespace O2NextGen.ESender.Api.Controllers
@@ -62,7 +63,7 @@ namespace O2NextGen.ESender.Api.Controllers
         public async Task<IActionResult> AddAsync([FromBody]EmailRequestViewModel model, CancellationToken ct)
         {
             var emailRequest = await _emailSenderService.AddAsync(model.ToModel(), ct);
-            await _emailSender.Send(model.To, model.Subject, model.Body);
+            await _emailSender.Send(model.To, model.Subject, model.Body = EmailNotificationTemplateConstants.OuterBody);
             return CreatedAtAction(nameof(GetByIdAsync), new {id = emailRequest.Id}, emailRequest);
         }
 
