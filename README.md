@@ -245,6 +245,9 @@ revision - git revision
 1.0.0.3
 1.0.0.4
 
-Copyright (c) O2 Bionics LLC. All rights reserved.
 
-Licensed under the MIT license.
+## License
+
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+Licensed under the [MIT](LICENSE.txt) license.
