@@ -241,12 +241,10 @@ revision - git revision
 
 1.0.0.0
 1.0.0.1
-
-
+1.0.0.2
+1.0.0.3
+1.0.0.4
 
 Copyright (c) O2 Bionics LLC. All rights reserved.
 
 Licensed under the MIT license.
-1.0.0.2
-1.0.0.3
-1.0.0.4
